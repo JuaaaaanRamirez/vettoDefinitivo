@@ -12,6 +12,9 @@ namespace SalesController {
 		// TODO: Agregue aquí los métodos de esta clase.
 	private:
 		static List<Product^>^ productList = gcnew List<Product^>(); // Variable de clase (global) para la lista de productos
+		static List<Customer^>^ CustomerList = gcnew List<Customer^>();
+		static List<Announcer^>^ AnnounceRList = gcnew List<Announcer^>();
+		static List<StoreManager^>^ StoreManagerList = gcnew List<StoreManager^>();
 
 		static array<String^>^ carrerArr = { " mecatronica ", " civil ", " industrial ", " informatica ", " arquitectura ", " electronica ", " fisica "}; // Arreglo de carreras como cadenas de texto.
 		static List<String^>^ careerList = gcnew List<String^>(carrerArr);  // lista de todas las carreras con las que trabaja el sistema

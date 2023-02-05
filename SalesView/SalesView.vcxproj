@@ -131,13 +131,13 @@
     <ClInclude Include="CareerListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CustomerForm.h">
+    <ClInclude Include="NewCustomerForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="userForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="NewCustomerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProductForm.h">
@@ -157,9 +157,6 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SalesMainForm1.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="SearchProductForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,7 +170,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CareerListForm.cpp" />
-    <ClCompile Include="CustomerForm.cpp" />
+    <ClCompile Include="userForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="NewCustomerForm.cpp" />
     <ClCompile Include="ProductListForm.cpp" />
@@ -214,14 +211,14 @@
     <EmbeddedResource Include="CareerListForm.resx">
       <DependentUpon>CareerListForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomerForm.resx">
-      <DependentUpon>CustomerForm.h</DependentUpon>
+    <EmbeddedResource Include="NewCustomerForm.resx">
+      <DependentUpon>NewCustomerForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userForm.resx">
+      <DependentUpon>userForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewCustomerForm.resx">
-      <DependentUpon>NewCustomerForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.h</DependentUpon>
@@ -237,9 +234,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesMainForm.resx">
       <DependentUpon>SalesMainForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SalesMainForm1.resx">
-      <DependentUpon>SalesMainForm1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchProductForm.resx">
       <DependentUpon>SearchProductForm.h</DependentUpon>
