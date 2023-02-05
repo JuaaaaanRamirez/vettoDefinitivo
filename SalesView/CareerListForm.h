@@ -49,6 +49,7 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Button^ button1;
 	protected:
 
 	private:
@@ -72,6 +73,7 @@ namespace SalesView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// checkedListBox1
@@ -158,11 +160,22 @@ namespace SalesView {
 			this->label4->TabIndex = 14;
 			this->label4->Text = L"Ciencias y Artes de la Comunicación";
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(537, 250);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(70, 31);
+			this->button1->TabIndex = 15;
+			this->button1->Text = L"Agregar";
+			this->button1->TextAlign = System::Drawing::ContentAlignment::TopLeft;
+			this->button1->UseVisualStyleBackColor = true;
+			// 
 			// CareerListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1054, 344);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);

@@ -26,9 +26,6 @@
     <ClInclude Include="pch.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ProductForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="SalesMainForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -53,6 +50,21 @@
     <ClInclude Include="NewCustomerForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="ProductListForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductPresentationForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="SaleDetailForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="SalesMainForm1.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SalesView.cpp">
@@ -62,9 +74,6 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="SalesMainForm.cpp">
@@ -89,6 +98,15 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="NewCustomerForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductListForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductPresentationForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="SaleDetailForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

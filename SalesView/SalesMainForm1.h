@@ -2,7 +2,6 @@
 
 #include "ProductForm.h"
 #include "ProductListForm.h"
-#include "ProductForm.h"
 
 namespace SalesView {
 
@@ -87,7 +86,6 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SalesMainForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -132,6 +130,7 @@ namespace SalesView {
 			this->menuStrip1->Size = System::Drawing::Size(1333, 28);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
+			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &SalesMainForm::menuStrip1_ItemClicked);
 			// 
 			// archivoToolStripMenuItem
 			// 
@@ -143,7 +142,7 @@ namespace SalesView {
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -160,26 +159,26 @@ namespace SalesView {
 			// productoToolStripMenuItem
 			// 
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
 			// clientesToolStripMenuItem
 			// 
 			this->clientesToolStripMenuItem->Name = L"clientesToolStripMenuItem";
-			this->clientesToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->clientesToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->clientesToolStripMenuItem->Text = L"Clientes";
 			// 
 			// vendedoresToolStripMenuItem
 			// 
 			this->vendedoresToolStripMenuItem->Name = L"vendedoresToolStripMenuItem";
-			this->vendedoresToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->vendedoresToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->vendedoresToolStripMenuItem->Text = L"Vendedores";
 			// 
 			// anunciantesToolStripMenuItem
 			// 
 			this->anunciantesToolStripMenuItem->Name = L"anunciantesToolStripMenuItem";
-			this->anunciantesToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->anunciantesToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->anunciantesToolStripMenuItem->Text = L"Anunciantes";
 			// 
 			// operacionesToolStripMenuItem
@@ -192,7 +191,7 @@ namespace SalesView {
 			// realizarUnaVentaToolStripMenuItem
 			// 
 			this->realizarUnaVentaToolStripMenuItem->Name = L"realizarUnaVentaToolStripMenuItem";
-			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(213, 26);
+			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->realizarUnaVentaToolStripMenuItem->Text = L"Realizar una venta";
 			// 
 			// reportesToolStripMenuItem
@@ -218,7 +217,6 @@ namespace SalesView {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::SystemColors::Control;
-			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Location = System::Drawing::Point(1126, 47);
 			this->button1->Name = L"button1";
@@ -230,7 +228,6 @@ namespace SalesView {
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::SystemColors::Control;
-			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
 			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button2->Location = System::Drawing::Point(1191, 48);
 			this->button2->Name = L"button2";
@@ -242,7 +239,6 @@ namespace SalesView {
 			// button3
 			// 
 			this->button3->BackColor = System::Drawing::SystemColors::Control;
-			this->button3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button3.BackgroundImage")));
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button3->Location = System::Drawing::Point(1263, 47);
 			this->button3->Name = L"button3";
@@ -253,7 +249,6 @@ namespace SalesView {
 			// Homebtn
 			// 
 			this->Homebtn->BackColor = System::Drawing::SystemColors::Control;
-			this->Homebtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Homebtn.BackgroundImage")));
 			this->Homebtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Homebtn->Location = System::Drawing::Point(25, 47);
 			this->Homebtn->Name = L"Homebtn";
@@ -304,7 +299,6 @@ namespace SalesView {
 			// 
 			// pictureBox5
 			// 
-			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox5->Location = System::Drawing::Point(73, 494);
 			this->pictureBox5->Name = L"pictureBox5";
@@ -315,7 +309,6 @@ namespace SalesView {
 			// SearchBtn
 			// 
 			this->SearchBtn->BackColor = System::Drawing::SystemColors::Control;
-			this->SearchBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"SearchBtn.BackgroundImage")));
 			this->SearchBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->SearchBtn->Location = System::Drawing::Point(88, 48);
 			this->SearchBtn->Name = L"SearchBtn";
@@ -403,5 +396,7 @@ namespace SalesView {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
+	}
+};
 }
