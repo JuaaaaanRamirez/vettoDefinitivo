@@ -314,6 +314,7 @@ namespace SalesView {
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SaleDetailForm";
+			this->Load += gcnew System::EventHandler(this, &SaleDetailForm::SaleDetailForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -326,5 +327,7 @@ namespace SalesView {
 		MessageBox::Show("¡Venta Exitosa!");
 
 	}
-	};
+	private: System::Void SaleDetailForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
