@@ -189,7 +189,7 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
             input = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formateador = gcnew BinaryFormatter();
         }
-        if (fileName->Equals("products.bin")) {
+        if (fileName->Equals("producs.bin")) {
             res = gcnew List<Product^>();
             if (File::Exists(fileName)) {
                 res = (List<Product^>^)formateador->Deserialize(input);
@@ -199,6 +199,12 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
             res = gcnew List<DeliveryMan^>();
             if (File::Exists(fileName)) {
                 res = (List<DeliveryMan^>^)formateador->Deserialize(input);
+            }
+        }
+        if (fileName->Equals("users.bin")) {
+            res = gcnew List<Person^>();
+            if (File::Exists(fileName)) {
+                res = (List<Person^>^)formateador->Deserialize(input);
             }
         }
 

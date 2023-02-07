@@ -130,15 +130,15 @@ namespace SalesView {
 			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->btnSetImage = (gcnew System::Windows::Forms::Button());
 			this->dgvProducts = (gcnew System::Windows::Forms::DataGridView());
-			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
@@ -262,6 +262,7 @@ namespace SalesView {
 			this->pbPhoto->Location = System::Drawing::Point(586, 12);
 			this->pbPhoto->Name = L"pbPhoto";
 			this->pbPhoto->Size = System::Drawing::Size(290, 282);
+			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbPhoto->TabIndex = 15;
 			this->pbPhoto->TabStop = false;
 			// 
@@ -291,32 +292,6 @@ namespace SalesView {
 			this->dgvProducts->TabIndex = 17;
 			this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dgvProducts_CellClick);
 			this->dgvProducts->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dataGridView1_CellContentClick);
-			// 
-			// txtPriceMaj
-			// 
-			this->txtPriceMaj->Location = System::Drawing::Point(182, 212);
-			this->txtPriceMaj->Name = L"txtPriceMaj";
-			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
-			this->txtPriceMaj->TabIndex = 19;
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(33, 219);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(133, 16);
-			this->label7->TabIndex = 18;
-			this->label7->Text = L"Precio mayorista (s/.)";
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(344, 210);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(123, 58);
-			this->button1->TabIndex = 20;
-			this->button1->Text = L"Elegir carreras vinculadas";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
 			// 
 			// Column1
 			// 
@@ -360,6 +335,32 @@ namespace SalesView {
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 50;
 			// 
+			// txtPriceMaj
+			// 
+			this->txtPriceMaj->Location = System::Drawing::Point(182, 212);
+			this->txtPriceMaj->Name = L"txtPriceMaj";
+			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
+			this->txtPriceMaj->TabIndex = 19;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(33, 219);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(133, 16);
+			this->label7->TabIndex = 18;
+			this->label7->Text = L"Precio mayorista (s/.)";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(344, 210);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(123, 58);
+			this->button1->TabIndex = 20;
+			this->button1->Text = L"Elegir carreras vinculadas";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
+			// 
 			// ProductForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -399,32 +400,169 @@ namespace SalesView {
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 	}
-	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 
-		if (txtProductId->Text->Trim() == "") {
-			MessageBox::Show("El Id del producto no debe estar vacío.");
-			return;
+		   // Functions
+		   void ShowProducts() {
+			   List<Product^>^ myProductList = Controller::QueryAllProducts();
+
+			   dgvProducts->Rows->Clear();
+			   for (int i = 0; i < myProductList->Count; i++) {
+				   dgvProducts->Rows->Add(gcnew array<String^>{
+						   "" + myProductList[i]->Id,
+						   "" + myProductList[i]->Name,
+						   "" + myProductList[i]->PriceMin,
+						   "" + myProductList[i]->PriceMaj,
+						   "Producto comun a muchas carreras",
+						   "" + myProductList[i]->Stock
+					   });
+			   }
+		   }
+		   int Verification() {
+			   if (txtProductId->Text->Trim() == "") {
+				   MessageBox::Show("El Id del producto no debe estar vacío.");
+				   return 1;
+			   }
+			   if (txtName->Text->Trim() == "") {
+				   MessageBox::Show("El nombre del producto no debe estar vacío.");
+				   return 1;
+			   }
+			   if (txtDescription->Text->Trim() == "") {
+				   MessageBox::Show("La descripcion del producto no debe estar vacío.");
+				   return 1;
+			   }
+			   if (txtPriceMin->Text->Trim() == "") {
+				   MessageBox::Show("El precio minorista no debe estar vacío.");
+				   return 1;
+			   }
+			   if (txtPriceMaj->Text->Trim() == "") {
+				   MessageBox::Show("El precio mayorista no debe estar vacío.");
+				   return 1;
+			   }
+			   if (txtStock->Text->Trim() == "") {
+				   MessageBox::Show("El stock no debe estar vacío.");
+				   return 1;
+			   }
+			   return 0;
+		   }
+		   void CleanControls() {
+			   txtProductId->Clear();
+			   txtName->Clear();
+			   txtDescription->Clear();
+			   txtPriceMin->Clear();
+			   txtPriceMaj->Clear();
+			   txtStock->Clear();
+			   pbPhoto->Image = nullptr;
+			   /*
+			   rbComunConfirmation->Checked = false;
+			   cmbCareer1->SelectedIndex = -1;
+			   cmbCareer2->SelectedIndex = -1;
+			   cmbCareer3->SelectedIndex = -1;
+			   cmbCareer4->SelectedIndex = -1;
+			   cmbCareer5->SelectedIndex = -1;
+
+			   */
+		   }
+
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+
+	private: System::Void ProductForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowProducts();
+	}
+	private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		// Verification
+		int returned = Verification();
+		if (returned == 1) return;
+
+		// Make Product
+		Product^ product = gcnew Product();
+
+		// Put on Data
+		product->Id = Convert::ToInt32(txtProductId->Text);
+		product->Name = txtName->Text;
+		product->Description = txtDescription->Text;
+		product->PriceMin = Convert::ToDouble(txtPriceMin->Text);
+		product->PriceMaj = Convert::ToDouble(txtPriceMaj->Text);
+		product->Stock = Convert::ToInt32(txtStock->Text);
+		product->Status = 'A';
+		product->Career = gcnew List<String^>();
+
+
+		/*
+		if (rbComunConfirmation->Checked) {
+
+			product->Career = Controller::QueryAllCareers();
 		}
-		if (txtName->Text->Trim() == "") {
-			MessageBox::Show("El nombre del producto no debe estar vacío.");
-			return;
+		else {
+			if (cmbCareer1->SelectedIndex >= 0) product->Career->Add(cmbCareer1->SelectedItem->ToString());
+			else product->Career->Add("");
+			if (cmbCareer2->SelectedIndex >= 0) product->Career->Add(cmbCareer2->SelectedItem->ToString());
+			else product->Career->Add("");
+			if (cmbCareer3->SelectedIndex >= 0) product->Career->Add(cmbCareer3->SelectedItem->ToString());
+			else product->Career->Add("");
+			if (cmbCareer4->SelectedIndex >= 0) product->Career->Add(cmbCareer4->SelectedItem->ToString());
+			else product->Career->Add("");
+			if (cmbCareer5->SelectedIndex >= 0) product->Career->Add(cmbCareer5->SelectedItem->ToString());
+			else product->Career->Add("");
 		}
-		if (txtDescription->Text->Trim() == "") {
-			MessageBox::Show("La descripcion del producto no debe estar vacío.");
-			return;
+		*/
+
+		// Save Image (needs product)
+		if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+			product->Photo = ms->ToArray();
 		}
-		if (txtPriceMin->Text->Trim() == "") {
-			MessageBox::Show("El precio minorista no debe estar vacío.");
-			return;
+
+		Controller::UpdateProduct(product);
+		CleanControls();
+		ShowProducts();
+	}
+	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+		int ID = Convert::ToInt32(txtProductId->Text);
+		Controller::DeleteProduct(ID);
+		CleanControls();
+		ShowProducts();
+	}
+	private: System::Void btnSetImage_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
+		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			pbPhoto->Image = gcnew Bitmap(opnfd->FileName);
 		}
-		if (txtPriceMaj->Text->Trim() == "") {
-			MessageBox::Show("El precio mayorista no debe estar vacío.");
-			return;
+
+	}
+	private: System::Void dgvProducts_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+		int selectedRowIndex = dgvProducts->SelectedCells[0]->RowIndex;
+		int productId = Convert::ToInt32(dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
+		Product^ p = Controller::QueryProductById(productId);
+		txtProductId->Text = "" + p->Id;
+		txtName->Text = p->Name;
+		txtDescription->Text = p->Description;
+		txtPriceMin->Text = "" + p->PriceMin;
+		txtPriceMaj->Text = "" + p->PriceMaj;
+		txtStock->Text = "" + p->Stock;
+		// Save Image
+		if (p->Photo != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
+			pbPhoto->Image = Image::FromStream(ms);
 		}
-		if (txtStock->Text->Trim() == "") {
-			MessageBox::Show("El stock no debe estar vacío.");
-			return;
+		else {
+			pbPhoto->Image = nullptr;
+			pbPhoto->Invalidate();
 		}
+	}
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Verification
+		int returned = Verification();
+		if (returned == 1) return;
+
+
 		/*
 		if ((!(rbComunConfirmation->Checked)) && (cmbCareer1->SelectedIndex < 0 && cmbCareer2->SelectedIndex < 0 && cmbCareer3->SelectedIndex < 0 && cmbCareer4->SelectedIndex < 0 && cmbCareer5->SelectedIndex < 0)) {
 			MessageBox::Show("Debe elegir alguna carrera relacionada");
@@ -471,135 +609,7 @@ namespace SalesView {
 		ShowProducts();
 	}
 
-		   void ShowProducts() {
-			   List<Product^>^ myProductList = Controller::QueryAllProducts();
 
-			   dgvProducts->Rows->Clear();
-			   for (int i = 0; i < myProductList->Count; i++) {
-				   if (myProductList[i]->Career->Count > 5) {
-					   dgvProducts->Rows->Add(gcnew array<String^>{
-
-						   "" + myProductList[i]->Id,
-							   myProductList[i]->Name,
-							   "" + myProductList[i]->PriceMin,
-							   "" + myProductList[i]->PriceMaj,
-							   "Producto comun a muchas carreras",
-							   "" + myProductList[i]->Stock
-					   });
-				   }
-				   else {
-					   dgvProducts->Rows->Add(gcnew array<String^>{
-
-						   "" + myProductList[i]->Id,
-							   myProductList[i]->Name,
-							   "" + myProductList[i]->PriceMin,
-							   "" + myProductList[i]->PriceMaj,
-							   myProductList[i]->Career[0] + " " + myProductList[i]->Career[1] + " " + myProductList[i]->Career[2] + " " + myProductList[i]->Career[3] + " " + myProductList[i]->Career[4],
-							   "" + myProductList[i]->Stock
-					   });
-				   }
-			   }
-		   }
-
-		   void CleanControls() {
-			   txtProductId->Clear();
-			   txtName->Clear();
-			   txtDescription->Clear();
-			   txtPriceMin->Clear();
-			   txtPriceMaj->Clear();
-			   txtStock->Clear();
-			   pbPhoto->Image = nullptr;
-			   /*
-			   rbComunConfirmation->Checked = false;
-			   cmbCareer1->SelectedIndex = -1;
-			   cmbCareer2->SelectedIndex = -1;
-			   cmbCareer3->SelectedIndex = -1;
-			   cmbCareer4->SelectedIndex = -1;
-			   cmbCareer5->SelectedIndex = -1;
-
-			   */
-		   }
-
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	}
-	private: System::Void ProductForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowProducts();
-	}
-	private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
-		Product^ product = gcnew Product();
-		product->Id = Convert::ToInt32(txtProductId->Text);
-		product->Name = txtName->Text;
-		product->Description = txtDescription->Text;
-		product->PriceMin = Convert::ToDouble(txtPriceMin->Text);
-		product->PriceMaj = Convert::ToDouble(txtPriceMaj->Text);
-		product->Stock = Convert::ToInt32(txtStock->Text);
-		product->Status = 'A';
-		product->Career = gcnew List<String^>();
-		/*
-		if (rbComunConfirmation->Checked) {
-
-			product->Career = Controller::QueryAllCareers();
-		}
-		else {
-			if (cmbCareer1->SelectedIndex >= 0) product->Career->Add(cmbCareer1->SelectedItem->ToString());
-			else product->Career->Add("");
-			if (cmbCareer2->SelectedIndex >= 0) product->Career->Add(cmbCareer2->SelectedItem->ToString());
-			else product->Career->Add("");
-			if (cmbCareer3->SelectedIndex >= 0) product->Career->Add(cmbCareer3->SelectedItem->ToString());
-			else product->Career->Add("");
-			if (cmbCareer4->SelectedIndex >= 0) product->Career->Add(cmbCareer4->SelectedItem->ToString());
-			else product->Career->Add("");
-			if (cmbCareer5->SelectedIndex >= 0) product->Career->Add(cmbCareer5->SelectedItem->ToString());
-			else product->Career->Add("");
-		}
-		*/
-		if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			product->Photo = ms->ToArray();
-		}
-
-		Controller::UpdateProduct(product);
-
-		CleanControls();
-		ShowProducts();
-	}
-	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
-		int ID = Convert::ToInt32(txtProductId->Text);
-		Controller::DeleteProduct(ID);
-		CleanControls();
-		ShowProducts();
-	}
-	private: System::Void btnSetImage_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
-		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-		{
-			pbPhoto->Image = gcnew Bitmap(opnfd->FileName);
-		}
-
-	}
-	private: System::Void dgvProducts_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-
-		int selectedRowIndex = dgvProducts->SelectedCells[0]->RowIndex;
-		int productId = Convert::ToInt32(dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
-		Product^ p = Controller::QueryProductById(productId);
-		txtProductId->Text = "" + p->Id;
-		txtName->Text = p->Name;
-		txtDescription->Text = p->Description;
-		txtPriceMin->Text = "" + p->PriceMin;
-		txtPriceMaj->Text = "" + p->PriceMaj;
-		txtStock->Text = "" + p->Stock;
-		if (p->Photo != nullptr) {
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
-			pbPhoto->Image = Image::FromStream(ms);
-		}
-		else {
-			pbPhoto->Image = nullptr;
-			pbPhoto->Invalidate();
-		}
-	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		/*CareerListForm^ CareerListForm = gcnew CareerListForm();
 		CareerListForm->MdiParent = this;
@@ -608,7 +618,5 @@ namespace SalesView {
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-
-
 	};
 }

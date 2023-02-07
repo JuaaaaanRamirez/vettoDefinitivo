@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SalesMainForm.h"
+#include "SalesMainForAllForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

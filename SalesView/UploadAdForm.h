@@ -69,18 +69,18 @@ namespace SalesView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(131, 288);
+			this->button1->Location = System::Drawing::Point(129, 315);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(319, 37);
+			this->button1->Size = System::Drawing::Size(320, 30);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Cargar Nuevo Anuncio";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(160, 350);
+			this->button2->Location = System::Drawing::Point(160, 351);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(250, 51);
+			this->button2->Size = System::Drawing::Size(250, 40);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Subir al sistema de anuncios";
 			this->button2->UseVisualStyleBackColor = true;
