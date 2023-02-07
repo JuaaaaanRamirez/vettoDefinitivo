@@ -6,6 +6,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace SalesModel;
 
+
 namespace SalesController {
 	public ref class Controller
 	{
@@ -22,6 +23,9 @@ namespace SalesController {
 		//static List<Advertisement^>^ AdsList = gcnew List<Advertisement^>();
 		
 		
+
+
+
 
 	public:
 		static List<String^>^ RelationatedCareers = gcnew List<String^>();
@@ -42,6 +46,13 @@ namespace SalesController {
 		//Métodos CRUD de carreras (C:Create, R:Request, U:Update, D:Delete)
 
 		static List<String^>^ QueryAllCareers();
+
+
+		static Person^ Login(String^ username, String^ password);
+
+		static int AddNewCustomer(Customer^ customer);
+		
+
 		//JULIO
 		// CRUD Methods to User (C:Create, R:Request, U:Update, D:Delete)
 		static int AddUser(Person^ user);
@@ -52,6 +63,7 @@ namespace SalesController {
 		//static List<Person^>^ QueryUsersByNameOrLName(String^ nameLast);
 
 		//static List<Person^>^ QueryUsersByNickNameOrPhoneNumber(String^ namePhone);
+
 
 	};
 }

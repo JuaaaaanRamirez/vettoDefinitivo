@@ -8,6 +8,10 @@ namespace SalesView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SalesModel;
+	using namespace SalesController;
+	using namespace System::Collections::Generic;
+
 
 	/// <summary>
 	/// Resumen de NewCustomerForm
@@ -44,23 +48,45 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ label8;
 
 	private: System::Windows::Forms::Label^ label10;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
-	private: System::Windows::Forms::RadioButton^ radioButton1;
-	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::TextBox^ txtFirstName;
+	private: System::Windows::Forms::TextBox^ txtLastName;
+	private: System::Windows::Forms::TextBox^ txtPhoneNumber;
+	private: System::Windows::Forms::TextBox^ txtAddress;
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^ txtEmail;
+	private: System::Windows::Forms::TextBox^ txtDocNumber;
+
+
+	private: System::Windows::Forms::DateTimePicker^ dtpBirthday;
+	private: System::Windows::Forms::RadioButton^ rbtnMasc;
+	private: System::Windows::Forms::RadioButton^ rbtnFem;
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label11;
-	private: System::Windows::Forms::TextBox^ textBox7;
-	private: System::Windows::Forms::TextBox^ textBox8;
-	private: System::Windows::Forms::TextBox^ textBox9;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::TextBox^ txtUsername;
+	private: System::Windows::Forms::TextBox^ txtPassword;
+	private: System::Windows::Forms::TextBox^ txtPasswordAgain;
+	private: System::Windows::Forms::Button^ btnRegister;
+	private: System::Windows::Forms::Button^ btnBack;
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^ label12;
 
 
 
@@ -77,7 +103,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::Label^ label12;
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -86,25 +112,35 @@ namespace SalesView {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->txtFirstName = (gcnew System::Windows::Forms::TextBox());
+			this->txtLastName = (gcnew System::Windows::Forms::TextBox());
+			this->txtPhoneNumber = (gcnew System::Windows::Forms::TextBox());
+			this->txtAddress = (gcnew System::Windows::Forms::TextBox());
+			this->txtEmail = (gcnew System::Windows::Forms::TextBox());
+			this->txtDocNumber = (gcnew System::Windows::Forms::TextBox());
+			this->dtpBirthday = (gcnew System::Windows::Forms::DateTimePicker());
+			this->rbtnMasc = (gcnew System::Windows::Forms::RadioButton());
+			this->rbtnFem = (gcnew System::Windows::Forms::RadioButton());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			label12 = (gcnew System::Windows::Forms::Label());
+			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
+			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
+			this->txtPasswordAgain = (gcnew System::Windows::Forms::TextBox());
+			this->btnRegister = (gcnew System::Windows::Forms::Button());
+			this->btnBack = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
+			// 
+			// label12
+			// 
+			this->label12->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label12->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->label12->Location = System::Drawing::Point(0, 0);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(423, 49);
+			this->label12->TabIndex = 7;
+			this->label12->Text = L"Registro de nuevo ususario";
+			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label2
 			// 
@@ -179,77 +215,77 @@ namespace SalesView {
 			this->label10->TabIndex = 0;
 			this->label10->Text = L"Género";
 			// 
-			// textBox1
+			// txtFirstName
 			// 
-			this->textBox1->Location = System::Drawing::Point(132, 60);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(212, 20);
-			this->textBox1->TabIndex = 1;
+			this->txtFirstName->Location = System::Drawing::Point(132, 60);
+			this->txtFirstName->Name = L"txtFirstName";
+			this->txtFirstName->Size = System::Drawing::Size(212, 20);
+			this->txtFirstName->TabIndex = 1;
 			// 
-			// textBox2
+			// txtLastName
 			// 
-			this->textBox2->Location = System::Drawing::Point(132, 89);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(212, 20);
-			this->textBox2->TabIndex = 1;
+			this->txtLastName->Location = System::Drawing::Point(132, 89);
+			this->txtLastName->Name = L"txtLastName";
+			this->txtLastName->Size = System::Drawing::Size(212, 20);
+			this->txtLastName->TabIndex = 1;
 			// 
-			// textBox3
+			// txtPhoneNumber
 			// 
-			this->textBox3->Location = System::Drawing::Point(132, 213);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(139, 20);
-			this->textBox3->TabIndex = 1;
+			this->txtPhoneNumber->Location = System::Drawing::Point(132, 213);
+			this->txtPhoneNumber->Name = L"txtPhoneNumber";
+			this->txtPhoneNumber->Size = System::Drawing::Size(139, 20);
+			this->txtPhoneNumber->TabIndex = 1;
 			// 
-			// textBox4
+			// txtAddress
 			// 
-			this->textBox4->Location = System::Drawing::Point(132, 152);
-			this->textBox4->Multiline = true;
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(212, 47);
-			this->textBox4->TabIndex = 1;
+			this->txtAddress->Location = System::Drawing::Point(132, 152);
+			this->txtAddress->Multiline = true;
+			this->txtAddress->Name = L"txtAddress";
+			this->txtAddress->Size = System::Drawing::Size(212, 47);
+			this->txtAddress->TabIndex = 1;
 			// 
-			// textBox5
+			// txtEmail
 			// 
-			this->textBox5->Location = System::Drawing::Point(132, 122);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(212, 20);
-			this->textBox5->TabIndex = 1;
+			this->txtEmail->Location = System::Drawing::Point(132, 122);
+			this->txtEmail->Name = L"txtEmail";
+			this->txtEmail->Size = System::Drawing::Size(212, 20);
+			this->txtEmail->TabIndex = 1;
 			// 
-			// textBox6
+			// txtDocNumber
 			// 
-			this->textBox6->Location = System::Drawing::Point(132, 278);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(139, 20);
-			this->textBox6->TabIndex = 1;
+			this->txtDocNumber->Location = System::Drawing::Point(132, 278);
+			this->txtDocNumber->Name = L"txtDocNumber";
+			this->txtDocNumber->Size = System::Drawing::Size(139, 20);
+			this->txtDocNumber->TabIndex = 1;
 			// 
-			// dateTimePicker1
+			// dtpBirthday
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(132, 251);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(212, 20);
-			this->dateTimePicker1->TabIndex = 2;
+			this->dtpBirthday->Location = System::Drawing::Point(132, 251);
+			this->dtpBirthday->Name = L"dtpBirthday";
+			this->dtpBirthday->Size = System::Drawing::Size(212, 20);
+			this->dtpBirthday->TabIndex = 2;
 			// 
-			// radioButton1
+			// rbtnMasc
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(209, 312);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(73, 17);
-			this->radioButton1->TabIndex = 3;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Masculino";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->rbtnMasc->AutoSize = true;
+			this->rbtnMasc->Location = System::Drawing::Point(209, 312);
+			this->rbtnMasc->Name = L"rbtnMasc";
+			this->rbtnMasc->Size = System::Drawing::Size(73, 17);
+			this->rbtnMasc->TabIndex = 3;
+			this->rbtnMasc->TabStop = true;
+			this->rbtnMasc->Text = L"Masculino";
+			this->rbtnMasc->UseVisualStyleBackColor = true;
 			// 
-			// radioButton2
+			// rbtnFem
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(132, 310);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(71, 17);
-			this->radioButton2->TabIndex = 3;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Femenino";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->rbtnFem->AutoSize = true;
+			this->rbtnFem->Location = System::Drawing::Point(132, 310);
+			this->rbtnFem->Name = L"rbtnFem";
+			this->rbtnFem->Size = System::Drawing::Size(71, 17);
+			this->rbtnFem->TabIndex = 3;
+			this->rbtnFem->TabStop = true;
+			this->rbtnFem->Text = L"Femenino";
+			this->rbtnFem->UseVisualStyleBackColor = true;
 			// 
 			// label1
 			// 
@@ -279,79 +315,70 @@ namespace SalesView {
 			this->label11->Text = L"Repetir contraseña (*)";
 			this->label11->Click += gcnew System::EventHandler(this, &NewCustomerForm::label11_Click);
 			// 
-			// textBox7
+			// txtUsername
 			// 
-			this->textBox7->Location = System::Drawing::Point(199, 349);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(145, 20);
-			this->textBox7->TabIndex = 5;
+			this->txtUsername->Location = System::Drawing::Point(199, 349);
+			this->txtUsername->Name = L"txtUsername";
+			this->txtUsername->Size = System::Drawing::Size(145, 20);
+			this->txtUsername->TabIndex = 5;
 			// 
-			// textBox8
+			// txtPassword
 			// 
-			this->textBox8->Location = System::Drawing::Point(199, 375);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(145, 20);
-			this->textBox8->TabIndex = 5;
+			this->txtPassword->Location = System::Drawing::Point(199, 375);
+			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->Size = System::Drawing::Size(145, 20);
+			this->txtPassword->TabIndex = 5;
 			// 
-			// textBox9
+			// txtPasswordAgain
 			// 
-			this->textBox9->Location = System::Drawing::Point(199, 401);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(145, 20);
-			this->textBox9->TabIndex = 5;
+			this->txtPasswordAgain->Location = System::Drawing::Point(199, 401);
+			this->txtPasswordAgain->Name = L"txtPasswordAgain";
+			this->txtPasswordAgain->Size = System::Drawing::Size(145, 20);
+			this->txtPasswordAgain->TabIndex = 5;
 			// 
-			// button1
+			// btnRegister
 			// 
-			this->button1->Location = System::Drawing::Point(78, 449);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 6;
-			this->button1->Text = L"Registrarse";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnRegister->Location = System::Drawing::Point(78, 449);
+			this->btnRegister->Name = L"btnRegister";
+			this->btnRegister->Size = System::Drawing::Size(75, 23);
+			this->btnRegister->TabIndex = 6;
+			this->btnRegister->Text = L"Registrarse";
+			this->btnRegister->UseVisualStyleBackColor = true;
+			this->btnRegister->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnRegister_Click);
 			// 
-			// button2
+			// btnBack
 			// 
-			this->button2->Location = System::Drawing::Point(248, 449);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 6;
-			this->button2->Text = L"Volver";
-			this->button2->UseVisualStyleBackColor = true;
-			// 
-			// label12
-			// 
-			label12->Dock = System::Windows::Forms::DockStyle::Top;
-			label12->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
-			label12->Location = System::Drawing::Point(0, 0);
-			label12->Name = L"label12";
-			label12->Size = System::Drawing::Size(423, 49);
-			label12->TabIndex = 7;
-			label12->Text = L"Registro de nuevo ususario";
-			label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->btnBack->Location = System::Drawing::Point(248, 449);
+			this->btnBack->Name = L"btnBack";
+			this->btnBack->Size = System::Drawing::Size(75, 23);
+			this->btnBack->TabIndex = 6;
+			this->btnBack->Text = L"Volver";
+			this->btnBack->UseVisualStyleBackColor = true;
+			this->btnBack->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnBack_Click);
 			// 
 			// NewCustomerForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(423, 494);
-			this->Controls->Add(label12);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox9);
-			this->Controls->Add(this->textBox8);
-			this->Controls->Add(this->textBox7);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->btnBack);
+			this->Controls->Add(this->btnRegister);
+			this->Controls->Add(this->txtPasswordAgain);
+			this->Controls->Add(this->txtPassword);
+			this->Controls->Add(this->txtUsername);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
-			this->Controls->Add(this->dateTimePicker1);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox6);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->rbtnFem);
+			this->Controls->Add(this->rbtnMasc);
+			this->Controls->Add(this->dtpBirthday);
+			this->Controls->Add(this->txtAddress);
+			this->Controls->Add(this->txtEmail);
+			this->Controls->Add(this->txtDocNumber);
+			this->Controls->Add(this->txtPhoneNumber);
+			this->Controls->Add(this->txtLastName);
+			this->Controls->Add(this->txtFirstName);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label8);
@@ -374,5 +401,56 @@ namespace SalesView {
 	}
 	private: System::Void NewCustomerForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void btnRegister_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		
+		Customer^ p = gcnew Customer();
+	try {
+		
+		if (txtFirstName->Text->Trim() == "") {
+			MessageBox::Show("El Id no debe estar vacío.");
+			return;
+		}
+		if (txtLastName->Text->Trim() == "") {
+			MessageBox::Show("El Id no debe estar vacío.");
+			return;
+		}
+		if (txtEmail->Text->Trim() == "") {
+			MessageBox::Show("El Id no debe estar vacío.");
+			return;
+		}
+		if (txtFirstName->Text->Trim() == "") {
+			MessageBox::Show("El Id no debe estar vacío.");
+			return;
+		}
+
+		//p->Id = Int32::Parse(txtPersonId->Text);
+		p->Name = txtFirstName->Text;
+		p->LastName = txtLastName->Text;
+		p->DocNumber = txtDocNumber->Text;
+		p->Address = txtAddress->Text;
+		p->Email = txtEmail->Text;
+		p->PhoneNumber = txtPhoneNumber->Text;
+		p->Birthday = dtpBirthday->Value.ToString();
+		
+		/*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
+			txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
+			txtEmail->Text,
+			rbtnMasc->Checked ? 'M' : 'F',
+			dtpBirthday->Value.ToString("yyyy-MM-dd"));*/
+		}	
+		   catch (Exception^ ex) {
+			   MessageBox::Show(ex->ToString(), "Comparta el error al área de TI.");
+			   return;
+		   }
+
+		  Controller::AddNewCustomer(p);
+		   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
+		   this->Close();
+		
+	}
+private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
+};
 }

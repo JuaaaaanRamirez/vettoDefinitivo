@@ -1,5 +1,7 @@
 #pragma once
 
+#include"NewCustomerForm.h"
+
 namespace SalesView {
 
 	using namespace System;
@@ -36,13 +38,19 @@ namespace SalesView {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::TextBox^ txtUsername;
+	private: System::Windows::Forms::TextBox^ txtPassword;
+	private: System::Windows::Forms::Button^ btnOk;
+	private: System::Windows::Forms::Button^ btnCancel;
+	private: System::Windows::Forms::Button^ btnNewCustomer;
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pbLogin;
+
 	protected:
 
 	private:
@@ -58,16 +66,17 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
+			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
+			this->btnOk = (gcnew System::Windows::Forms::Button());
+			this->btnCancel = (gcnew System::Windows::Forms::Button());
+			this->btnNewCustomer = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->pbLogin = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbLogin))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -88,46 +97,50 @@ namespace SalesView {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Contraseña";
 			// 
-			// textBox1
+			// txtUsername
 			// 
-			this->textBox1->Location = System::Drawing::Point(137, 103);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(169, 20);
-			this->textBox1->TabIndex = 1;
+			this->txtUsername->Location = System::Drawing::Point(137, 103);
+			this->txtUsername->Name = L"txtUsername";
+			this->txtUsername->Size = System::Drawing::Size(169, 20);
+			this->txtUsername->TabIndex = 1;
 			// 
-			// textBox2
+			// txtPassword
 			// 
-			this->textBox2->Location = System::Drawing::Point(137, 129);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(169, 20);
-			this->textBox2->TabIndex = 1;
+			this->txtPassword->Location = System::Drawing::Point(137, 129);
+			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->Size = System::Drawing::Size(169, 20);
+			this->txtPassword->TabIndex = 1;
+			this->txtPassword->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::txtPassword_KeyDown);
 			// 
-			// button1
+			// btnOk
 			// 
-			this->button1->Location = System::Drawing::Point(85, 160);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Ingresar";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnOk->Location = System::Drawing::Point(85, 160);
+			this->btnOk->Name = L"btnOk";
+			this->btnOk->Size = System::Drawing::Size(75, 23);
+			this->btnOk->TabIndex = 2;
+			this->btnOk->Text = L"Ingresar";
+			this->btnOk->UseVisualStyleBackColor = true;
+			this->btnOk->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
 			// 
-			// button2
+			// btnCancel
 			// 
-			this->button2->Location = System::Drawing::Point(194, 160);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Cancelar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btnCancel->Location = System::Drawing::Point(194, 160);
+			this->btnCancel->Name = L"btnCancel";
+			this->btnCancel->Size = System::Drawing::Size(75, 23);
+			this->btnCancel->TabIndex = 2;
+			this->btnCancel->Text = L"Cancelar";
+			this->btnCancel->UseVisualStyleBackColor = true;
+			this->btnCancel->Click += gcnew System::EventHandler(this, &LoginForm::btnCancel_Click);
 			// 
-			// button3
+			// btnNewCustomer
 			// 
-			this->button3->Location = System::Drawing::Point(194, 214);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(95, 24);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Nuevo Usuario";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btnNewCustomer->Location = System::Drawing::Point(194, 214);
+			this->btnNewCustomer->Name = L"btnNewCustomer";
+			this->btnNewCustomer->Size = System::Drawing::Size(95, 24);
+			this->btnNewCustomer->TabIndex = 2;
+			this->btnNewCustomer->Text = L"Nuevo Usuario";
+			this->btnNewCustomer->UseVisualStyleBackColor = true;
+			this->btnNewCustomer->Click += gcnew System::EventHandler(this, &LoginForm::btnNewCustomer_Click);
 			// 
 			// label3
 			// 
@@ -138,32 +151,34 @@ namespace SalesView {
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"¿No tiene usuario resgistrado\?";
 			// 
-			// pictureBox1
+			// pbLogin
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(56, 29);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(250, 50);
-			this->pictureBox1->TabIndex = 4;
-			this->pictureBox1->TabStop = false;
+			this->pbLogin->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbLogin.Image")));
+			this->pbLogin->Location = System::Drawing::Point(56, 29);
+			this->pbLogin->Name = L"pbLogin";
+			this->pbLogin->Size = System::Drawing::Size(250, 50);
+			this->pbLogin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbLogin->TabIndex = 4;
+			this->pbLogin->TabStop = false;
 			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(345, 261);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pbLogin);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->btnNewCustomer);
+			this->Controls->Add(this->btnCancel);
+			this->Controls->Add(this->btnOk);
+			this->Controls->Add(this->txtPassword);
+			this->Controls->Add(this->txtUsername);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbLogin))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -171,5 +186,17 @@ namespace SalesView {
 #pragma endregion
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyData == Keys::Enter)
+		btnOk->PerformClick();
+}
+private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
+private: System::Void btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
+	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm();
+	newCustomerForm->ShowDialog();
+}
+};
 }
