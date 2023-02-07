@@ -13,6 +13,8 @@ namespace SalesModel {
     public:
         property String^ Goals;
         property String^ Salary;
+        property String^ Store;
+        property Char Status;
        
     };
 }

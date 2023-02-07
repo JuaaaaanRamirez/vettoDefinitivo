@@ -7,6 +7,7 @@
 
 #include "Person.h"
 
+
 using namespace System;
 
 namespace SalesModel {
@@ -15,6 +16,6 @@ namespace SalesModel {
     public:
         property String^ WebSiteLink;
         property String^ CompanyName;
-        property array<Byte>^ Add;
+        property array<Byte>^ Ad;
     };
 }
