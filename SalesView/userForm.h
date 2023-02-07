@@ -322,8 +322,8 @@ namespace SalesView {
 			// 
 			// pbCustomer
 			// 
-			this->pbCustomer->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.BackgroundImage")));
 			this->pbCustomer->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
 			this->pbCustomer->Location = System::Drawing::Point(550, 10);
 			this->pbCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->pbCustomer->Name = L"pbCustomer";
