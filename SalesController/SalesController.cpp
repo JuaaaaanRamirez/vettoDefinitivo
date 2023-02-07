@@ -80,3 +80,45 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
     //careerList = (List<String^>^)Persistance::LoadXMLData("career.xml");
     return careerList;
 }
+
+// For Person (Users)
+int SalesController::Controller::AddUser(Person^ user)
+{
+    //ver que no se repita el id d eproduct ingresante
+    personList->Add(user);
+    Persistance::PersistBinary("users.bin", personList);
+    return Int32(user->Id);
+}
+Person^ SalesController::Controller::QueryUserById(int userId)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == userId)
+            return personList[i];
+    return nullptr;
+}
+List<Person^>^ SalesController::Controller::QueryAllUsers()
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    return personList;
+}
+int SalesController::Controller::UpdateUser(Person^ user)
+{
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == user->Id) {
+            personList[i] = user;
+            Persistance::PersistBinary("users.bin", personList);
+            return user->Id;
+        }
+    return 0;
+}
+int SalesController::Controller::DeleteUser(int userId)
+{
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == userId) {
+            personList->RemoveAt(i);
+            Persistance::PersistBinary("users.bin", personList);
+            return userId;
+        }
+    return 0;
+}
