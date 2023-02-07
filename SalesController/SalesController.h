@@ -12,10 +12,11 @@ namespace SalesController {
 		// TODO: Agregue aquí los métodos de esta clase.
 	private:
 		static List<Product^>^ productList = gcnew List<Product^>(); // Variable de clase (global) para la lista de productos
+		static List<Person^>^ personList = gcnew List<Person^>();		// List of people
+		
 		static List<Customer^>^ CustomerList = gcnew List<Customer^>();
 		static List<Announcer^>^ AnnounceRList = gcnew List<Announcer^>();
 		static List<StoreManager^>^ StoreManagerList = gcnew List<StoreManager^>();
-		static List<Person^>^ personList = gcnew List<Person^>();
 
 		static array<String^>^ carrerArr = { " mecatronica ", " civil ", " industrial ", " informatica ", " arquitectura ", " electronica ", " fisica " }; // Arreglo de carreras como cadenas de texto.
 		static List<String^>^ careerList = gcnew List<String^>(carrerArr);  // lista de todas las carreras con las que trabaja el sistema
@@ -34,9 +35,9 @@ namespace SalesController {
 		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);
 
 		//Métodos CRUD de carreras (C:Create, R:Request, U:Update, D:Delete)
-
 		static List<String^>^ QueryAllCareers();
-		//JULIO
+		
+
 		// CRUD Methods to User (C:Create, R:Request, U:Update, D:Delete)
 		static int AddUser(Person^ user);
 		static Person^ QueryUserById(int userId);
