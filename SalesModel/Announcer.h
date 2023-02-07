@@ -13,7 +13,8 @@ namespace SalesModel {
     [Serializable]
     public ref class Announcer : public Person {
     public:
-        property String^ Department;
+        property String^ WebSiteLink;
+        property String^ CompanyName;
         property array<Byte>^ Add;
     };
 }
