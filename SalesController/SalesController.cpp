@@ -75,6 +75,38 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
     return careerList;
 }
 
+
+Person^ SalesController::Controller::Login(String^ username, String^ password)
+{
+    Person^ person;
+    if (username == "jbaldeon" && password == "password") {
+        person = gcnew Person();
+        person->Id = 1;
+        person->Name = "Johan";
+        person->Email = "johan.baldeon@pucp.edu.pe";
+        //person->Address = "Elm Street 666";
+        person->DocNumber = "66666666";
+        person->PhoneNumber = "999999999";
+        //person->Salary = 4500;
+        person->Username = "jbaldeon";
+    }
+    return person;
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucci�n "return" aqu�
+}
+
+int SalesController::Controller::AddNewCustomer(Customer^ customer)
+{
+
+    customer->Id = 1;
+    //ver que no se repita el id d eproduct ingresante
+    CustomerList->Add(customer);
+    Persistance::PersistBinary("customer.bin", CustomerList);
+    return Int32(customer->Id);
+    return 0;
+}
+
 // For Person (Users)
 int SalesController::Controller::AddUser(Person^ user)
 {
@@ -116,3 +148,4 @@ int SalesController::Controller::DeleteUser(int userId)
         }
     return 0;
 }
+

@@ -408,8 +408,7 @@ namespace SalesView {
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		if (txtProductId->Text->Trim() == "") {
-			MessageBox::Show("El Id del producto no debe estar vacío.");
-			return;
+			
 		}
 		if (txtName->Text->Trim() == "") {
 			MessageBox::Show("El nombre del producto no debe estar vacío.");
