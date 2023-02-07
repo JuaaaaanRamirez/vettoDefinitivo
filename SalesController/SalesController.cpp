@@ -7,6 +7,9 @@ using namespace SalesPersistance;
 int SalesController::Controller::AddProduct(Product^ product)
 {
     //ver que no se repita el id d eproduct ingresante
+    for (int i = 0; i < productList->Count; i++) {
+        if (product->Id == productList[i]->Id) return -1;
+    }
     productList->Add(product);
     Persistance::PersistBinary("products.bin", productList);
     return Int32(product->Id);
@@ -36,7 +39,7 @@ int SalesController::Controller::UpdateProduct(Product^ product)
             return product->Id;
         }
 
-    return 0;
+    return -1;
 }
 
 int SalesController::Controller::DeleteProduct(int productId)
@@ -78,6 +81,7 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
     return careerList;
 }
 
+
 Person^ SalesController::Controller::Login(String^ username, String^ password)
 {
     Person^ person;
@@ -95,7 +99,7 @@ Person^ SalesController::Controller::Login(String^ username, String^ password)
     return person;
 
     //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciï¿½n "return" aquï¿½
 }
 
 int SalesController::Controller::AddNewCustomer(Customer^ customer)
@@ -108,3 +112,46 @@ int SalesController::Controller::AddNewCustomer(Customer^ customer)
     return Int32(customer->Id);
     return 0;
 }
+
+// For Person (Users)
+int SalesController::Controller::AddUser(Person^ user)
+{
+    //ver que no se repita el id d eproduct ingresante
+    personList->Add(user);
+    Persistance::PersistBinary("users.bin", personList);
+    return Int32(user->Id);
+}
+Person^ SalesController::Controller::QueryUserById(int userId)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == userId)
+            return personList[i];
+    return nullptr;
+}
+List<Person^>^ SalesController::Controller::QueryAllUsers()
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    return personList;
+}
+int SalesController::Controller::UpdateUser(Person^ user)
+{
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == user->Id) {
+            personList[i] = user;
+            Persistance::PersistBinary("users.bin", personList);
+            return user->Id;
+        }
+    return 0;
+}
+int SalesController::Controller::DeleteUser(int userId)
+{
+    for (int i = 0; i < personList->Count; i++)
+        if (personList[i]->Id == userId) {
+            personList->RemoveAt(i);
+            Persistance::PersistBinary("users.bin", personList);
+            return userId;
+        }
+    return 0;
+}
+

@@ -12,10 +12,9 @@ namespace SalesModel {
     public ref class StoreManager : public Employee {
     public:
         property String^ Goals;
-
-        /*
-        void AddProduct();
-        void Operation1();    
-        */
+        property String^ Salary;
+        property String^ Store;
+        property Char Status;
+       
     };
 }

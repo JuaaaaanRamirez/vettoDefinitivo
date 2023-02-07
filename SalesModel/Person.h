@@ -19,5 +19,6 @@ namespace SalesModel {
         property String^ Password;
         property char Gender;
         property String^ Birthday;
+        property array<Byte>^ Photo;
     };
 }
