@@ -137,15 +137,15 @@ namespace SalesView {
 			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->btnSetImage = (gcnew System::Windows::Forms::Button());
 			this->dgvProducts = (gcnew System::Windows::Forms::DataGridView());
-			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
@@ -231,14 +231,14 @@ namespace SalesView {
 			this->txtStock->Location = System::Drawing::Point(182, 246);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(100, 22);
-			this->txtStock->TabIndex = 10;
+			this->txtStock->TabIndex = 11;
 			// 
 			// btnAdd
 			// 
 			this->btnAdd->Location = System::Drawing::Point(53, 345);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(117, 39);
-			this->btnAdd->TabIndex = 12;
+			this->btnAdd->TabIndex = 14;
 			this->btnAdd->Text = L"Agregar";
 			this->btnAdd->UseVisualStyleBackColor = true;
 			this->btnAdd->Click += gcnew System::EventHandler(this, &ProductForm::btnAdd_Click);
@@ -248,7 +248,7 @@ namespace SalesView {
 			this->btnUpdate->Location = System::Drawing::Point(233, 345);
 			this->btnUpdate->Name = L"btnUpdate";
 			this->btnUpdate->Size = System::Drawing::Size(108, 40);
-			this->btnUpdate->TabIndex = 13;
+			this->btnUpdate->TabIndex = 15;
 			this->btnUpdate->Text = L"Modificar";
 			this->btnUpdate->UseVisualStyleBackColor = true;
 			this->btnUpdate->Click += gcnew System::EventHandler(this, &ProductForm::btnUpdate_Click);
@@ -258,7 +258,7 @@ namespace SalesView {
 			this->btnDelete->Location = System::Drawing::Point(406, 345);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(107, 40);
-			this->btnDelete->TabIndex = 14;
+			this->btnDelete->TabIndex = 16;
 			this->btnDelete->Text = L"Eliminar";
 			this->btnDelete->UseVisualStyleBackColor = true;
 			this->btnDelete->Click += gcnew System::EventHandler(this, &ProductForm::btnDelete_Click);
@@ -277,7 +277,7 @@ namespace SalesView {
 			this->btnSetImage->Location = System::Drawing::Point(612, 328);
 			this->btnSetImage->Name = L"btnSetImage";
 			this->btnSetImage->Size = System::Drawing::Size(242, 33);
-			this->btnSetImage->TabIndex = 16;
+			this->btnSetImage->TabIndex = 13;
 			this->btnSetImage->Text = L"Agregar imagen";
 			this->btnSetImage->UseVisualStyleBackColor = true;
 			this->btnSetImage->Click += gcnew System::EventHandler(this, &ProductForm::btnSetImage_Click);
@@ -297,32 +297,6 @@ namespace SalesView {
 			this->dgvProducts->TabIndex = 17;
 			this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dgvProducts_CellClick);
 			this->dgvProducts->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dataGridView1_CellContentClick);
-			// 
-			// txtPriceMaj
-			// 
-			this->txtPriceMaj->Location = System::Drawing::Point(182, 212);
-			this->txtPriceMaj->Name = L"txtPriceMaj";
-			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
-			this->txtPriceMaj->TabIndex = 19;
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(33, 219);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(133, 16);
-			this->label7->TabIndex = 18;
-			this->label7->Text = L"Precio mayorista (s/.)";
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(344, 210);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(123, 58);
-			this->button1->TabIndex = 20;
-			this->button1->Text = L"Elegir carreras vinculadas";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
 			// 
 			// Column1
 			// 
@@ -365,6 +339,32 @@ namespace SalesView {
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 50;
+			// 
+			// txtPriceMaj
+			// 
+			this->txtPriceMaj->Location = System::Drawing::Point(182, 212);
+			this->txtPriceMaj->Name = L"txtPriceMaj";
+			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
+			this->txtPriceMaj->TabIndex = 10;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(33, 219);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(133, 16);
+			this->label7->TabIndex = 18;
+			this->label7->Text = L"Precio mayorista (s/.)";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(344, 210);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(123, 58);
+			this->button1->TabIndex = 12;
+			this->button1->Text = L"Elegir carreras vinculadas";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
 			// 
 			// ProductForm
 			// 
@@ -450,6 +450,10 @@ namespace SalesView {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 			product->Photo = ms->ToArray();
+		}
+		if (Controller::RelationatedCareers->Count == 0) {
+			MessageBox::Show("Debe elegir al menos un acarrera relacionada");
+			return;
 		}
 
 		int confirmation = Controller::AddProduct(product);
@@ -555,6 +559,10 @@ namespace SalesView {
 			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 			product->Photo = ms->ToArray();
 		}
+		if (Controller::RelationatedCareers->Count == 0) {
+			MessageBox::Show("Debe elegir al menos un acarrera relacionada");
+			return;
+		}
 		int verificator = Controller::UpdateProduct(product);
 		if (verificator == -1) {
 			MessageBox::Show("No existe producto a modificar con el Id indicado");
@@ -582,7 +590,11 @@ namespace SalesView {
 	private: System::Void dgvProducts_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 		int selectedRowIndex = dgvProducts->SelectedCells[0]->RowIndex;
-		if (dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value == nullptr) return;
+		if (dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value == nullptr) {
+			CleanControls();
+			Controller::RelationatedCareers->Clear();
+			return;
+		}
 		int productId = Convert::ToInt32(dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 		Product^ p = Controller::QueryProductById(productId);
 		txtProductId->Text = "" + p->Id;
