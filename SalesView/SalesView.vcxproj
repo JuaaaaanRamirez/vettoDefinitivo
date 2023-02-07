@@ -134,6 +134,9 @@
     <ClInclude Include="NewCustomerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SalesMainForAllForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="userForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -170,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CareerListForm.cpp" />
+    <ClCompile Include="SalesMainForAllForm.cpp" />
     <ClCompile Include="userForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="NewCustomerForm.cpp" />

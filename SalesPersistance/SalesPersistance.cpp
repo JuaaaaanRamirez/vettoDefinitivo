@@ -201,6 +201,12 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
                 res = (List<DeliveryMan^>^)formateador->Deserialize(input);
             }
         }
+        if (fileName->Equals("users.bin")) {
+            res = gcnew List<Person^>();
+            if (File::Exists(fileName)) {
+                res = (List<Person^>^)formateador->Deserialize(input);
+            }
+        }
 
     }
     catch (Exception^ ex) {
