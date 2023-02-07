@@ -6,6 +6,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace SalesModel;
 
+
 namespace SalesController {
 	public ref class Controller
 	{
@@ -20,6 +21,9 @@ namespace SalesController {
 		static List<String^>^ careerList = gcnew List<String^>(carrerArr);  // lista de todas las carreras con las que trabaja el sistema
 		
 
+
+
+
 	public:
 		//Métodos CRUD de Product (C:Create, R:Request, U:Update, D:Delete)
 		static int AddProduct(Product^ product);
@@ -33,5 +37,11 @@ namespace SalesController {
 		//Métodos CRUD de carreras (C:Create, R:Request, U:Update, D:Delete)
 		
 		static List<String^>^ QueryAllCareers();
+
+		static Person^ Login(String^ username, String^ password);
+
+		static int AddNewCustomer(Customer^ customer);
+		
+
 	};
 }

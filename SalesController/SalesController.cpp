@@ -77,3 +77,34 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
     //careerList = (List<String^>^)Persistance::LoadXMLData("career.xml");
     return careerList;
 }
+
+Person^ SalesController::Controller::Login(String^ username, String^ password)
+{
+    Person^ person;
+    if (username == "jbaldeon" && password == "password") {
+        person = gcnew Person();
+        person->Id = 1;
+        person->Name = "Johan";
+        person->Email = "johan.baldeon@pucp.edu.pe";
+        //person->Address = "Elm Street 666";
+        person->DocNumber = "66666666";
+        person->PhoneNumber = "999999999";
+        //person->Salary = 4500;
+        person->Username = "jbaldeon";
+    }
+    return person;
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+int SalesController::Controller::AddNewCustomer(Customer^ customer)
+{
+
+    customer->Id = 1;
+    //ver que no se repita el id d eproduct ingresante
+    CustomerList->Add(customer);
+    Persistance::PersistBinary("customer.bin", CustomerList);
+    return Int32(customer->Id);
+    return 0;
+}
