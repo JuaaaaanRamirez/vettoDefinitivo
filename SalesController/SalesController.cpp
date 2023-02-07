@@ -4,6 +4,7 @@
 
 using namespace SalesPersistance;
 
+// For Product
 int SalesController::Controller::AddProduct(Product^ product)
 {
     //ver que no se repita el id d eproduct ingresante
@@ -14,7 +15,6 @@ int SalesController::Controller::AddProduct(Product^ product)
     Persistance::PersistBinary("products.bin", productList);
     return Int32(product->Id);
 }
-
 Product^ SalesController::Controller::QueryProductById(int productId)
 {
     productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
@@ -23,13 +23,11 @@ Product^ SalesController::Controller::QueryProductById(int productId)
             return productList[i];
     return nullptr;
 }
-
 List<Product^>^ SalesController::Controller::QueryAllProducts()
 {
     productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
     return productList;
 }
-
 int SalesController::Controller::UpdateProduct(Product^ product)
 {
     for (int i = 0; i < productList->Count; i++)
@@ -41,7 +39,6 @@ int SalesController::Controller::UpdateProduct(Product^ product)
 
     return -1;
 }
-
 int SalesController::Controller::DeleteProduct(int productId)
 {
     for (int i = 0; i < productList->Count; i++)
@@ -52,7 +49,6 @@ int SalesController::Controller::DeleteProduct(int productId)
         }
     return 0;
 }
-
 List<Product^>^ SalesController::Controller::QueryProductsByNameOrDescription(String^ nameDesc)
 {
     productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
@@ -63,7 +59,6 @@ List<Product^>^ SalesController::Controller::QueryProductsByNameOrDescription(St
     }
     return newProductList;
 }
-
 List<Product^>^ SalesController::Controller::QueryProductsByNameOrCareer(String^ nameCaree)
 {
     productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
@@ -74,7 +69,6 @@ List<Product^>^ SalesController::Controller::QueryProductsByNameOrCareer(String^
     }
     return newProductList;
 }
-
 List<String^>^ SalesController::Controller::QueryAllCareers()
 {
     //careerList = (List<String^>^)Persistance::LoadXMLData("career.xml");
