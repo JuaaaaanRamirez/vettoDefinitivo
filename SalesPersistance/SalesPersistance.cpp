@@ -49,10 +49,10 @@ void SalesPersistance::Persistance::PersistXML(String^ fileName, Object^ persist
             XmlSerializer^ serializadorXML = gcnew XmlSerializer(List<String^>::typeid);
             serializadorXML->Serialize(output, persistObject);
         }
-        if (persistObject->GetType() == List<DeliveryMan^>::typeid) {
+        /**if (persistObject->GetType() == List<DeliveryMan^>::typeid) {
             XmlSerializer^ serializadorXML = gcnew XmlSerializer(List<DeliveryMan^>::typeid);
             serializadorXML->Serialize(output, persistObject);
-        }
+        }*/
     }
     catch (Exception^ ex) {
         throw ex;
@@ -155,13 +155,13 @@ Object^ SalesPersistance::Persistance::LoadXMLData(String^ fileName)
                 res = (List<String^>^)serializadorXML->Deserialize(sr);
             }
         }
-        if (fileName->Equals("salesmen.xml")) {
+        /*if (fileName->Equals("salesmen.xml")) {
             res = gcnew List<DeliveryMan^>();
             if (File::Exists(fileName)) {
                 serializadorXML = gcnew XmlSerializer(List<DeliveryMan^>::typeid);
                 res = (List<DeliveryMan^>^)serializadorXML->Deserialize(sr);
             }
-        }
+        }*/
         if (fileName->Equals("career.xml")) {
             res = gcnew List<String^>();
             if (File::Exists(fileName)) {
@@ -195,12 +195,12 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
                 res = (List<Product^>^)formateador->Deserialize(input);
             }
         }
-        if (fileName->Equals("salesmen.bin")) {
+        /*if (fileName->Equals("salesmen.bin")) {
             res = gcnew List<DeliveryMan^>();
             if (File::Exists(fileName)) {
                 res = (List<DeliveryMan^>^)formateador->Deserialize(input);
             }
-        }
+        }*/
         if (fileName->Equals("users.bin")) {
             res = gcnew List<Person^>();
             if (File::Exists(fileName)) {
