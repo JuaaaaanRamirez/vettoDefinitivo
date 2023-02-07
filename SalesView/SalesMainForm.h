@@ -3,6 +3,7 @@
 #include "ProductForm.h"
 #include "ProductListForm.h"
 #include "ProductForm.h"
+#include "UploadAdForm.h"
 
 namespace SalesView {
 
@@ -97,9 +98,11 @@ namespace SalesView {
 			this->clientesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->vendedoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->anunciantesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->subirAnuncioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->operacionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->realizarUnaVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->estadistidcasDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -113,8 +116,6 @@ namespace SalesView {
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->SearchBtn = (gcnew System::Windows::Forms::Button());
 			this->Presentation = (gcnew System::Windows::Forms::Label());
-			this->estadistidcasDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->subirAnuncioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -163,27 +164,34 @@ namespace SalesView {
 			// productoToolStripMenuItem
 			// 
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
 			// clientesToolStripMenuItem
 			// 
 			this->clientesToolStripMenuItem->Name = L"clientesToolStripMenuItem";
-			this->clientesToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->clientesToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->clientesToolStripMenuItem->Text = L"Clientes";
 			// 
 			// vendedoresToolStripMenuItem
 			// 
 			this->vendedoresToolStripMenuItem->Name = L"vendedoresToolStripMenuItem";
-			this->vendedoresToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->vendedoresToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->vendedoresToolStripMenuItem->Text = L"Vendedores";
 			// 
 			// anunciantesToolStripMenuItem
 			// 
 			this->anunciantesToolStripMenuItem->Name = L"anunciantesToolStripMenuItem";
-			this->anunciantesToolStripMenuItem->Size = System::Drawing::Size(172, 26);
+			this->anunciantesToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->anunciantesToolStripMenuItem->Text = L"Anunciantes";
+			// 
+			// subirAnuncioToolStripMenuItem
+			// 
+			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
+			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
+			this->subirAnuncioToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::subirAnuncioToolStripMenuItem_Click);
 			// 
 			// operacionesToolStripMenuItem
 			// 
@@ -204,6 +212,12 @@ namespace SalesView {
 			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
 			this->reportesToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->reportesToolStripMenuItem->Text = L"Reportes";
+			// 
+			// estadistidcasDeVentasToolStripMenuItem
+			// 
+			this->estadistidcasDeVentasToolStripMenuItem->Name = L"estadistidcasDeVentasToolStripMenuItem";
+			this->estadistidcasDeVentasToolStripMenuItem->Size = System::Drawing::Size(244, 26);
+			this->estadistidcasDeVentasToolStripMenuItem->Text = L"Estadistidcas de ventas";
 			// 
 			// ayudaToolStripMenuItem
 			// 
@@ -334,18 +348,6 @@ namespace SalesView {
 			this->Presentation->Text = L"¡Mejores de la Temporada!";
 			this->Presentation->Click += gcnew System::EventHandler(this, &SalesMainForm::label1_Click);
 			// 
-			// estadistidcasDeVentasToolStripMenuItem
-			// 
-			this->estadistidcasDeVentasToolStripMenuItem->Name = L"estadistidcasDeVentasToolStripMenuItem";
-			this->estadistidcasDeVentasToolStripMenuItem->Size = System::Drawing::Size(244, 26);
-			this->estadistidcasDeVentasToolStripMenuItem->Text = L"Estadistidcas de ventas";
-			// 
-			// subirAnuncioToolStripMenuItem
-			// 
-			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
-			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
-			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
-			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -390,6 +392,7 @@ namespace SalesView {
 
 	}
 	private: System::Void productoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		ProductForm^ productForm = gcnew ProductForm();
 		//productForm->MdiParent = this;
 		productForm->Show();
@@ -413,5 +416,11 @@ namespace SalesView {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void subirAnuncioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {	
+
+		UploadAdForm^ A = gcnew UploadAdForm();
+		//UploadAdForm->MdiParent = this;
+		A->Show();
+	}
+};
 }

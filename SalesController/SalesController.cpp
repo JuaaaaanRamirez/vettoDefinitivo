@@ -7,6 +7,9 @@ using namespace SalesPersistance;
 int SalesController::Controller::AddProduct(Product^ product)
 {
     //ver que no se repita el id d eproduct ingresante
+    for (int i = 0; i < productList->Count; i++) {
+        if (product->Id == productList[i]->Id) return -1;
+    }
     productList->Add(product);
     Persistance::PersistBinary("products.bin", productList);
     return Int32(product->Id);
@@ -36,7 +39,7 @@ int SalesController::Controller::UpdateProduct(Product^ product)
             return product->Id;
         }
 
-    return 0;
+    return -1;
 }
 
 int SalesController::Controller::DeleteProduct(int productId)

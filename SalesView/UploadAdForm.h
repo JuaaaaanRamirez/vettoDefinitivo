@@ -34,10 +34,14 @@ namespace SalesView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pbPhoto;
 	protected:
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+
+	private: System::Windows::Forms::Button^ btUpImage;
+	private: System::Windows::Forms::Button^ btRefreshImagines;
+	protected:
+
+
 
 	private:
 		/// <summary>
@@ -52,53 +56,73 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
+			this->btUpImage = (gcnew System::Windows::Forms::Button());
+			this->btRefreshImagines = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// pictureBox1
+			// pbPhoto
 			// 
-			this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->pictureBox1->Location = System::Drawing::Point(96, 12);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(378, 249);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
+			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pbPhoto->Location = System::Drawing::Point(96, 12);
+			this->pbPhoto->Name = L"pbPhoto";
+			this->pbPhoto->Size = System::Drawing::Size(378, 249);
+			this->pbPhoto->TabIndex = 0;
+			this->pbPhoto->TabStop = false;
 			// 
-			// button1
+			// btUpImage
 			// 
-			this->button1->Location = System::Drawing::Point(131, 288);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(319, 37);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Cargar Nuevo Anuncio";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btUpImage->Location = System::Drawing::Point(131, 288);
+			this->btUpImage->Name = L"btUpImage";
+			this->btUpImage->Size = System::Drawing::Size(319, 37);
+			this->btUpImage->TabIndex = 1;
+			this->btUpImage->Text = L"Cargar Nuevo Anuncio";
+			this->btUpImage->UseVisualStyleBackColor = true;
+			this->btUpImage->Click += gcnew System::EventHandler(this, &UploadAdForm::button1_Click);
 			// 
-			// button2
+			// btRefreshImagines
 			// 
-			this->button2->Location = System::Drawing::Point(160, 350);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(250, 51);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Subir al sistema de anuncios";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btRefreshImagines->Location = System::Drawing::Point(160, 350);
+			this->btRefreshImagines->Name = L"btRefreshImagines";
+			this->btRefreshImagines->Size = System::Drawing::Size(250, 51);
+			this->btRefreshImagines->TabIndex = 2;
+			this->btRefreshImagines->Text = L"Subir al sistema de anuncios";
+			this->btRefreshImagines->UseVisualStyleBackColor = true;
+			this->btRefreshImagines->Click += gcnew System::EventHandler(this, &UploadAdForm::btRefreshImagines_Click);
 			// 
 			// UploadAdForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(580, 448);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->btRefreshImagines);
+			this->Controls->Add(this->btUpImage);
+			this->Controls->Add(this->pbPhoto);
 			this->Name = L"UploadAdForm";
 			this->Text = L"Mi anuncio";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
+		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			pbPhoto->Image = gcnew Bitmap(opnfd->FileName);
+		}
+	}
+	private: System::Void btRefreshImagines_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
+		Announcer^ announcer = gcnew Announcer();
+		if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+			announcer->Add = ms->ToArray();
+		}
+		*/
+	}
+};
 }
