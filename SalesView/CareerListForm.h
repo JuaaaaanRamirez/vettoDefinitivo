@@ -221,6 +221,39 @@ namespace SalesView {
 private: System::Void checkedListBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void CareerListForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (Controller::RelationatedCareers->Count > 0) {
+		for (int j = 0; j < Controller::RelationatedCareers->Count; j++) {
+			for (int i = 0; i < chlbCiencias->Items->Count; i++) {
+				if (chlbCiencias->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+					chlbCiencias->SetItemChecked(i, true);
+					break;
+				}
+			}
+			for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
+				if (chlbArteDisenio->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+					chlbArteDisenio->SetItemChecked(i, true);
+					break;
+				}
+			}
+			for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
+				if (chlbArtesEscenicas->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+					chlbArtesEscenicas->SetItemChecked(i, true);
+					break;
+				}
+			}
+			for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
+				if (chlbArtesComunication->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+					chlbArtesComunication->SetItemChecked(i, true);
+					break;
+				}
+			}
+
+
+		}
+
+
+	}
+
 }
 private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
