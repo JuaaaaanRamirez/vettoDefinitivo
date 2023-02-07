@@ -4,7 +4,7 @@
 
 
 #pragma once
-#include "DeliveryMan.h"
+#include "StoreManager.h"
 #include "Customer.h"
 using namespace System;
 
@@ -16,11 +16,11 @@ namespace SalesModel {
         property String^ TxnDate;
         property char Status;
         property double Total;
-        property String^ Addrees;
+        property String^ Address;
         property char PaidMode;
         property String^ SaleDate;
         //La asociación se convierte en un atributo
-        property DeliveryMan^ DeliveryMan;
+        property StoreManager^ StoreManager;
         property Customer^ Customer;
 
     };

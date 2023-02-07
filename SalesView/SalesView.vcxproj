@@ -137,7 +137,7 @@
     <ClInclude Include="SalesMainForAllForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="userForm.h">
+    <ClInclude Include="UserForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
@@ -174,7 +174,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CareerListForm.cpp" />
     <ClCompile Include="SalesMainForAllForm.cpp" />
-    <ClCompile Include="userForm.cpp" />
+    <ClCompile Include="UserForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="NewCustomerForm.cpp" />
     <ClCompile Include="ProductListForm.cpp" />
@@ -218,8 +218,8 @@
     <EmbeddedResource Include="NewCustomerForm.resx">
       <DependentUpon>NewCustomerForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userForm.resx">
-      <DependentUpon>userForm.h</DependentUpon>
+    <EmbeddedResource Include="UserForm.resx">
+      <DependentUpon>UserForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>

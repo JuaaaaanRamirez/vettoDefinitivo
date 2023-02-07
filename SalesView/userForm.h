@@ -290,9 +290,11 @@ namespace SalesView {
 			// 
 			this->dtpBirthday->Location = System::Drawing::Point(152, 268);
 			this->dtpBirthday->Margin = System::Windows::Forms::Padding(4);
+			this->dtpBirthday->MaxDate = System::DateTime(2023, 2, 7, 0, 0, 0, 0);
 			this->dtpBirthday->Name = L"dtpBirthday";
 			this->dtpBirthday->Size = System::Drawing::Size(265, 22);
 			this->dtpBirthday->TabIndex = 3;
+			this->dtpBirthday->Value = System::DateTime(2023, 2, 7, 0, 0, 0, 0);
 			// 
 			// rbtnMasc
 			// 
@@ -320,8 +322,8 @@ namespace SalesView {
 			// 
 			// pbCustomer
 			// 
-			this->pbCustomer->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pbCustomer->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.Image")));
+			this->pbCustomer->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
 			this->pbCustomer->Location = System::Drawing::Point(550, 10);
 			this->pbCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->pbCustomer->Name = L"pbCustomer";
@@ -630,14 +632,14 @@ namespace SalesView {
 				   MessageBox::Show("El número de teléfono no debe estar vacío.");
 				   return 1;
 			   }
-			   /*if (!(rbtnMasc->Checked || rbtnFem->Checked)) {
+			   if (!(rbtnMasc->Checked || rbtnFem->Checked)) {
 				   MessageBox::Show("Debe elegir un género.");
 				   return 1;
 			   }
 			   if (!(rbtnStudent->Checked || rbtnAnnoucer->Checked || rbtnStoreManager->Checked)) {
 				   MessageBox::Show("Debe elegir un perfil.");
 				   return 1;
-			   }*/
+			   }
 			   return 0;
 		   }
 		   void CleanControls() {
@@ -649,20 +651,17 @@ namespace SalesView {
 			   txtUser->Clear();
 			   txtPassword->Clear();
 			   txtPhoneNumber->Clear();
+
+			   // rbtn
 			   rbtnMasc->Checked = false;
 			   rbtnFem->Checked = false;
 			   rbtnStudent->Checked = false;
 			   rbtnAnnoucer->Checked = false;
 			   rbtnStoreManager->Checked = false;
 			   pbCustomer->Image = nullptr;
-			   /*
-			   rbComunConfirmation->Checked = false;
-			   cmbCareer1->SelectedIndex = -1;
-			   cmbCareer2->SelectedIndex = -1;
-			   cmbCareer3->SelectedIndex = -1;
-			   cmbCareer4->SelectedIndex = -1;
-			   cmbCareer5->SelectedIndex = -1;
-			   */
+
+			   // Date
+			   dtpBirthday->Value = DateTime::Today;
 		   }
 		   void PutOnData(Person^ user) {
 			   user->Id = Convert::ToInt32(txtCustomerId->Text);
@@ -674,6 +673,20 @@ namespace SalesView {
 			   user->Password = txtPassword->Text;
 			   user->PhoneNumber = txtPhoneNumber->Text->Trim();
 
+			   // Gen
+			   if (rbtnMasc->Checked) user->Gender = 'M';
+			   else user->Gender = 'F';
+
+			   // Profile
+			   if (rbtnStudent->Checked) user->Profile = 'S';
+			   else if (rbtnStoreManager->Checked) user->Profile = 'M';
+			   else user->Profile = 'A';
+
+			   // BirthDay
+			   String^ birthday = Convert::ToString(dtpBirthday->Value);
+			   user->Birthday = birthday;
+
+			   // Image
 			   if (pbCustomer != nullptr && pbCustomer->Image != nullptr) {
 				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 				   pbCustomer->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -690,16 +703,16 @@ namespace SalesView {
 		CleanControls();
 		ShowUsers();
 	}
-	private: System::Void btnUpdatePhoto_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
-		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
-		else pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\Gokum.jpg");
-	}
 	private: System::Void AddCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification
 		int returned = Verification();
 		if (returned == 1) return;
+
+
+		// Is there anyone already?
+		Person^ theresone = Controller::QueryUserById(Convert::ToInt32(txtCustomerId->Text));
+		if (theresone != nullptr) { MessageBox::Show("El ID de usuario ya existe."); return; }
+
 
 		// Save Data
 		Person^ user = gcnew Person();
@@ -724,16 +737,13 @@ namespace SalesView {
 		CleanControls();
 		ShowUsers();
 	}
-	private: System::Void UserForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowUsers();
-	}
 	private: System::Void dgvCustomer_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		// Build tools
 		int selectedRowIndex = dgvCustomer->SelectedCells[0]->RowIndex;
 		List<Person^>^ myPersonList = Controller::QueryAllUsers();
 
 		int userId;
-		if (selectedRowIndex >= (myPersonList->Count)) return;
+		if (selectedRowIndex >= (myPersonList->Count)) { CleanControls(); return; }
 		userId = Convert::ToInt32(dgvCustomer->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 		Person^ p = Controller::QueryUserById(userId);
 
@@ -748,14 +758,34 @@ namespace SalesView {
 		txtPassword->Text = "" + p->Password;
 		txtPhoneNumber->Text = "" + p->PhoneNumber;
 
+		// Gen
+		if ((p->Gender)=='M') rbtnMasc->Checked = true;
+		else rbtnFem->Checked= true;
+
+		// Profile
+		if (p->Profile == 'S') rbtnStudent->Checked = true;
+		else if (p->Profile == 'M') rbtnStoreManager->Checked = true;
+		else rbtnAnnoucer->Checked = true;
+
+		// Date
+		dtpBirthday->Value = Convert::ToDateTime( p->Birthday);
 		// Put Image
 		if (p->Photo != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 			pbCustomer->Image = Image::FromStream(ms);
 		}
 		else {
-			pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\Anonymous.png");
+			pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\resources\\UserPictures\\Default.png");
 		}
+	}
+	private: System::Void btnUpdatePhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+				OpenFileDialog^ opnfd = gcnew OpenFileDialog();
+				opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+				if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
+				else pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\resources\\UserPictures\\Default.png");
+			}
+	private: System::Void UserForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowUsers();
 	}
 	};
 }

@@ -4,17 +4,19 @@
 
 
 #pragma once
-#include "Employee.h"
+#include "Person.h"
 
 using namespace System;
 namespace SalesModel {
     [Serializable]
-    public ref class StoreManager : public Employee {
+    public ref class StoreManager : public Person {
     public:
+
         property String^ Goals;
         property String^ Salary;
         property String^ Store;
-        property Char Status;
-       
+
+        property char  status;
+
     };
 }
