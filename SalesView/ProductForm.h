@@ -102,6 +102,12 @@ namespace SalesView {
 
 
 
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -287,8 +293,7 @@ namespace SalesView {
 			this->dgvProducts->Name = L"dgvProducts";
 			this->dgvProducts->RowHeadersWidth = 51;
 			this->dgvProducts->RowTemplate->Height = 24;
-			this->dgvProducts->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->dgvProducts->Size = System::Drawing::Size(993, 287);
+			this->dgvProducts->Size = System::Drawing::Size(1154, 248);
 			this->dgvProducts->TabIndex = 17;
 			this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dgvProducts_CellClick);
 			this->dgvProducts->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dataGridView1_CellContentClick);
@@ -331,7 +336,7 @@ namespace SalesView {
 			this->Column2->HeaderText = L"Nombre";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
-			this->Column2->Width = 150;
+			this->Column2->Width = 200;
 			// 
 			// Column3
 			// 
@@ -366,7 +371,7 @@ namespace SalesView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1067, 609);
+			this->ClientSize = System::Drawing::Size(1278, 609);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->txtPriceMaj);
 			this->Controls->Add(this->label7);
@@ -447,7 +452,11 @@ namespace SalesView {
 			product->Photo = ms->ToArray();
 		}
 
-		Controller::AddProduct(product);
+		int confirmation = Controller::AddProduct(product);
+		if (confirmation == -1) {
+			MessageBox::Show("Ya existe un Producto con el mismo Id");
+			return;
+		}
 
 		CleanControls();
 		ShowProducts();
@@ -546,7 +555,11 @@ namespace SalesView {
 			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 			product->Photo = ms->ToArray();
 		}
-		Controller::UpdateProduct(product);
+		int verificator = Controller::UpdateProduct(product);
+		if (verificator == -1) {
+			MessageBox::Show("No existe producto a modificar con el Id indicado");
+			return;
+		}
 
 		CleanControls();
 		ShowProducts();
@@ -569,6 +582,7 @@ namespace SalesView {
 	private: System::Void dgvProducts_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 		int selectedRowIndex = dgvProducts->SelectedCells[0]->RowIndex;
+		if (dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value == nullptr) return;
 		int productId = Convert::ToInt32(dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 		Product^ p = Controller::QueryProductById(productId);
 		txtProductId->Text = "" + p->Id;
@@ -577,6 +591,8 @@ namespace SalesView {
 		txtPriceMin->Text = "" + p->PriceMin;
 		txtPriceMaj->Text = "" + p->PriceMaj;
 		txtStock->Text = "" + p->Stock;
+		Controller::RelationatedCareers = p->Career;
+
 		if (p->Photo != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 			pbPhoto->Image = Image::FromStream(ms);
@@ -585,6 +601,7 @@ namespace SalesView {
 			pbPhoto->Image = nullptr;
 			pbPhoto->Invalidate();
 		}
+		//################################################
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
