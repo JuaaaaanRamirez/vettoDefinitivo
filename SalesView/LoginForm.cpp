@@ -5,6 +5,15 @@
 
 System::Void SalesView::LoginForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (txtUsername->Text->Trim() == "") {
+		MessageBox::Show("Ingrese su el nombre de usuario");
+		return;
+	}
+	if (txtPassword->Text->Trim() == "") {
+		MessageBox::Show("Ingrese la contraseña");
+		return;
+	}
+	
 	Person^ emp = Controller::Login(txtUsername->Text, txtPassword->Text);
 	if (emp != nullptr) {
 		MessageBox::Show("Bienvenido " + emp->Name);

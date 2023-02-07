@@ -326,6 +326,7 @@ namespace SalesView {
 			// 
 			this->txtPassword->Location = System::Drawing::Point(199, 375);
 			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(145, 20);
 			this->txtPassword->TabIndex = 5;
 			// 
@@ -333,6 +334,7 @@ namespace SalesView {
 			// 
 			this->txtPasswordAgain->Location = System::Drawing::Point(199, 401);
 			this->txtPasswordAgain->Name = L"txtPasswordAgain";
+			this->txtPasswordAgain->PasswordChar = '*';
 			this->txtPasswordAgain->Size = System::Drawing::Size(145, 20);
 			this->txtPasswordAgain->TabIndex = 5;
 			// 
@@ -408,19 +410,31 @@ namespace SalesView {
 	try {
 		
 		if (txtFirstName->Text->Trim() == "") {
-			MessageBox::Show("El Id no debe estar vacío.");
+			MessageBox::Show("Ingrese su nombre.");
 			return;
 		}
 		if (txtLastName->Text->Trim() == "") {
-			MessageBox::Show("El Id no debe estar vacío.");
+			MessageBox::Show("Ingrese su apellido.");
 			return;
 		}
 		if (txtEmail->Text->Trim() == "") {
-			MessageBox::Show("El Id no debe estar vacío.");
+			MessageBox::Show("Ingrese su email.");
 			return;
 		}
-		if (txtFirstName->Text->Trim() == "") {
-			MessageBox::Show("El Id no debe estar vacío.");
+		if (txtUsername->Text->Trim() == "") {
+			MessageBox::Show("Ingrese su nombre de usuario.");
+			return;
+		}
+		if (txtPassword->Text->Trim() == "") {
+			MessageBox::Show("Ingrese su contraseña.");
+			return;
+		}
+		if (txtPasswordAgain->Text->Trim() == "") {
+			MessageBox::Show("Repita su contraseña.");
+			return;
+		}
+		if (txtPasswordAgain->Text->Trim() != txtPassword->Text->Trim()) {
+			MessageBox::Show("Las contraseña no son iguales");
 			return;
 		}
 

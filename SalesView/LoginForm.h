@@ -108,6 +108,7 @@ namespace SalesView {
 			// 
 			this->txtPassword->Location = System::Drawing::Point(137, 129);
 			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(169, 20);
 			this->txtPassword->TabIndex = 1;
 			this->txtPassword->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::txtPassword_KeyDown);
@@ -188,6 +189,7 @@ namespace SalesView {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	
 	if (e->KeyData == Keys::Enter)
 		btnOk->PerformClick();
 }
