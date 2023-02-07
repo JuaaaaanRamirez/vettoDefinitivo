@@ -684,8 +684,10 @@ private: System::Void label5_Click_1(System::Object^ sender, System::EventArgs^ 
 
 	   // CRUD
 private: System::Void DeleteCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (txtCustomerId->Text->Equals("")) { MessageBox::Show("El Id del usuario no debe estar vacío."); return; }
 	int ID = Convert::ToInt32(txtCustomerId->Text);
-	Controller::DeleteProduct(ID);
+
+	Controller::DeleteUser(ID);
 	CleanControls();
 	ShowUsers();
 }
