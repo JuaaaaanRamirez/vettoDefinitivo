@@ -101,6 +101,7 @@ namespace SalesView {
 			this->Controls->Add(this->pbPhoto);
 			this->Name = L"UploadAdForm";
 			this->Text = L"Mi anuncio";
+			this->Load += gcnew System::EventHandler(this, &UploadAdForm::UploadAdForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->EndInit();
 			this->ResumeLayout(false);
 
@@ -124,5 +125,7 @@ namespace SalesView {
 		}
 		*/
 	}
+private: System::Void UploadAdForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
