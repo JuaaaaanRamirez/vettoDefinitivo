@@ -1012,7 +1012,7 @@ private: System::Windows::Forms::PictureBox^ AdsImage;
 			   return user;
 		   }
 
-		   // CRUDs
+		   // CRUDss
 	private: System::Void DeleteCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (txtCustomerId->Text->Equals("")) { MessageBox::Show("El Id del usuario no debe estar vacío."); return; }
 		int ID = Convert::ToInt32(txtCustomerId->Text);
