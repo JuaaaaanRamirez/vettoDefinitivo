@@ -67,6 +67,7 @@ namespace SalesController {
 		//static List<Person^>^ QueryUsersByNickNameOrPhoneNumber(String^ namePhone);
 		static List<Customer^>^ QueryAllCustomer();
 		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
-
+		static Person^ QueryPersonByCredentials(String^ username, String^ password);
+		static int FindNewId(Person^ user);
 	};
 }

@@ -93,8 +93,8 @@ Person^ SalesController::Controller::Login(String^ username, String^ password)
     }
 
     return person;*/
-    return QueryCustomerByCredentials(username, password);
-
+    //return QueryCustomerByCredentials(username, password);
+    return QueryPersonByCredentials(username, password);
 
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucci�n "return" aqu�
@@ -205,5 +205,32 @@ Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ userna
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucción "return" aquí
 
+}
+
+Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, String^ password)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->Username->Equals(username) &&
+            personList[i]->Password->Equals(password)) {
+            return personList[i];
+        }
+    }
+    return nullptr;
+    
+    
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+int SalesController::Controller::FindNewId(Person^ user)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->Id!=i) {
+            return i;
+        }
+    }
+    return 100;
 }
 
