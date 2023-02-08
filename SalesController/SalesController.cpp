@@ -225,12 +225,15 @@ Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, 
 
 int SalesController::Controller::FindNewId(Person^ user)
 {
+    int i = 0, numMayor;
     personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    for (int i = 0; i < personList->Count; i++) {
-        if (personList[i]->Id!=i) {
-            return i;
+    numMayor = personList[i]->Id;
+    for (i = 0; i < personList->Count; i++) {
+
+        if (numMayor < personList[i]->Id) {
+            numMayor = personList[i]->Id;
         }
     }
-    return 100;
+    return numMayor + 1;
 }
 
