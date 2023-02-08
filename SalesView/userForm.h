@@ -1066,7 +1066,13 @@ private: System::Windows::Forms::PictureBox^ AdsImage;
 		int userId;
 		if (selectedRowIndex >= (myPersonList->Count)) { CleanControls(); return; }
 		userId = Convert::ToInt32(dgvCustomer->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
-		Person^ p = Controller::QueryUserById(userId);
+
+		Person^ p;
+		// Profile
+		if (rbtnStudent->Checked) p = gcnew Customer();
+		else if (rbtnStoreManager->Checked) p = gcnew StoreManager();
+		else  p = gcnew Announcer();
+		p = Controller::QueryUserById(userId);
 
 
 		// Put on data
@@ -1078,6 +1084,21 @@ private: System::Windows::Forms::PictureBox^ AdsImage;
 		txtUser->Text = "" + p->Username;
 		txtPassword->Text = "" + p->Password;
 		txtPhoneNumber->Text = "" + p->PhoneNumber;
+		if (p->Profile == 'S') {
+			txtCPoints->Text = "" + safe_cast<Customer^>(p)->CustomerPoints;
+			txtAdress->Text = "" + safe_cast<Customer^>(p)->Address;
+		}
+		else if (p->Profile == 'M') {
+			txtGoal->Text   = "" +safe_cast<StoreManager^>(p)->Goals;
+			txtSalary->Text = "" +safe_cast<StoreManager^>(p)->Salary;
+			txtAStore->Text = "" +safe_cast<StoreManager^>(p)->Store;
+			txtStatus->Text = "" +safe_cast<StoreManager^>(p)->Status;
+		}
+		else if (p->Profile == 'A') {
+			txtCompanyName->Text = "" +safe_cast<Announcer^>(p)->CompanyName;
+			txtWebSite->Text   = "" +safe_cast<Announcer^>(p)->WebSiteLink;
+		}
+
 
 		// Gen
 		if ((p->Gender)=='M') rbtnMasc->Checked = true;
