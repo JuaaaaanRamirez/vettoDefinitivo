@@ -147,27 +147,27 @@ namespace SalesView {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(60, 60);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(57, 13);
+			this->label2->Size = System::Drawing::Size(44, 13);
 			this->label2->TabIndex = 0;
-			this->label2->Text = L"Nombre (*)";
+			this->label2->Text = L"Nombre";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(60, 89);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(57, 13);
+			this->label3->Size = System::Drawing::Size(47, 13);
 			this->label3->TabIndex = 0;
-			this->label3->Text = L"Apellido (*)";
+			this->label3->Text = L"Apellido ";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(60, 125);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(45, 13);
+			this->label4->Size = System::Drawing::Size(35, 13);
 			this->label4->TabIndex = 0;
-			this->label4->Text = L"Email (*)";
+			this->label4->Text = L"Email ";
 			// 
 			// label5
 			// 
@@ -183,9 +183,9 @@ namespace SalesView {
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(60, 213);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(52, 13);
+			this->label6->Size = System::Drawing::Size(42, 13);
 			this->label6->TabIndex = 0;
-			this->label6->Text = L"Celular (*)";
+			this->label6->Text = L"Celular ";
 			// 
 			// label7
 			// 
@@ -292,27 +292,27 @@ namespace SalesView {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(60, 349);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(56, 13);
+			this->label1->Size = System::Drawing::Size(46, 13);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Usuario (*)";
+			this->label1->Text = L"Usuario ";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(60, 378);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(74, 13);
+			this->label9->Size = System::Drawing::Size(64, 13);
 			this->label9->TabIndex = 4;
-			this->label9->Text = L"Contraseña (*)";
+			this->label9->Text = L"Contraseña ";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(60, 406);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(110, 13);
+			this->label11->Size = System::Drawing::Size(100, 13);
 			this->label11->TabIndex = 4;
-			this->label11->Text = L"Repetir contraseña (*)";
+			this->label11->Text = L"Repetir contraseña ";
 			this->label11->Click += gcnew System::EventHandler(this, &NewCustomerForm::label11_Click);
 			// 
 			// txtUsername
@@ -457,7 +457,9 @@ namespace SalesView {
 		p->Birthday = dtpBirthday->Value.ToString();
 		p->Password = txtPassword->Text;
 		p->Username = txtUsername->Text;
-		p->Profile = 'C';
+		p->Profile = 'S';
+		if (rbtnMasc->Checked) p->Gender = 'M';
+		else p->Gender = 'F';
 		
 		/*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
 			txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
@@ -472,6 +474,7 @@ namespace SalesView {
 
 		  Controller::AddUser(p);
 		   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
+		   //MessageBox::Show("Hola");
 		   this->Close();
 		
 	}
