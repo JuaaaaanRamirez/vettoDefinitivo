@@ -159,8 +159,11 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
     for (int i = 0; i < personList->Count; i++) {
         if ( personList[i]->GetType() == Customer::typeid) {
             activeCustomerList->Add((Customer^)personList[i]);
+            
         }
     }
+    
+    
     return activeCustomerList;
     
     //throw gcnew System::NotImplementedException();
@@ -179,7 +182,28 @@ Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ userna
     }
     return nullptr;
     
+//TRABAJO CON CASTING
+    /*
+    Customer^ c = gcnew Customer();
+    Customer^ c_2 = gcnew Customer();
+    Person^ p = gcnew Person();
+    List <Person^>^ Lista = gcnew List<Person^>();
+    List <Customer^>^ ListaCust = gcnew List<Customer^>();
+
+    c->CustomerPoints = 100;
+    Lista->Add(c);
+    //(Customer^)Lista[0]->DocNumber = 758; //no tengo los atributos propios de customer,
+                                            //solo de person(Lista[0] contiene la direccions de un Customer)
+    c_2 = (Customer^)Lista[0];
+    c_2->CustomerPoints = 50;
+
+    ListaCust->Add((Customer^)Lista[0]);
+    // c->CustomerPoints sigue siendo 100??? o se perdio el valor
+    ListaCust[0]->CustomerPoints = 5;
+    
+    */
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucción "return" aquí
+
 }
 

@@ -9,6 +9,7 @@ namespace SalesView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace SalesController;
+	using namespace SalesModel;
 
 	/// <summary>
 	/// Resumen de UploadAdForm
@@ -43,6 +44,11 @@ namespace SalesView {
 	private: System::Windows::Forms::Button^ btUpImage;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::PictureBox^ pbPhoto;
+
+
+
+	private: System::Windows::Forms::Label^ label1;
 
 	protected:
 
@@ -64,11 +70,14 @@ namespace SalesView {
 			this->btUpImage = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btUpImage
 			// 
-			this->btUpImage->Location = System::Drawing::Point(86, 43);
+			this->btUpImage->Location = System::Drawing::Point(79, 263);
 			this->btUpImage->Name = L"btUpImage";
 			this->btUpImage->Size = System::Drawing::Size(319, 37);
 			this->btUpImage->TabIndex = 1;
@@ -78,7 +87,7 @@ namespace SalesView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(86, 124);
+			this->button1->Location = System::Drawing::Point(79, 344);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 2;
@@ -87,25 +96,46 @@ namespace SalesView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(228, 124);
+			this->button2->Location = System::Drawing::Point(221, 344);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(143, 44);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"Eliminar mi anuncio";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
+			// pbPhoto
+			// 
+			this->pbPhoto->Location = System::Drawing::Point(79, 50);
+			this->pbPhoto->Name = L"pbPhoto";
+			this->pbPhoto->Size = System::Drawing::Size(319, 185);
+			this->pbPhoto->TabIndex = 4;
+			this->pbPhoto->TabStop = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(42, 22);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(94, 16);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Anuncio actual";
+			// 
 			// UploadAdForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(463, 221);
+			this->ClientSize = System::Drawing::Size(463, 423);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->pbPhoto);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btUpImage);
 			this->Name = L"UploadAdForm";
 			this->Text = L"Mi anuncio";
 			this->Load += gcnew System::EventHandler(this, &UploadAdForm::UploadAdForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -136,6 +166,19 @@ namespace SalesView {
 	
 	}
 private: System::Void UploadAdForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	Announcer^ Announ_aux = gcnew Announcer();
+	Announ_aux = (Announcer^)(SalesMainForm::person);
+	
+	if (Announ_aux->Ad != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(Announ_aux->Ad);
+		pbPhoto->Image = Image::FromStream(ms);
+	}
+	else {
+		pbPhoto->Image = nullptr;
+		pbPhoto->Invalidate();	
+	}
+	
 }
+
 };
 }

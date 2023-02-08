@@ -3,14 +3,8 @@
  */
 
 #include "pch.h"
-#pragma once
-#include "Person.h"
+#include "Announcer.h"
 
-using namespace System;
-namespace SalesModel {
-    public ref class Announcer : public Person {
-    public:
-        property String^ Departament;
-    };
-}
-
+ /**
+  * Customer implementation
+  */

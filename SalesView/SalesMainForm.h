@@ -26,9 +26,9 @@ namespace SalesView {
 	{
 	public:
 
-		static Person^ person; //Variable de clase
+		//static Person^ person; //Variable de clase
     
-
+		static Person^ person; //Variable de clase
 		//static Object^ person; //Variable de clase o miembro u atributo estático (global).
 
 		SalesMainForm(void)
