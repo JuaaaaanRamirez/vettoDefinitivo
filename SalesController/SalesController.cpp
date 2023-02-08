@@ -201,12 +201,25 @@ Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, 
 
 int SalesController::Controller::FindNewId(Person^ user)
 {
+    //Corregicion del metodo de adquirir el id
+    int i=0,numMayor,numMenor;
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    numMayor = personList[i]->Id;
+    for ( i = 0; i < personList->Count; i++) {
+        
+        if (numMayor < personList[i]->Id) {
+            numMayor = personList[i]->Id;
+        }
+    }
+    return numMayor + 1;
+    /* 
+    * Esto sirve en caso este implementado los id por orden
     personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     for (int i = 0; i < personList->Count; i++) {
         if (personList[i]->Id!=i) {
             return i;
         }
     }
-    return 100;
+    return 100;*/
 }
 
