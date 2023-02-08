@@ -65,6 +65,9 @@
     <ClInclude Include="SalesMainForAllForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="ChoosedStudentForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SalesView.cpp">
@@ -110,6 +113,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="SalesMainForAllForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ChoosedStudentForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

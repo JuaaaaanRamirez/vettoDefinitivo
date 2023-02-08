@@ -131,6 +131,9 @@
     <ClInclude Include="CareerListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ChoosedStudentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="NewCustomerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,6 +176,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CareerListForm.cpp" />
+    <ClCompile Include="ChoosedStudentForm.cpp" />
     <ClCompile Include="SalesMainForAllForm.cpp" />
     <ClCompile Include="UserForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
@@ -214,6 +218,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CareerListForm.resx">
       <DependentUpon>CareerListForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChoosedStudentForm.resx">
+      <DependentUpon>ChoosedStudentForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerForm.resx">
       <DependentUpon>NewCustomerForm.h</DependentUpon>
