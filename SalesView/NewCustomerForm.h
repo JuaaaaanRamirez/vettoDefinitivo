@@ -421,6 +421,14 @@ namespace SalesView {
 			MessageBox::Show("Ingrese su email.");
 			return;
 		}
+		if (txtDocNumber->Text->Trim() == "") {
+			MessageBox::Show("Ingrese su DNI.");
+			return;
+		}
+		/*if (txtDocNumber->Text->Trim() == "") {
+			MessageBox::Show("Su DNI debe tener 8 dígitos.");
+			return;
+		}*/
 		if (txtUsername->Text->Trim() == "") {
 			MessageBox::Show("Ingrese su nombre de usuario.");
 			return;
@@ -439,6 +447,7 @@ namespace SalesView {
 		}
 
 		//p->Id = Int32::Parse(txtPersonId->Text);
+		p->Id = Controller::FindNewId(p);
 		p->Name = txtFirstName->Text;
 		p->LastName = txtLastName->Text;
 		p->DocNumber = txtDocNumber->Text;
@@ -448,6 +457,7 @@ namespace SalesView {
 		p->Birthday = dtpBirthday->Value.ToString();
 		p->Password = txtPassword->Text;
 		p->Username = txtUsername->Text;
+		p->Profile = 'C';
 		
 		/*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
 			txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
@@ -460,7 +470,7 @@ namespace SalesView {
 			   return;
 		   }
 
-		  Controller::AddCustomer(p);
+		  Controller::AddUser(p);
 		   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
 		   this->Close();
 		
