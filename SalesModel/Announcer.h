@@ -4,7 +4,6 @@
 
 
 #pragma once
-
 #include "Person.h"
 
 using namespace System;
@@ -16,5 +15,8 @@ namespace SalesModel {
         property String^ WebSiteLink;
         property String^ CompanyName;
         property array<Byte>^ Add;
+        property Boolean AdInSistem;
+        property int NumberPictureBox;
+
     };
 }
