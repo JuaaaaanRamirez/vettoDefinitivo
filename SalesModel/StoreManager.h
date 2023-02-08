@@ -16,7 +16,7 @@ namespace SalesModel {
         property String^ Salary;
         property String^ Store;
 
-        property String^  status;
+        property String^  Status;
 
     };
 }

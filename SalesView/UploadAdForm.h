@@ -165,20 +165,9 @@ namespace SalesView {
 		*/
 	
 	}
-private: System::Void UploadAdForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	Announcer^ Announ_aux = gcnew Announcer();
-	Announ_aux = (Announcer^)(SalesMainForm::person);
+private: System::Void UploadAdForm_Load(System::Object^ sender, System::EventArgs^ e);
 	
-	if (Announ_aux->Ad != nullptr) {
-		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(Announ_aux->Ad);
-		pbPhoto->Image = Image::FromStream(ms);
-	}
-	else {
-		pbPhoto->Image = nullptr;
-		pbPhoto->Invalidate();	
-	}
-	
-}
+
 
 };
 }

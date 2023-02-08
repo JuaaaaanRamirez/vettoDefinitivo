@@ -2,6 +2,7 @@
 #include "UploadAdForm.h"
 #include "SalesMainForm.h"
 
+using namespace System::Collections::Generic;
 System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	OpenFileDialog^ opnfd = gcnew OpenFileDialog();
@@ -12,14 +13,16 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 		{
 			Announcer^ anoun = gcnew Announcer();
 			anoun = (Announcer^)(SalesMainForm::person);
-			
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+
 			if (anoun->AdInSistem == true) {
+
 				switch (anoun->NumberPictureBox)
 				{
 					//guardar su imagen en person anouncer
 				case 1: ((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image = gcnew Bitmap(opnfd->FileName);
 
-					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();				
+									
 					((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 					
@@ -110,5 +113,20 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 				}
 			}
 	}
+	}
+}
+
+System::Void SalesView::UploadAdForm::UploadAdForm_Load(System::Object^ sender, System::EventArgs^ e)
+{
+	Announcer^ Announ_aux = gcnew Announcer();
+	Announ_aux = (Announcer^)(SalesMainForm::person);
+
+	if (Announ_aux->Ad != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(Announ_aux->Ad);
+		pbPhoto->Image = Image::FromStream(ms);
+	}
+	else {
+		pbPhoto->Image = nullptr;
+		pbPhoto->Invalidate();
 	}
 }
