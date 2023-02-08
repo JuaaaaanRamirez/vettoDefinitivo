@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ChoosedStudentForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -85,7 +85,8 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::TextBox^ txtPassword;
 	private: System::Windows::Forms::RadioButton^ rbtnStudent;
-	private: System::Windows::Forms::RadioButton^ rbtnAnnoucer;
+	private: System::Windows::Forms::RadioButton^ rbtnAnnouncer;
+
 	private: System::Windows::Forms::RadioButton^ rbtnStoreManager;
 
 
@@ -99,6 +100,45 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Teléfono;
 	private: System::Windows::Forms::GroupBox^ GenBox;
 	private: System::Windows::Forms::GroupBox^ ProfileBox;
+	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+	private: System::Windows::Forms::Label^ Addresslb;
+
+	private: System::Windows::Forms::TextBox^ txtAdress;
+
+	private: System::Windows::Forms::GroupBox^ Studentbx;
+	private: System::Windows::Forms::TextBox^ txtCPoints;
+
+
+	private: System::Windows::Forms::Label^ Pointslb;
+	private: System::Windows::Forms::GroupBox^ StoreManagerbx;
+	private: System::Windows::Forms::TextBox^ txtStatus;
+
+	private: System::Windows::Forms::TextBox^ txtAStore;
+
+	private: System::Windows::Forms::TextBox^ txtSalary;
+
+	private: System::Windows::Forms::Label^ Statuslb;
+	private: System::Windows::Forms::Label^ Storelb;
+	private: System::Windows::Forms::Label^ Salarylb;
+	private: System::Windows::Forms::TextBox^ txtGoal;
+
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ Companylb;
+	private: System::Windows::Forms::Label^ WebSitelb;
+	private: System::Windows::Forms::Label^ Adslb;
+private: System::Windows::Forms::TextBox^ txtCompanyName;
+
+
+	private: System::Windows::Forms::GroupBox^ Announcerbx;
+private: System::Windows::Forms::TextBox^ txtWebSite;
+private: System::Windows::Forms::PictureBox^ AdsImage;
+
+
+
+
+
+
+
 		   //private: System::Windows::Forms::DataGridView^ dgvCustomer;
 	private:
 		/// <summary>
@@ -141,7 +181,7 @@ namespace SalesView {
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
 			this->rbtnStudent = (gcnew System::Windows::Forms::RadioButton());
-			this->rbtnAnnoucer = (gcnew System::Windows::Forms::RadioButton());
+			this->rbtnAnnouncer = (gcnew System::Windows::Forms::RadioButton());
 			this->rbtnStoreManager = (gcnew System::Windows::Forms::RadioButton());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->dgvCustomer = (gcnew System::Windows::Forms::DataGridView());
@@ -152,36 +192,62 @@ namespace SalesView {
 			this->Teléfono = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->GenBox = (gcnew System::Windows::Forms::GroupBox());
 			this->ProfileBox = (gcnew System::Windows::Forms::GroupBox());
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->Addresslb = (gcnew System::Windows::Forms::Label());
+			this->txtAdress = (gcnew System::Windows::Forms::TextBox());
+			this->Studentbx = (gcnew System::Windows::Forms::GroupBox());
+			this->txtCPoints = (gcnew System::Windows::Forms::TextBox());
+			this->Pointslb = (gcnew System::Windows::Forms::Label());
+			this->StoreManagerbx = (gcnew System::Windows::Forms::GroupBox());
+			this->txtStatus = (gcnew System::Windows::Forms::TextBox());
+			this->txtAStore = (gcnew System::Windows::Forms::TextBox());
+			this->txtSalary = (gcnew System::Windows::Forms::TextBox());
+			this->Statuslb = (gcnew System::Windows::Forms::Label());
+			this->Storelb = (gcnew System::Windows::Forms::Label());
+			this->Salarylb = (gcnew System::Windows::Forms::Label());
+			this->txtGoal = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->Companylb = (gcnew System::Windows::Forms::Label());
+			this->WebSitelb = (gcnew System::Windows::Forms::Label());
+			this->Adslb = (gcnew System::Windows::Forms::Label());
+			this->txtCompanyName = (gcnew System::Windows::Forms::TextBox());
+			this->Announcerbx = (gcnew System::Windows::Forms::GroupBox());
+			this->AdsImage = (gcnew System::Windows::Forms::PictureBox());
+			this->txtWebSite = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomer))->BeginInit();
 			this->GenBox->SuspendLayout();
 			this->ProfileBox->SuspendLayout();
+			this->Studentbx->SuspendLayout();
+			this->StoreManagerbx->SuspendLayout();
+			this->Announcerbx->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AdsImage))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(44, 10);
+			this->label1->Location = System::Drawing::Point(21, 11);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(34, 16);
+			this->label1->Size = System::Drawing::Size(18, 16);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Id (*)";
+			this->label1->Text = L"Id";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(44, 47);
+			this->label2->Location = System::Drawing::Point(21, 41);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(72, 16);
+			this->label2->Size = System::Drawing::Size(56, 16);
 			this->label2->TabIndex = 0;
-			this->label2->Text = L"Nombre (*)";
+			this->label2->Text = L"Nombre";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(44, 109);
+			this->label3->Location = System::Drawing::Point(21, 101);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(41, 16);
@@ -191,17 +257,17 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(44, 78);
+			this->label4->Location = System::Drawing::Point(21, 71);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(73, 16);
+			this->label4->Size = System::Drawing::Size(57, 16);
 			this->label4->TabIndex = 0;
-			this->label4->Text = L"Apellido (*)";
+			this->label4->Text = L"Apellido";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(44, 191);
+			this->label6->Location = System::Drawing::Point(21, 161);
 			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(61, 16);
@@ -211,7 +277,7 @@ namespace SalesView {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(44, 268);
+			this->label7->Location = System::Drawing::Point(21, 231);
 			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(64, 16);
@@ -221,17 +287,17 @@ namespace SalesView {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(247, 10);
+			this->label9->Location = System::Drawing::Point(196, 11);
 			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(46, 16);
+			this->label9->Size = System::Drawing::Size(30, 16);
 			this->label9->TabIndex = 0;
-			this->label9->Text = L"DNI (*)";
+			this->label9->Text = L"DNI";
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(44, 231);
+			this->label10->Location = System::Drawing::Point(21, 201);
 			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(52, 16);
@@ -240,7 +306,7 @@ namespace SalesView {
 			// 
 			// txtCustomerName
 			// 
-			this->txtCustomerName->Location = System::Drawing::Point(152, 47);
+			this->txtCustomerName->Location = System::Drawing::Point(86, 41);
 			this->txtCustomerName->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerName->Name = L"txtCustomerName";
 			this->txtCustomerName->Size = System::Drawing::Size(339, 22);
@@ -248,15 +314,16 @@ namespace SalesView {
 			// 
 			// txtDocNumber
 			// 
-			this->txtDocNumber->Location = System::Drawing::Point(307, 10);
+			this->txtDocNumber->Location = System::Drawing::Point(234, 11);
 			this->txtDocNumber->Margin = System::Windows::Forms::Padding(4);
 			this->txtDocNumber->Name = L"txtDocNumber";
-			this->txtDocNumber->Size = System::Drawing::Size(184, 22);
+			this->txtDocNumber->Size = System::Drawing::Size(191, 22);
 			this->txtDocNumber->TabIndex = 2;
+			this->txtDocNumber->TextChanged += gcnew System::EventHandler(this, &UserForm::txtDocNumber_TextChanged);
 			// 
 			// txtCustomerId
 			// 
-			this->txtCustomerId->Location = System::Drawing::Point(152, 10);
+			this->txtCustomerId->Location = System::Drawing::Point(86, 11);
 			this->txtCustomerId->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerId->Name = L"txtCustomerId";
 			this->txtCustomerId->Size = System::Drawing::Size(85, 22);
@@ -264,7 +331,7 @@ namespace SalesView {
 			// 
 			// txtCustomerLastName
 			// 
-			this->txtCustomerLastName->Location = System::Drawing::Point(152, 78);
+			this->txtCustomerLastName->Location = System::Drawing::Point(86, 71);
 			this->txtCustomerLastName->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerLastName->Name = L"txtCustomerLastName";
 			this->txtCustomerLastName->Size = System::Drawing::Size(339, 22);
@@ -272,7 +339,7 @@ namespace SalesView {
 			// 
 			// txtEmail
 			// 
-			this->txtEmail->Location = System::Drawing::Point(152, 109);
+			this->txtEmail->Location = System::Drawing::Point(86, 101);
 			this->txtEmail->Margin = System::Windows::Forms::Padding(4);
 			this->txtEmail->Name = L"txtEmail";
 			this->txtEmail->Size = System::Drawing::Size(339, 22);
@@ -280,17 +347,17 @@ namespace SalesView {
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(152, 191);
+			this->txtPhoneNumber->Location = System::Drawing::Point(86, 161);
 			this->txtPhoneNumber->Margin = System::Windows::Forms::Padding(4);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
-			this->txtPhoneNumber->Size = System::Drawing::Size(224, 22);
+			this->txtPhoneNumber->Size = System::Drawing::Size(339, 22);
 			this->txtPhoneNumber->TabIndex = 2;
 			// 
 			// dtpBirthday
 			// 
-			this->dtpBirthday->Location = System::Drawing::Point(152, 268);
+			this->dtpBirthday->Location = System::Drawing::Point(86, 231);
 			this->dtpBirthday->Margin = System::Windows::Forms::Padding(4);
-			this->dtpBirthday->MaxDate = System::DateTime(2023, 2, 7, 0, 0, 0, 0);
+			this->dtpBirthday->MaxDate = System::DateTime(3042, 12, 31, 0, 0, 0, 0);
 			this->dtpBirthday->Name = L"dtpBirthday";
 			this->dtpBirthday->Size = System::Drawing::Size(265, 22);
 			this->dtpBirthday->TabIndex = 3;
@@ -299,7 +366,7 @@ namespace SalesView {
 			// rbtnMasc
 			// 
 			this->rbtnMasc->AutoSize = true;
-			this->rbtnMasc->Location = System::Drawing::Point(7, 11);
+			this->rbtnMasc->Location = System::Drawing::Point(0, 11);
 			this->rbtnMasc->Margin = System::Windows::Forms::Padding(4);
 			this->rbtnMasc->Name = L"rbtnMasc";
 			this->rbtnMasc->Size = System::Drawing::Size(64, 20);
@@ -322,9 +389,9 @@ namespace SalesView {
 			// 
 			// pbCustomer
 			// 
-			this->pbCustomer->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbCustomer->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
-			this->pbCustomer->Location = System::Drawing::Point(550, 10);
+			this->pbCustomer->Location = System::Drawing::Point(457, 13);
 			this->pbCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->pbCustomer->Name = L"pbCustomer";
 			this->pbCustomer->Size = System::Drawing::Size(151, 128);
@@ -334,7 +401,7 @@ namespace SalesView {
 			// 
 			// btnUpdatePhoto
 			// 
-			this->btnUpdatePhoto->Location = System::Drawing::Point(571, 146);
+			this->btnUpdatePhoto->Location = System::Drawing::Point(478, 149);
 			this->btnUpdatePhoto->Margin = System::Windows::Forms::Padding(4);
 			this->btnUpdatePhoto->Name = L"btnUpdatePhoto";
 			this->btnUpdatePhoto->Size = System::Drawing::Size(100, 28);
@@ -345,7 +412,7 @@ namespace SalesView {
 			// 
 			// AddUser
 			// 
-			this->AddUser->Location = System::Drawing::Point(103, 387);
+			this->AddUser->Location = System::Drawing::Point(86, 324);
 			this->AddUser->Margin = System::Windows::Forms::Padding(4);
 			this->AddUser->Name = L"AddUser";
 			this->AddUser->Size = System::Drawing::Size(100, 28);
@@ -356,7 +423,7 @@ namespace SalesView {
 			// 
 			// DeleteUser
 			// 
-			this->DeleteUser->Location = System::Drawing::Point(424, 387);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324);
 			this->DeleteUser->Margin = System::Windows::Forms::Padding(4);
 			this->DeleteUser->Name = L"DeleteUser";
 			this->DeleteUser->Size = System::Drawing::Size(100, 28);
@@ -367,7 +434,7 @@ namespace SalesView {
 			// 
 			// UpdateUser
 			// 
-			this->UpdateUser->Location = System::Drawing::Point(264, 387);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324);
 			this->UpdateUser->Margin = System::Windows::Forms::Padding(4);
 			this->UpdateUser->Name = L"UpdateUser";
 			this->UpdateUser->Size = System::Drawing::Size(100, 28);
@@ -379,7 +446,7 @@ namespace SalesView {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(44, 146);
+			this->label11->Location = System::Drawing::Point(21, 131);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(54, 16);
 			this->label11->TabIndex = 12;
@@ -387,7 +454,7 @@ namespace SalesView {
 			// 
 			// txtUser
 			// 
-			this->txtUser->Location = System::Drawing::Point(152, 143);
+			this->txtUser->Location = System::Drawing::Point(86, 131);
 			this->txtUser->Name = L"txtUser";
 			this->txtUser->Size = System::Drawing::Size(100, 22);
 			this->txtUser->TabIndex = 13;
@@ -395,7 +462,7 @@ namespace SalesView {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(271, 146);
+			this->label12->Location = System::Drawing::Point(196, 131);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(76, 16);
 			this->label12->TabIndex = 14;
@@ -403,9 +470,9 @@ namespace SalesView {
 			// 
 			// txtPassword
 			// 
-			this->txtPassword->Location = System::Drawing::Point(353, 143);
+			this->txtPassword->Location = System::Drawing::Point(278, 131);
 			this->txtPassword->Name = L"txtPassword";
-			this->txtPassword->Size = System::Drawing::Size(124, 22);
+			this->txtPassword->Size = System::Drawing::Size(147, 22);
 			this->txtPassword->TabIndex = 15;
 			// 
 			// rbtnStudent
@@ -418,35 +485,36 @@ namespace SalesView {
 			this->rbtnStudent->TabStop = true;
 			this->rbtnStudent->Text = L"Estudiante";
 			this->rbtnStudent->UseVisualStyleBackColor = true;
-			this->rbtnStudent->CheckedChanged += gcnew System::EventHandler(this, &UserForm::radioButton1_CheckedChanged);
+			this->rbtnStudent->CheckedChanged += gcnew System::EventHandler(this, &UserForm::rbtnStudent_CheckedChanged);
 			// 
-			// rbtnAnnoucer
+			// rbtnAnnouncer
 			// 
-			this->rbtnAnnoucer->AutoSize = true;
-			this->rbtnAnnoucer->Location = System::Drawing::Point(127, 16);
-			this->rbtnAnnoucer->Name = L"rbtnAnnoucer";
-			this->rbtnAnnoucer->Size = System::Drawing::Size(94, 20);
-			this->rbtnAnnoucer->TabIndex = 17;
-			this->rbtnAnnoucer->TabStop = true;
-			this->rbtnAnnoucer->Text = L"Anunciante";
-			this->rbtnAnnoucer->UseVisualStyleBackColor = true;
-			this->rbtnAnnoucer->CheckedChanged += gcnew System::EventHandler(this, &UserForm::radioButton2_CheckedChanged);
+			this->rbtnAnnouncer->AutoSize = true;
+			this->rbtnAnnouncer->Location = System::Drawing::Point(127, 16);
+			this->rbtnAnnouncer->Name = L"rbtnAnnouncer";
+			this->rbtnAnnouncer->Size = System::Drawing::Size(94, 20);
+			this->rbtnAnnouncer->TabIndex = 17;
+			this->rbtnAnnouncer->TabStop = true;
+			this->rbtnAnnouncer->Text = L"Anunciante";
+			this->rbtnAnnouncer->UseVisualStyleBackColor = true;
+			this->rbtnAnnouncer->CheckedChanged += gcnew System::EventHandler(this, &UserForm::rbtnAnnouncer_CheckedChanged);
 			// 
 			// rbtnStoreManager
 			// 
 			this->rbtnStoreManager->AutoSize = true;
-			this->rbtnStoreManager->Location = System::Drawing::Point(237, 16);
+			this->rbtnStoreManager->Location = System::Drawing::Point(237, 15);
 			this->rbtnStoreManager->Name = L"rbtnStoreManager";
 			this->rbtnStoreManager->Size = System::Drawing::Size(135, 20);
 			this->rbtnStoreManager->TabIndex = 18;
 			this->rbtnStoreManager->TabStop = true;
 			this->rbtnStoreManager->Text = L"Gerente de tienda";
 			this->rbtnStoreManager->UseVisualStyleBackColor = true;
+			this->rbtnStoreManager->CheckedChanged += gcnew System::EventHandler(this, &UserForm::rbtnStoreManager_CheckedChanged);
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(44, 328);
+			this->label5->Location = System::Drawing::Point(21, 271);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(37, 16);
 			this->label5->TabIndex = 19;
@@ -459,11 +527,11 @@ namespace SalesView {
 				this->Id, this->Nombre,
 					this->Apellidos, this->Email, this->Teléfono
 			});
-			this->dgvCustomer->Location = System::Drawing::Point(47, 442);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370);
 			this->dgvCustomer->Name = L"dgvCustomer";
 			this->dgvCustomer->RowHeadersWidth = 51;
 			this->dgvCustomer->RowTemplate->Height = 24;
-			this->dgvCustomer->Size = System::Drawing::Size(654, 248);
+			this->dgvCustomer->Size = System::Drawing::Size(584, 248);
 			this->dgvCustomer->TabIndex = 20;
 			this->dgvCustomer->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UserForm::dgvCustomer_CellClick);
 			// 
@@ -506,7 +574,7 @@ namespace SalesView {
 			// 
 			this->GenBox->Controls->Add(this->rbtnFem);
 			this->GenBox->Controls->Add(this->rbtnMasc);
-			this->GenBox->Location = System::Drawing::Point(152, 220);
+			this->GenBox->Location = System::Drawing::Point(86, 191);
 			this->GenBox->Name = L"GenBox";
 			this->GenBox->Size = System::Drawing::Size(200, 34);
 			this->GenBox->TabIndex = 21;
@@ -515,19 +583,211 @@ namespace SalesView {
 			// ProfileBox
 			// 
 			this->ProfileBox->Controls->Add(this->rbtnStoreManager);
-			this->ProfileBox->Controls->Add(this->rbtnAnnoucer);
+			this->ProfileBox->Controls->Add(this->rbtnAnnouncer);
 			this->ProfileBox->Controls->Add(this->rbtnStudent);
-			this->ProfileBox->Location = System::Drawing::Point(152, 312);
+			this->ProfileBox->Location = System::Drawing::Point(86, 261);
 			this->ProfileBox->Name = L"ProfileBox";
-			this->ProfileBox->Size = System::Drawing::Size(455, 36);
+			this->ProfileBox->Size = System::Drawing::Size(455, 46);
 			this->ProfileBox->TabIndex = 22;
 			this->ProfileBox->TabStop = false;
 			// 
+			// Addresslb
+			// 
+			this->Addresslb->AutoSize = true;
+			this->Addresslb->Location = System::Drawing::Point(0, 11);
+			this->Addresslb->Name = L"Addresslb";
+			this->Addresslb->Size = System::Drawing::Size(64, 16);
+			this->Addresslb->TabIndex = 23;
+			this->Addresslb->Text = L"Dirección";
+			// 
+			// txtAdress
+			// 
+			this->txtAdress->Location = System::Drawing::Point(65, 11);
+			this->txtAdress->Name = L"txtAdress";
+			this->txtAdress->Size = System::Drawing::Size(339, 22);
+			this->txtAdress->TabIndex = 24;
+			// 
+			// Studentbx
+			// 
+			this->Studentbx->Controls->Add(this->txtCPoints);
+			this->Studentbx->Controls->Add(this->Pointslb);
+			this->Studentbx->Controls->Add(this->Addresslb);
+			this->Studentbx->Controls->Add(this->txtAdress);
+			this->Studentbx->Location = System::Drawing::Point(21, 300);
+			this->Studentbx->Name = L"Studentbx";
+			this->Studentbx->Size = System::Drawing::Size(404, 76);
+			this->Studentbx->TabIndex = 25;
+			this->Studentbx->TabStop = false;
+			this->Studentbx->Visible = false;
+			// 
+			// txtCPoints
+			// 
+			this->txtCPoints->Location = System::Drawing::Point(65, 41);
+			this->txtCPoints->Name = L"txtCPoints";
+			this->txtCPoints->Size = System::Drawing::Size(339, 22);
+			this->txtCPoints->TabIndex = 26;
+			// 
+			// Pointslb
+			// 
+			this->Pointslb->AutoSize = true;
+			this->Pointslb->Location = System::Drawing::Point(0, 41);
+			this->Pointslb->Name = L"Pointslb";
+			this->Pointslb->Size = System::Drawing::Size(48, 16);
+			this->Pointslb->TabIndex = 25;
+			this->Pointslb->Text = L"Puntos";
+			// 
+			// StoreManagerbx
+			// 
+			this->StoreManagerbx->Controls->Add(this->txtStatus);
+			this->StoreManagerbx->Controls->Add(this->txtAStore);
+			this->StoreManagerbx->Controls->Add(this->txtSalary);
+			this->StoreManagerbx->Controls->Add(this->Statuslb);
+			this->StoreManagerbx->Controls->Add(this->Storelb);
+			this->StoreManagerbx->Controls->Add(this->Salarylb);
+			this->StoreManagerbx->Controls->Add(this->txtGoal);
+			this->StoreManagerbx->Controls->Add(this->label8);
+			this->StoreManagerbx->Location = System::Drawing::Point(21, 300);
+			this->StoreManagerbx->Name = L"StoreManagerbx";
+			this->StoreManagerbx->Size = System::Drawing::Size(404, 132);
+			this->StoreManagerbx->TabIndex = 26;
+			this->StoreManagerbx->TabStop = false;
+			this->StoreManagerbx->Visible = false;
+			// 
+			// txtStatus
+			// 
+			this->txtStatus->Location = System::Drawing::Point(65, 101);
+			this->txtStatus->Name = L"txtStatus";
+			this->txtStatus->Size = System::Drawing::Size(339, 22);
+			this->txtStatus->TabIndex = 7;
+			// 
+			// txtAStore
+			// 
+			this->txtAStore->Location = System::Drawing::Point(65, 71);
+			this->txtAStore->Name = L"txtAStore";
+			this->txtAStore->Size = System::Drawing::Size(339, 22);
+			this->txtAStore->TabIndex = 6;
+			// 
+			// txtSalary
+			// 
+			this->txtSalary->Location = System::Drawing::Point(65, 41);
+			this->txtSalary->Name = L"txtSalary";
+			this->txtSalary->Size = System::Drawing::Size(339, 22);
+			this->txtSalary->TabIndex = 5;
+			// 
+			// Statuslb
+			// 
+			this->Statuslb->AutoSize = true;
+			this->Statuslb->Location = System::Drawing::Point(0, 101);
+			this->Statuslb->Name = L"Statuslb";
+			this->Statuslb->Size = System::Drawing::Size(50, 16);
+			this->Statuslb->TabIndex = 4;
+			this->Statuslb->Text = L"Estado";
+			// 
+			// Storelb
+			// 
+			this->Storelb->AutoSize = true;
+			this->Storelb->Location = System::Drawing::Point(0, 71);
+			this->Storelb->Name = L"Storelb";
+			this->Storelb->Size = System::Drawing::Size(65, 16);
+			this->Storelb->TabIndex = 3;
+			this->Storelb->Text = L"Tienda A.";
+			// 
+			// Salarylb
+			// 
+			this->Salarylb->AutoSize = true;
+			this->Salarylb->Location = System::Drawing::Point(0, 41);
+			this->Salarylb->Name = L"Salarylb";
+			this->Salarylb->Size = System::Drawing::Size(50, 16);
+			this->Salarylb->TabIndex = 2;
+			this->Salarylb->Text = L"Salario";
+			// 
+			// txtGoal
+			// 
+			this->txtGoal->Location = System::Drawing::Point(65, 11);
+			this->txtGoal->Name = L"txtGoal";
+			this->txtGoal->Size = System::Drawing::Size(339, 22);
+			this->txtGoal->TabIndex = 1;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(0, 11);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(52, 16);
+			this->label8->TabIndex = 0;
+			this->label8->Text = L"Meta A.";
+			// 
+			// Companylb
+			// 
+			this->Companylb->AutoSize = true;
+			this->Companylb->Location = System::Drawing::Point(0, 11);
+			this->Companylb->Name = L"Companylb";
+			this->Companylb->Size = System::Drawing::Size(69, 16);
+			this->Companylb->TabIndex = 0;
+			this->Companylb->Text = L"Compañía";
+			// 
+			// WebSitelb
+			// 
+			this->WebSitelb->AutoSize = true;
+			this->WebSitelb->Location = System::Drawing::Point(0, 41);
+			this->WebSitelb->Name = L"WebSitelb";
+			this->WebSitelb->Size = System::Drawing::Size(65, 16);
+			this->WebSitelb->TabIndex = 1;
+			this->WebSitelb->Text = L"Sitio Web";
+			// 
+			// Adslb
+			// 
+			this->Adslb->AutoSize = true;
+			this->Adslb->Location = System::Drawing::Point(0, 71);
+			this->Adslb->Name = L"Adslb";
+			this->Adslb->Size = System::Drawing::Size(62, 16);
+			this->Adslb->TabIndex = 2;
+			this->Adslb->Text = L"Anuncios";
+			// 
+			// txtCompanyName
+			// 
+			this->txtCompanyName->Location = System::Drawing::Point(65, 11);
+			this->txtCompanyName->Name = L"txtCompanyName";
+			this->txtCompanyName->Size = System::Drawing::Size(333, 22);
+			this->txtCompanyName->TabIndex = 3;
+			// 
+			// Announcerbx
+			// 
+			this->Announcerbx->Controls->Add(this->AdsImage);
+			this->Announcerbx->Controls->Add(this->txtWebSite);
+			this->Announcerbx->Controls->Add(this->txtCompanyName);
+			this->Announcerbx->Controls->Add(this->Adslb);
+			this->Announcerbx->Controls->Add(this->WebSitelb);
+			this->Announcerbx->Controls->Add(this->Companylb);
+			this->Announcerbx->Location = System::Drawing::Point(21, 300);
+			this->Announcerbx->Name = L"Announcerbx";
+			this->Announcerbx->Size = System::Drawing::Size(401, 155);
+			this->Announcerbx->TabIndex = 27;
+			this->Announcerbx->TabStop = false;
+			this->Announcerbx->Visible = false;
+			// 
+			// AdsImage
+			// 
+			this->AdsImage->Location = System::Drawing::Point(65, 71);
+			this->AdsImage->Name = L"AdsImage";
+			this->AdsImage->Size = System::Drawing::Size(159, 78);
+			this->AdsImage->TabIndex = 5;
+			this->AdsImage->TabStop = false;
+			// 
+			// txtWebSite
+			// 
+			this->txtWebSite->Location = System::Drawing::Point(65, 41);
+			this->txtWebSite->Name = L"txtWebSite";
+			this->txtWebSite->Size = System::Drawing::Size(333, 22);
+			this->txtWebSite->TabIndex = 4;
+			// 
 			// UserForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(781, 754);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
+			this->ClientSize = System::Drawing::Size(662, 633);
+			this->Controls->Add(this->Announcerbx);
+			this->Controls->Add(this->StoreManagerbx);
+			this->Controls->Add(this->Studentbx);
 			this->Controls->Add(this->ProfileBox);
 			this->Controls->Add(this->GenBox);
 			this->Controls->Add(this->dgvCustomer);
@@ -556,11 +816,9 @@ namespace SalesView {
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Location = System::Drawing::Point(47, 434);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"UserForm";
-			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Mantenimiento de usuarios";
 			this->Load += gcnew System::EventHandler(this, &UserForm::UserForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->EndInit();
@@ -569,20 +827,28 @@ namespace SalesView {
 			this->GenBox->PerformLayout();
 			this->ProfileBox->ResumeLayout(false);
 			this->ProfileBox->PerformLayout();
+			this->Studentbx->ResumeLayout(false);
+			this->Studentbx->PerformLayout();
+			this->StoreManagerbx->ResumeLayout(false);
+			this->StoreManagerbx->PerformLayout();
+			this->Announcerbx->ResumeLayout(false);
+			this->Announcerbx->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AdsImage))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label5_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
+    private: System::Void txtDocNumber_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		   }
 
 		   // Functions
 		   void ShowUsers() {
@@ -617,7 +883,7 @@ namespace SalesView {
 				   return 1;
 			   }
 			   if (txtEmail->Text->Trim() == "") {
-				   MessageBox::Show("La email del usuario no debe estar vacío.");
+				   MessageBox::Show("El email del usuario no debe estar vacío.");
 				   return 1;
 			   }
 			   if (txtUser->Text->Trim() == "") {
@@ -636,9 +902,25 @@ namespace SalesView {
 				   MessageBox::Show("Debe elegir un género.");
 				   return 1;
 			   }
-			   if (!(rbtnStudent->Checked || rbtnAnnoucer->Checked || rbtnStoreManager->Checked)) {
+			   if (!(rbtnStudent->Checked || rbtnAnnouncer->Checked || rbtnStoreManager->Checked)) {
 				   MessageBox::Show("Debe elegir un perfil.");
 				   return 1;
+			   }
+
+			   // According to Profile
+			   if (rbtnStudent->Checked) {
+				   if (txtAdress->Text->Trim() == "") MessageBox::Show("La dirección del cliente no debe estar vacía.");
+				   if (txtCPoints->Text->Trim() == "") MessageBox::Show("Los puntos de cliente no deben estar vacíos.");
+			   }
+			   if (rbtnStoreManager->Checked) {
+				   if (txtGoal->Text->Trim() == "") MessageBox::Show("La meta del jefe de venta no debe estar vacía.");
+				   if (txtSalary->Text->Trim() == "") MessageBox::Show("El salario del jefe de venta no debe estar vacío.");
+				   if (txtAStore->Text->Trim() == "") MessageBox::Show("La tienda del jefe de venta no debe estar vacía.");
+				   if (txtStatus->Text->Trim() == "") MessageBox::Show("El estado del jefe de venta no debe estar vacío.");
+			   }
+			   if (rbtnAnnouncer->Checked) {
+				   if (txtCompanyName->Text->Trim() == "") MessageBox::Show("El nombre de la compañía no debe estar vacío.");
+				   if (txtWebSite->Text->Trim() == "") MessageBox::Show("El enlace del sitio web no debe estar vacío.");
 			   }
 			   return 0;
 		   }
@@ -651,19 +933,54 @@ namespace SalesView {
 			   txtUser->Clear();
 			   txtPassword->Clear();
 			   txtPhoneNumber->Clear();
+			   txtAdress->Clear();
+			   txtCPoints->Clear();
+			   txtGoal->Clear();
+			   txtSalary->Clear();
+			   txtAStore->Clear();
+			   txtStatus->Clear();
+			   txtCompanyName->Clear();
+			   txtWebSite->Clear();
 
 			   // rbtn
 			   rbtnMasc->Checked = false;
 			   rbtnFem->Checked = false;
 			   rbtnStudent->Checked = false;
-			   rbtnAnnoucer->Checked = false;
+			   rbtnAnnouncer->Checked = false;
 			   rbtnStoreManager->Checked = false;
 			   pbCustomer->Image = nullptr;
 
 			   // Date
 			   dtpBirthday->Value = DateTime::Today;
 		   }
-		   void PutOnData(Person^ user) {
+		   Person^ PutOnData() {
+
+			   Person^ user;
+			   // Profile
+			   if (rbtnStudent->Checked) {
+				   user = gcnew Customer();
+				   user->Profile = 'S';
+				   safe_cast<Customer^>(user)->CustomerPoints = Convert::ToInt32(txtCPoints->Text);
+				   safe_cast<Customer^>(user)->Address = txtAdress->Text;
+			   }
+			   else if (rbtnStoreManager->Checked) {
+				   user = gcnew StoreManager();
+				   user->Profile = 'M';
+				   safe_cast<StoreManager^>(user)->Goals = txtGoal->Text;
+				   safe_cast<StoreManager^>(user)->Salary = txtSalary->Text;
+				   safe_cast<StoreManager^>(user)->Store = txtAStore->Text;
+				   safe_cast<StoreManager^>(user)->Status = txtStatus->Text;
+			   }
+			   else {
+				   user = gcnew Announcer();
+				   user->Profile = 'A';
+				   safe_cast<Announcer^>(user)->CompanyName = txtCompanyName->Text;
+				   safe_cast<Announcer^>(user)->WebSiteLink = txtWebSite->Text;
+				   safe_cast<Announcer^>(user)->AdInSistem = false;
+				   safe_cast<Announcer^>(user)->NumberPictureBox = 0;
+
+			   }
+
 			   user->Id = Convert::ToInt32(txtCustomerId->Text);
 			   user->DocNumber = txtDocNumber->Text;
 			   user->Name = txtCustomerName->Text;
@@ -677,21 +994,22 @@ namespace SalesView {
 			   if (rbtnMasc->Checked) user->Gender = 'M';
 			   else user->Gender = 'F';
 
-			   // Profile
-			   if (rbtnStudent->Checked) user->Profile = 'S';
-			   else if (rbtnStoreManager->Checked) user->Profile = 'M';
-			   else user->Profile = 'A';
-
 			   // BirthDay
 			   String^ birthday = Convert::ToString(dtpBirthday->Value);
 			   user->Birthday = birthday;
 
 			   // Image
+			   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			   if (pbCustomer != nullptr && pbCustomer->Image != nullptr) {
-				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 				   pbCustomer->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 				   user->Photo = ms->ToArray();
 			   }
+			   else {
+				   pbCustomer->InitialImage->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+				   user->Photo = ms->ToArray();
+			   }
+
+			   return user;
 		   }
 
 		   // CRUD
@@ -715,11 +1033,12 @@ namespace SalesView {
 
 
 		// Save Data
-		Person^ user = gcnew Person();
-		PutOnData(user);
-
+		Person^ user;
+		if (rbtnStudent->Checked) user = gcnew Customer();
+		else if (rbtnStoreManager->Checked) user = gcnew StoreManager();
+		else user = gcnew Announcer();
+		user = PutOnData();
 		Controller::AddUser(user);
-
 		CleanControls();
 		ShowUsers();
 	}
@@ -730,9 +1049,11 @@ namespace SalesView {
 		if (returned == 1) return;
 
 		// Make Person
-		Person^ user = gcnew Person();
-		PutOnData(user);
-
+		Person^ user;
+		if (rbtnStudent->Checked) user = gcnew Customer();
+		else if (rbtnStoreManager->Checked) user = gcnew StoreManager();
+		else user = gcnew Announcer();
+		user = PutOnData();
 		Controller::UpdateUser(user);
 		CleanControls();
 		ShowUsers();
@@ -765,7 +1086,7 @@ namespace SalesView {
 		// Profile
 		if (p->Profile == 'S') rbtnStudent->Checked = true;
 		else if (p->Profile == 'M') rbtnStoreManager->Checked = true;
-		else rbtnAnnoucer->Checked = true;
+		else rbtnAnnouncer->Checked = true;
 
 		// Date
 		dtpBirthday->Value = Convert::ToDateTime( p->Birthday);
@@ -774,18 +1095,144 @@ namespace SalesView {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 			pbCustomer->Image = Image::FromStream(ms);
 		}
-		else {
-			pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\resources\\UserPictures\\Default.png");
-		}
+		/*else {
+			pbCustomer->Image = gcnew Bitmap("resources/UserPictures/Default.png");
+		}*/
 	}
 	private: System::Void btnUpdatePhoto_Click(System::Object^ sender, System::EventArgs^ e) {
 				OpenFileDialog^ opnfd = gcnew OpenFileDialog();
 				opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
 				if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
-				else pbCustomer->Image = gcnew Bitmap("D:\\PUCP\\LPOO\\PROYECTO\\PCS\\PC3\\Vetto\\resources\\UserPictures\\Default.png");
+				/*else pbCustomer->Image = gcnew Bitmap("resources/UserPictures/Default.png");*/
 			}
 	private: System::Void UserForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowUsers();
 	}
-	};
+		   
+		   //Rbtn Profile
+	private: System::Void rbtnStudent_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		
+		// Remember not to put FONT in AutoSize/AutoScale
+		// Profile Student +55
+		if (rbtnStudent->Checked) {
+
+			// Change Size (X,Y+55)
+			this->ClientSize = System::Drawing::Size(680-18, 680-47+55);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324+55);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324+55);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324+55);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370+55);
+
+			// Add Direction
+			Studentbx->Visible = true;
+			StoreManagerbx->Visible = false;
+			Announcerbx->Visible = false;
+		}
+		else {
+			// Change Size (X,Y)
+			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370);
+
+			// Add Direction
+			Studentbx->Visible = false;
+			StoreManagerbx->Visible = false;
+			Announcerbx->Visible = false;
+		}
+
+		/*// Profile Annoucer
+		if (rbtnAnnoucer->Checked) {
+
+			// Change Size (X,Y+55)
+			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47 + 55);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324 + 55);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324 + 55);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324 + 55);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370 + 55);
+
+			// Add Direction
+			Studentbx->Visible = true;
+
+		}
+		else {
+			// Change Size (X,Y+100)
+			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370);
+
+			// Add Direction
+			Studentbx->Visible = false;
+		}*/
+	}
+    private: System::Void rbtnStoreManager_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	// Profile Store Manager +110
+	if (rbtnStoreManager->Checked) {
+		// Change Size (X,Y+110)
+		this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47 + 110);
+		// Move Elemets
+		this->AddUser->Location = System::Drawing::Point(86, 324 + 110);
+		this->UpdateUser->Location = System::Drawing::Point(234, 324 + 110);
+		this->DeleteUser->Location = System::Drawing::Point(390, 324 + 110);
+		this->dgvCustomer->Location = System::Drawing::Point(24, 370 + 110);
+
+		// Add Direction
+		StoreManagerbx->Visible = true;
+		Studentbx->Visible = false;
+		Announcerbx->Visible = false;
+	}
+	else {
+		// Change Size (X,Y+100)
+		this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47);
+		// Move Elemets
+		this->AddUser->Location = System::Drawing::Point(86, 324);
+		this->UpdateUser->Location = System::Drawing::Point(234, 324);
+		this->DeleteUser->Location = System::Drawing::Point(390, 324);
+		this->dgvCustomer->Location = System::Drawing::Point(24, 370);
+
+		// Add Direction
+		Studentbx->Visible = false;
+		StoreManagerbx->Visible = false;
+		Announcerbx->Visible = false;
+	}
+}
+	private: System::Void rbtnAnnouncer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		// Profile Announcer +110+27=+137
+		if (rbtnAnnouncer->Checked) {
+			// Change Size (X,Y+137)
+			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47 + 137);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324 + 137);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324 + 137);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324 + 137);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370 + 137);
+
+			// Add Direction
+			Announcerbx->Visible = true;
+			StoreManagerbx->Visible = false;
+			Studentbx->Visible = false;
+		}
+		else {
+			// Change Size (X,Y+100)
+			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47);
+			// Move Elemets
+			this->AddUser->Location = System::Drawing::Point(86, 324);
+			this->UpdateUser->Location = System::Drawing::Point(234, 324);
+			this->DeleteUser->Location = System::Drawing::Point(390, 324);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 370);
+
+			// Add Direction
+			Studentbx->Visible = false;
+			StoreManagerbx->Visible = false;
+			Announcerbx->Visible = false;
+		}
+}
+};
 }
