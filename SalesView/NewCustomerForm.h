@@ -446,6 +446,8 @@ namespace SalesView {
 		p->Email = txtEmail->Text;
 		p->PhoneNumber = txtPhoneNumber->Text;
 		p->Birthday = dtpBirthday->Value.ToString();
+		p->Password = txtPassword->Text;
+		p->Username = txtUsername->Text;
 		
 		/*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
 			txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
@@ -458,7 +460,7 @@ namespace SalesView {
 			   return;
 		   }
 
-		  Controller::AddNewCustomer(p);
+		  Controller::AddCustomer(p);
 		   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
 		   this->Close();
 		
