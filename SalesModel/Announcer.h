@@ -13,8 +13,8 @@ namespace SalesModel {
         property String^ WebSiteLink;
         property String^ CompanyName;
         property array<Byte>^ Ad;
-        property Boolean AdInSistem;
-        property int NumberPictureBox;
+        property Boolean AdInSistem ;
+        property int NumberPictureBox ;
 
     };
 }
