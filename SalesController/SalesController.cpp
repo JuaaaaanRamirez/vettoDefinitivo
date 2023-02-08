@@ -78,6 +78,7 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
 
 Person^ SalesController::Controller::Login(String^ username, String^ password)
 {
+    /*
     Person^ person;
     if (username == "jbaldeon" && password == "password") {
         person = gcnew Person();
@@ -90,21 +91,24 @@ Person^ SalesController::Controller::Login(String^ username, String^ password)
         //person->Salary = 4500;
         person->Username = "jbaldeon";
     }
-    return person;
+
+    return person;*/
+    return QueryCustomerByCredentials(username, password);
+
 
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucci�n "return" aqu�
 }
 
-int SalesController::Controller::AddNewCustomer(Customer^ customer)
+int SalesController::Controller::AddCustomer(Customer^ customer)
 {
 
-    customer->Id = 1;
+    customer->Id = 3;
     //ver que no se repita el id d eproduct ingresante
     CustomerList->Add(customer);
     Persistance::PersistBinary("customer.bin", CustomerList);
-    return Int32(customer->Id);
-    return 0;
+    //return Int32(customer->Id);
+    return 1;
 }
 
 // For Person (Users)
@@ -147,5 +151,35 @@ int SalesController::Controller::DeleteUser(int userId)
             return userId;
         }
     return 0;
+}
+
+List<Customer^>^ SalesController::Controller::QueryAllCustomer()
+{
+    List<Customer^>^ activeCustomerList = gcnew List<Customer^>();
+    for (int i = 0; i < personList->Count; i++) {
+        if ( personList[i]->GetType() == Customer::typeid) {
+            activeCustomerList->Add((Customer^)personList[i]);
+        }
+    }
+    return activeCustomerList;
+    
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ username, String^ password)
+{
+
+    CustomerList = (List<Customer^>^)Persistance::LoadBinaryData("customer.bin");
+    for (int i = 0; i < CustomerList->Count; i++) {
+        if (CustomerList[i]->Username->Equals(username) &&
+            CustomerList[i]->Password->Equals(password)) {
+            return CustomerList[i];
+        }
+    }
+    return nullptr;
+    
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
 }
 

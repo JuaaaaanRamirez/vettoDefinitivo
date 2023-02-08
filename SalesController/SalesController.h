@@ -51,7 +51,7 @@ namespace SalesController {
 
 		static Person^ Login(String^ username, String^ password);
 
-		static int AddNewCustomer(Customer^ customer);
+		static int AddCustomer(Customer^ customer);
 		
 
 		//JULIO
@@ -65,7 +65,8 @@ namespace SalesController {
 		//static List<Person^>^ QueryUsersByNameOrLName(String^ nameLast);
 
 		//static List<Person^>^ QueryUsersByNickNameOrPhoneNumber(String^ namePhone);
-
+		static List<Customer^>^ QueryAllCustomer();
+		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
 
 	};
 }
