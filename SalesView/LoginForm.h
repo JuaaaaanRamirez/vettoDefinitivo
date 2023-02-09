@@ -16,13 +16,15 @@ namespace SalesView {
 	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
+		Form^ refForm; //Variable de instancia
 	public:
-		LoginForm(void)
+		LoginForm(Form^ form)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			refForm = form;
 		}
 
 	protected:

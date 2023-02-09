@@ -162,13 +162,32 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
             
         }
     }
-    
+   
     
     return activeCustomerList;
     
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucción "return" aquí
 }
+
+List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer()
+{
+    List<Announcer^>^ activeAnnouncerList = gcnew List<Announcer^>();
+
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->GetType() == Customer::typeid) {
+            activeAnnouncerList->Add((Announcer^)personList[i]);
+
+        }
+    }
+
+
+    return activeAnnouncerList;
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
 
 Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ username, String^ password)
 {

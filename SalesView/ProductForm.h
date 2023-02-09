@@ -269,6 +269,7 @@ namespace SalesView {
 			this->pbPhoto->Location = System::Drawing::Point(586, 12);
 			this->pbPhoto->Name = L"pbPhoto";
 			this->pbPhoto->Size = System::Drawing::Size(290, 282);
+			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbPhoto->TabIndex = 15;
 			this->pbPhoto->TabStop = false;
 			// 

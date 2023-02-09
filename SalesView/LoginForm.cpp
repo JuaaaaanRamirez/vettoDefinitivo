@@ -17,6 +17,8 @@ System::Void SalesView::LoginForm::button1_Click(System::Object^ sender, System:
 	Person^ emp = Controller::Login(txtUsername->Text, txtPassword->Text);
 	if (emp != nullptr) {
 		MessageBox::Show("Bienvenido " + emp->Name);
+
+		((SalesMainForm^)refForm)->SalesMainForm::subirAnuncioToolStripMenuItem->Visible = true;
 		SalesMainForm::person = emp;
 		/*
 		if (emp->GetType() == Salesman::typeid) {
@@ -29,6 +31,7 @@ System::Void SalesView::LoginForm::button1_Click(System::Object^ sender, System:
 			SalesMainForm::employee = (StoreManager^)emp;
 		}
 		*/
+		
 		this->Close();
 	}
 	else {

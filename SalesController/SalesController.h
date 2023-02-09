@@ -16,7 +16,7 @@ namespace SalesController {
 		static List<Person^>^ personList = gcnew List<Person^>();		// List of people
 		
 		static List<Customer^>^ CustomerList = gcnew List<Customer^>();
-		static List<Announcer^>^ AnnounceRList = gcnew List<Announcer^>();
+		static List<Announcer^>^ AnnouncerList = gcnew List<Announcer^>();
 		static List<StoreManager^>^ StoreManagerList = gcnew List<StoreManager^>();
 
 		static array<String^>^ carrerArr = { " mecatronica ", " civil ", " industrial ", " informatica ", " arquitectura ", " electronica ", " fisica " }; // Arreglo de carreras como cadenas de texto.
@@ -66,6 +66,7 @@ namespace SalesController {
 
 		//static List<Person^>^ QueryUsersByNickNameOrPhoneNumber(String^ namePhone);
 		static List<Customer^>^ QueryAllCustomer();
+		static List<Announcer^>^ QueryAllAnnouncer();
 		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
 		static Person^ QueryPersonByCredentials(String^ username, String^ password);
 		static int FindNewId(Person^ user);
