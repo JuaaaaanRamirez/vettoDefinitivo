@@ -89,6 +89,8 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+	private: System::Windows::Forms::Button^ btClear;
+
 
 
 
@@ -146,6 +148,7 @@ namespace SalesView {
 			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btClear = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
@@ -367,12 +370,23 @@ namespace SalesView {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
 			// 
+			// btClear
+			// 
+			this->btClear->Location = System::Drawing::Point(427, 35);
+			this->btClear->Name = L"btClear";
+			this->btClear->Size = System::Drawing::Size(134, 41);
+			this->btClear->TabIndex = 19;
+			this->btClear->Text = L"Limpiar textos e imagen";
+			this->btClear->UseVisualStyleBackColor = true;
+			this->btClear->Click += gcnew System::EventHandler(this, &ProductForm::button2_Click);
+			// 
 			// ProductForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1278, 609);
+			this->ClientSize = System::Drawing::Size(1299, 609);
+			this->Controls->Add(this->btClear);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->txtPriceMaj);
 			this->Controls->Add(this->label7);
@@ -463,6 +477,8 @@ namespace SalesView {
 		}
 
 		CleanControls();
+		MessageBox::Show("Se agrego el producto exitosamente");
+	
 		ShowProducts();
 	}
 
@@ -490,6 +506,7 @@ namespace SalesView {
 		   }
 
 		   void CleanControls() {
+			   txtProductId->ReadOnly = false;
 			   txtProductId->Clear();
 			   txtName->Clear();
 			   txtDescription->Clear();
@@ -570,12 +587,16 @@ namespace SalesView {
 		}
 
 		CleanControls();
+		MessageBox::Show("Se modifico el producto exitosamente");
+		
 		ShowProducts();
 	}
 	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
 		int ID = Convert::ToInt32(txtProductId->Text);
 		Controller::DeleteProduct(ID);
 		CleanControls();
+		MessageBox::Show("Eliminacion exitosa");
+		
 		ShowProducts();
 	}
 	private: System::Void btnSetImage_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -592,9 +613,12 @@ namespace SalesView {
 		int selectedRowIndex = dgvProducts->SelectedCells[0]->RowIndex;
 		if (dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value == nullptr) {
 			CleanControls();
+			txtProductId->ReadOnly = false;
 			Controller::RelationatedCareers->Clear();
 			return;
 		}
+		txtProductId->ReadOnly = true;
+
 		int productId = Convert::ToInt32(dgvProducts->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 		Product^ p = Controller::QueryProductById(productId);
 		txtProductId->Text = "" + p->Id;
@@ -625,5 +649,9 @@ namespace SalesView {
 	}
 
 
-	};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		CleanControls();
+		Controller::RelationatedCareers->Clear();
+	}
+};
 }

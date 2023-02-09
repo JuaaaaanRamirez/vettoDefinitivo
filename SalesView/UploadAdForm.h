@@ -96,12 +96,13 @@ namespace SalesView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(221, 344);
+			this->button2->Location = System::Drawing::Point(209, 333);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(143, 44);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"Eliminar mi anuncio";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &UploadAdForm::button2_Click);
 			// 
 			// pbPhoto
 			// 
@@ -170,5 +171,6 @@ private: System::Void UploadAdForm_Load(System::Object^ sender, System::EventArg
 	
 
 
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

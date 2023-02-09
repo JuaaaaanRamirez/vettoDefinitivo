@@ -155,6 +155,7 @@ int SalesController::Controller::DeleteUser(int userId)
 
 List<Customer^>^ SalesController::Controller::QueryAllCustomer()
 {
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     List<Customer^>^ activeCustomerList = gcnew List<Customer^>();
     for (int i = 0; i < personList->Count; i++) {
         if ( personList[i]->GetType() == Customer::typeid) {
@@ -170,12 +171,12 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
     // TODO: Insertar una instrucción "return" aquí
 }
 
-List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer()
-{
+List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer(){
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     List<Announcer^>^ activeAnnouncerList = gcnew List<Announcer^>();
 
     for (int i = 0; i < personList->Count; i++) {
-        if (personList[i]->GetType() == Customer::typeid) {
+        if (personList[i]->GetType() == Announcer::typeid) {
             activeAnnouncerList->Add((Announcer^)personList[i]);
 
         }

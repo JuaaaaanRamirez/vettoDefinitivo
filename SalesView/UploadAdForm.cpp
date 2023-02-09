@@ -26,8 +26,9 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 					((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 					
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 					break;
 				case 2: ((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image = gcnew Bitmap(opnfd->FileName);
@@ -35,8 +36,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 					((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 					break;
 				case 3: ((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image = gcnew Bitmap(opnfd->FileName);
@@ -44,8 +45,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 					((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 					break;
 				case 4: ((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image = gcnew Bitmap(opnfd->FileName);
@@ -53,8 +54,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 					((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 					break;
 				default:
@@ -72,8 +73,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					anoun->NumberPictureBox = 1;
 					anoun->AdInSistem = true;
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 				}
 				else if (((SalesMainForm^)refForm)->SalesMainForm::Ad2 == nullptr || ((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image == nullptr) {
@@ -85,8 +86,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					anoun->NumberPictureBox = 2;
 					anoun->AdInSistem = true;
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 				}
 				else if (((SalesMainForm^)refForm)->SalesMainForm::Ad3 == nullptr || ((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image == nullptr) {
@@ -98,8 +99,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					anoun->NumberPictureBox = 3;
 					anoun->AdInSistem = true;
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 				}
 				else if (((SalesMainForm^)refForm)->SalesMainForm::Ad4 == nullptr || ((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image == nullptr) {
@@ -111,8 +112,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					anoun->NumberPictureBox = 4;
 					anoun->AdInSistem = true;
-					SalesMainForm::person = anoun;
-					Controller::AddUser(anoun);
+					SalesMainForm::person = (Person^)anoun;
+					Controller::UpdateUser((Person^)anoun);
 					this->Close();
 				}
 				else {
@@ -136,5 +137,39 @@ System::Void SalesView::UploadAdForm::UploadAdForm_Load(System::Object^ sender, 
 	else {
 		pbPhoto->Image = nullptr;
 		pbPhoto->Invalidate();
+	}
+}
+
+System::Void SalesView::UploadAdForm::button2_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Announcer^ Announ_aux = gcnew Announcer();
+	Announ_aux = (Announcer^)(SalesMainForm::person);
+	int aux = 0;
+	if (Announ_aux->AdInSistem) {
+		switch (Announ_aux->NumberPictureBox) {
+		case 1: ((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image = nullptr;
+			aux = 1;
+			break;
+		case 2: ((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image = nullptr;
+			aux = 1;
+			break;
+		case 3: ((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image = nullptr;
+			aux = 1;
+			break;
+		case 4: ((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image = nullptr;
+			aux = 1;
+			break;
+		default:
+			break;
+		}
+		
+	}
+	if (aux == 1) {
+		pbPhoto->Image = nullptr;
+		Announ_aux->Ad = nullptr;
+		Announ_aux->AdInSistem = false;
+		Announ_aux->NumberPictureBox = 0;
+		SalesMainForm::person = (Person^)Announ_aux;
+		Controller::UpdateUser((Person^)Announ_aux);
 	}
 }

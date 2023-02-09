@@ -772,9 +772,27 @@ private: System::Windows::Forms::Label^ label8;
 	}
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		subirAnuncioToolStripMenuItem-> Visible = false;
-		//List<Announcer^>^ AnounList = gcnew List<Announcer^>();
-		//AnounList=QueryAll
+		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
+		AnounList = Controller::QueryAllAnnouncer();
+		for (int i = 0; i < AnounList->Count; i++) {
+			if (AnounList[i]->AdInSistem) {
 
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
+				switch (AnounList[i]->NumberPictureBox) {
+					case 1: Ad1->Image = Image::FromStream(ms);
+						break;
+					case 2: Ad2->Image = Image::FromStream(ms);
+						break;
+					case 3: Ad3->Image = Image::FromStream(ms);
+						break;
+					case 4: Ad4->Image = Image::FromStream(ms);
+						break;
+					default:
+						break;
+				}
+				
+			}
+		}
 	}
 	private: System::Void Homebtn_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
