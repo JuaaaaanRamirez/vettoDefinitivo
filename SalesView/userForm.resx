@@ -121,7 +121,7 @@
   <data name="pbCustomer.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABDgAAAQ4CAYAAADsEGyPAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAADN0RVh0Q29tbWVudAB4cjpkOkRBRloyV2JIc0JvOjEzLGo6MzI0OTc0ODE3NCx0
+        cQAAEnEB89x6jgAAADN0RVh0Q29tbWVudAB4cjpkOkRBRloyV2JIc0JvOjEzLGo6MzI0OTc0ODE3NCx0
         OjIzMDIwNzAzLv+1YgAA/3NJREFUeF7s3XeUFMUe9//nr+f8nnuvCqiAYkTMmQwSBIkCSpAMgkiOkqMR
         CYIBAyAIkpMkBUkKEsSA5CxBQHJml4UlLGz96L2tF/ADG6Z6pnv2/Tnndc49dXF3uqf6O1W109X/51IM
         AAAAAABAwMlGAAAAAACAIJGNAAAAAAAAQSIbAQAAAAAAgkQ2AgAAAAAABIlsBAAAAAAACBLZCAAAAAAA
@@ -1745,4 +1745,7 @@
         NH0pKVcPNA4dgs8ztUc7Dzhefrya+f+FDkij6zSW8AAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
