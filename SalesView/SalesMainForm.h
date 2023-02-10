@@ -117,7 +117,9 @@ namespace SalesView {
 public: System::Windows::Forms::Button^ btnLogin;
 public:
 public: System::Windows::Forms::Label^ Userlb;
-public:
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	public:
+	public:
 
 public:
 
@@ -185,6 +187,7 @@ public:
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->btnLogin = (gcnew System::Windows::Forms::Button());
 			this->Userlb = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
@@ -652,12 +655,21 @@ public:
 			this->Userlb->TabIndex = 68;
 			this->Userlb->Text = L"Invitado";
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(166, 125);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->TabIndex = 69;
+			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->ClientSize = System::Drawing::Size(1362, 633);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->Userlb);
 			this->Controls->Add(this->btnLogin);
 			this->Controls->Add(this->label8);
