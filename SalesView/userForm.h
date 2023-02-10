@@ -909,18 +909,18 @@ namespace SalesView {
 
 			   // According to Profile
 			   if (rbtnStudent->Checked) {
-				   if (txtAdress->Text->Trim() == "") MessageBox::Show("La dirección del cliente no debe estar vacía.");
-				   if (txtCPoints->Text->Trim() == "") MessageBox::Show("Los puntos de cliente no deben estar vacíos.");
+				   if (txtAdress->Text->Trim() == "") { MessageBox::Show("La dirección del cliente no debe estar vacía."); return 1; }
+				   if (txtCPoints->Text->Trim() == "") { MessageBox::Show("Los puntos de cliente no deben estar vacíos."); return 1; }
 			   }
 			   if (rbtnStoreManager->Checked) {
-				   if (txtGoal->Text->Trim() == "") MessageBox::Show("La meta del jefe de venta no debe estar vacía.");
-				   if (txtSalary->Text->Trim() == "") MessageBox::Show("El salario del jefe de venta no debe estar vacío.");
-				   if (txtAStore->Text->Trim() == "") MessageBox::Show("La tienda del jefe de venta no debe estar vacía.");
-				   if (txtStatus->Text->Trim() == "") MessageBox::Show("El estado del jefe de venta no debe estar vacío.");
+				   if (txtGoal->Text->Trim() == "") { MessageBox::Show("La meta del jefe de venta no debe estar vacía."); return 1; }
+				   if (txtSalary->Text->Trim() == "") { MessageBox::Show("El salario del jefe de venta no debe estar vacío."); return 1;}
+				   if (txtAStore->Text->Trim() == "") { MessageBox::Show("La tienda del jefe de venta no debe estar vacía."); return 1; }
+				   if (txtStatus->Text->Trim() == "") { MessageBox::Show("El estado del jefe de venta no debe estar vacío."); return 1; }
 			   }
 			   if (rbtnAnnouncer->Checked) {
-				   if (txtCompanyName->Text->Trim() == "") MessageBox::Show("El nombre de la compañía no debe estar vacío.");
-				   if (txtWebSite->Text->Trim() == "") MessageBox::Show("El enlace del sitio web no debe estar vacío.");
+				   if (txtCompanyName->Text->Trim() == "") { MessageBox::Show("El nombre de la compañía no debe estar vacío."); return 1; }
+				   if (txtWebSite->Text->Trim() == "") { MessageBox::Show("El sitio web no debe estar vacío."); return 1; }
 			   }
 			   return 0;
 		   }
