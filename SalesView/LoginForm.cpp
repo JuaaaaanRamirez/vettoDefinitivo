@@ -3,7 +3,7 @@
 #include "SalesMainForm.h"
 
 
-System::Void SalesView::LoginForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	if (txtUsername->Text->Trim() == "") {
 		MessageBox::Show("Ingrese su el nombre de usuario");
@@ -17,6 +17,20 @@ System::Void SalesView::LoginForm::button1_Click(System::Object^ sender, System:
 	Person^ emp = Controller::Login(txtUsername->Text, txtPassword->Text);
 	if (emp != nullptr) {
 		MessageBox::Show("Bienvenido " + emp->Name);
+
+		// Change Label Text
+		if (emp->Profile == 'S') {
+			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Estudiante " + emp->Name;
+		}
+		else if (emp->Profile == 'M') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Jefe de Ventas " + emp->Name;
+		else if (emp->Profile == 'A') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Anunciante " + emp->Name;
+		
+		// Put Imagen
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(emp->Photo);
+		((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
+
+		//SalesMainForm::person = emp;
+
 
 		((SalesMainForm^)refForm)->SalesMainForm::subirAnuncioToolStripMenuItem->Visible = true;
 		SalesMainForm::person = emp;
