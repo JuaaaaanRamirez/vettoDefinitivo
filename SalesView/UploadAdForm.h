@@ -45,10 +45,11 @@ namespace SalesView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::PictureBox^ pbPhoto;
+	private: System::Windows::Forms::Label^ AdLb;
 
 
 
-	private: System::Windows::Forms::Label^ label1;
+
 
 	protected:
 
@@ -71,15 +72,15 @@ namespace SalesView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->AdLb = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btUpImage
 			// 
-			this->btUpImage->Location = System::Drawing::Point(79, 263);
+			this->btUpImage->Location = System::Drawing::Point(40, 246);
 			this->btUpImage->Name = L"btUpImage";
-			this->btUpImage->Size = System::Drawing::Size(319, 37);
+			this->btUpImage->Size = System::Drawing::Size(320, 40);
 			this->btUpImage->TabIndex = 1;
 			this->btUpImage->Text = L"Cargar Nuevo Anuncio";
 			this->btUpImage->UseVisualStyleBackColor = true;
@@ -87,47 +88,48 @@ namespace SalesView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(79, 344);
+			this->button1->Location = System::Drawing::Point(160, 340);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(80, 30);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Salir";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(209, 333);
+			this->button2->Location = System::Drawing::Point(40, 292);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(143, 44);
+			this->button2->Size = System::Drawing::Size(320, 40);
 			this->button2->TabIndex = 3;
-			this->button2->Text = L"Eliminar mi anuncio";
+			this->button2->Text = L"Eliminar  anuncio";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &UploadAdForm::button2_Click);
 			// 
 			// pbPhoto
 			// 
-			this->pbPhoto->Location = System::Drawing::Point(79, 50);
+			this->pbPhoto->Location = System::Drawing::Point(40, 40);
 			this->pbPhoto->Name = L"pbPhoto";
-			this->pbPhoto->Size = System::Drawing::Size(319, 185);
+			this->pbPhoto->Size = System::Drawing::Size(320, 200);
 			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbPhoto->TabIndex = 4;
 			this->pbPhoto->TabStop = false;
 			// 
-			// label1
+			// AdLb
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(42, 22);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(94, 16);
-			this->label1->TabIndex = 5;
-			this->label1->Text = L"Anuncio actual";
+			this->AdLb->AutoSize = true;
+			this->AdLb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold));
+			this->AdLb->Location = System::Drawing::Point(123, 15);
+			this->AdLb->Name = L"AdLb";
+			this->AdLb->Size = System::Drawing::Size(133, 20);
+			this->AdLb->TabIndex = 5;
+			this->AdLb->Text = L"Anuncio actual";
 			// 
 			// UploadAdForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(463, 423);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(402, 373);
+			this->Controls->Add(this->AdLb);
 			this->Controls->Add(this->pbPhoto);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
