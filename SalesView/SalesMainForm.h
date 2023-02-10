@@ -3,11 +3,10 @@
 #include "ProductForm.h"
 #include "ProductListForm.h"
 #include "ProductForm.h"
-
 #include "LoginForm.h"
-
 #include "UploadAdForm.h"
-#include "userForm.h"
+#include "UserForm.h"
+#include "StadisticReportForm.h"
 
 
 namespace SalesView {
@@ -68,34 +67,18 @@ namespace SalesView {
 	private: System::Windows::Forms::ToolStripMenuItem^ ayudaToolStripMenuItem;
 
 
-	private: System::Windows::Forms::Button^ btnLogin1;
-
-
-
-
-
-
-
-
-
-
 	public: System::Windows::Forms::PictureBox^ Ad1;
 	public: System::Windows::Forms::PictureBox^ Ad2;
 	public: System::Windows::Forms::PictureBox^ Ad3;
 	public: System::Windows::Forms::PictureBox^ Ad4;
 
-
-
-
-
-
-
-	private: System::Windows::Forms::Label^ Presentation;
 	private: System::Windows::Forms::ToolStripMenuItem^ estadistidcasDeVentasToolStripMenuItem;
 	public: System::Windows::Forms::ToolStripMenuItem^ subirAnuncioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ usuariosToolStripMenuItem;
-	private: System::Windows::Forms::Label^ UserLabel;
-	private: System::Windows::Forms::PictureBox^ pictureBox17;
+
+	private: System::Windows::Forms::PictureBox^ AppPictureBox;
+	public:
+
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
@@ -127,7 +110,15 @@ namespace SalesView {
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label8;
+
+
+public: System::Windows::Forms::Button^ btnLogin;
+public:
+public: System::Windows::Forms::Label^ Userlb;
+public:
+
+public:
 
 
 
@@ -160,14 +151,11 @@ private: System::Windows::Forms::Label^ label8;
 			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estadistidcasDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->btnLogin1 = (gcnew System::Windows::Forms::Button());
 			this->Ad1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad2 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad4 = (gcnew System::Windows::Forms::PictureBox());
-			this->Presentation = (gcnew System::Windows::Forms::Label());
-			this->UserLabel = (gcnew System::Windows::Forms::Label());
-			this->pictureBox17 = (gcnew System::Windows::Forms::PictureBox());
+			this->AppPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -194,12 +182,14 @@ private: System::Windows::Forms::Label^ label8;
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->btnLogin = (gcnew System::Windows::Forms::Button());
+			this->Userlb = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AppPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->BeginInit();
@@ -228,7 +218,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1345, 28);
+			this->menuStrip1->Size = System::Drawing::Size(1362, 28);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -302,6 +292,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->estadistidcasDeVentasToolStripMenuItem->Name = L"estadistidcasDeVentasToolStripMenuItem";
 			this->estadistidcasDeVentasToolStripMenuItem->Size = System::Drawing::Size(244, 26);
 			this->estadistidcasDeVentasToolStripMenuItem->Text = L"Estadistidcas de ventas";
+			this->estadistidcasDeVentasToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::estadistidcasDeVentasToolStripMenuItem_Click);
 			// 
 			// ayudaToolStripMenuItem
 			// 
@@ -309,27 +300,14 @@ private: System::Windows::Forms::Label^ label8;
 			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
 			// 
-			// btnLogin1
-			// 
-			this->btnLogin1->BackColor = System::Drawing::SystemColors::Control;
-			this->btnLogin1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnLogin1.BackgroundImage")));
-			this->btnLogin1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->btnLogin1->Location = System::Drawing::Point(1134, 138);
-			this->btnLogin1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->btnLogin1->Name = L"btnLogin1";
-			this->btnLogin1->Size = System::Drawing::Size(30, 30);
-			this->btnLogin1->TabIndex = 6;
-			this->btnLogin1->UseVisualStyleBackColor = false;
-			this->btnLogin1->Click += gcnew System::EventHandler(this, &SalesMainForm::button1_Click_1);
-			// 
 			// Ad1
 			// 
 			this->Ad1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Ad1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad1->Location = System::Drawing::Point(24, 508);
+			this->Ad1->Location = System::Drawing::Point(10, 440);
 			this->Ad1->Margin = System::Windows::Forms::Padding(4);
 			this->Ad1->Name = L"Ad1";
-			this->Ad1->Size = System::Drawing::Size(249, 149);
+			this->Ad1->Size = System::Drawing::Size(300, 157);
 			this->Ad1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->Ad1->TabIndex = 11;
 			this->Ad1->TabStop = false;
@@ -338,10 +316,10 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->Ad2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Ad2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad2->Location = System::Drawing::Point(305, 508);
+			this->Ad2->Location = System::Drawing::Point(330, 440);
 			this->Ad2->Margin = System::Windows::Forms::Padding(4);
 			this->Ad2->Name = L"Ad2";
-			this->Ad2->Size = System::Drawing::Size(292, 146);
+			this->Ad2->Size = System::Drawing::Size(300, 157);
 			this->Ad2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->Ad2->TabIndex = 12;
 			this->Ad2->TabStop = false;
@@ -350,10 +328,10 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->Ad3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Ad3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad3->Location = System::Drawing::Point(624, 508);
+			this->Ad3->Location = System::Drawing::Point(650, 440);
 			this->Ad3->Margin = System::Windows::Forms::Padding(4);
 			this->Ad3->Name = L"Ad3";
-			this->Ad3->Size = System::Drawing::Size(284, 146);
+			this->Ad3->Size = System::Drawing::Size(300, 157);
 			this->Ad3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->Ad3->TabIndex = 13;
 			this->Ad3->TabStop = false;
@@ -362,53 +340,30 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->Ad4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Ad4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad4->Location = System::Drawing::Point(954, 508);
+			this->Ad4->Location = System::Drawing::Point(970, 440);
 			this->Ad4->Margin = System::Windows::Forms::Padding(4);
 			this->Ad4->Name = L"Ad4";
-			this->Ad4->Size = System::Drawing::Size(277, 146);
+			this->Ad4->Size = System::Drawing::Size(300, 157);
 			this->Ad4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->Ad4->TabIndex = 14;
 			this->Ad4->TabStop = false;
 			// 
-			// Presentation
+			// AppPictureBox
 			// 
-			this->Presentation->AutoSize = true;
-			this->Presentation->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Presentation->Location = System::Drawing::Point(444, 182);
-			this->Presentation->Name = L"Presentation";
-			this->Presentation->Size = System::Drawing::Size(537, 52);
-			this->Presentation->TabIndex = 17;
-			this->Presentation->Text = L"!Mejores de la temporada!";
-			this->Presentation->Click += gcnew System::EventHandler(this, &SalesMainForm::label1_Click);
-			// 
-			// UserLabel
-			// 
-			this->UserLabel->AutoSize = true;
-			this->UserLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->UserLabel->Location = System::Drawing::Point(1165, 138);
-			this->UserLabel->Name = L"UserLabel";
-			this->UserLabel->Size = System::Drawing::Size(80, 25);
-			this->UserLabel->TabIndex = 63;
-			this->UserLabel->Text = L"Invitado";
-			// 
-			// pictureBox17
-			// 
-			this->pictureBox17->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox17.BackgroundImage")));
-			this->pictureBox17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox17->Location = System::Drawing::Point(134, 86);
-			this->pictureBox17->Name = L"pictureBox17";
-			this->pictureBox17->Size = System::Drawing::Size(120, 120);
-			this->pictureBox17->TabIndex = 62;
-			this->pictureBox17->TabStop = false;
+			this->AppPictureBox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AppPictureBox.BackgroundImage")));
+			this->AppPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->AppPictureBox->Location = System::Drawing::Point(10, 30);
+			this->AppPictureBox->Name = L"AppPictureBox";
+			this->AppPictureBox->Size = System::Drawing::Size(120, 120);
+			this->AppPictureBox->TabIndex = 62;
+			this->AppPictureBox->TabStop = false;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(1173, 430);
+			this->label7->Location = System::Drawing::Point(1109, 380);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(36, 20);
 			this->label7->TabIndex = 61;
@@ -419,7 +374,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(1010, 430);
+			this->label6->Location = System::Drawing::Point(946, 380);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(36, 20);
 			this->label6->TabIndex = 60;
@@ -430,7 +385,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(851, 430);
+			this->label5->Location = System::Drawing::Point(787, 380);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(45, 20);
 			this->label5->TabIndex = 59;
@@ -441,7 +396,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(683, 430);
+			this->label4->Location = System::Drawing::Point(619, 380);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(45, 20);
 			this->label4->TabIndex = 58;
@@ -452,7 +407,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(521, 430);
+			this->label3->Location = System::Drawing::Point(457, 380);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(45, 20);
 			this->label3->TabIndex = 57;
@@ -463,7 +418,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(357, 430);
+			this->label2->Location = System::Drawing::Point(293, 380);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(45, 20);
 			this->label2->TabIndex = 56;
@@ -474,7 +429,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(193, 430);
+			this->label1->Location = System::Drawing::Point(129, 380);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(45, 20);
 			this->label1->TabIndex = 55;
@@ -484,7 +439,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox16->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.BackgroundImage")));
 			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox16->Location = System::Drawing::Point(1224, 425);
+			this->pictureBox16->Location = System::Drawing::Point(1160, 380);
 			this->pictureBox16->Name = L"pictureBox16";
 			this->pictureBox16->Size = System::Drawing::Size(25, 25);
 			this->pictureBox16->TabIndex = 54;
@@ -494,7 +449,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox15->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox15.BackgroundImage")));
 			this->pictureBox15->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox15->Location = System::Drawing::Point(244, 425);
+			this->pictureBox15->Location = System::Drawing::Point(180, 380);
 			this->pictureBox15->Name = L"pictureBox15";
 			this->pictureBox15->Size = System::Drawing::Size(25, 25);
 			this->pictureBox15->TabIndex = 53;
@@ -504,7 +459,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox14->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox14.BackgroundImage")));
 			this->pictureBox14->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox14->Location = System::Drawing::Point(420, 425);
+			this->pictureBox14->Location = System::Drawing::Point(356, 380);
 			this->pictureBox14->Name = L"pictureBox14";
 			this->pictureBox14->Size = System::Drawing::Size(25, 25);
 			this->pictureBox14->TabIndex = 52;
@@ -514,7 +469,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox13->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox13.BackgroundImage")));
 			this->pictureBox13->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox13->Location = System::Drawing::Point(572, 425);
+			this->pictureBox13->Location = System::Drawing::Point(508, 380);
 			this->pictureBox13->Name = L"pictureBox13";
 			this->pictureBox13->Size = System::Drawing::Size(25, 25);
 			this->pictureBox13->TabIndex = 51;
@@ -524,7 +479,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox12->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.BackgroundImage")));
 			this->pictureBox12->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox12->Location = System::Drawing::Point(734, 425);
+			this->pictureBox12->Location = System::Drawing::Point(670, 380);
 			this->pictureBox12->Name = L"pictureBox12";
 			this->pictureBox12->Size = System::Drawing::Size(25, 25);
 			this->pictureBox12->TabIndex = 50;
@@ -534,7 +489,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.BackgroundImage")));
 			this->pictureBox11->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox11->Location = System::Drawing::Point(902, 425);
+			this->pictureBox11->Location = System::Drawing::Point(838, 380);
 			this->pictureBox11->Name = L"pictureBox11";
 			this->pictureBox11->Size = System::Drawing::Size(25, 25);
 			this->pictureBox11->TabIndex = 49;
@@ -544,7 +499,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.BackgroundImage")));
 			this->pictureBox10->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox10->Location = System::Drawing::Point(1064, 425);
+			this->pictureBox10->Location = System::Drawing::Point(1000, 380);
 			this->pictureBox10->Name = L"pictureBox10";
 			this->pictureBox10->Size = System::Drawing::Size(25, 25);
 			this->pictureBox10->TabIndex = 48;
@@ -554,7 +509,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox5->Location = System::Drawing::Point(340, 224);
+			this->pictureBox5->Location = System::Drawing::Point(180, 165);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(30, 30);
 			this->pictureBox5->TabIndex = 44;
@@ -565,7 +520,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->BestLabel->AutoSize = true;
 			this->BestLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BestLabel->Location = System::Drawing::Point(166, 225);
+			this->BestLabel->Location = System::Drawing::Point(10, 165);
 			this->BestLabel->Name = L"BestLabel";
 			this->BestLabel->Size = System::Drawing::Size(168, 29);
 			this->BestLabel->TabIndex = 43;
@@ -575,7 +530,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.BackgroundImage")));
 			this->pictureBox9->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox9->Location = System::Drawing::Point(1124, 260);
+			this->pictureBox9->Location = System::Drawing::Point(1060, 210);
 			this->pictureBox9->Name = L"pictureBox9";
 			this->pictureBox9->Size = System::Drawing::Size(150, 150);
 			this->pictureBox9->TabIndex = 41;
@@ -585,7 +540,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.BackgroundImage")));
 			this->pictureBox8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox8->Location = System::Drawing::Point(964, 260);
+			this->pictureBox8->Location = System::Drawing::Point(900, 210);
 			this->pictureBox8->Name = L"pictureBox8";
 			this->pictureBox8->Size = System::Drawing::Size(150, 150);
 			this->pictureBox8->TabIndex = 40;
@@ -595,7 +550,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
 			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(804, 260);
+			this->pictureBox7->Location = System::Drawing::Point(740, 210);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(150, 150);
 			this->pictureBox7->TabIndex = 39;
@@ -605,7 +560,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
 			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox6->Location = System::Drawing::Point(299, 141);
+			this->pictureBox6->Location = System::Drawing::Point(136, 97);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(25, 25);
 			this->pictureBox6->TabIndex = 38;
@@ -615,7 +570,7 @@ private: System::Windows::Forms::Label^ label8;
 			// SearchBox
 			// 
 			this->SearchBox->BackColor = System::Drawing::SystemColors::Control;
-			this->SearchBox->Location = System::Drawing::Point(328, 141);
+			this->SearchBox->Location = System::Drawing::Point(166, 97);
 			this->SearchBox->Name = L"SearchBox";
 			this->SearchBox->Size = System::Drawing::Size(790, 22);
 			this->SearchBox->TabIndex = 37;
@@ -624,7 +579,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
 			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox4->Location = System::Drawing::Point(484, 260);
+			this->pictureBox4->Location = System::Drawing::Point(420, 210);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(150, 150);
 			this->pictureBox4->TabIndex = 35;
@@ -634,7 +589,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
 			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(644, 260);
+			this->pictureBox3->Location = System::Drawing::Point(580, 210);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(150, 150);
 			this->pictureBox3->TabIndex = 34;
@@ -644,7 +599,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox2->Location = System::Drawing::Point(324, 260);
+			this->pictureBox2->Location = System::Drawing::Point(260, 210);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(150, 150);
 			this->pictureBox2->TabIndex = 33;
@@ -654,7 +609,7 @@ private: System::Windows::Forms::Label^ label8;
 			// 
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(164, 260);
+			this->pictureBox1->Location = System::Drawing::Point(100, 210);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(150, 150);
 			this->pictureBox1->TabIndex = 32;
@@ -665,21 +620,46 @@ private: System::Windows::Forms::Label^ label8;
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(601, 55);
+			this->label8->Location = System::Drawing::Point(580, 38);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(158, 52);
 			this->label8->TabIndex = 64;
 			this->label8->Text = L"VETTO";
+			// 
+			// btnLogin
+			// 
+			this->btnLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnLogin.BackgroundImage")));
+			this->btnLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->btnLogin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnLogin->ForeColor = System::Drawing::Color::Transparent;
+			this->btnLogin->Location = System::Drawing::Point(973, 50);
+			this->btnLogin->Name = L"btnLogin";
+			this->btnLogin->Size = System::Drawing::Size(100, 100);
+			this->btnLogin->TabIndex = 67;
+			this->btnLogin->UseVisualStyleBackColor = true;
+			this->btnLogin->Click += gcnew System::EventHandler(this, &SalesMainForm::btnLogin_Click);
+			// 
+			// Userlb
+			// 
+			this->Userlb->AutoSize = true;
+			this->Userlb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Userlb->Location = System::Drawing::Point(1079, 97);
+			this->Userlb->Name = L"Userlb";
+			this->Userlb->Size = System::Drawing::Size(88, 25);
+			this->Userlb->TabIndex = 68;
+			this->Userlb->Text = L"Invitado";
 			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1345, 670);
+			this->ClientSize = System::Drawing::Size(1362, 633);
+			this->Controls->Add(this->Userlb);
+			this->Controls->Add(this->btnLogin);
 			this->Controls->Add(this->label8);
-			this->Controls->Add(this->UserLabel);
-			this->Controls->Add(this->pictureBox17);
+			this->Controls->Add(this->AppPictureBox);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -705,12 +685,10 @@ private: System::Windows::Forms::Label^ label8;
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
-			this->Controls->Add(this->Presentation);
 			this->Controls->Add(this->Ad4);
 			this->Controls->Add(this->Ad3);
 			this->Controls->Add(this->Ad2);
 			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->btnLogin1);
 			this->Controls->Add(this->Ad1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -725,7 +703,7 @@ private: System::Windows::Forms::Label^ label8;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox17))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AppPictureBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->EndInit();
@@ -747,63 +725,18 @@ private: System::Windows::Forms::Label^ label8;
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
 
+	private: System::Void pictureBox6_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		ProductListForm^ productListForm = gcnew ProductListForm();
+		//productForm->MdiParent = this;
+		productListForm->Show();
 	}
 	private: System::Void productoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ProductForm^ productForm = gcnew ProductForm();
 		//productForm->MdiParent = this;
 		productForm->Show();
-	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		LoginForm^ loginForm = gcnew LoginForm(this);
-		loginForm->ShowDialog();
-		
-		//loginForm->MdiParent = this;
-		//loginForm->Show();		
-	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		subirAnuncioToolStripMenuItem-> Visible = false;
-		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
-		AnounList = Controller::QueryAllAnnouncer();
-		for (int i = 0; i < AnounList->Count; i++) {
-			if (AnounList[i]->AdInSistem) {
-
-				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
-				switch (AnounList[i]->NumberPictureBox) {
-					case 1: Ad1->Image = Image::FromStream(ms);
-						break;
-					case 2: Ad2->Image = Image::FromStream(ms);
-						break;
-					case 3: Ad3->Image = Image::FromStream(ms);
-						break;
-					case 4: Ad4->Image = Image::FromStream(ms);
-						break;
-					default:
-						break;
-				}
-				
-			}
-		}
-	}
-	private: System::Void Homebtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void SearchBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		ProductListForm^ productListForm = gcnew ProductListForm();
-		//productListForm->MdiParent = this;
-		productListForm->Show();
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void subirAnuncioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -824,13 +757,46 @@ private: System::Windows::Forms::Label^ label8;
 			Ad4->Image = gcnew Bitmap(Controller::photo4);
 		*/
 	}
-private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+
+	private: System::Void SearchBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		ProductListForm^ productListForm = gcnew ProductListForm();
+		//productListForm->MdiParent = this;
+		productListForm->Show();
+	}
+	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		subirAnuncioToolStripMenuItem->Visible = false;
+		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
+		AnounList = Controller::QueryAllAnnouncer();
+		for (int i = 0; i < AnounList->Count; i++) {
+			if (AnounList[i]->AdInSistem) {
+
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
+				switch (AnounList[i]->NumberPictureBox) {
+				case 1: Ad1->Image = Image::FromStream(ms);
+					break;
+				case 2: Ad2->Image = Image::FromStream(ms);
+					break;
+				case 3: Ad3->Image = Image::FromStream(ms);
+					break;
+				case 4: Ad4->Image = Image::FromStream(ms);
+					break;
+				default:
+					break;
+				}
+
+			}
+		}
+	}
+	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
+	}
+	private: System::Void estadistidcasDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
+	Stadistics->ShowDialog();
 }
-private: System::Void pictureBox6_Click(System::Object^ sender, System::EventArgs^ e) {
-	ProductListForm^ productListForm = gcnew ProductListForm();
-	//productForm->MdiParent = this;
-	productListForm->Show();
+	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
+		LoginForm^ loginForm = gcnew LoginForm(this);
+		loginForm->ShowDialog();
 }
 };
 }
