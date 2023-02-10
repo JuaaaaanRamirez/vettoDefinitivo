@@ -103,7 +103,8 @@ namespace SalesView {
 	private: System::Windows::Forms::PictureBox^ pictureBox9;
 	private: System::Windows::Forms::PictureBox^ pictureBox8;
 	private: System::Windows::Forms::PictureBox^ pictureBox7;
-	private: System::Windows::Forms::PictureBox^ pictureBox6;
+	private: System::Windows::Forms::PictureBox^ Searchbtn;
+
 	private: System::Windows::Forms::TextBox^ SearchBox;
 
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
@@ -175,7 +176,7 @@ public:
 			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->Searchbtn = (gcnew System::Windows::Forms::PictureBox());
 			this->SearchBox = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
@@ -201,7 +202,7 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Searchbtn))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -556,16 +557,16 @@ public:
 			this->pictureBox7->TabIndex = 39;
 			this->pictureBox7->TabStop = false;
 			// 
-			// pictureBox6
+			// Searchbtn
 			// 
-			this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
-			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox6->Location = System::Drawing::Point(136, 97);
-			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(25, 25);
-			this->pictureBox6->TabIndex = 38;
-			this->pictureBox6->TabStop = false;
-			this->pictureBox6->Click += gcnew System::EventHandler(this, &SalesMainForm::pictureBox6_Click);
+			this->Searchbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Searchbtn.BackgroundImage")));
+			this->Searchbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->Searchbtn->Location = System::Drawing::Point(136, 97);
+			this->Searchbtn->Name = L"Searchbtn";
+			this->Searchbtn->Size = System::Drawing::Size(25, 25);
+			this->Searchbtn->TabIndex = 38;
+			this->Searchbtn->TabStop = false;
+			this->Searchbtn->Click += gcnew System::EventHandler(this, &SalesMainForm::Searchbtn_Click);
 			// 
 			// SearchBox
 			// 
@@ -574,6 +575,7 @@ public:
 			this->SearchBox->Name = L"SearchBox";
 			this->SearchBox->Size = System::Drawing::Size(790, 22);
 			this->SearchBox->TabIndex = 37;
+			this->SearchBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &SalesMainForm::SearchBox_KeyDown);
 			// 
 			// pictureBox4
 			// 
@@ -679,7 +681,7 @@ public:
 			this->Controls->Add(this->pictureBox9);
 			this->Controls->Add(this->pictureBox8);
 			this->Controls->Add(this->pictureBox7);
-			this->Controls->Add(this->pictureBox6);
+			this->Controls->Add(this->Searchbtn);
 			this->Controls->Add(this->SearchBox);
 			this->Controls->Add(this->pictureBox4);
 			this->Controls->Add(this->pictureBox3);
@@ -715,7 +717,7 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Searchbtn))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -726,7 +728,7 @@ public:
 		}
 #pragma endregion
 
-	private: System::Void pictureBox6_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Searchbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ProductListForm^ productListForm = gcnew ProductListForm();
 		//productForm->MdiParent = this;
@@ -758,12 +760,12 @@ public:
 		*/
 	}
 
-	private: System::Void SearchBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void SearchBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		ProductListForm^ productListForm = gcnew ProductListForm();
 		//productListForm->MdiParent = this;
-		productListForm->Show();
+		productListForm->ShowDialog();
 	}
-	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		subirAnuncioToolStripMenuItem->Visible = false;
 		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
 		AnounList = Controller::QueryAllAnnouncer();
@@ -787,16 +789,23 @@ public:
 			}
 		}
 	}
-	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
 	}
-	private: System::Void estadistidcasDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void estadistidcasDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
 	Stadistics->ShowDialog();
 }
-	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 		LoginForm^ loginForm = gcnew LoginForm(this);
 		loginForm->ShowDialog();
+}
+private: System::Void SearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyData == Keys::Enter) {
+		ProductListForm^ productListForm = gcnew ProductListForm();
+		//productListForm->MdiParent = this;
+		productListForm->ShowDialog();
+	}
 }
 };
 }

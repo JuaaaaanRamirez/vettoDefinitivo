@@ -1268,7 +1268,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			Announcerbx->Visible = false;
 		}
 	}
-private: System::Void chBxPass_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+    private: System::Void chBxPass_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (chBxPass->Checked) txtPassword->PasswordChar = false;
 	else txtPassword->PasswordChar = '*';
 }
