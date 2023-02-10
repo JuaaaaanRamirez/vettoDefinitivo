@@ -132,6 +132,8 @@ namespace SalesView {
 	private: System::Windows::Forms::GroupBox^ Announcerbx;
 	private: System::Windows::Forms::TextBox^ txtWebSite;
 	private: System::Windows::Forms::PictureBox^ AdsImage;
+private: System::Windows::Forms::CheckBox^ chBxPass;
+
 
 
 
@@ -214,6 +216,7 @@ namespace SalesView {
 			this->Announcerbx = (gcnew System::Windows::Forms::GroupBox());
 			this->AdsImage = (gcnew System::Windows::Forms::PictureBox());
 			this->txtWebSite = (gcnew System::Windows::Forms::TextBox());
+			this->chBxPass = (gcnew System::Windows::Forms::CheckBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomer))->BeginInit();
 			this->GenBox->SuspendLayout();
@@ -260,9 +263,9 @@ namespace SalesView {
 			this->label4->Location = System::Drawing::Point(21, 71);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(57, 16);
+			this->label4->Size = System::Drawing::Size(64, 16);
 			this->label4->TabIndex = 0;
-			this->label4->Text = L"Apellido";
+			this->label4->Text = L"Apellidos";
 			// 
 			// label6
 			// 
@@ -472,6 +475,7 @@ namespace SalesView {
 			// 
 			this->txtPassword->Location = System::Drawing::Point(278, 131);
 			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(147, 22);
 			this->txtPassword->TabIndex = 15;
 			// 
@@ -602,9 +606,9 @@ namespace SalesView {
 			// 
 			// txtAdress
 			// 
-			this->txtAdress->Location = System::Drawing::Point(65, 11);
+			this->txtAdress->Location = System::Drawing::Point(71, 11);
 			this->txtAdress->Name = L"txtAdress";
-			this->txtAdress->Size = System::Drawing::Size(339, 22);
+			this->txtAdress->Size = System::Drawing::Size(333, 22);
 			this->txtAdress->TabIndex = 24;
 			// 
 			// Studentbx
@@ -622,9 +626,9 @@ namespace SalesView {
 			// 
 			// txtCPoints
 			// 
-			this->txtCPoints->Location = System::Drawing::Point(65, 41);
+			this->txtCPoints->Location = System::Drawing::Point(71, 41);
 			this->txtCPoints->Name = L"txtCPoints";
-			this->txtCPoints->Size = System::Drawing::Size(339, 22);
+			this->txtCPoints->Size = System::Drawing::Size(333, 22);
 			this->txtCPoints->TabIndex = 26;
 			// 
 			// Pointslb
@@ -632,9 +636,9 @@ namespace SalesView {
 			this->Pointslb->AutoSize = true;
 			this->Pointslb->Location = System::Drawing::Point(0, 41);
 			this->Pointslb->Name = L"Pointslb";
-			this->Pointslb->Size = System::Drawing::Size(48, 16);
+			this->Pointslb->Size = System::Drawing::Size(67, 32);
 			this->Pointslb->TabIndex = 25;
-			this->Pointslb->Text = L"Puntos";
+			this->Pointslb->Text = L"Puntos de\r\nCliente";
 			// 
 			// StoreManagerbx
 			// 
@@ -655,23 +659,23 @@ namespace SalesView {
 			// 
 			// txtStatus
 			// 
-			this->txtStatus->Location = System::Drawing::Point(65, 101);
+			this->txtStatus->Location = System::Drawing::Point(87, 101);
 			this->txtStatus->Name = L"txtStatus";
-			this->txtStatus->Size = System::Drawing::Size(339, 22);
+			this->txtStatus->Size = System::Drawing::Size(317, 22);
 			this->txtStatus->TabIndex = 7;
 			// 
 			// txtAStore
 			// 
-			this->txtAStore->Location = System::Drawing::Point(65, 71);
+			this->txtAStore->Location = System::Drawing::Point(87, 71);
 			this->txtAStore->Name = L"txtAStore";
-			this->txtAStore->Size = System::Drawing::Size(339, 22);
+			this->txtAStore->Size = System::Drawing::Size(317, 22);
 			this->txtAStore->TabIndex = 6;
 			// 
 			// txtSalary
 			// 
-			this->txtSalary->Location = System::Drawing::Point(65, 41);
+			this->txtSalary->Location = System::Drawing::Point(87, 41);
 			this->txtSalary->Name = L"txtSalary";
-			this->txtSalary->Size = System::Drawing::Size(339, 22);
+			this->txtSalary->Size = System::Drawing::Size(317, 22);
 			this->txtSalary->TabIndex = 5;
 			// 
 			// Statuslb
@@ -688,9 +692,9 @@ namespace SalesView {
 			this->Storelb->AutoSize = true;
 			this->Storelb->Location = System::Drawing::Point(0, 71);
 			this->Storelb->Name = L"Storelb";
-			this->Storelb->Size = System::Drawing::Size(65, 16);
+			this->Storelb->Size = System::Drawing::Size(90, 16);
 			this->Storelb->TabIndex = 3;
-			this->Storelb->Text = L"Tienda A.";
+			this->Storelb->Text = L"Tienda Actual";
 			// 
 			// Salarylb
 			// 
@@ -703,9 +707,9 @@ namespace SalesView {
 			// 
 			// txtGoal
 			// 
-			this->txtGoal->Location = System::Drawing::Point(65, 11);
+			this->txtGoal->Location = System::Drawing::Point(87, 11);
 			this->txtGoal->Name = L"txtGoal";
-			this->txtGoal->Size = System::Drawing::Size(339, 22);
+			this->txtGoal->Size = System::Drawing::Size(317, 22);
 			this->txtGoal->TabIndex = 1;
 			// 
 			// label8
@@ -713,9 +717,9 @@ namespace SalesView {
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(0, 11);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(52, 16);
+			this->label8->Size = System::Drawing::Size(77, 16);
 			this->label8->TabIndex = 0;
-			this->label8->Text = L"Meta A.";
+			this->label8->Text = L"Meta Actual";
 			// 
 			// Companylb
 			// 
@@ -740,15 +744,15 @@ namespace SalesView {
 			this->Adslb->AutoSize = true;
 			this->Adslb->Location = System::Drawing::Point(0, 71);
 			this->Adslb->Name = L"Adslb";
-			this->Adslb->Size = System::Drawing::Size(62, 16);
+			this->Adslb->Size = System::Drawing::Size(55, 16);
 			this->Adslb->TabIndex = 2;
-			this->Adslb->Text = L"Anuncios";
+			this->Adslb->Text = L"Anuncio";
 			// 
 			// txtCompanyName
 			// 
-			this->txtCompanyName->Location = System::Drawing::Point(65, 11);
+			this->txtCompanyName->Location = System::Drawing::Point(75, 11);
 			this->txtCompanyName->Name = L"txtCompanyName";
-			this->txtCompanyName->Size = System::Drawing::Size(333, 22);
+			this->txtCompanyName->Size = System::Drawing::Size(323, 22);
 			this->txtCompanyName->TabIndex = 3;
 			// 
 			// Announcerbx
@@ -768,23 +772,35 @@ namespace SalesView {
 			// 
 			// AdsImage
 			// 
-			this->AdsImage->Location = System::Drawing::Point(65, 71);
+			this->AdsImage->Location = System::Drawing::Point(75, 71);
 			this->AdsImage->Name = L"AdsImage";
-			this->AdsImage->Size = System::Drawing::Size(159, 78);
+			this->AdsImage->Size = System::Drawing::Size(150, 78);
 			this->AdsImage->TabIndex = 5;
 			this->AdsImage->TabStop = false;
 			// 
 			// txtWebSite
 			// 
-			this->txtWebSite->Location = System::Drawing::Point(65, 41);
+			this->txtWebSite->Location = System::Drawing::Point(75, 41);
 			this->txtWebSite->Name = L"txtWebSite";
-			this->txtWebSite->Size = System::Drawing::Size(333, 22);
+			this->txtWebSite->Size = System::Drawing::Size(323, 22);
 			this->txtWebSite->TabIndex = 4;
+			// 
+			// chBxPass
+			// 
+			this->chBxPass->AutoSize = true;
+			this->chBxPass->Location = System::Drawing::Point(460, 191);
+			this->chBxPass->Name = L"chBxPass";
+			this->chBxPass->Size = System::Drawing::Size(144, 20);
+			this->chBxPass->TabIndex = 28;
+			this->chBxPass->Text = L"Mostrar contraseña";
+			this->chBxPass->UseVisualStyleBackColor = true;
+			this->chBxPass->CheckedChanged += gcnew System::EventHandler(this, &UserForm::chBxPass_CheckedChanged);
 			// 
 			// UserForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->ClientSize = System::Drawing::Size(662, 633);
+			this->Controls->Add(this->chBxPass);
 			this->Controls->Add(this->Announcerbx);
 			this->Controls->Add(this->StoreManagerbx);
 			this->Controls->Add(this->Studentbx);
@@ -1252,5 +1268,9 @@ namespace SalesView {
 			Announcerbx->Visible = false;
 		}
 	}
-	};
+private: System::Void chBxPass_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (chBxPass->Checked) txtPassword->PasswordChar = false;
+	else txtPassword->PasswordChar = '*';
+}
+};
 }
