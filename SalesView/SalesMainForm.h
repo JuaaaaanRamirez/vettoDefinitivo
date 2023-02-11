@@ -17,7 +17,9 @@ namespace SalesView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	//using namespace Controller;
+	using namespace SalesController;    // Controller
+	using namespace SalesModel;			// Classes and Instances
+	using namespace System::Collections::Generic;	// List
 
 
 	/// <summary>
@@ -77,15 +79,22 @@ namespace SalesView {
 	private: System::Windows::Forms::ToolStripMenuItem^ usuariosToolStripMenuItem;
 
 	private: System::Windows::Forms::PictureBox^ AppPictureBox;
+	private: System::Windows::Forms::Label^ lbSeventhProduct;
 	public:
 
-	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label1;
+
+	private: System::Windows::Forms::Label^ lbSixthProduct;
+
+	private: System::Windows::Forms::Label^ lbFifthProduct;
+
+	private: System::Windows::Forms::Label^ lbFourthProduct;
+
+	private: System::Windows::Forms::Label^ lbThirdProduct;
+
+	private: System::Windows::Forms::Label^ lbSecondProduct;
+
+	private: System::Windows::Forms::Label^ lbFirstProduct;
+
 	private: System::Windows::Forms::PictureBox^ pictureBox16;
 	private: System::Windows::Forms::PictureBox^ pictureBox15;
 	private: System::Windows::Forms::PictureBox^ pictureBox14;
@@ -99,18 +108,26 @@ namespace SalesView {
 
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::Label^ BestLabel;
+	private: System::Windows::Forms::PictureBox^ pbSeventhProduct;
 
-	private: System::Windows::Forms::PictureBox^ pictureBox9;
-	private: System::Windows::Forms::PictureBox^ pictureBox8;
-	private: System::Windows::Forms::PictureBox^ pictureBox7;
+
+	private: System::Windows::Forms::PictureBox^ pbSixthProduct;
+
+	private: System::Windows::Forms::PictureBox^ pbFifthProduct;
+
 
 
 public: System::Windows::Forms::TextBox^ SearchBox;
+	private: System::Windows::Forms::PictureBox^ pbThirdProduct;
+	private: System::Windows::Forms::PictureBox^ pbFourthProduct;
+	public:
 
-	private: System::Windows::Forms::PictureBox^ pictureBox4;
-	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
+
+	private: System::Windows::Forms::PictureBox^ pbSecondProduct;
+
+	private: System::Windows::Forms::PictureBox^ pbFirstProduct;
+
 	private: System::Windows::Forms::Label^ label8;
 
 
@@ -160,13 +177,13 @@ public:
 			this->Ad3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad4 = (gcnew System::Windows::Forms::PictureBox());
 			this->AppPictureBox = (gcnew System::Windows::Forms::PictureBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lbSeventhProduct = (gcnew System::Windows::Forms::Label());
+			this->lbSixthProduct = (gcnew System::Windows::Forms::Label());
+			this->lbFifthProduct = (gcnew System::Windows::Forms::Label());
+			this->lbFourthProduct = (gcnew System::Windows::Forms::Label());
+			this->lbThirdProduct = (gcnew System::Windows::Forms::Label());
+			this->lbSecondProduct = (gcnew System::Windows::Forms::Label());
+			this->lbFirstProduct = (gcnew System::Windows::Forms::Label());
 			this->pictureBox16 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox15 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox14 = (gcnew System::Windows::Forms::PictureBox());
@@ -176,14 +193,14 @@ public:
 			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->BestLabel = (gcnew System::Windows::Forms::Label());
-			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
+			this->pbSeventhProduct = (gcnew System::Windows::Forms::PictureBox());
+			this->pbSixthProduct = (gcnew System::Windows::Forms::PictureBox());
+			this->pbFifthProduct = (gcnew System::Windows::Forms::PictureBox());
 			this->SearchBox = (gcnew System::Windows::Forms::TextBox());
-			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pbThirdProduct = (gcnew System::Windows::Forms::PictureBox());
+			this->pbFourthProduct = (gcnew System::Windows::Forms::PictureBox());
+			this->pbSecondProduct = (gcnew System::Windows::Forms::PictureBox());
+			this->pbFirstProduct = (gcnew System::Windows::Forms::PictureBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->btnLogin = (gcnew System::Windows::Forms::Button());
 			this->Userlb = (gcnew System::Windows::Forms::Label());
@@ -203,13 +220,13 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSeventhProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSixthProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFifthProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbThirdProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFourthProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSecondProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFirstProduct))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -362,82 +379,82 @@ public:
 			this->AppPictureBox->TabIndex = 62;
 			this->AppPictureBox->TabStop = false;
 			// 
-			// label7
+			// lbSeventhProduct
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbSeventhProduct->AutoSize = true;
+			this->lbSeventhProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbSeventhProduct->Location = System::Drawing::Point(1109, 380);
+			this->lbSeventhProduct->Name = L"lbSeventhProduct";
+			this->lbSeventhProduct->Size = System::Drawing::Size(36, 20);
+			this->lbSeventhProduct->TabIndex = 61;
+			this->lbSeventhProduct->Text = L"777";
+			// 
+			// lbSixthProduct
+			// 
+			this->lbSixthProduct->AutoSize = true;
+			this->lbSixthProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(1109, 380);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(36, 20);
-			this->label7->TabIndex = 61;
-			this->label7->Text = L"777";
+			this->lbSixthProduct->Location = System::Drawing::Point(946, 380);
+			this->lbSixthProduct->Name = L"lbSixthProduct";
+			this->lbSixthProduct->Size = System::Drawing::Size(36, 20);
+			this->lbSixthProduct->TabIndex = 60;
+			this->lbSixthProduct->Text = L"666";
 			// 
-			// label6
+			// lbFifthProduct
 			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbFifthProduct->AutoSize = true;
+			this->lbFifthProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(946, 380);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(36, 20);
-			this->label6->TabIndex = 60;
-			this->label6->Text = L"666";
+			this->lbFifthProduct->Location = System::Drawing::Point(787, 380);
+			this->lbFifthProduct->Name = L"lbFifthProduct";
+			this->lbFifthProduct->Size = System::Drawing::Size(45, 20);
+			this->lbFifthProduct->TabIndex = 59;
+			this->lbFifthProduct->Text = L"1069";
 			// 
-			// label5
+			// lbFourthProduct
 			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbFourthProduct->AutoSize = true;
+			this->lbFourthProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(787, 380);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(45, 20);
-			this->label5->TabIndex = 59;
-			this->label5->Text = L"1069";
+			this->lbFourthProduct->Location = System::Drawing::Point(619, 380);
+			this->lbFourthProduct->Name = L"lbFourthProduct";
+			this->lbFourthProduct->Size = System::Drawing::Size(45, 20);
+			this->lbFourthProduct->TabIndex = 58;
+			this->lbFourthProduct->Text = L"1256";
 			// 
-			// label4
+			// lbThirdProduct
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbThirdProduct->AutoSize = true;
+			this->lbThirdProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(619, 380);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(45, 20);
-			this->label4->TabIndex = 58;
-			this->label4->Text = L"1256";
+			this->lbThirdProduct->Location = System::Drawing::Point(457, 380);
+			this->lbThirdProduct->Name = L"lbThirdProduct";
+			this->lbThirdProduct->Size = System::Drawing::Size(45, 20);
+			this->lbThirdProduct->TabIndex = 57;
+			this->lbThirdProduct->Text = L"1354";
 			// 
-			// label3
+			// lbSecondProduct
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbSecondProduct->AutoSize = true;
+			this->lbSecondProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(457, 380);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(45, 20);
-			this->label3->TabIndex = 57;
-			this->label3->Text = L"1354";
+			this->lbSecondProduct->Location = System::Drawing::Point(293, 380);
+			this->lbSecondProduct->Name = L"lbSecondProduct";
+			this->lbSecondProduct->Size = System::Drawing::Size(45, 20);
+			this->lbSecondProduct->TabIndex = 56;
+			this->lbSecondProduct->Text = L"1496";
 			// 
-			// label2
+			// lbFirstProduct
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbFirstProduct->AutoSize = true;
+			this->lbFirstProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(293, 380);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(45, 20);
-			this->label2->TabIndex = 56;
-			this->label2->Text = L"1496";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(129, 380);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(45, 20);
-			this->label1->TabIndex = 55;
-			this->label1->Text = L"1500";
+			this->lbFirstProduct->Location = System::Drawing::Point(129, 380);
+			this->lbFirstProduct->Name = L"lbFirstProduct";
+			this->lbFirstProduct->Size = System::Drawing::Size(45, 20);
+			this->lbFirstProduct->TabIndex = 55;
+			this->lbFirstProduct->Text = L"1500";
 			// 
 			// pictureBox16
 			// 
@@ -530,35 +547,35 @@ public:
 			this->BestLabel->TabIndex = 43;
 			this->BestLabel->Text = L"Mas buscados";
 			// 
-			// pictureBox9
+			// pbSeventhProduct
 			// 
-			this->pictureBox9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.BackgroundImage")));
-			this->pictureBox9->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox9->Location = System::Drawing::Point(1060, 210);
-			this->pictureBox9->Name = L"pictureBox9";
-			this->pictureBox9->Size = System::Drawing::Size(150, 150);
-			this->pictureBox9->TabIndex = 41;
-			this->pictureBox9->TabStop = false;
+			this->pbSeventhProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSeventhProduct.BackgroundImage")));
+			this->pbSeventhProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbSeventhProduct->Location = System::Drawing::Point(1060, 210);
+			this->pbSeventhProduct->Name = L"pbSeventhProduct";
+			this->pbSeventhProduct->Size = System::Drawing::Size(150, 150);
+			this->pbSeventhProduct->TabIndex = 41;
+			this->pbSeventhProduct->TabStop = false;
 			// 
-			// pictureBox8
+			// pbSixthProduct
 			// 
-			this->pictureBox8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.BackgroundImage")));
-			this->pictureBox8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox8->Location = System::Drawing::Point(900, 210);
-			this->pictureBox8->Name = L"pictureBox8";
-			this->pictureBox8->Size = System::Drawing::Size(150, 150);
-			this->pictureBox8->TabIndex = 40;
-			this->pictureBox8->TabStop = false;
+			this->pbSixthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSixthProduct.BackgroundImage")));
+			this->pbSixthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbSixthProduct->Location = System::Drawing::Point(900, 210);
+			this->pbSixthProduct->Name = L"pbSixthProduct";
+			this->pbSixthProduct->Size = System::Drawing::Size(150, 150);
+			this->pbSixthProduct->TabIndex = 40;
+			this->pbSixthProduct->TabStop = false;
 			// 
-			// pictureBox7
+			// pbFifthProduct
 			// 
-			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
-			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(740, 210);
-			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(150, 150);
-			this->pictureBox7->TabIndex = 39;
-			this->pictureBox7->TabStop = false;
+			this->pbFifthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFifthProduct.BackgroundImage")));
+			this->pbFifthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFifthProduct->Location = System::Drawing::Point(740, 210);
+			this->pbFifthProduct->Name = L"pbFifthProduct";
+			this->pbFifthProduct->Size = System::Drawing::Size(150, 150);
+			this->pbFifthProduct->TabIndex = 39;
+			this->pbFifthProduct->TabStop = false;
 			// 
 			// SearchBox
 			// 
@@ -569,45 +586,45 @@ public:
 			this->SearchBox->TabIndex = 37;
 			this->SearchBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &SalesMainForm::SearchBox_KeyDown);
 			// 
-			// pictureBox4
+			// pbThirdProduct
 			// 
-			this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
-			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox4->Location = System::Drawing::Point(420, 210);
-			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(150, 150);
-			this->pictureBox4->TabIndex = 35;
-			this->pictureBox4->TabStop = false;
+			this->pbThirdProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbThirdProduct.BackgroundImage")));
+			this->pbThirdProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbThirdProduct->Location = System::Drawing::Point(420, 210);
+			this->pbThirdProduct->Name = L"pbThirdProduct";
+			this->pbThirdProduct->Size = System::Drawing::Size(150, 150);
+			this->pbThirdProduct->TabIndex = 35;
+			this->pbThirdProduct->TabStop = false;
 			// 
-			// pictureBox3
+			// pbFourthProduct
 			// 
-			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
-			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(580, 210);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(150, 150);
-			this->pictureBox3->TabIndex = 34;
-			this->pictureBox3->TabStop = false;
+			this->pbFourthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFourthProduct.BackgroundImage")));
+			this->pbFourthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFourthProduct->Location = System::Drawing::Point(580, 210);
+			this->pbFourthProduct->Name = L"pbFourthProduct";
+			this->pbFourthProduct->Size = System::Drawing::Size(150, 150);
+			this->pbFourthProduct->TabIndex = 34;
+			this->pbFourthProduct->TabStop = false;
 			// 
-			// pictureBox2
+			// pbSecondProduct
 			// 
-			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
-			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox2->Location = System::Drawing::Point(260, 210);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(150, 150);
-			this->pictureBox2->TabIndex = 33;
-			this->pictureBox2->TabStop = false;
+			this->pbSecondProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSecondProduct.BackgroundImage")));
+			this->pbSecondProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pbSecondProduct->Location = System::Drawing::Point(260, 210);
+			this->pbSecondProduct->Name = L"pbSecondProduct";
+			this->pbSecondProduct->Size = System::Drawing::Size(150, 150);
+			this->pbSecondProduct->TabIndex = 33;
+			this->pbSecondProduct->TabStop = false;
 			// 
-			// pictureBox1
+			// pbFirstProduct
 			// 
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(100, 210);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(150, 150);
-			this->pictureBox1->TabIndex = 32;
-			this->pictureBox1->TabStop = false;
+			this->pbFirstProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFirstProduct.BackgroundImage")));
+			this->pbFirstProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pbFirstProduct->Location = System::Drawing::Point(100, 210);
+			this->pbFirstProduct->Name = L"pbFirstProduct";
+			this->pbFirstProduct->Size = System::Drawing::Size(150, 150);
+			this->pbFirstProduct->TabIndex = 32;
+			this->pbFirstProduct->TabStop = false;
 			// 
 			// label8
 			// 
@@ -678,13 +695,13 @@ public:
 			this->Controls->Add(this->btnLogin);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->AppPictureBox);
-			this->Controls->Add(this->label7);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lbSeventhProduct);
+			this->Controls->Add(this->lbSixthProduct);
+			this->Controls->Add(this->lbFifthProduct);
+			this->Controls->Add(this->lbFourthProduct);
+			this->Controls->Add(this->lbThirdProduct);
+			this->Controls->Add(this->lbSecondProduct);
+			this->Controls->Add(this->lbFirstProduct);
 			this->Controls->Add(this->pictureBox16);
 			this->Controls->Add(this->pictureBox15);
 			this->Controls->Add(this->pictureBox14);
@@ -694,14 +711,14 @@ public:
 			this->Controls->Add(this->pictureBox10);
 			this->Controls->Add(this->pictureBox5);
 			this->Controls->Add(this->BestLabel);
-			this->Controls->Add(this->pictureBox9);
-			this->Controls->Add(this->pictureBox8);
-			this->Controls->Add(this->pictureBox7);
+			this->Controls->Add(this->pbSeventhProduct);
+			this->Controls->Add(this->pbSixthProduct);
+			this->Controls->Add(this->pbFifthProduct);
 			this->Controls->Add(this->SearchBox);
-			this->Controls->Add(this->pictureBox4);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pbThirdProduct);
+			this->Controls->Add(this->pbFourthProduct);
+			this->Controls->Add(this->pbSecondProduct);
+			this->Controls->Add(this->pbFirstProduct);
 			this->Controls->Add(this->Ad4);
 			this->Controls->Add(this->Ad3);
 			this->Controls->Add(this->Ad2);
@@ -729,19 +746,68 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSeventhProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSixthProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFifthProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbThirdProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFourthProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSecondProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFirstProduct))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-// Stripmenu
+		// Functions
+		void Ad() {
+			subirAnuncioToolStripMenuItem->Visible = false;
+			List<Announcer^>^ AnounList = gcnew List<Announcer^>();
+			AnounList = Controller::QueryAllAnnouncer();
+			for (int i = 0; i < AnounList->Count; i++) {
+				if (AnounList[i]->AdInSistem) {
+
+					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
+					switch (AnounList[i]->NumberPictureBox) {
+					case 1: Ad1->Image = Image::FromStream(ms);
+						break;
+					case 2: Ad2->Image = Image::FromStream(ms);
+						break;
+					case 3: Ad3->Image = Image::FromStream(ms);
+						break;
+					case 4: Ad4->Image = Image::FromStream(ms);
+						break;
+					default:
+						break;
+					}
+
+				}
+			}
+		}
+		List<Product^>^ GetTop() {
+			List<Product^>^ myProductList = Controller::QueryAllProducts();
+			for (int i = 0; i < myProductList->Count; i++) // Look for!
+				for (int j = i; j < myProductList->Count; j++)
+					if (myProductList[j]->Searches > myProductList[i]->Searches) { 
+						Product^ temp = myProductList[i];
+						 myProductList[i] = myProductList[j];
+						 myProductList[j] = temp;
+					}
+			return myProductList;
+	    }
+		void PutTop(List<Product^>^ myTopList) {
+			// Stream
+			System::IO::MemoryStream^ ms;
+
+			ms = gcnew System::IO::MemoryStream(myTopList[0]->Photo); pbFirstProduct->BackgroundImage = Image::FromStream(ms); lbFirstProduct->Text = "" + myTopList[0]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[1]->Photo); pbSecondProduct->BackgroundImage = Image::FromStream(ms); lbSecondProduct->Text = "" + myTopList[1]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[2]->Photo); pbThirdProduct->BackgroundImage = Image::FromStream(ms); lbThirdProduct->Text = "" + myTopList[2]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[3]->Photo); pbFourthProduct->BackgroundImage = Image::FromStream(ms); lbFourthProduct->Text = "" + myTopList[3]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[4]->Photo); pbFifthProduct->BackgroundImage = Image::FromStream(ms); lbFifthProduct->Text = "" + myTopList[4]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[5]->Photo); pbSixthProduct->BackgroundImage = Image::FromStream(ms); lbSixthProduct->Text = "" + myTopList[5]->Searches;
+			ms = gcnew System::IO::MemoryStream(myTopList[6]->Photo); pbSeventhProduct->BackgroundImage = Image::FromStream(ms); lbSeventhProduct->Text = "" + myTopList[6]->Searches;
+		}
+		
+	// Stripmenu
 	private: System::Void productoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ProductForm^ productForm = gcnew ProductForm();
@@ -769,28 +835,8 @@ public:
 
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		subirAnuncioToolStripMenuItem->Visible = false;
-		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
-		AnounList = Controller::QueryAllAnnouncer();
-		for (int i = 0; i < AnounList->Count; i++) {
-			if (AnounList[i]->AdInSistem) {
-
-				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
-				switch (AnounList[i]->NumberPictureBox) {
-				case 1: Ad1->Image = Image::FromStream(ms);
-					break;
-				case 2: Ad2->Image = Image::FromStream(ms);
-					break;
-				case 3: Ad3->Image = Image::FromStream(ms);
-					break;
-				case 4: Ad4->Image = Image::FromStream(ms);
-					break;
-				default:
-					break;
-				}
-
-			}
-		}
+		Ad();
+		PutTop(GetTop());
 	}
 	// Login
 	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
