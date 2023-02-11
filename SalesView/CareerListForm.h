@@ -42,6 +42,10 @@ namespace SalesView {
 
 	private: System::Windows::Forms::CheckedListBox^ chlbArtesEscenicas;
 	private: System::Windows::Forms::CheckedListBox^ chlbArtesComunication;
+	private: System::Windows::Forms::Label^ lbSciencEngineer;
+	private: System::Windows::Forms::Label^ lbArt;
+	private: System::Windows::Forms::Label^ lbDrama;
+	private: System::Windows::Forms::Label^ lbComunication;
 	protected:
 
 
@@ -54,12 +58,25 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
+
+
+
+
 	private: System::Windows::Forms::Button^ btUp;
 	private: System::Windows::Forms::Button^ btExit;
+	private: System::Windows::Forms::CheckedListBox^ chlbHumanity;
+
+	private: System::Windows::Forms::Label^ lbHumanity;
+
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::CheckedListBox^ chlbSocialScience;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::CheckedListBox^ chlbEducation;
+
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::CheckedListBox^ chlbOthers;
+
+
 
 	protected:
 
@@ -80,130 +97,230 @@ namespace SalesView {
 			this->chlbArteDisenio = (gcnew System::Windows::Forms::CheckedListBox());
 			this->chlbArtesEscenicas = (gcnew System::Windows::Forms::CheckedListBox());
 			this->chlbArtesComunication = (gcnew System::Windows::Forms::CheckedListBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->lbSciencEngineer = (gcnew System::Windows::Forms::Label());
+			this->lbArt = (gcnew System::Windows::Forms::Label());
+			this->lbDrama = (gcnew System::Windows::Forms::Label());
+			this->lbComunication = (gcnew System::Windows::Forms::Label());
 			this->btUp = (gcnew System::Windows::Forms::Button());
 			this->btExit = (gcnew System::Windows::Forms::Button());
+			this->chlbHumanity = (gcnew System::Windows::Forms::CheckedListBox());
+			this->lbHumanity = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->chlbSocialScience = (gcnew System::Windows::Forms::CheckedListBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->chlbEducation = (gcnew System::Windows::Forms::CheckedListBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->chlbOthers = (gcnew System::Windows::Forms::CheckedListBox());
 			this->SuspendLayout();
 			// 
 			// chlbCiencias
 			// 
 			this->chlbCiencias->FormattingEnabled = true;
-			this->chlbCiencias->Items->AddRange(gcnew cli::array< System::Object^  >(15) {
+			this->chlbCiencias->Items->AddRange(gcnew cli::array< System::Object^  >(16) {
 				L"Estadística", L"Física", L"Ingeniería Ambiental y Sostenible",
 					L"Ingeniería Biomédica", L"Ingeniería Civil", L"Ingeniería de las Telecomunicaciones", L"Ingeniería de Minas", L"Ingeniería Electrónica",
 					L"Ingeniería Geológica", L"Ingeniería Industrial", L"Ingeniería Informática", L"Ingeniería Mecánica", L"Ingeniería Mecatrónica",
-					L"Matemáticas", L"Química"
+					L"Matemáticas", L"Química", L"Todas"
 			});
-			this->chlbCiencias->Location = System::Drawing::Point(35, 44);
+			this->chlbCiencias->Location = System::Drawing::Point(10, 30);
 			this->chlbCiencias->Name = L"chlbCiencias";
-			this->chlbCiencias->Size = System::Drawing::Size(248, 259);
+			this->chlbCiencias->Size = System::Drawing::Size(250, 310);
 			this->chlbCiencias->TabIndex = 7;
-			this->chlbCiencias->SelectedIndexChanged += gcnew System::EventHandler(this, &CareerListForm::checkedListBox1_SelectedIndexChanged);
 			// 
 			// chlbArteDisenio
 			// 
 			this->chlbArteDisenio->FormattingEnabled = true;
-			this->chlbArteDisenio->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+			this->chlbArteDisenio->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
 				L"Educación Artística", L"Diseño Gráfico",
-					L"Diseño Industrial", L"Escultura", L"Pintura", L"Arte, moda y diseño textil", L"Grabado"
+					L"Diseño Industrial", L"Escultura", L"Pintura", L"Arte, moda y diseño textil", L"Grabado", L"Todas"
 			});
-			this->chlbArteDisenio->Location = System::Drawing::Point(319, 44);
+			this->chlbArteDisenio->Location = System::Drawing::Point(280, 30);
 			this->chlbArteDisenio->Name = L"chlbArteDisenio";
-			this->chlbArteDisenio->Size = System::Drawing::Size(184, 157);
+			this->chlbArteDisenio->Size = System::Drawing::Size(250, 157);
 			this->chlbArteDisenio->TabIndex = 8;
 			// 
 			// chlbArtesEscenicas
 			// 
 			this->chlbArtesEscenicas->FormattingEnabled = true;
-			this->chlbArtesEscenicas->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Danza", L"Teatro", L"Música", L"Creación y Producción Escénica" });
-			this->chlbArtesEscenicas->Location = System::Drawing::Point(537, 44);
+			this->chlbArtesEscenicas->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"Danza", L"Teatro", L"Música", L"Creación y Producción Escénica",
+					L"Todas"
+			});
+			this->chlbArtesEscenicas->Location = System::Drawing::Point(280, 211);
 			this->chlbArtesEscenicas->Name = L"chlbArtesEscenicas";
-			this->chlbArtesEscenicas->Size = System::Drawing::Size(226, 123);
+			this->chlbArtesEscenicas->Size = System::Drawing::Size(250, 123);
 			this->chlbArtesEscenicas->TabIndex = 9;
 			// 
 			// chlbArtesComunication
 			// 
 			this->chlbArtesComunication->FormattingEnabled = true;
-			this->chlbArtesComunication->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+			this->chlbArtesComunication->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
 				L"Comunicación Audiovisual", L"Comunicación para el desarrollo",
-					L"Publicidad", L"Periodismo"
+					L"Publicidad", L"Periodismo", L"Todas"
 			});
-			this->chlbArtesComunication->Location = System::Drawing::Point(807, 61);
+			this->chlbArtesComunication->Location = System::Drawing::Point(550, 30);
 			this->chlbArtesComunication->Name = L"chlbArtesComunication";
-			this->chlbArtesComunication->Size = System::Drawing::Size(224, 106);
+			this->chlbArtesComunication->Size = System::Drawing::Size(250, 89);
 			this->chlbArtesComunication->TabIndex = 10;
 			// 
-			// label1
+			// lbSciencEngineer
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(35, 13);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(132, 16);
-			this->label1->TabIndex = 11;
-			this->label1->Text = L"Ciencias e Ingenieria";
+			this->lbSciencEngineer->AutoSize = true;
+			this->lbSciencEngineer->Location = System::Drawing::Point(10, 10);
+			this->lbSciencEngineer->Name = L"lbSciencEngineer";
+			this->lbSciencEngineer->Size = System::Drawing::Size(132, 16);
+			this->lbSciencEngineer->TabIndex = 11;
+			this->lbSciencEngineer->Text = L"Ciencias e Ingenieria";
 			// 
-			// label2
+			// lbArt
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(325, 13);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(87, 16);
-			this->label2->TabIndex = 12;
-			this->label2->Text = L"Arte y Diseño";
+			this->lbArt->AutoSize = true;
+			this->lbArt->Location = System::Drawing::Point(277, 10);
+			this->lbArt->Name = L"lbArt";
+			this->lbArt->Size = System::Drawing::Size(87, 16);
+			this->lbArt->TabIndex = 12;
+			this->lbArt->Text = L"Arte y Diseño";
 			// 
-			// label3
+			// lbDrama
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(576, 9);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(104, 16);
-			this->label3->TabIndex = 13;
-			this->label3->Text = L"Artes Escénicas";
+			this->lbDrama->AutoSize = true;
+			this->lbDrama->Location = System::Drawing::Point(277, 190);
+			this->lbDrama->Name = L"lbDrama";
+			this->lbDrama->Size = System::Drawing::Size(104, 16);
+			this->lbDrama->TabIndex = 13;
+			this->lbDrama->Text = L"Artes Escénicas";
 			// 
-			// label4
+			// lbComunication
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(804, 13);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(224, 16);
-			this->label4->TabIndex = 14;
-			this->label4->Text = L"Ciencias y Artes de la Comunicación";
+			this->lbComunication->AutoSize = true;
+			this->lbComunication->Location = System::Drawing::Point(550, 10);
+			this->lbComunication->Name = L"lbComunication";
+			this->lbComunication->Size = System::Drawing::Size(224, 16);
+			this->lbComunication->TabIndex = 14;
+			this->lbComunication->Text = L"Ciencias y Artes de la Comunicación";
 			// 
 			// btUp
 			// 
-			this->btUp->Location = System::Drawing::Point(537, 250);
+			this->btUp->Location = System::Drawing::Point(375, 340);
 			this->btUp->Name = L"btUp";
-			this->btUp->Size = System::Drawing::Size(70, 31);
+			this->btUp->Size = System::Drawing::Size(100, 30);
 			this->btUp->TabIndex = 15;
 			this->btUp->Text = L"Agregar";
-			this->btUp->TextAlign = System::Drawing::ContentAlignment::TopLeft;
 			this->btUp->UseVisualStyleBackColor = true;
 			this->btUp->Click += gcnew System::EventHandler(this, &CareerListForm::btUp_Click);
 			// 
 			// btExit
 			// 
-			this->btExit->Location = System::Drawing::Point(646, 258);
+			this->btExit->Location = System::Drawing::Point(500, 340);
 			this->btExit->Name = L"btExit";
-			this->btExit->Size = System::Drawing::Size(75, 23);
+			this->btExit->Size = System::Drawing::Size(100, 30);
 			this->btExit->TabIndex = 16;
 			this->btExit->Text = L"Salir";
 			this->btExit->UseVisualStyleBackColor = true;
 			this->btExit->Click += gcnew System::EventHandler(this, &CareerListForm::btExit_Click);
 			// 
+			// chlbHumanity
+			// 
+			this->chlbHumanity->FormattingEnabled = true;
+			this->chlbHumanity->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Arqueología", L"Ciencias de la Información",
+					L"Filosofía", L"Geografía y Medio Ambiente", L"Historia", L"Humanidades", L"Lingüística y Literatura"
+			});
+			this->chlbHumanity->Location = System::Drawing::Point(820, 30);
+			this->chlbHumanity->Name = L"chlbHumanity";
+			this->chlbHumanity->Size = System::Drawing::Size(224, 140);
+			this->chlbHumanity->TabIndex = 17;
+			// 
+			// lbHumanity
+			// 
+			this->lbHumanity->AutoSize = true;
+			this->lbHumanity->Location = System::Drawing::Point(820, 10);
+			this->lbHumanity->Name = L"lbHumanity";
+			this->lbHumanity->Size = System::Drawing::Size(170, 16);
+			this->lbHumanity->TabIndex = 18;
+			this->lbHumanity->Text = L"Letras y Ciencias Humanas";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(550, 127);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(115, 16);
+			this->label2->TabIndex = 20;
+			this->label2->Text = L"Ciencias Sociales";
+			// 
+			// chlbSocialScience
+			// 
+			this->chlbSocialScience->FormattingEnabled = true;
+			this->chlbSocialScience->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
+				L"Antropología", L"Ciencia, Política y Gobierno",
+					L"Economía", L"Finanzas", L"Relaciones Internacionales", L"Sociología"
+			});
+			this->chlbSocialScience->Location = System::Drawing::Point(550, 148);
+			this->chlbSocialScience->Name = L"chlbSocialScience";
+			this->chlbSocialScience->Size = System::Drawing::Size(250, 106);
+			this->chlbSocialScience->TabIndex = 19;
+			// 
+			// label3
+			// 
+			this->label3->Location = System::Drawing::Point(550, 258);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(115, 16);
+			this->label3->TabIndex = 22;
+			this->label3->Text = L"Educación";
+			// 
+			// chlbEducation
+			// 
+			this->chlbEducation->FormattingEnabled = true;
+			this->chlbEducation->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Educación Inicial", L"Educación Primaria",
+					L"Educación Secundaria"
+			});
+			this->chlbEducation->Location = System::Drawing::Point(550, 279);
+			this->chlbEducation->Name = L"chlbEducation";
+			this->chlbEducation->Size = System::Drawing::Size(250, 55);
+			this->chlbEducation->TabIndex = 21;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(820, 179);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(104, 16);
+			this->label4->TabIndex = 24;
+			this->label4->Text = L"Otras facultades";
+			// 
+			// chlbOthers
+			// 
+			this->chlbOthers->FormattingEnabled = true;
+			this->chlbOthers->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Arquitectura", L"Contabilidad", L"Derecho",
+					L"Gestión", L"Psicología", L"Hotelería", L"Turismo"
+			});
+			this->chlbOthers->Location = System::Drawing::Point(820, 200);
+			this->chlbOthers->Name = L"chlbOthers";
+			this->chlbOthers->Size = System::Drawing::Size(224, 140);
+			this->chlbOthers->TabIndex = 23;
+			// 
 			// CareerListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1046, 407);
+			this->ClientSize = System::Drawing::Size(1082, 383);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->chlbOthers);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->chlbEducation);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->chlbSocialScience);
+			this->Controls->Add(this->lbHumanity);
+			this->Controls->Add(this->chlbHumanity);
 			this->Controls->Add(this->btExit);
 			this->Controls->Add(this->btUp);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lbComunication);
+			this->Controls->Add(this->lbDrama);
+			this->Controls->Add(this->lbArt);
+			this->Controls->Add(this->lbSciencEngineer);
 			this->Controls->Add(this->chlbArtesComunication);
 			this->Controls->Add(this->chlbArtesEscenicas);
 			this->Controls->Add(this->chlbArteDisenio);
@@ -216,11 +333,9 @@ namespace SalesView {
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void checkedListBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void CareerListForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
+		// Load
+	private: System::Void CareerListForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	if (Controller::RelationatedCareers->Count > 0) {
 		for (int j = 0; j < Controller::RelationatedCareers->Count; j++) {
 			for (int i = 0; i < chlbCiencias->Items->Count; i++) {
@@ -253,13 +368,11 @@ private: System::Void CareerListForm_Load(System::Object^ sender, System::EventA
 
 
 	}
-
 }
-private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
-
-private: System::Void btUp_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btUp_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 	Controller::RelationatedCareers->Clear();
 
@@ -268,20 +381,37 @@ private: System::Void btUp_Click(System::Object^ sender, System::EventArgs^ e) {
 			Controller::RelationatedCareers->Add(chlbCiencias->Items[i]->ToString());
 		}
 	}
-
 	for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
 		if (chlbArteDisenio->GetItemChecked(i)) {
 			Controller::RelationatedCareers->Add(chlbArteDisenio->Items[i]->ToString());
 		}
 	}
-
 	for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
 		if (chlbArtesEscenicas->GetItemChecked(i)) {
 			Controller::RelationatedCareers->Add(chlbArtesEscenicas->Items[i]->ToString());
 		}
 	}
-
 	for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
+		if (chlbArtesComunication->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		}
+	}
+	for (int i = 0; i < chlbSocialScience->Items->Count; i++) {
+		if (chlbArtesComunication->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		}
+	}
+	for (int i = 0; i < chlbEducation->Items->Count; i++) {
+		if (chlbArtesComunication->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		}
+	}
+	for (int i = 0; i < chlbHumanity->Items->Count; i++) {
+		if (chlbArtesComunication->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		}
+	}
+	for (int i = 0; i < chlbOthers->Items->Count; i++) {
 		if (chlbArtesComunication->GetItemChecked(i)) {
 			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
 		}
