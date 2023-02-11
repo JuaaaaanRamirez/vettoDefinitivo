@@ -70,6 +70,7 @@ namespace SalesView {
 	private: System::Windows::Forms::TextBox^ txtPriceMaj;
 
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Button^ btnCarrer;
 
 
 
@@ -82,14 +83,15 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::Button^ btClear;
+	private: System::Windows::Forms::Button^ btnClear;
+
 
 
 
@@ -147,8 +149,8 @@ namespace SalesView {
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->btClear = (gcnew System::Windows::Forms::Button());
+			this->btnCarrer = (gcnew System::Windows::Forms::Button());
+			this->btnClear = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
@@ -358,25 +360,25 @@ namespace SalesView {
 			this->label7->TabIndex = 18;
 			this->label7->Text = L"Precio mayorista (s/.)";
 			// 
-			// button1
+			// btnCarrer
 			// 
-			this->button1->Location = System::Drawing::Point(320, 160);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(240, 30);
-			this->button1->TabIndex = 12;
-			this->button1->Text = L"Elegir carreras ";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
+			this->btnCarrer->Location = System::Drawing::Point(320, 160);
+			this->btnCarrer->Name = L"btnCarrer";
+			this->btnCarrer->Size = System::Drawing::Size(240, 30);
+			this->btnCarrer->TabIndex = 12;
+			this->btnCarrer->Text = L"Elegir carreras ";
+			this->btnCarrer->UseVisualStyleBackColor = true;
+			this->btnCarrer->Click += gcnew System::EventHandler(this, &ProductForm::btnCarrer_Click);
 			// 
-			// btClear
+			// btnClear
 			// 
-			this->btClear->Location = System::Drawing::Point(320, 206);
-			this->btClear->Name = L"btClear";
-			this->btClear->Size = System::Drawing::Size(240, 30);
-			this->btClear->TabIndex = 19;
-			this->btClear->Text = L"Limpiar";
-			this->btClear->UseVisualStyleBackColor = true;
-			this->btClear->Click += gcnew System::EventHandler(this, &ProductForm::button2_Click);
+			this->btnClear->Location = System::Drawing::Point(320, 206);
+			this->btnClear->Name = L"btnClear";
+			this->btnClear->Size = System::Drawing::Size(240, 30);
+			this->btnClear->TabIndex = 19;
+			this->btnClear->Text = L"Limpiar";
+			this->btnClear->UseVisualStyleBackColor = true;
+			this->btnClear->Click += gcnew System::EventHandler(this, &ProductForm::btnClean_Click);
 			// 
 			// ProductForm
 			// 
@@ -384,8 +386,8 @@ namespace SalesView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->ClientSize = System::Drawing::Size(882, 753);
-			this->Controls->Add(this->btClear);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnClear);
+			this->Controls->Add(this->btnCarrer);
 			this->Controls->Add(this->txtPriceMaj);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->dgvProducts);
@@ -631,7 +633,7 @@ namespace SalesView {
 		}
 		//################################################
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnCarrer_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		CareerListForm^ CareerList = gcnew CareerListForm();
 		CareerList->ShowDialog();
@@ -639,7 +641,7 @@ namespace SalesView {
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnClean_Click(System::Object^ sender, System::EventArgs^ e) {
 		CleanControls();
 		Controller::RelationatedCareers->Clear();
 	}
