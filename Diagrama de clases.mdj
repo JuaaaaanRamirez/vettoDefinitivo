@@ -485,13 +485,30 @@
 											"height": 13,
 											"text": "-Starts: double",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGGPl5gC34O+8c=",
+											"_parent": {
+												"$ref": "AAAAAAGDDb4aodPiHJc="
+											},
+											"model": {
+												"$ref": "AAAAAAGGPl5f+34LYiU="
+											},
+											"font": "Arial;13;0",
+											"left": 877,
+											"top": 437,
+											"width": 153.46728515625,
+											"height": 13,
+											"text": "+Searches: int",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 872,
 									"top": 297,
 									"width": 163.46728515625,
-									"height": 143
+									"height": 158
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -504,7 +521,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 872,
-									"top": 440,
+									"top": 455,
 									"width": 163.46728515625,
 									"height": 10
 								},
@@ -5016,6 +5033,15 @@
 							"name": "Starts",
 							"visibility": "private",
 							"type": "double"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGGPl5f+34LYiU=",
+							"_parent": {
+								"$ref": "AAAAAAGDDb4aodPaEzg="
+							},
+							"name": "Searches",
+							"type": "int"
 						}
 					]
 				},

@@ -456,6 +456,7 @@ namespace SalesView {
 		product->Stock = Convert::ToInt32(txtStock->Text);
 		product->Status = 'A';
 		product->Career = gcnew List<String^>();
+		product->Searches = 0;
 		for (int i = 0; i < Controller::RelationatedCareers->Count; i++) {
 			product->Career->Add(Controller::RelationatedCareers[i]);
 		}
@@ -504,7 +505,6 @@ namespace SalesView {
 				   });
 			   }
 		   }
-
 		   void CleanControls() {
 			   txtProductId->ReadOnly = false;
 			   txtProductId->Clear();
@@ -647,8 +647,6 @@ namespace SalesView {
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-
-
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		CleanControls();
 		Controller::RelationatedCareers->Clear();

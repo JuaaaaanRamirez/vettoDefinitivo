@@ -101,14 +101,14 @@ namespace SalesView {
 			this->ComentLabel = (gcnew System::Windows::Forms::Label());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox4 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox5 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox6 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox7 = (gcnew System::Windows::Forms::RichTextBox());
 			this->richTextBox8 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox7 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox6 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox5 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox4 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -229,21 +229,23 @@ namespace SalesView {
 			// 
 			// pictureBox5
 			// 
-			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
 			this->pictureBox5->Location = System::Drawing::Point(763, 228);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(34, 35);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox5->TabIndex = 12;
 			this->pictureBox5->TabStop = false;
 			// 
 			// pictureBox6
 			// 
-			this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
 			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
 			this->pictureBox6->Location = System::Drawing::Point(643, 228);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(34, 35);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox6->TabIndex = 13;
 			this->pictureBox6->TabStop = false;
 			// 
@@ -282,11 +284,12 @@ namespace SalesView {
 			// 
 			// pictureBox7
 			// 
-			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
 			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
 			this->pictureBox7->Location = System::Drawing::Point(115, 352);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(40, 37);
+			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox7->TabIndex = 17;
 			this->pictureBox7->TabStop = false;
 			// 
@@ -305,53 +308,13 @@ namespace SalesView {
 			this->panel1->Size = System::Drawing::Size(861, 118);
 			this->panel1->TabIndex = 18;
 			// 
-			// richTextBox1
+			// richTextBox8
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(21, 13);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(201, 96);
-			this->richTextBox1->TabIndex = 0;
-			this->richTextBox1->Text = L"";
-			// 
-			// richTextBox2
-			// 
-			this->richTextBox2->Location = System::Drawing::Point(246, 13);
-			this->richTextBox2->Name = L"richTextBox2";
-			this->richTextBox2->Size = System::Drawing::Size(173, 96);
-			this->richTextBox2->TabIndex = 1;
-			this->richTextBox2->Text = L"";
-			// 
-			// richTextBox3
-			// 
-			this->richTextBox3->Location = System::Drawing::Point(445, 13);
-			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(179, 96);
-			this->richTextBox3->TabIndex = 2;
-			this->richTextBox3->Text = L"";
-			// 
-			// richTextBox4
-			// 
-			this->richTextBox4->Location = System::Drawing::Point(642, 13);
-			this->richTextBox4->Name = L"richTextBox4";
-			this->richTextBox4->Size = System::Drawing::Size(199, 96);
-			this->richTextBox4->TabIndex = 3;
-			this->richTextBox4->Text = L"";
-			// 
-			// richTextBox5
-			// 
-			this->richTextBox5->Location = System::Drawing::Point(21, 115);
-			this->richTextBox5->Name = L"richTextBox5";
-			this->richTextBox5->Size = System::Drawing::Size(201, 96);
-			this->richTextBox5->TabIndex = 19;
-			this->richTextBox5->Text = L"";
-			// 
-			// richTextBox6
-			// 
-			this->richTextBox6->Location = System::Drawing::Point(246, 116);
-			this->richTextBox6->Name = L"richTextBox6";
-			this->richTextBox6->Size = System::Drawing::Size(173, 96);
-			this->richTextBox6->TabIndex = 20;
-			this->richTextBox6->Text = L"";
+			this->richTextBox8->Location = System::Drawing::Point(642, 116);
+			this->richTextBox8->Name = L"richTextBox8";
+			this->richTextBox8->Size = System::Drawing::Size(199, 96);
+			this->richTextBox8->TabIndex = 22;
+			this->richTextBox8->Text = L"";
 			// 
 			// richTextBox7
 			// 
@@ -361,13 +324,53 @@ namespace SalesView {
 			this->richTextBox7->TabIndex = 21;
 			this->richTextBox7->Text = L"";
 			// 
-			// richTextBox8
+			// richTextBox6
 			// 
-			this->richTextBox8->Location = System::Drawing::Point(642, 116);
-			this->richTextBox8->Name = L"richTextBox8";
-			this->richTextBox8->Size = System::Drawing::Size(199, 96);
-			this->richTextBox8->TabIndex = 22;
-			this->richTextBox8->Text = L"";
+			this->richTextBox6->Location = System::Drawing::Point(246, 116);
+			this->richTextBox6->Name = L"richTextBox6";
+			this->richTextBox6->Size = System::Drawing::Size(173, 96);
+			this->richTextBox6->TabIndex = 20;
+			this->richTextBox6->Text = L"";
+			// 
+			// richTextBox5
+			// 
+			this->richTextBox5->Location = System::Drawing::Point(21, 115);
+			this->richTextBox5->Name = L"richTextBox5";
+			this->richTextBox5->Size = System::Drawing::Size(201, 96);
+			this->richTextBox5->TabIndex = 19;
+			this->richTextBox5->Text = L"";
+			// 
+			// richTextBox4
+			// 
+			this->richTextBox4->Location = System::Drawing::Point(642, 13);
+			this->richTextBox4->Name = L"richTextBox4";
+			this->richTextBox4->Size = System::Drawing::Size(199, 96);
+			this->richTextBox4->TabIndex = 3;
+			this->richTextBox4->Text = L"";
+			// 
+			// richTextBox3
+			// 
+			this->richTextBox3->Location = System::Drawing::Point(445, 13);
+			this->richTextBox3->Name = L"richTextBox3";
+			this->richTextBox3->Size = System::Drawing::Size(179, 96);
+			this->richTextBox3->TabIndex = 2;
+			this->richTextBox3->Text = L"";
+			// 
+			// richTextBox2
+			// 
+			this->richTextBox2->Location = System::Drawing::Point(246, 13);
+			this->richTextBox2->Name = L"richTextBox2";
+			this->richTextBox2->Size = System::Drawing::Size(173, 96);
+			this->richTextBox2->TabIndex = 1;
+			this->richTextBox2->Text = L"";
+			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Location = System::Drawing::Point(21, 13);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->Size = System::Drawing::Size(201, 96);
+			this->richTextBox1->TabIndex = 0;
+			this->richTextBox1->Text = L"";
 			// 
 			// ProductPresentationForm
 			// 

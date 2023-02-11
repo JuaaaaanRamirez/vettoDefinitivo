@@ -17,13 +17,15 @@ namespace SalesView {
 	/// </summary>
 	public ref class ProductListForm : public System::Windows::Forms::Form
 	{
+		Form^ refForm; //Variable de instancia
 	public:
-		ProductListForm(void)
+		ProductListForm(Form^ form)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			refForm = form;
 		}
 
 	protected:
@@ -37,7 +39,7 @@ namespace SalesView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dgvProductList;
+
 	protected:
 
 
@@ -45,13 +47,27 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::PictureBox^ Searchbtn;
-	private: System::Windows::Forms::TextBox^ SearchBox;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+
+	private: System::Windows::Forms::TextBox^ txtSearchBox;
+	private: System::Windows::Forms::DataGridView^ dgvProductList;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Stock;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Calificación;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Imagen;
+	private: System::Windows::Forms::Button^ Searchbtn;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -75,78 +91,68 @@ namespace SalesView {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductListForm::typeid));
+			this->txtSearchBox = (gcnew System::Windows::Forms::TextBox());
 			this->dgvProductList = (gcnew System::Windows::Forms::DataGridView());
-			this->Searchbtn = (gcnew System::Windows::Forms::PictureBox());
-			this->SearchBox = (gcnew System::Windows::Forms::TextBox());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Stock = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Calificación = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Imagen = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Searchbtn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Searchbtn))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// txtSearchBox
+			// 
+			this->txtSearchBox->BackColor = System::Drawing::SystemColors::Control;
+			this->txtSearchBox->Location = System::Drawing::Point(42, 12);
+			this->txtSearchBox->Name = L"txtSearchBox";
+			this->txtSearchBox->Size = System::Drawing::Size(873, 22);
+			this->txtSearchBox->TabIndex = 39;
+			this->txtSearchBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ProductListForm::txtSearchBox_KeyDown);
 			// 
 			// dgvProductList
 			// 
 			this->dgvProductList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProductList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Imagen
+				this->Id, this->Nombre,
+					this->Stock, this->Calificación, this->Imagen
 			});
 			this->dgvProductList->Location = System::Drawing::Point(12, 43);
 			this->dgvProductList->Name = L"dgvProductList";
 			this->dgvProductList->RowHeadersWidth = 51;
 			this->dgvProductList->RowTemplate->Height = 24;
 			this->dgvProductList->Size = System::Drawing::Size(903, 506);
-			this->dgvProductList->TabIndex = 0;
-			this->dgvProductList->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::ProductListGrid_CellClick);
+			this->dgvProductList->TabIndex = 41;
+			this->dgvProductList->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellClick);
 			// 
-			// Searchbtn
+			// Id
 			// 
-			this->Searchbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Searchbtn.BackgroundImage")));
-			this->Searchbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->Searchbtn->Location = System::Drawing::Point(12, 12);
-			this->Searchbtn->Name = L"Searchbtn";
-			this->Searchbtn->Size = System::Drawing::Size(25, 25);
-			this->Searchbtn->TabIndex = 40;
-			this->Searchbtn->TabStop = false;
+			this->Id->HeaderText = L"Id";
+			this->Id->MinimumWidth = 6;
+			this->Id->Name = L"Id";
+			this->Id->Width = 125;
 			// 
-			// SearchBox
+			// Nombre
 			// 
-			this->SearchBox->BackColor = System::Drawing::SystemColors::Control;
-			this->SearchBox->Location = System::Drawing::Point(42, 12);
-			this->SearchBox->Name = L"SearchBox";
-			this->SearchBox->Size = System::Drawing::Size(873, 22);
-			this->SearchBox->TabIndex = 39;
+			this->Nombre->HeaderText = L"Nombre";
+			this->Nombre->MinimumWidth = 6;
+			this->Nombre->Name = L"Nombre";
+			this->Nombre->Width = 125;
 			// 
-			// Column1
+			// Stock
 			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
+			this->Stock->HeaderText = L"Stock";
+			this->Stock->MinimumWidth = 6;
+			this->Stock->Name = L"Stock";
+			this->Stock->Width = 125;
 			// 
-			// Column2
+			// Calificación
 			// 
-			this->Column2->HeaderText = L"Stock";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Nombre";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Calificación";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
+			this->Calificación->HeaderText = L"Calificación";
+			this->Calificación->MinimumWidth = 6;
+			this->Calificación->Name = L"Calificación";
+			this->Calificación->Width = 125;
 			// 
 			// Imagen
 			// 
@@ -155,29 +161,42 @@ namespace SalesView {
 			this->Imagen->Name = L"Imagen";
 			this->Imagen->Width = 125;
 			// 
+			// Searchbtn
+			// 
+			this->Searchbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Searchbtn.BackgroundImage")));
+			this->Searchbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->Searchbtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->Searchbtn->ForeColor = System::Drawing::Color::Transparent;
+			this->Searchbtn->Location = System::Drawing::Point(12, 12);
+			this->Searchbtn->Name = L"Searchbtn";
+			this->Searchbtn->Size = System::Drawing::Size(25, 25);
+			this->Searchbtn->TabIndex = 42;
+			this->Searchbtn->UseVisualStyleBackColor = false;
+			this->Searchbtn->Click += gcnew System::EventHandler(this, &ProductListForm::Searchbtn_Click);
+			// 
 			// ProductListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(927, 561);
 			this->Controls->Add(this->Searchbtn);
-			this->Controls->Add(this->SearchBox);
 			this->Controls->Add(this->dgvProductList);
+			this->Controls->Add(this->txtSearchBox);
 			this->MaximizeBox = false;
 			this->Name = L"ProductListForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Lista de Productos";
 			this->Load += gcnew System::EventHandler(this, &ProductListForm::ProductListForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Searchbtn))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 
+		// Functions
 		void ShowProducts() {
-			List<Product^>^ myProductList = Controller::QueryAllProducts();		// Make List
+			List<Product^>^ myProductList = Controller::QueryProductsByNameOrDescription(txtSearchBox->Text);		// Make List
 			dgvProductList->Rows->Clear();										// Clear Dgv
 
 			for (int i = 0; i < myProductList->Count; i++) {					// Look for!
@@ -190,12 +209,25 @@ namespace SalesView {
 				});
 			}
 		}
-	private: System::Void ProductListGrid_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		ProductPresentationForm^ ProductDes = gcnew ProductPresentationForm();
-		ProductDes->Show();
+
+	// Dgv
+	private: System::Void dgvProductList_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm();
+		ProductPresentation->ShowDialog();
 	}
-	private: System::Void ProductListForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowProducts();
-	}
+	
+	// Load
+	private: System::Void ProductListForm_Load(System::Object^ sender, System::EventArgs^ e);
+	
+	// Search
+	private: System::Void Searchbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+	ShowProducts();
+}
+    private: System::Void txtSearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyData == Keys::Enter) Searchbtn->PerformClick();
+}
 };
 }
+
+
+
