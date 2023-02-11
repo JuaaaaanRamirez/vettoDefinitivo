@@ -39,10 +39,12 @@ namespace SalesView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pbxProductImagen1;
-	private: System::Windows::Forms::PictureBox^ pbxProductImagen2;
-	private: System::Windows::Forms::PictureBox^ pbxProductImagen3;
-	private: System::Windows::Forms::PictureBox^ pbxProductImagen4;
+	private: System::Windows::Forms::PictureBox^ pbxProductImagen;
+	protected:
+
+
+
+
 	private: System::Windows::Forms::Label^ lbName;
 	private: System::Windows::Forms::Label^ lbDescription;
 	protected:
@@ -107,10 +109,7 @@ namespace SalesView {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductPresentationForm::typeid));
-			this->pbxProductImagen1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pbxProductImagen2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pbxProductImagen3 = (gcnew System::Windows::Forms::PictureBox());
-			this->pbxProductImagen4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pbxProductImagen = (gcnew System::Windows::Forms::PictureBox());
 			this->lbName = (gcnew System::Windows::Forms::Label());
 			this->lbDescription = (gcnew System::Windows::Forms::Label());
 			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
@@ -127,10 +126,7 @@ namespace SalesView {
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
 			this->Wishbtn = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
@@ -138,45 +134,15 @@ namespace SalesView {
 			this->gbinformation->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// pbxProductImagen1
+			// pbxProductImagen
 			// 
-			this->pbxProductImagen1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbxProductImagen1->Location = System::Drawing::Point(180, 30);
-			this->pbxProductImagen1->Name = L"pbxProductImagen1";
-			this->pbxProductImagen1->Size = System::Drawing::Size(235, 265);
-			this->pbxProductImagen1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbxProductImagen1->TabIndex = 0;
-			this->pbxProductImagen1->TabStop = false;
-			// 
-			// pbxProductImagen2
-			// 
-			this->pbxProductImagen2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbxProductImagen2->Location = System::Drawing::Point(20, 30);
-			this->pbxProductImagen2->Name = L"pbxProductImagen2";
-			this->pbxProductImagen2->Size = System::Drawing::Size(130, 75);
-			this->pbxProductImagen2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbxProductImagen2->TabIndex = 1;
-			this->pbxProductImagen2->TabStop = false;
-			// 
-			// pbxProductImagen3
-			// 
-			this->pbxProductImagen3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbxProductImagen3->Location = System::Drawing::Point(20, 125);
-			this->pbxProductImagen3->Name = L"pbxProductImagen3";
-			this->pbxProductImagen3->Size = System::Drawing::Size(130, 75);
-			this->pbxProductImagen3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbxProductImagen3->TabIndex = 2;
-			this->pbxProductImagen3->TabStop = false;
-			// 
-			// pbxProductImagen4
-			// 
-			this->pbxProductImagen4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbxProductImagen4->Location = System::Drawing::Point(20, 220);
-			this->pbxProductImagen4->Name = L"pbxProductImagen4";
-			this->pbxProductImagen4->Size = System::Drawing::Size(130, 75);
-			this->pbxProductImagen4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pbxProductImagen4->TabIndex = 3;
-			this->pbxProductImagen4->TabStop = false;
+			this->pbxProductImagen->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pbxProductImagen->Location = System::Drawing::Point(20, 30);
+			this->pbxProductImagen->Name = L"pbxProductImagen";
+			this->pbxProductImagen->Size = System::Drawing::Size(235, 265);
+			this->pbxProductImagen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbxProductImagen->TabIndex = 0;
+			this->pbxProductImagen->TabStop = false;
 			// 
 			// lbName
 			// 
@@ -219,7 +185,7 @@ namespace SalesView {
 			// 
 			this->Addbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Addbtn->Location = System::Drawing::Point(570, 250);
+			this->Addbtn->Location = System::Drawing::Point(400, 250);
 			this->Addbtn->Name = L"Addbtn";
 			this->Addbtn->Size = System::Drawing::Size(220, 40);
 			this->Addbtn->TabIndex = 8;
@@ -229,7 +195,7 @@ namespace SalesView {
 			// 
 			// amountProduct
 			// 
-			this->amountProduct->Location = System::Drawing::Point(540, 150);
+			this->amountProduct->Location = System::Drawing::Point(370, 150);
 			this->amountProduct->Name = L"amountProduct";
 			this->amountProduct->Size = System::Drawing::Size(345, 22);
 			this->amountProduct->TabIndex = 9;
@@ -237,7 +203,7 @@ namespace SalesView {
 			// lbAmount
 			// 
 			this->lbAmount->AutoSize = true;
-			this->lbAmount->Location = System::Drawing::Point(440, 150);
+			this->lbAmount->Location = System::Drawing::Point(270, 150);
 			this->lbAmount->Name = L"lbAmount";
 			this->lbAmount->Size = System::Drawing::Size(64, 16);
 			this->lbAmount->TabIndex = 10;
@@ -246,7 +212,7 @@ namespace SalesView {
 			// lbStarts
 			// 
 			this->lbStarts->AutoSize = true;
-			this->lbStarts->Location = System::Drawing::Point(440, 190);
+			this->lbStarts->Location = System::Drawing::Point(270, 190);
 			this->lbStarts->Name = L"lbStarts";
 			this->lbStarts->Size = System::Drawing::Size(79, 16);
 			this->lbStarts->TabIndex = 11;
@@ -256,7 +222,7 @@ namespace SalesView {
 			// 
 			this->pbSellers->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSellers.BackgroundImage")));
 			this->pbSellers->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbSellers->Location = System::Drawing::Point(735, 188);
+			this->pbSellers->Location = System::Drawing::Point(565, 188);
 			this->pbSellers->Name = L"pbSellers";
 			this->pbSellers->Size = System::Drawing::Size(35, 35);
 			this->pbSellers->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -267,7 +233,7 @@ namespace SalesView {
 			// 
 			this->pbStars->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbStars.BackgroundImage")));
 			this->pbStars->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbStars->Location = System::Drawing::Point(600, 188);
+			this->pbStars->Location = System::Drawing::Point(430, 188);
 			this->pbStars->Name = L"pbStars";
 			this->pbStars->Size = System::Drawing::Size(35, 35);
 			this->pbStars->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -279,7 +245,7 @@ namespace SalesView {
 			this->lbHearts->AutoSize = true;
 			this->lbHearts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbHearts->Location = System::Drawing::Point(565, 190);
+			this->lbHearts->Location = System::Drawing::Point(395, 190);
 			this->lbHearts->Name = L"lbHearts";
 			this->lbHearts->Size = System::Drawing::Size(48, 29);
 			this->lbHearts->TabIndex = 14;
@@ -291,7 +257,7 @@ namespace SalesView {
 			this->lbSales->AutoSize = true;
 			this->lbSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbSales->Location = System::Drawing::Point(666, 190);
+			this->lbSales->Location = System::Drawing::Point(496, 190);
 			this->lbSales->Name = L"lbSales";
 			this->lbSales->Size = System::Drawing::Size(69, 29);
 			this->lbSales->TabIndex = 15;
@@ -303,7 +269,7 @@ namespace SalesView {
 			this->ComentLabel->AutoSize = true;
 			this->ComentLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ComentLabel->Location = System::Drawing::Point(26, 362);
+			this->ComentLabel->Location = System::Drawing::Point(20, 360);
 			this->ComentLabel->Name = L"ComentLabel";
 			this->ComentLabel->Size = System::Drawing::Size(83, 16);
 			this->ComentLabel->TabIndex = 16;
@@ -313,7 +279,7 @@ namespace SalesView {
 			// 
 			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
 			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(115, 352);
+			this->pictureBox7->Location = System::Drawing::Point(110, 355);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(40, 37);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -327,7 +293,7 @@ namespace SalesView {
 			this->gbinformation->Controls->Add(this->lbDescription);
 			this->gbinformation->Controls->Add(this->txtProductName);
 			this->gbinformation->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->gbinformation->Location = System::Drawing::Point(440, 30);
+			this->gbinformation->Location = System::Drawing::Point(270, 30);
 			this->gbinformation->Name = L"gbinformation";
 			this->gbinformation->Size = System::Drawing::Size(450, 100);
 			this->gbinformation->TabIndex = 19;
@@ -337,7 +303,7 @@ namespace SalesView {
 			// 
 			this->Wishbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Wishbtn->Location = System::Drawing::Point(560, 300);
+			this->Wishbtn->Location = System::Drawing::Point(390, 300);
 			this->Wishbtn->Name = L"Wishbtn";
 			this->Wishbtn->Size = System::Drawing::Size(240, 40);
 			this->Wishbtn->TabIndex = 20;
@@ -348,7 +314,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(932, 523);
+			this->ClientSize = System::Drawing::Size(740, 523);
 			this->Controls->Add(this->Wishbtn);
 			this->Controls->Add(this->gbinformation);
 			this->Controls->Add(this->pictureBox7);
@@ -361,19 +327,13 @@ namespace SalesView {
 			this->Controls->Add(this->lbAmount);
 			this->Controls->Add(this->amountProduct);
 			this->Controls->Add(this->Addbtn);
-			this->Controls->Add(this->pbxProductImagen4);
-			this->Controls->Add(this->pbxProductImagen3);
-			this->Controls->Add(this->pbxProductImagen2);
-			this->Controls->Add(this->pbxProductImagen1);
+			this->Controls->Add(this->pbxProductImagen);
 			this->MaximizeBox = false;
 			this->Name = L"ProductPresentationForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"ProductoSelccionado";
+			this->Text = L"Producto Selccionado";
 			this->Load += gcnew System::EventHandler(this, &ProductPresentationForm::ProductPresentationForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->EndInit();

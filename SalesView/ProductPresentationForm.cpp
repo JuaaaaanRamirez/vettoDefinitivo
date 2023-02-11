@@ -24,6 +24,6 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	// Put Image
 	if (p->Photo != nullptr) {
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
-		pbxProductImagen1->Image = Image::FromStream(ms);
+		pbxProductImagen->Image = Image::FromStream(ms);
 	}
 }
