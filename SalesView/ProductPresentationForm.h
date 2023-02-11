@@ -256,7 +256,7 @@ namespace SalesView {
 			// 
 			this->pbSellers->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSellers.BackgroundImage")));
 			this->pbSellers->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbSellers->Location = System::Drawing::Point(735, 190);
+			this->pbSellers->Location = System::Drawing::Point(735, 188);
 			this->pbSellers->Name = L"pbSellers";
 			this->pbSellers->Size = System::Drawing::Size(35, 35);
 			this->pbSellers->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -267,7 +267,7 @@ namespace SalesView {
 			// 
 			this->pbStars->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbStars.BackgroundImage")));
 			this->pbStars->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbStars->Location = System::Drawing::Point(600, 190);
+			this->pbStars->Location = System::Drawing::Point(600, 188);
 			this->pbStars->Name = L"pbStars";
 			this->pbStars->Size = System::Drawing::Size(35, 35);
 			this->pbStars->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
