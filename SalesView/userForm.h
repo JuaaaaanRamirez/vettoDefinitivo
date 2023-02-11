@@ -533,6 +533,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			});
 			this->dgvCustomer->Location = System::Drawing::Point(24, 370);
 			this->dgvCustomer->Name = L"dgvCustomer";
+			this->dgvCustomer->ReadOnly = true;
 			this->dgvCustomer->RowHeadersWidth = 51;
 			this->dgvCustomer->RowTemplate->Height = 24;
 			this->dgvCustomer->Size = System::Drawing::Size(584, 248);
@@ -544,6 +545,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->Id->HeaderText = L"Id";
 			this->Id->MinimumWidth = 6;
 			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
 			this->Id->Width = 125;
 			// 
 			// Nombre
@@ -551,6 +553,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->Nombre->HeaderText = L"Nombre";
 			this->Nombre->MinimumWidth = 6;
 			this->Nombre->Name = L"Nombre";
+			this->Nombre->ReadOnly = true;
 			this->Nombre->Width = 125;
 			// 
 			// Apellidos
@@ -558,6 +561,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->Apellidos->HeaderText = L"Apellidos";
 			this->Apellidos->MinimumWidth = 6;
 			this->Apellidos->Name = L"Apellidos";
+			this->Apellidos->ReadOnly = true;
 			this->Apellidos->Width = 125;
 			// 
 			// Email
@@ -565,6 +569,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->Email->HeaderText = L"Email";
 			this->Email->MinimumWidth = 6;
 			this->Email->Name = L"Email";
+			this->Email->ReadOnly = true;
 			this->Email->Width = 125;
 			// 
 			// Teléfono
@@ -572,6 +577,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->Teléfono->HeaderText = L"Teléfono";
 			this->Teléfono->MinimumWidth = 6;
 			this->Teléfono->Name = L"Teléfono";
+			this->Teléfono->ReadOnly = true;
 			this->Teléfono->Width = 125;
 			// 
 			// GenBox

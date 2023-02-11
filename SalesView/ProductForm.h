@@ -70,6 +70,7 @@ namespace SalesView {
 	private: System::Windows::Forms::TextBox^ txtPriceMaj;
 
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Button^ btnCarrer;
 
 
 
@@ -82,14 +83,15 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::Button^ btClear;
+	private: System::Windows::Forms::Button^ btnClear;
+
 
 
 
@@ -147,8 +149,8 @@ namespace SalesView {
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtPriceMaj = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->btClear = (gcnew System::Windows::Forms::Button());
+			this->btnCarrer = (gcnew System::Windows::Forms::Button());
+			this->btnClear = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
@@ -156,17 +158,16 @@ namespace SalesView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(33, 35);
+			this->label1->Location = System::Drawing::Point(20, 20);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
-			this->label1->Click += gcnew System::EventHandler(this, &ProductForm::label1_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(33, 77);
+			this->label2->Location = System::Drawing::Point(20, 50);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(59, 16);
 			this->label2->TabIndex = 1;
@@ -175,7 +176,7 @@ namespace SalesView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(33, 116);
+			this->label3->Location = System::Drawing::Point(20, 80);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(82, 16);
 			this->label3->TabIndex = 2;
@@ -184,7 +185,7 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(33, 187);
+			this->label4->Location = System::Drawing::Point(20, 160);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(128, 16);
 			this->label4->TabIndex = 3;
@@ -194,7 +195,7 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(33, 246);
+			this->label5->Location = System::Drawing::Point(20, 220);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(44, 16);
 			this->label5->TabIndex = 4;
@@ -202,21 +203,21 @@ namespace SalesView {
 			// 
 			// txtProductId
 			// 
-			this->txtProductId->Location = System::Drawing::Point(182, 35);
+			this->txtProductId->Location = System::Drawing::Point(110, 20);
 			this->txtProductId->Name = L"txtProductId";
-			this->txtProductId->Size = System::Drawing::Size(100, 22);
+			this->txtProductId->Size = System::Drawing::Size(306, 22);
 			this->txtProductId->TabIndex = 6;
 			// 
 			// txtName
 			// 
-			this->txtName->Location = System::Drawing::Point(182, 77);
+			this->txtName->Location = System::Drawing::Point(110, 50);
 			this->txtName->Name = L"txtName";
-			this->txtName->Size = System::Drawing::Size(228, 22);
+			this->txtName->Size = System::Drawing::Size(306, 22);
 			this->txtName->TabIndex = 7;
 			// 
 			// txtDescription
 			// 
-			this->txtDescription->Location = System::Drawing::Point(182, 116);
+			this->txtDescription->Location = System::Drawing::Point(110, 80);
 			this->txtDescription->Multiline = true;
 			this->txtDescription->Name = L"txtDescription";
 			this->txtDescription->Size = System::Drawing::Size(306, 58);
@@ -224,23 +225,23 @@ namespace SalesView {
 			// 
 			// txtPriceMin
 			// 
-			this->txtPriceMin->Location = System::Drawing::Point(182, 180);
+			this->txtPriceMin->Location = System::Drawing::Point(180, 160);
 			this->txtPriceMin->Name = L"txtPriceMin";
 			this->txtPriceMin->Size = System::Drawing::Size(100, 22);
 			this->txtPriceMin->TabIndex = 9;
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(182, 246);
+			this->txtStock->Location = System::Drawing::Point(180, 220);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(100, 22);
 			this->txtStock->TabIndex = 11;
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->Location = System::Drawing::Point(53, 345);
+			this->btnAdd->Location = System::Drawing::Point(20, 270);
 			this->btnAdd->Name = L"btnAdd";
-			this->btnAdd->Size = System::Drawing::Size(117, 39);
+			this->btnAdd->Size = System::Drawing::Size(110, 30);
 			this->btnAdd->TabIndex = 14;
 			this->btnAdd->Text = L"Agregar";
 			this->btnAdd->UseVisualStyleBackColor = true;
@@ -248,9 +249,9 @@ namespace SalesView {
 			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->Location = System::Drawing::Point(233, 345);
+			this->btnUpdate->Location = System::Drawing::Point(200, 270);
 			this->btnUpdate->Name = L"btnUpdate";
-			this->btnUpdate->Size = System::Drawing::Size(108, 40);
+			this->btnUpdate->Size = System::Drawing::Size(110, 30);
 			this->btnUpdate->TabIndex = 15;
 			this->btnUpdate->Text = L"Modificar";
 			this->btnUpdate->UseVisualStyleBackColor = true;
@@ -258,9 +259,9 @@ namespace SalesView {
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(406, 345);
+			this->btnDelete->Location = System::Drawing::Point(400, 270);
 			this->btnDelete->Name = L"btnDelete";
-			this->btnDelete->Size = System::Drawing::Size(107, 40);
+			this->btnDelete->Size = System::Drawing::Size(110, 30);
 			this->btnDelete->TabIndex = 16;
 			this->btnDelete->Text = L"Eliminar";
 			this->btnDelete->UseVisualStyleBackColor = true;
@@ -269,18 +270,18 @@ namespace SalesView {
 			// pbPhoto
 			// 
 			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbPhoto->Location = System::Drawing::Point(586, 12);
+			this->pbPhoto->Location = System::Drawing::Point(600, 20);
 			this->pbPhoto->Name = L"pbPhoto";
-			this->pbPhoto->Size = System::Drawing::Size(290, 282);
+			this->pbPhoto->Size = System::Drawing::Size(250, 250);
 			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbPhoto->TabIndex = 15;
 			this->pbPhoto->TabStop = false;
 			// 
 			// btnSetImage
 			// 
-			this->btnSetImage->Location = System::Drawing::Point(612, 328);
+			this->btnSetImage->Location = System::Drawing::Point(605, 285);
 			this->btnSetImage->Name = L"btnSetImage";
-			this->btnSetImage->Size = System::Drawing::Size(242, 33);
+			this->btnSetImage->Size = System::Drawing::Size(240, 30);
 			this->btnSetImage->TabIndex = 13;
 			this->btnSetImage->Text = L"Agregar imagen";
 			this->btnSetImage->UseVisualStyleBackColor = true;
@@ -293,20 +294,21 @@ namespace SalesView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
 			});
-			this->dgvProducts->Location = System::Drawing::Point(36, 425);
+			this->dgvProducts->Location = System::Drawing::Point(20, 335);
 			this->dgvProducts->Name = L"dgvProducts";
+			this->dgvProducts->ReadOnly = true;
 			this->dgvProducts->RowHeadersWidth = 51;
 			this->dgvProducts->RowTemplate->Height = 24;
-			this->dgvProducts->Size = System::Drawing::Size(1154, 248);
+			this->dgvProducts->Size = System::Drawing::Size(835, 406);
 			this->dgvProducts->TabIndex = 17;
 			this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dgvProducts_CellClick);
-			this->dgvProducts->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"Id";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
 			this->Column1->Width = 80;
 			// 
 			// Column2
@@ -314,6 +316,7 @@ namespace SalesView {
 			this->Column2->HeaderText = L"Nombre";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
 			this->Column2->Width = 200;
 			// 
 			// Column3
@@ -321,6 +324,7 @@ namespace SalesView {
 			this->Column3->HeaderText = L"Precio minorista (s/.)";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
 			this->Column3->Width = 75;
 			// 
 			// Column4
@@ -328,6 +332,7 @@ namespace SalesView {
 			this->Column4->HeaderText = L"Precio mayorista (s/.)";
 			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
 			this->Column4->Width = 75;
 			// 
 			// Column5
@@ -335,6 +340,7 @@ namespace SalesView {
 			this->Column5->HeaderText = L"Carreras dest.";
 			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
 			this->Column5->Width = 500;
 			// 
 			// Column6
@@ -342,11 +348,12 @@ namespace SalesView {
 			this->Column6->HeaderText = L"Stock";
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
 			this->Column6->Width = 50;
 			// 
 			// txtPriceMaj
 			// 
-			this->txtPriceMaj->Location = System::Drawing::Point(182, 212);
+			this->txtPriceMaj->Location = System::Drawing::Point(180, 190);
 			this->txtPriceMaj->Name = L"txtPriceMaj";
 			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
 			this->txtPriceMaj->TabIndex = 10;
@@ -354,40 +361,40 @@ namespace SalesView {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(33, 219);
+			this->label7->Location = System::Drawing::Point(20, 190);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(133, 16);
 			this->label7->TabIndex = 18;
 			this->label7->Text = L"Precio mayorista (s/.)";
 			// 
-			// button1
+			// btnCarrer
 			// 
-			this->button1->Location = System::Drawing::Point(344, 210);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(123, 58);
-			this->button1->TabIndex = 12;
-			this->button1->Text = L"Elegir carreras vinculadas";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &ProductForm::button1_Click);
+			this->btnCarrer->Location = System::Drawing::Point(320, 160);
+			this->btnCarrer->Name = L"btnCarrer";
+			this->btnCarrer->Size = System::Drawing::Size(240, 30);
+			this->btnCarrer->TabIndex = 12;
+			this->btnCarrer->Text = L"Elegir carreras ";
+			this->btnCarrer->UseVisualStyleBackColor = true;
+			this->btnCarrer->Click += gcnew System::EventHandler(this, &ProductForm::btnCarrer_Click);
 			// 
-			// btClear
+			// btnClear
 			// 
-			this->btClear->Location = System::Drawing::Point(427, 35);
-			this->btClear->Name = L"btClear";
-			this->btClear->Size = System::Drawing::Size(134, 41);
-			this->btClear->TabIndex = 19;
-			this->btClear->Text = L"Limpiar textos e imagen";
-			this->btClear->UseVisualStyleBackColor = true;
-			this->btClear->Click += gcnew System::EventHandler(this, &ProductForm::button2_Click);
+			this->btnClear->Location = System::Drawing::Point(320, 206);
+			this->btnClear->Name = L"btnClear";
+			this->btnClear->Size = System::Drawing::Size(240, 30);
+			this->btnClear->TabIndex = 19;
+			this->btnClear->Text = L"Limpiar";
+			this->btnClear->UseVisualStyleBackColor = true;
+			this->btnClear->Click += gcnew System::EventHandler(this, &ProductForm::btnClean_Click);
 			// 
 			// ProductForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1299, 609);
-			this->Controls->Add(this->btClear);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(882, 753);
+			this->Controls->Add(this->btnClear);
+			this->Controls->Add(this->btnCarrer);
 			this->Controls->Add(this->txtPriceMaj);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->dgvProducts);
@@ -407,6 +414,7 @@ namespace SalesView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"ProductForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Mantenimiento de productos";
 			this->Load += gcnew System::EventHandler(this, &ProductForm::ProductForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->EndInit();
@@ -416,10 +424,48 @@ namespace SalesView {
 
 		}
 #pragma endregion
+		void ShowProducts() {
+			List<Product^>^ myProductList = Controller::QueryAllProducts();
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+			dgvProducts->Rows->Clear();
+			for (int i = 0; i < myProductList->Count; i++) {
 
-	}
+				String^ careersString;
+				for (int j = 0; j < myProductList[i]->Career->Count; j++) {
+					careersString = careersString + "/" + myProductList[i]->Career[j];
+				}
+
+				dgvProducts->Rows->Add(gcnew array<String^>{
+
+					"" + myProductList[i]->Id,
+						myProductList[i]->Name,
+						"" + myProductList[i]->PriceMin,
+						"" + myProductList[i]->PriceMaj,
+						careersString,
+						"" + myProductList[i]->Stock
+				});
+			}
+		}
+		void CleanControls() {
+			txtProductId->ReadOnly = false;
+			txtProductId->Clear();
+			txtName->Clear();
+			txtDescription->Clear();
+			txtPriceMin->Clear();
+			txtPriceMaj->Clear();
+			txtStock->Clear();
+			pbPhoto->Image = nullptr;
+			/*
+			rbComunConfirmation->Checked = false;
+			cmbCareer1->SelectedIndex = -1;
+			cmbCareer2->SelectedIndex = -1;
+			cmbCareer3->SelectedIndex = -1;
+			cmbCareer4->SelectedIndex = -1;
+			cmbCareer5->SelectedIndex = -1;
+
+			*/
+		}
+
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		if (txtProductId->Text->Trim() == "") {
@@ -456,6 +502,9 @@ namespace SalesView {
 		product->Stock = Convert::ToInt32(txtStock->Text);
 		product->Status = 'A';
 		product->Career = gcnew List<String^>();
+		product->Searches = 0; 
+		product->Starts = 5;
+		product->Sales = 0;
 		for (int i = 0; i < Controller::RelationatedCareers->Count; i++) {
 			product->Career->Add(Controller::RelationatedCareers[i]);
 		}
@@ -480,53 +529,6 @@ namespace SalesView {
 		MessageBox::Show("Se agrego el producto exitosamente");
 	
 		ShowProducts();
-	}
-
-		   void ShowProducts() {
-			   List<Product^>^ myProductList = Controller::QueryAllProducts();
-
-			   dgvProducts->Rows->Clear();
-			   for (int i = 0; i < myProductList->Count; i++) {
-				  
-				   String^ careersString;
-				   for (int j = 0; j < myProductList[i]->Career->Count; j++) {
-					   careersString = careersString + "/" + myProductList[i]->Career[j];
-				   }
-
-				   dgvProducts->Rows->Add(gcnew array<String^>{
-					
-					   "" + myProductList[i]->Id,
-						   myProductList[i]->Name,
-						   "" + myProductList[i]->PriceMin,
-						   "" + myProductList[i]->PriceMaj,
-						   careersString,
-						   "" + myProductList[i]->Stock
-				   });
-			   }
-		   }
-
-		   void CleanControls() {
-			   txtProductId->ReadOnly = false;
-			   txtProductId->Clear();
-			   txtName->Clear();
-			   txtDescription->Clear();
-			   txtPriceMin->Clear();
-			   txtPriceMaj->Clear();
-			   txtStock->Clear();
-			   pbPhoto->Image = nullptr;
-			   /*
-			   rbComunConfirmation->Checked = false;
-			   cmbCareer1->SelectedIndex = -1;
-			   cmbCareer2->SelectedIndex = -1;
-			   cmbCareer3->SelectedIndex = -1;
-			   cmbCareer4->SelectedIndex = -1;
-			   cmbCareer5->SelectedIndex = -1;
-
-			   */
-		   }
-
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-
 	}
 	private: System::Void ProductForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowProducts();
@@ -639,7 +641,7 @@ namespace SalesView {
 		}
 		//################################################
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnCarrer_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		CareerListForm^ CareerList = gcnew CareerListForm();
 		CareerList->ShowDialog();
@@ -647,9 +649,7 @@ namespace SalesView {
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-
-
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnClean_Click(System::Object^ sender, System::EventArgs^ e) {
 		CleanControls();
 		Controller::RelationatedCareers->Clear();
 	}

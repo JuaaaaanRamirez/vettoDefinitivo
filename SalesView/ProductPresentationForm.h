@@ -8,19 +8,24 @@ namespace SalesView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SalesController;		// Controller
+	using namespace SalesModel;				// Classes and Instances
+	using namespace System::Collections::Generic;	 // List^
 
 	/// <summary>
 	/// Resumen de ProductPresentationForm
 	/// </summary>
 	public ref class ProductPresentationForm : public System::Windows::Forms::Form
 	{
+		Form^ refForm;
 	public:
-		ProductPresentationForm(void)
+		ProductPresentationForm(Form^ form)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			refForm = form;
 		}
 
 	protected:
@@ -34,33 +39,55 @@ namespace SalesView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::PictureBox^ pictureBox4;
-	private: System::Windows::Forms::Label^ NameLabel;
-	private: System::Windows::Forms::Label^ DescriptionLabel;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::PictureBox^ pbxProductImagen;
+	protected:
+
+
+
+
+	private: System::Windows::Forms::Label^ lbName;
+	private: System::Windows::Forms::Label^ lbDescription;
+	protected:
+
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^ txtProductName;
+	private: System::Windows::Forms::TextBox^ txtDescription;
+
+
 	private: System::Windows::Forms::Button^ Addbtn;
-	private: System::Windows::Forms::NumericUpDown^ AmountComb;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ Starlabel;
-	private: System::Windows::Forms::PictureBox^ pictureBox5;
-	private: System::Windows::Forms::PictureBox^ pictureBox6;
-	private: System::Windows::Forms::Label^ HeartLabel;
-	private: System::Windows::Forms::Label^ SellsLabel;
+	private: System::Windows::Forms::NumericUpDown^ amountProduct;
+	private: System::Windows::Forms::Label^ lbAmount;
+	private: System::Windows::Forms::Label^ lbStarts;
+	private: System::Windows::Forms::PictureBox^ pbSellers;
+	private: System::Windows::Forms::PictureBox^ pbStars;
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^ lbHearts;
+	private: System::Windows::Forms::Label^ lbSales;
+
+
+
 	private: System::Windows::Forms::Label^ ComentLabel;
 	private: System::Windows::Forms::PictureBox^ pictureBox7;
-	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::RichTextBox^ richTextBox8;
-	private: System::Windows::Forms::RichTextBox^ richTextBox7;
-	private: System::Windows::Forms::RichTextBox^ richTextBox6;
-	private: System::Windows::Forms::RichTextBox^ richTextBox5;
-	private: System::Windows::Forms::RichTextBox^ richTextBox4;
-	private: System::Windows::Forms::RichTextBox^ richTextBox3;
-	private: System::Windows::Forms::RichTextBox^ richTextBox2;
-	private: System::Windows::Forms::RichTextBox^ richTextBox1;
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::GroupBox^ gbinformation;
+	private: System::Windows::Forms::Button^ Wishbtn;
 
 
 
@@ -82,199 +109,167 @@ namespace SalesView {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductPresentationForm::typeid));
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->NameLabel = (gcnew System::Windows::Forms::Label());
-			this->DescriptionLabel = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->pbxProductImagen = (gcnew System::Windows::Forms::PictureBox());
+			this->lbName = (gcnew System::Windows::Forms::Label());
+			this->lbDescription = (gcnew System::Windows::Forms::Label());
+			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
+			this->txtDescription = (gcnew System::Windows::Forms::TextBox());
 			this->Addbtn = (gcnew System::Windows::Forms::Button());
-			this->AmountComb = (gcnew System::Windows::Forms::NumericUpDown());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->Starlabel = (gcnew System::Windows::Forms::Label());
-			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
-			this->HeartLabel = (gcnew System::Windows::Forms::Label());
-			this->SellsLabel = (gcnew System::Windows::Forms::Label());
+			this->amountProduct = (gcnew System::Windows::Forms::NumericUpDown());
+			this->lbAmount = (gcnew System::Windows::Forms::Label());
+			this->lbStarts = (gcnew System::Windows::Forms::Label());
+			this->pbSellers = (gcnew System::Windows::Forms::PictureBox());
+			this->pbStars = (gcnew System::Windows::Forms::PictureBox());
+			this->lbHearts = (gcnew System::Windows::Forms::Label());
+			this->lbSales = (gcnew System::Windows::Forms::Label());
 			this->ComentLabel = (gcnew System::Windows::Forms::Label());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox4 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox5 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox6 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox7 = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBox8 = (gcnew System::Windows::Forms::RichTextBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AmountComb))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
+			this->Wishbtn = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
-			this->panel1->SuspendLayout();
+			this->gbinformation->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// pictureBox1
+			// pbxProductImagen
 			// 
-			this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox1->Location = System::Drawing::Point(183, 32);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(235, 280);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
+			this->pbxProductImagen->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pbxProductImagen->Location = System::Drawing::Point(20, 30);
+			this->pbxProductImagen->Name = L"pbxProductImagen";
+			this->pbxProductImagen->Size = System::Drawing::Size(235, 265);
+			this->pbxProductImagen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbxProductImagen->TabIndex = 0;
+			this->pbxProductImagen->TabStop = false;
 			// 
-			// pictureBox2
+			// lbName
 			// 
-			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox2->Location = System::Drawing::Point(29, 32);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(126, 73);
-			this->pictureBox2->TabIndex = 1;
-			this->pictureBox2->TabStop = false;
+			this->lbName->AutoSize = true;
+			this->lbName->Location = System::Drawing::Point(0, 0);
+			this->lbName->Name = L"lbName";
+			this->lbName->Size = System::Drawing::Size(59, 16);
+			this->lbName->TabIndex = 4;
+			this->lbName->Text = L"Nombre:";
 			// 
-			// pictureBox3
+			// lbDescription
 			// 
-			this->pictureBox3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox3->Location = System::Drawing::Point(29, 127);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(126, 83);
-			this->pictureBox3->TabIndex = 2;
-			this->pictureBox3->TabStop = false;
+			this->lbDescription->AutoSize = true;
+			this->lbDescription->Location = System::Drawing::Point(0, 30);
+			this->lbDescription->Name = L"lbDescription";
+			this->lbDescription->Size = System::Drawing::Size(82, 16);
+			this->lbDescription->TabIndex = 5;
+			this->lbDescription->Text = L"Descripción:";
 			// 
-			// pictureBox4
+			// txtProductName
 			// 
-			this->pictureBox4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox4->Location = System::Drawing::Point(29, 228);
-			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(126, 84);
-			this->pictureBox4->TabIndex = 3;
-			this->pictureBox4->TabStop = false;
+			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtProductName->Location = System::Drawing::Point(100, 0);
+			this->txtProductName->Name = L"txtProductName";
+			this->txtProductName->ReadOnly = true;
+			this->txtProductName->Size = System::Drawing::Size(346, 15);
+			this->txtProductName->TabIndex = 6;
 			// 
-			// NameLabel
+			// txtDescription
 			// 
-			this->NameLabel->AutoSize = true;
-			this->NameLabel->Location = System::Drawing::Point(452, 32);
-			this->NameLabel->Name = L"NameLabel";
-			this->NameLabel->Size = System::Drawing::Size(59, 16);
-			this->NameLabel->TabIndex = 4;
-			this->NameLabel->Text = L"Nombre:";
-			this->NameLabel->Click += gcnew System::EventHandler(this, &ProductPresentationForm::label1_Click);
-			// 
-			// DescriptionLabel
-			// 
-			this->DescriptionLabel->AutoSize = true;
-			this->DescriptionLabel->Location = System::Drawing::Point(452, 75);
-			this->DescriptionLabel->Name = L"DescriptionLabel";
-			this->DescriptionLabel->Size = System::Drawing::Size(82, 16);
-			this->DescriptionLabel->TabIndex = 5;
-			this->DescriptionLabel->Text = L"Descripción:";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(544, 32);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(346, 22);
-			this->textBox1->TabIndex = 6;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(544, 77);
-			this->textBox2->Multiline = true;
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(345, 82);
-			this->textBox2->TabIndex = 7;
+			this->txtDescription->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtDescription->Location = System::Drawing::Point(100, 30);
+			this->txtDescription->Multiline = true;
+			this->txtDescription->Name = L"txtDescription";
+			this->txtDescription->ReadOnly = true;
+			this->txtDescription->Size = System::Drawing::Size(345, 82);
+			this->txtDescription->TabIndex = 7;
 			// 
 			// Addbtn
 			// 
 			this->Addbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Addbtn->Location = System::Drawing::Point(586, 288);
+			this->Addbtn->Location = System::Drawing::Point(400, 250);
 			this->Addbtn->Name = L"Addbtn";
-			this->Addbtn->Size = System::Drawing::Size(228, 43);
+			this->Addbtn->Size = System::Drawing::Size(220, 40);
 			this->Addbtn->TabIndex = 8;
 			this->Addbtn->Text = L"Agregar al carrito";
 			this->Addbtn->UseVisualStyleBackColor = true;
 			this->Addbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Addbtn_Click);
 			// 
-			// AmountComb
+			// amountProduct
 			// 
-			this->AmountComb->Location = System::Drawing::Point(544, 179);
-			this->AmountComb->Name = L"AmountComb";
-			this->AmountComb->Size = System::Drawing::Size(345, 22);
-			this->AmountComb->TabIndex = 9;
+			this->amountProduct->Location = System::Drawing::Point(370, 150);
+			this->amountProduct->Name = L"amountProduct";
+			this->amountProduct->Size = System::Drawing::Size(345, 22);
+			this->amountProduct->TabIndex = 9;
 			// 
-			// label1
+			// lbAmount
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(455, 179);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(64, 16);
-			this->label1->TabIndex = 10;
-			this->label1->Text = L"Cantidad:";
+			this->lbAmount->AutoSize = true;
+			this->lbAmount->Location = System::Drawing::Point(270, 150);
+			this->lbAmount->Name = L"lbAmount";
+			this->lbAmount->Size = System::Drawing::Size(64, 16);
+			this->lbAmount->TabIndex = 10;
+			this->lbAmount->Text = L"Cantidad:";
 			// 
-			// Starlabel
+			// lbStarts
 			// 
-			this->Starlabel->AutoSize = true;
-			this->Starlabel->Location = System::Drawing::Point(455, 238);
-			this->Starlabel->Name = L"Starlabel";
-			this->Starlabel->Size = System::Drawing::Size(79, 16);
-			this->Starlabel->TabIndex = 11;
-			this->Starlabel->Text = L"Calificación:";
+			this->lbStarts->AutoSize = true;
+			this->lbStarts->Location = System::Drawing::Point(270, 190);
+			this->lbStarts->Name = L"lbStarts";
+			this->lbStarts->Size = System::Drawing::Size(79, 16);
+			this->lbStarts->TabIndex = 11;
+			this->lbStarts->Text = L"Calificación:";
 			// 
-			// pictureBox5
+			// pbSellers
 			// 
-			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
-			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox5->Location = System::Drawing::Point(763, 228);
-			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(34, 35);
-			this->pictureBox5->TabIndex = 12;
-			this->pictureBox5->TabStop = false;
+			this->pbSellers->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSellers.BackgroundImage")));
+			this->pbSellers->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbSellers->Location = System::Drawing::Point(565, 188);
+			this->pbSellers->Name = L"pbSellers";
+			this->pbSellers->Size = System::Drawing::Size(35, 35);
+			this->pbSellers->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbSellers->TabIndex = 12;
+			this->pbSellers->TabStop = false;
 			// 
-			// pictureBox6
+			// pbStars
 			// 
-			this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
-			this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox6->Location = System::Drawing::Point(643, 228);
-			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(34, 35);
-			this->pictureBox6->TabIndex = 13;
-			this->pictureBox6->TabStop = false;
+			this->pbStars->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbStars.BackgroundImage")));
+			this->pbStars->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbStars->Location = System::Drawing::Point(430, 188);
+			this->pbStars->Name = L"pbStars";
+			this->pbStars->Size = System::Drawing::Size(35, 35);
+			this->pbStars->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbStars->TabIndex = 13;
+			this->pbStars->TabStop = false;
 			// 
-			// HeartLabel
+			// lbHearts
 			// 
-			this->HeartLabel->AutoSize = true;
-			this->HeartLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbHearts->AutoSize = true;
+			this->lbHearts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->HeartLabel->Location = System::Drawing::Point(580, 231);
-			this->HeartLabel->Name = L"HeartLabel";
-			this->HeartLabel->Size = System::Drawing::Size(57, 32);
-			this->HeartLabel->TabIndex = 14;
-			this->HeartLabel->Text = L"4.5";
+			this->lbHearts->Location = System::Drawing::Point(395, 190);
+			this->lbHearts->Name = L"lbHearts";
+			this->lbHearts->Size = System::Drawing::Size(48, 29);
+			this->lbHearts->TabIndex = 14;
+			this->lbHearts->Text = L"4.7";
+			this->lbHearts->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// SellsLabel
+			// lbSales
 			// 
-			this->SellsLabel->AutoSize = true;
-			this->SellsLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbSales->AutoSize = true;
+			this->lbSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->SellsLabel->Location = System::Drawing::Point(697, 234);
-			this->SellsLabel->Name = L"SellsLabel";
-			this->SellsLabel->Size = System::Drawing::Size(70, 29);
-			this->SellsLabel->TabIndex = 15;
-			this->SellsLabel->Text = L"500+";
+			this->lbSales->Location = System::Drawing::Point(496, 190);
+			this->lbSales->Name = L"lbSales";
+			this->lbSales->Size = System::Drawing::Size(69, 29);
+			this->lbSales->TabIndex = 15;
+			this->lbSales->Text = L"5000";
+			this->lbSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// ComentLabel
 			// 
 			this->ComentLabel->AutoSize = true;
 			this->ComentLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ComentLabel->Location = System::Drawing::Point(26, 362);
+			this->ComentLabel->Location = System::Drawing::Point(20, 360);
 			this->ComentLabel->Name = L"ComentLabel";
 			this->ComentLabel->Size = System::Drawing::Size(83, 16);
 			this->ComentLabel->TabIndex = 16;
@@ -283,143 +278,82 @@ namespace SalesView {
 			// pictureBox7
 			// 
 			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
-			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox7->Location = System::Drawing::Point(115, 352);
+			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox7->Location = System::Drawing::Point(110, 355);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(40, 37);
+			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox7->TabIndex = 17;
 			this->pictureBox7->TabStop = false;
 			// 
-			// panel1
+			// gbinformation
 			// 
-			this->panel1->Controls->Add(this->richTextBox8);
-			this->panel1->Controls->Add(this->richTextBox7);
-			this->panel1->Controls->Add(this->richTextBox6);
-			this->panel1->Controls->Add(this->richTextBox5);
-			this->panel1->Controls->Add(this->richTextBox4);
-			this->panel1->Controls->Add(this->richTextBox3);
-			this->panel1->Controls->Add(this->richTextBox2);
-			this->panel1->Controls->Add(this->richTextBox1);
-			this->panel1->Location = System::Drawing::Point(29, 395);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(861, 118);
-			this->panel1->TabIndex = 18;
+			this->gbinformation->Controls->Add(this->txtDescription);
+			this->gbinformation->Controls->Add(this->lbName);
+			this->gbinformation->Controls->Add(this->lbDescription);
+			this->gbinformation->Controls->Add(this->txtProductName);
+			this->gbinformation->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->gbinformation->Location = System::Drawing::Point(270, 30);
+			this->gbinformation->Name = L"gbinformation";
+			this->gbinformation->Size = System::Drawing::Size(450, 100);
+			this->gbinformation->TabIndex = 19;
+			this->gbinformation->TabStop = false;
 			// 
-			// richTextBox1
+			// Wishbtn
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(21, 13);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(201, 96);
-			this->richTextBox1->TabIndex = 0;
-			this->richTextBox1->Text = L"";
-			// 
-			// richTextBox2
-			// 
-			this->richTextBox2->Location = System::Drawing::Point(246, 13);
-			this->richTextBox2->Name = L"richTextBox2";
-			this->richTextBox2->Size = System::Drawing::Size(173, 96);
-			this->richTextBox2->TabIndex = 1;
-			this->richTextBox2->Text = L"";
-			// 
-			// richTextBox3
-			// 
-			this->richTextBox3->Location = System::Drawing::Point(445, 13);
-			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(179, 96);
-			this->richTextBox3->TabIndex = 2;
-			this->richTextBox3->Text = L"";
-			// 
-			// richTextBox4
-			// 
-			this->richTextBox4->Location = System::Drawing::Point(642, 13);
-			this->richTextBox4->Name = L"richTextBox4";
-			this->richTextBox4->Size = System::Drawing::Size(199, 96);
-			this->richTextBox4->TabIndex = 3;
-			this->richTextBox4->Text = L"";
-			// 
-			// richTextBox5
-			// 
-			this->richTextBox5->Location = System::Drawing::Point(21, 115);
-			this->richTextBox5->Name = L"richTextBox5";
-			this->richTextBox5->Size = System::Drawing::Size(201, 96);
-			this->richTextBox5->TabIndex = 19;
-			this->richTextBox5->Text = L"";
-			// 
-			// richTextBox6
-			// 
-			this->richTextBox6->Location = System::Drawing::Point(246, 116);
-			this->richTextBox6->Name = L"richTextBox6";
-			this->richTextBox6->Size = System::Drawing::Size(173, 96);
-			this->richTextBox6->TabIndex = 20;
-			this->richTextBox6->Text = L"";
-			// 
-			// richTextBox7
-			// 
-			this->richTextBox7->Location = System::Drawing::Point(445, 116);
-			this->richTextBox7->Name = L"richTextBox7";
-			this->richTextBox7->Size = System::Drawing::Size(179, 96);
-			this->richTextBox7->TabIndex = 21;
-			this->richTextBox7->Text = L"";
-			// 
-			// richTextBox8
-			// 
-			this->richTextBox8->Location = System::Drawing::Point(642, 116);
-			this->richTextBox8->Name = L"richTextBox8";
-			this->richTextBox8->Size = System::Drawing::Size(199, 96);
-			this->richTextBox8->TabIndex = 22;
-			this->richTextBox8->Text = L"";
+			this->Wishbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Wishbtn->Location = System::Drawing::Point(390, 300);
+			this->Wishbtn->Name = L"Wishbtn";
+			this->Wishbtn->Size = System::Drawing::Size(240, 40);
+			this->Wishbtn->TabIndex = 20;
+			this->Wishbtn->Text = L"Agregar a la lista de deseos";
+			this->Wishbtn->UseVisualStyleBackColor = true;
 			// 
 			// ProductPresentationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(935, 527);
-			this->Controls->Add(this->panel1);
+			this->ClientSize = System::Drawing::Size(740, 523);
+			this->Controls->Add(this->Wishbtn);
+			this->Controls->Add(this->gbinformation);
 			this->Controls->Add(this->pictureBox7);
 			this->Controls->Add(this->ComentLabel);
-			this->Controls->Add(this->SellsLabel);
-			this->Controls->Add(this->HeartLabel);
-			this->Controls->Add(this->pictureBox6);
-			this->Controls->Add(this->pictureBox5);
-			this->Controls->Add(this->Starlabel);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->AmountComb);
+			this->Controls->Add(this->lbSales);
+			this->Controls->Add(this->lbHearts);
+			this->Controls->Add(this->pbStars);
+			this->Controls->Add(this->pbSellers);
+			this->Controls->Add(this->lbStarts);
+			this->Controls->Add(this->lbAmount);
+			this->Controls->Add(this->amountProduct);
 			this->Controls->Add(this->Addbtn);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->DescriptionLabel);
-			this->Controls->Add(this->NameLabel);
-			this->Controls->Add(this->pictureBox4);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pbxProductImagen);
 			this->MaximizeBox = false;
 			this->Name = L"ProductPresentationForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"ProductPresentationForm";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AmountComb))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			this->Text = L"Producto Selccionado";
+			this->Load += gcnew System::EventHandler(this, &ProductPresentationForm::ProductPresentationForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
-			this->panel1->ResumeLayout(false);
+			this->gbinformation->ResumeLayout(false);
+			this->gbinformation->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
+
+		void ShowProduct();
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		SaleDetailForm^ SaleDetail = gcnew SaleDetailForm();
 		SaleDetail->Show();
 	}
-	};
+	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowProduct();
+	}
+};
 }
+
