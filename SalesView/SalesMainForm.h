@@ -746,7 +746,7 @@ public:
 
 		ProductForm^ productForm = gcnew ProductForm();
 		//productForm->MdiParent = this;
-		productForm->Show();
+		productForm->ShowDialog();
 	}
 	private: System::Void subirAnuncioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -757,7 +757,7 @@ public:
 	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		UserForm^ userForm = gcnew UserForm();
 		//productForm->MdiParent = this;
-		userForm->Show();
+		userForm->ShowDialog();
 	}
 	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
@@ -767,8 +767,8 @@ public:
 			   Stadistics->ShowDialog();
 		   }
 
-// Load
-private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	// Load
+	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		subirAnuncioToolStripMenuItem->Visible = false;
 		List<Announcer^>^ AnounList = gcnew List<Announcer^>();
 		AnounList = Controller::QueryAllAnnouncer();
@@ -792,18 +792,16 @@ private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventAr
 			}
 		}
 	}
-
-// Login
-private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Login
+	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 		LoginForm^ loginForm = gcnew LoginForm(this);
 		loginForm->ShowDialog();
 }
-
-// SearchProducts
-private: System::Void SearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyData == Keys::Enter) btnSearch->PerformClick();
+	// SearchProducts
+	private: System::Void SearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyData == Keys::Enter) btnSearch->PerformClick();
 }
-private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^ e) {
 	ProductListForm^ productListForm = gcnew ProductListForm(this);
 	//productListForm->MdiParent = this;
 	productListForm->ShowDialog();

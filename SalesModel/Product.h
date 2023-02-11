@@ -24,6 +24,7 @@ namespace SalesModel {
         property List<String^>^ Coments;
         property double Starts;
         property int Searches;
+        property int Sales;
         //property RelacionatedCareer^ RelacionatedCareer;
     };
 }

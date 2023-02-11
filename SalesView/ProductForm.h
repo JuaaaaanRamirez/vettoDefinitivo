@@ -296,6 +296,7 @@ namespace SalesView {
 			});
 			this->dgvProducts->Location = System::Drawing::Point(20, 335);
 			this->dgvProducts->Name = L"dgvProducts";
+			this->dgvProducts->ReadOnly = true;
 			this->dgvProducts->RowHeadersWidth = 51;
 			this->dgvProducts->RowTemplate->Height = 24;
 			this->dgvProducts->Size = System::Drawing::Size(835, 406);
@@ -307,6 +308,7 @@ namespace SalesView {
 			this->Column1->HeaderText = L"Id";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
 			this->Column1->Width = 80;
 			// 
 			// Column2
@@ -314,6 +316,7 @@ namespace SalesView {
 			this->Column2->HeaderText = L"Nombre";
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
 			this->Column2->Width = 200;
 			// 
 			// Column3
@@ -321,6 +324,7 @@ namespace SalesView {
 			this->Column3->HeaderText = L"Precio minorista (s/.)";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
 			this->Column3->Width = 75;
 			// 
 			// Column4
@@ -328,6 +332,7 @@ namespace SalesView {
 			this->Column4->HeaderText = L"Precio mayorista (s/.)";
 			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
 			this->Column4->Width = 75;
 			// 
 			// Column5
@@ -335,6 +340,7 @@ namespace SalesView {
 			this->Column5->HeaderText = L"Carreras dest.";
 			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
 			this->Column5->Width = 500;
 			// 
 			// Column6
@@ -342,6 +348,7 @@ namespace SalesView {
 			this->Column6->HeaderText = L"Stock";
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
 			this->Column6->Width = 50;
 			// 
 			// txtPriceMaj
@@ -497,6 +504,7 @@ namespace SalesView {
 		product->Career = gcnew List<String^>();
 		product->Searches = 0; 
 		product->Starts = 5;
+		product->Sales = 0;
 		for (int i = 0; i < Controller::RelationatedCareers->Count; i++) {
 			product->Career->Add(Controller::RelationatedCareers[i]);
 		}
