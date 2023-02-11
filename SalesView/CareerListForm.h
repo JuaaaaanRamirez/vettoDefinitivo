@@ -397,23 +397,23 @@ namespace SalesView {
 		}
 	}
 	for (int i = 0; i < chlbSocialScience->Items->Count; i++) {
-		if (chlbArtesComunication->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		if (chlbSocialScience->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbSocialScience->Items[i]->ToString());
 		}
 	}
 	for (int i = 0; i < chlbEducation->Items->Count; i++) {
-		if (chlbArtesComunication->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		if (chlbEducation->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbEducation->Items[i]->ToString());
 		}
 	}
 	for (int i = 0; i < chlbHumanity->Items->Count; i++) {
-		if (chlbArtesComunication->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		if (chlbHumanity->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbHumanity->Items[i]->ToString());
 		}
 	}
 	for (int i = 0; i < chlbOthers->Items->Count; i++) {
-		if (chlbArtesComunication->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		if (chlbOthers->GetItemChecked(i)) {
+			Controller::RelationatedCareers->Add(chlbOthers->Items[i]->ToString());
 		}
 	}
 	this->Close();
