@@ -121,7 +121,7 @@
   <data name="pbSellers.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAIeDSURBVHhe7Z0H
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAIeDSURBVHhe7Z0H
         dBRHtoax9214+9ZrZkaAcVjjNWsMPSPAwgTNjBA5B4PJ0eScswkCJDIm5yxyRiiQTAaBc8Q2YHIWSTjb
         2PTrEuU1jH4JTVf3TPf0/c75zr5npOm6pa57azpU5SIIgiCIYHD7cHLUnSPJI9JTkzveen/Xk/w/EwRB
         EAQRqtw+nDJdKfzy795OTb78zaFthfg/EwRBEAQRaqQfSar4YPF/wH38RwiCMBCPu8MKPe1xFCnlcbgq
@@ -706,7 +706,7 @@
   <data name="pbStars.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADNzSURBVHhe7d17
+        1AAADdQB75G6FQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADNzSURBVHhe7d17
         vB1VffdxCCEgAqJFkFKKSOWhVtGqVFsp1FJsH2hrc84++zIQIBBbW4Tqg9VWbcFL1RZrrajVoraKtQov
         rYpaBbxUrJhz9nVCEhIOIlIucpVrQkiyn9/KTsjte5Jz2TOz1prPH29f+IOcPbPWmt/37J09a/bo9/sA
         AKBkZBEAAMRNFgEAQNxkEQAAxE0WAQBA3GQRAADETRYBAEDcZBEAAMRNFgEAQNxkEQAAxE0WAQBA3GQR
@@ -932,7 +932,7 @@
   <data name="pictureBox7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAJFWSURBVHhe7Z0H
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAJFWSURBVHhe7Z0H
         WFTH2oBNbr9/cuPuWqJp3sQU3V3UkKiwu4iKvRfsmqix98Tee+/G3iuoSdQIWGMH7MbeGyhSRIoFG8w/
         sw43ZPlAdk/f/d7neR8Thd05M+fMN+ecmW/yIQiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiC
         IAiCIAiCIAiCIAiCIAiCIAiCiEnM8a3/Juc3/J3/L4IgCIIg7gzZsOEvyZGhc5MjQtOpT5IiQ/vwf0IQ

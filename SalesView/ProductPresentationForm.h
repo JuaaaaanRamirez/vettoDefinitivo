@@ -309,6 +309,7 @@ namespace SalesView {
 			this->Wishbtn->TabIndex = 20;
 			this->Wishbtn->Text = L"Agregar a la lista de deseos";
 			this->Wishbtn->UseVisualStyleBackColor = true;
+			this->Wishbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Wishbtn_Click);
 			// 
 			// ProductPresentationForm
 			// 
@@ -354,6 +355,9 @@ namespace SalesView {
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowProduct();
 	}
+private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Agregado a la lista de deseos :3");
+}
 };
 }
 
