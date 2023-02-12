@@ -214,6 +214,13 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
             }
         }
 
+        if (fileName->Equals("sales.bin")) {
+            res = gcnew List<Sale^>();
+            if (File::Exists(fileName)) {
+                res = (List<Sale^>^)formateador->Deserialize(input);
+            }
+        }
+
 
     }
     catch (Exception^ ex) {

@@ -22,6 +22,8 @@ namespace SalesController {
 		static array<String^>^ carrerArr = { " mecatronica ", " civil ", " industrial ", " informatica ", " arquitectura ", " electronica ", " fisica " }; // Arreglo de carreras como cadenas de texto.
 		static List<String^>^ careerList = gcnew List<String^>(carrerArr);  // lista de todas las carreras con las que trabaja el sistema
 		//static List<Advertisement^>^ AdsList = gcnew List<Advertisement^>();
+
+		static List<Sale^>^ saleList = gcnew List<Sale^>();  // List of sales
 		
 		
 
@@ -73,6 +75,14 @@ namespace SalesController {
 
 		static bool ExistUsername(String^ username);
 		static bool ExistDocNumber(String^ docnumber);
+
+		//Métodos CRUD de Sale (C:Create, R:Request, U:Update, D:Delete)
+		static int AddSale(Sale^ sale);
+		static Sale^ QuerySaleById(int saleId);
+		static List<Sale^>^ QueryAllSales();
+		static int UpdateSale(Sale^ sale);
+		static int DeleteSale(int saleId);
+		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
 
 	};
 }

@@ -279,4 +279,61 @@ bool SalesController::Controller::ExistDocNumber(String^ docnumber)
     return false;
 }
 
+// For Sales
+int SalesController::Controller::AddSale(Sale^ sale)
+{
+    // Amount
+    if (saleList->Count == 0) sale->Id = 0;
+    else { sale->Id = saleList->Count; }
+    saleList->Add(sale);
+    Persistance::PersistBinary("sales.bin", saleList);
+    return Int32(sale->Id);
+}
+Sale^ SalesController::Controller::QuerySaleById(int saleId)
+{
+
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == saleId)
+            return saleList[i];
+    return nullptr;
+}
+List<Sale^>^ SalesController::Controller::QueryAllSales()
+{
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    return saleList;
+}
+int SalesController::Controller::UpdateSale(Sale^ sale)
+{
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == sale->Id) {
+            saleList[i] = sale;
+            Persistance::PersistBinary("sales.bin", saleList);
+            return sale->Id;
+        }
+    return -1;
+}
+int SalesController::Controller::DeleteSale(int saleId)
+{
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == saleId) {
+            saleList->RemoveAt(i);
+            Persistance::PersistBinary("sales.bin", saleList);
+            return saleId;
+        }
+    return 0;
+}
+
+/*int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
+{
+    // Repeat?
+    for (int i = 0; i < saleList[saleId]->SoldProducts->Count; i++) {
+        if (saleDetail->Id == saleList[saleId]->SoldProducts[i]->Id) return -1;
+    }
+    // Amount
+    saleList[saleId]->SoldProducts->Add(saleDetail);
+    Persistance::PersistBinary("sales.bin", saleList);
+    return Int32(saleDetail->Id);
+}*/
+
 
