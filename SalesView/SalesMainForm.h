@@ -1056,17 +1056,7 @@ public:
 				}
 			}
 		}
-		List<Product^>^ GetTop() {
-			List<Product^>^ myProductList = Controller::QueryAllProducts();
-			for (int i = 0; i < myProductList->Count; i++) // Look for!
-				for (int j = i; j < myProductList->Count; j++)
-					if (myProductList[j]->Searches > myProductList[i]->Searches) { 
-						Product^ temp = myProductList[i];
-						 myProductList[i] = myProductList[j];
-						 myProductList[j] = temp;
-					}
-			return myProductList;
-	    }
+		
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
@@ -1109,7 +1099,7 @@ public:
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
-		PutTop(GetTop());
+		PutTop(Controller::GetTopProducts());
 		lbCompany->Text = "";
 		lbJob->Text = "";
 	}
