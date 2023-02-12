@@ -70,5 +70,9 @@ namespace SalesController {
 		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
 		static Person^ QueryPersonByCredentials(String^ username, String^ password);
 		static int FindNewId(Person^ user);
+
+		static bool ExistUsername(String^ username);
+		static bool ExistDocNumber(String^ docnumber);
+
 	};
 }

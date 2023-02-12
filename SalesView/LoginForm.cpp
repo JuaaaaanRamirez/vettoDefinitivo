@@ -20,10 +20,23 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 
 		// Change Label Text
 		if (emp->Profile == 'S') {
-			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Estudiante " + emp->Name;
+			((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Estudiante " ;
+			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = emp->Name;
+			((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = " ";
 		}
-		else if (emp->Profile == 'M') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Jefe de Ventas " + emp->Name;
-		else if (emp->Profile == 'A') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Anunciante " + emp->Name;
+		else if (emp->Profile == 'M') {
+			((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Jefe de Ventas ";
+			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text =  emp->Name;
+			((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = " ";
+			((SalesMainForm^)refForm)->SalesMainForm::menuStrip1->Visible = true;
+		}
+		else if (emp->Profile == 'A') {
+			((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Anunciante ";
+			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text =  emp->Name;
+			((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = "Compañia ";
+		}
+		SalesMainForm::MenuVisibility = false;
+
 		
 		// Put Imagen
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(emp->Photo);
@@ -33,6 +46,9 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 
 
 		((SalesMainForm^)refForm)->SalesMainForm::subirAnuncioToolStripMenuItem->Visible = true;
+		((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
+		((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
+
 		SalesMainForm::person = emp;
 		/*
 		if (emp->GetType() == Salesman::typeid) {
@@ -51,5 +67,15 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 	else {
 		MessageBox::Show("Usuario y contraseña incorrectos.");
 	}
+
+}
+
+System::Void SalesView::LoginForm::btnCancel_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	this->Close();
+	SalesMainForm::MenuVisibility = false;
+	((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
+	((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
+
 
 }
