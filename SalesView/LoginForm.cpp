@@ -28,6 +28,7 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 			((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Jefe de Ventas ";
 			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text =  emp->Name;
 			((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = " ";
+			((SalesMainForm^)refForm)->SalesMainForm::menuStrip1->Visible = true;
 		}
 		else if (emp->Profile == 'A') {
 			((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Anunciante ";

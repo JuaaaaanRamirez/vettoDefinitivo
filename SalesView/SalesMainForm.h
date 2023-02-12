@@ -239,10 +239,10 @@ public:
 			this->btnRecord = (gcnew System::Windows::Forms::Button());
 			this->btnEdit = (gcnew System::Windows::Forms::Button());
 			this->gbMenuAnnouncer = (gcnew System::Windows::Forms::GroupBox());
-			this->gbMenuStoreManager = (gcnew System::Windows::Forms::GroupBox());
-			this->btnSignOutStoreMager = (gcnew System::Windows::Forms::Button());
 			this->btnSingOutAnnouncer = (gcnew System::Windows::Forms::Button());
 			this->btnMyAdd = (gcnew System::Windows::Forms::Button());
+			this->gbMenuStoreManager = (gcnew System::Windows::Forms::GroupBox());
+			this->btnSignOutStoreMager = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
@@ -283,6 +283,7 @@ public:
 			this->menuStrip1->Size = System::Drawing::Size(989, 24);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
+			this->menuStrip1->Visible = false;
 			// 
 			// archivoToolStripMenuItem
 			// 
@@ -757,6 +758,7 @@ public:
 			this->lbJob->Name = L"lbJob";
 			this->lbJob->Size = System::Drawing::Size(0, 13);
 			this->lbJob->TabIndex = 71;
+			this->lbJob->Text = L"Cargo";
 			// 
 			// lbCompany
 			// 
@@ -765,6 +767,7 @@ public:
 			this->lbCompany->Name = L"lbCompany";
 			this->lbCompany->Size = System::Drawing::Size(0, 13);
 			this->lbCompany->TabIndex = 72;
+			this->lbCompany->Text = L"Nombre de compañia";
 			// 
 			// gbMenuLogin
 			// 
@@ -875,26 +878,6 @@ public:
 			this->gbMenuAnnouncer->Text = L"Anunciante";
 			this->gbMenuAnnouncer->Visible = false;
 			// 
-			// gbMenuStoreManager
-			// 
-			this->gbMenuStoreManager->Controls->Add(this->btnSignOutStoreMager);
-			this->gbMenuStoreManager->Location = System::Drawing::Point(728, 118);
-			this->gbMenuStoreManager->Name = L"gbMenuStoreManager";
-			this->gbMenuStoreManager->Size = System::Drawing::Size(241, 77);
-			this->gbMenuStoreManager->TabIndex = 76;
-			this->gbMenuStoreManager->TabStop = false;
-			this->gbMenuStoreManager->Text = L"Gerente de tienda";
-			this->gbMenuStoreManager->Visible = false;
-			// 
-			// btnSignOutStoreMager
-			// 
-			this->btnSignOutStoreMager->Location = System::Drawing::Point(10, 19);
-			this->btnSignOutStoreMager->Name = L"btnSignOutStoreMager";
-			this->btnSignOutStoreMager->Size = System::Drawing::Size(212, 31);
-			this->btnSignOutStoreMager->TabIndex = 0;
-			this->btnSignOutStoreMager->Text = L"Cerrar sesion";
-			this->btnSignOutStoreMager->UseVisualStyleBackColor = true;
-			// 
 			// btnSingOutAnnouncer
 			// 
 			this->btnSingOutAnnouncer->Location = System::Drawing::Point(6, 46);
@@ -914,6 +897,27 @@ public:
 			this->btnMyAdd->Text = L"Mi anuncio";
 			this->btnMyAdd->UseVisualStyleBackColor = true;
 			this->btnMyAdd->Click += gcnew System::EventHandler(this, &SalesMainForm::btnMyAdd_Click);
+			// 
+			// gbMenuStoreManager
+			// 
+			this->gbMenuStoreManager->Controls->Add(this->btnSignOutStoreMager);
+			this->gbMenuStoreManager->Location = System::Drawing::Point(728, 118);
+			this->gbMenuStoreManager->Name = L"gbMenuStoreManager";
+			this->gbMenuStoreManager->Size = System::Drawing::Size(241, 77);
+			this->gbMenuStoreManager->TabIndex = 76;
+			this->gbMenuStoreManager->TabStop = false;
+			this->gbMenuStoreManager->Text = L"Gerente de tienda";
+			this->gbMenuStoreManager->Visible = false;
+			// 
+			// btnSignOutStoreMager
+			// 
+			this->btnSignOutStoreMager->Location = System::Drawing::Point(10, 19);
+			this->btnSignOutStoreMager->Name = L"btnSignOutStoreMager";
+			this->btnSignOutStoreMager->Size = System::Drawing::Size(212, 31);
+			this->btnSignOutStoreMager->TabIndex = 0;
+			this->btnSignOutStoreMager->Text = L"Cerrar sesion";
+			this->btnSignOutStoreMager->UseVisualStyleBackColor = true;
+			this->btnSignOutStoreMager->Click += gcnew System::EventHandler(this, &SalesMainForm::btnSignOutStoreMager_Click);
 			// 
 			// SalesMainForm
 			// 
@@ -1079,6 +1083,8 @@ public:
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
 		PutTop(GetTop());
+		lbCompany->Text = "";
+		lbJob->Text = "";
 	}
 	// Login
 	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1157,6 +1163,7 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 		   gbMenuAnnouncer->Visible = false;
 		   gbMenuStoreManager->Visible = false;
 		   MenuVisibility = false;
+		   menuStrip1->Visible = false;
 
 	   }
 private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1164,6 +1171,9 @@ private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ 
 	A->ShowDialog();
 }
 private: System::Void btnSingOutAnnouncer_Click(System::Object^ sender, System::EventArgs^ e) {
+	SignOff();
+}
+private: System::Void btnSignOutStoreMager_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }
 };

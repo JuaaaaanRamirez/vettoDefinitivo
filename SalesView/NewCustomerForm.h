@@ -231,14 +231,14 @@ namespace SalesView {
 			this->txtLastName->Location = System::Drawing::Point(132, 89);
 			this->txtLastName->Name = L"txtLastName";
 			this->txtLastName->Size = System::Drawing::Size(212, 20);
-			this->txtLastName->TabIndex = 1;
+			this->txtLastName->TabIndex = 2;
 			// 
 			// txtPhoneNumber
 			// 
 			this->txtPhoneNumber->Location = System::Drawing::Point(132, 213);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
 			this->txtPhoneNumber->Size = System::Drawing::Size(139, 20);
-			this->txtPhoneNumber->TabIndex = 1;
+			this->txtPhoneNumber->TabIndex = 5;
 			// 
 			// txtAddress
 			// 
@@ -246,28 +246,28 @@ namespace SalesView {
 			this->txtAddress->Multiline = true;
 			this->txtAddress->Name = L"txtAddress";
 			this->txtAddress->Size = System::Drawing::Size(212, 47);
-			this->txtAddress->TabIndex = 1;
+			this->txtAddress->TabIndex = 4;
 			// 
 			// txtEmail
 			// 
 			this->txtEmail->Location = System::Drawing::Point(132, 122);
 			this->txtEmail->Name = L"txtEmail";
 			this->txtEmail->Size = System::Drawing::Size(212, 20);
-			this->txtEmail->TabIndex = 1;
+			this->txtEmail->TabIndex = 3;
 			// 
 			// txtDocNumber
 			// 
 			this->txtDocNumber->Location = System::Drawing::Point(132, 278);
 			this->txtDocNumber->Name = L"txtDocNumber";
 			this->txtDocNumber->Size = System::Drawing::Size(139, 20);
-			this->txtDocNumber->TabIndex = 1;
+			this->txtDocNumber->TabIndex = 7;
 			// 
 			// dtpBirthday
 			// 
 			this->dtpBirthday->Location = System::Drawing::Point(132, 251);
 			this->dtpBirthday->Name = L"dtpBirthday";
 			this->dtpBirthday->Size = System::Drawing::Size(212, 20);
-			this->dtpBirthday->TabIndex = 2;
+			this->dtpBirthday->TabIndex = 6;
 			// 
 			// rbtnMasc
 			// 
@@ -275,7 +275,7 @@ namespace SalesView {
 			this->rbtnMasc->Location = System::Drawing::Point(209, 312);
 			this->rbtnMasc->Name = L"rbtnMasc";
 			this->rbtnMasc->Size = System::Drawing::Size(73, 17);
-			this->rbtnMasc->TabIndex = 3;
+			this->rbtnMasc->TabIndex = 9;
 			this->rbtnMasc->TabStop = true;
 			this->rbtnMasc->Text = L"Masculino";
 			this->rbtnMasc->UseVisualStyleBackColor = true;
@@ -286,7 +286,7 @@ namespace SalesView {
 			this->rbtnFem->Location = System::Drawing::Point(132, 310);
 			this->rbtnFem->Name = L"rbtnFem";
 			this->rbtnFem->Size = System::Drawing::Size(71, 17);
-			this->rbtnFem->TabIndex = 3;
+			this->rbtnFem->TabIndex = 8;
 			this->rbtnFem->TabStop = true;
 			this->rbtnFem->Text = L"Femenino";
 			this->rbtnFem->UseVisualStyleBackColor = true;
@@ -324,7 +324,7 @@ namespace SalesView {
 			this->txtUsername->Location = System::Drawing::Point(199, 349);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(145, 20);
-			this->txtUsername->TabIndex = 5;
+			this->txtUsername->TabIndex = 10;
 			// 
 			// txtPassword
 			// 
@@ -332,7 +332,7 @@ namespace SalesView {
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(145, 20);
-			this->txtPassword->TabIndex = 5;
+			this->txtPassword->TabIndex = 11;
 			// 
 			// txtPasswordAgain
 			// 
@@ -340,14 +340,14 @@ namespace SalesView {
 			this->txtPasswordAgain->Name = L"txtPasswordAgain";
 			this->txtPasswordAgain->PasswordChar = '*';
 			this->txtPasswordAgain->Size = System::Drawing::Size(145, 20);
-			this->txtPasswordAgain->TabIndex = 5;
+			this->txtPasswordAgain->TabIndex = 12;
 			// 
 			// btnRegister
 			// 
 			this->btnRegister->Location = System::Drawing::Point(78, 449);
 			this->btnRegister->Name = L"btnRegister";
 			this->btnRegister->Size = System::Drawing::Size(75, 23);
-			this->btnRegister->TabIndex = 6;
+			this->btnRegister->TabIndex = 13;
 			this->btnRegister->Text = L"Aceptar";
 			this->btnRegister->UseVisualStyleBackColor = true;
 			this->btnRegister->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnRegister_Click);
@@ -357,7 +357,7 @@ namespace SalesView {
 			this->btnBack->Location = System::Drawing::Point(248, 449);
 			this->btnBack->Name = L"btnBack";
 			this->btnBack->Size = System::Drawing::Size(75, 23);
-			this->btnBack->TabIndex = 6;
+			this->btnBack->TabIndex = 14;
 			this->btnBack->Text = L"Cancelar";
 			this->btnBack->UseVisualStyleBackColor = true;
 			this->btnBack->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnBack_Click);
