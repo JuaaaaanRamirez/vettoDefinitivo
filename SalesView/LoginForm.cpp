@@ -18,7 +18,7 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 	if (emp != nullptr) {
 		MessageBox::Show("Bienvenido " + emp->Name);
 
-		// Change Label Text
+		// Change Label Text ...
 		if (emp->Profile == 'S') {
 			((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Estudiante " + emp->Name;
 		}
