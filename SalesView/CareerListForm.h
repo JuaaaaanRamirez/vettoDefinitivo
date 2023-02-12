@@ -9,7 +9,7 @@ namespace SalesView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace SalesController;
- 
+
 
 	/// <summary>
 	/// Resumen de CareerListForm
@@ -84,7 +84,7 @@ namespace SalesView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -116,11 +116,11 @@ namespace SalesView {
 			// chlbCiencias
 			// 
 			this->chlbCiencias->FormattingEnabled = true;
-			this->chlbCiencias->Items->AddRange(gcnew cli::array< System::Object^  >(16) {
+			this->chlbCiencias->Items->AddRange(gcnew cli::array< System::Object^  >(15) {
 				L"Estadística", L"Física", L"Ingeniería Ambiental y Sostenible",
 					L"Ingeniería Biomédica", L"Ingeniería Civil", L"Ingeniería de las Telecomunicaciones", L"Ingeniería de Minas", L"Ingeniería Electrónica",
 					L"Ingeniería Geológica", L"Ingeniería Industrial", L"Ingeniería Informática", L"Ingeniería Mecánica", L"Ingeniería Mecatrónica",
-					L"Matemáticas", L"Química", L"Todas"
+					L"Matemáticas", L"Química"
 			});
 			this->chlbCiencias->Location = System::Drawing::Point(10, 30);
 			this->chlbCiencias->Name = L"chlbCiencias";
@@ -130,9 +130,9 @@ namespace SalesView {
 			// chlbArteDisenio
 			// 
 			this->chlbArteDisenio->FormattingEnabled = true;
-			this->chlbArteDisenio->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
+			this->chlbArteDisenio->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Educación Artística", L"Diseño Gráfico",
-					L"Diseño Industrial", L"Escultura", L"Pintura", L"Arte, moda y diseño textil", L"Grabado", L"Todas"
+					L"Diseño Industrial", L"Escultura", L"Pintura", L"Arte, moda y diseño textil", L"Grabado"
 			});
 			this->chlbArteDisenio->Location = System::Drawing::Point(280, 30);
 			this->chlbArteDisenio->Name = L"chlbArteDisenio";
@@ -142,10 +142,7 @@ namespace SalesView {
 			// chlbArtesEscenicas
 			// 
 			this->chlbArtesEscenicas->FormattingEnabled = true;
-			this->chlbArtesEscenicas->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"Danza", L"Teatro", L"Música", L"Creación y Producción Escénica",
-					L"Todas"
-			});
+			this->chlbArtesEscenicas->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Danza", L"Teatro", L"Música", L"Creación y Producción Escénica" });
 			this->chlbArtesEscenicas->Location = System::Drawing::Point(280, 211);
 			this->chlbArtesEscenicas->Name = L"chlbArtesEscenicas";
 			this->chlbArtesEscenicas->Size = System::Drawing::Size(250, 123);
@@ -154,9 +151,9 @@ namespace SalesView {
 			// chlbArtesComunication
 			// 
 			this->chlbArtesComunication->FormattingEnabled = true;
-			this->chlbArtesComunication->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->chlbArtesComunication->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"Comunicación Audiovisual", L"Comunicación para el desarrollo",
-					L"Publicidad", L"Periodismo", L"Todas"
+					L"Publicidad", L"Periodismo"
 			});
 			this->chlbArtesComunication->Location = System::Drawing::Point(550, 30);
 			this->chlbArtesComunication->Name = L"chlbArtesComunication";
@@ -336,87 +333,111 @@ namespace SalesView {
 
 		// Load
 	private: System::Void CareerListForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	if (Controller::RelationatedCareers->Count > 0) {
-		for (int j = 0; j < Controller::RelationatedCareers->Count; j++) {
-			for (int i = 0; i < chlbCiencias->Items->Count; i++) {
-				if (chlbCiencias->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
-					chlbCiencias->SetItemChecked(i, true);
-					break;
+		if (Controller::RelationatedCareers->Count > 0) {
+			for (int j = 0; j < Controller::RelationatedCareers->Count; j++) {
+				for (int i = 0; i < chlbCiencias->Items->Count; i++) {
+					if (chlbCiencias->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbCiencias->SetItemChecked(i, true);
+						break;
+					}
 				}
-			}
-			for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
-				if (chlbArteDisenio->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
-					chlbArteDisenio->SetItemChecked(i, true);
-					break;
+				for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
+					if (chlbArteDisenio->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbArteDisenio->SetItemChecked(i, true);
+						break;
+					}
 				}
-			}
-			for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
-				if (chlbArtesEscenicas->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
-					chlbArtesEscenicas->SetItemChecked(i, true);
-					break;
+				for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
+					if (chlbArtesEscenicas->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbArtesEscenicas->SetItemChecked(i, true);
+						break;
+					}
 				}
-			}
-			for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
-				if (chlbArtesComunication->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
-					chlbArtesComunication->SetItemChecked(i, true);
-					break;
+				for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
+					if (chlbArtesComunication->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbArtesComunication->SetItemChecked(i, true);
+						break;
+					}
 				}
+				for (int i = 0; i < chlbSocialScience->Items->Count; i++) {
+					if (chlbSocialScience->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbSocialScience->SetItemChecked(i, true);
+						break;
+					}
+				}
+				for (int i = 0; i < chlbEducation->Items->Count; i++) {
+					if (chlbEducation->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbEducation->SetItemChecked(i, true);
+						break;
+					}
+				}
+				for (int i = 0; i < chlbHumanity->Items->Count; i++) {
+					if (chlbHumanity->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbHumanity->SetItemChecked(i, true);
+						break;
+					}
+				}
+				for (int i = 0; i < chlbOthers->Items->Count; i++) {
+					if (chlbOthers->Items[i]->ToString()->Equals(Controller::RelationatedCareers[j])) {
+						chlbOthers->SetItemChecked(i, true);
+						break;
+					}
+				}
+
+
 			}
 
 
 		}
-
-
 	}
-}
 	private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
+		this->Close();
+	}
 	private: System::Void btUp_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-	Controller::RelationatedCareers->Clear();
 
-	for(int i=0; i< chlbCiencias->Items->Count; i++){
-		if (chlbCiencias->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbCiencias->Items[i]->ToString());
+		Controller::RelationatedCareers->Clear();
+
+		for (int i = 0; i < chlbCiencias->Items->Count; i++) {
+			if (chlbCiencias->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbCiencias->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
-		if (chlbArteDisenio->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArteDisenio->Items[i]->ToString());
+		for (int i = 0; i < chlbArteDisenio->Items->Count; i++) {
+			if (chlbArteDisenio->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbArteDisenio->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
-		if (chlbArtesEscenicas->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesEscenicas->Items[i]->ToString());
+		for (int i = 0; i < chlbArtesEscenicas->Items->Count; i++) {
+			if (chlbArtesEscenicas->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbArtesEscenicas->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
-		if (chlbArtesComunication->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+		for (int i = 0; i < chlbArtesComunication->Items->Count; i++) {
+			if (chlbArtesComunication->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbArtesComunication->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbSocialScience->Items->Count; i++) {
-		if (chlbSocialScience->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbSocialScience->Items[i]->ToString());
+		for (int i = 0; i < chlbSocialScience->Items->Count; i++) {
+			if (chlbSocialScience->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbSocialScience->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbEducation->Items->Count; i++) {
-		if (chlbEducation->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbEducation->Items[i]->ToString());
+		for (int i = 0; i < chlbEducation->Items->Count; i++) {
+			if (chlbEducation->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbEducation->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbHumanity->Items->Count; i++) {
-		if (chlbHumanity->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbHumanity->Items[i]->ToString());
+		for (int i = 0; i < chlbHumanity->Items->Count; i++) {
+			if (chlbHumanity->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbHumanity->Items[i]->ToString());
+			}
 		}
-	}
-	for (int i = 0; i < chlbOthers->Items->Count; i++) {
-		if (chlbOthers->GetItemChecked(i)) {
-			Controller::RelationatedCareers->Add(chlbOthers->Items[i]->ToString());
+		for (int i = 0; i < chlbOthers->Items->Count; i++) {
+			if (chlbOthers->GetItemChecked(i)) {
+				Controller::RelationatedCareers->Add(chlbOthers->Items[i]->ToString());
+			}
 		}
+		this->Close();
 	}
-	this->Close();
-}
-};
+	};
 }

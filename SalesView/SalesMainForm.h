@@ -47,7 +47,19 @@ namespace SalesView {
 	private: System::Windows::Forms::GroupBox^ gbMenuStoreManager;
 	private: System::Windows::Forms::Button^ btnSignOutStoreMager;
 	public: System::Windows::Forms::Label^ Idlb;
-		   //static Object^ person; //Variable de clase o miembro u atributo estático (global).
+	public: System::Windows::Forms::Label^ company4;
+	public: System::Windows::Forms::Label^ company3;
+	public: System::Windows::Forms::Label^ company2;
+	public: System::Windows::Forms::Label^ company1;
+	public: System::Windows::Forms::LinkLabel^ linkLabel4;
+	public: System::Windows::Forms::LinkLabel^ linkLabel3;
+	public: System::Windows::Forms::LinkLabel^ linkLabel2;
+	public: System::Windows::Forms::LinkLabel^ linkLabel1;
+	public: System::Windows::Forms::PictureBox^ Ad4;
+	public: System::Windows::Forms::PictureBox^ Ad3;
+	public: System::Windows::Forms::PictureBox^ Ad2;
+	public: System::Windows::Forms::PictureBox^ Ad1;
+		  //static Object^ person; //Variable de clase o miembro u atributo estático (global).
 	public:	static bool MenuVisibility = false;
 	public:
 		SalesMainForm(void)
@@ -85,10 +97,10 @@ namespace SalesView {
 	private: System::Windows::Forms::ToolStripMenuItem^ ayudaToolStripMenuItem;
 
 
-	public: System::Windows::Forms::PictureBox^ Ad1;
-	public: System::Windows::Forms::PictureBox^ Ad2;
-	public: System::Windows::Forms::PictureBox^ Ad3;
-	public: System::Windows::Forms::PictureBox^ Ad4;
+
+
+
+
 
 	private: System::Windows::Forms::ToolStripMenuItem^ estadistidcasDeVentasToolStripMenuItem;
 	public: System::Windows::Forms::ToolStripMenuItem^ subirAnuncioToolStripMenuItem;
@@ -194,10 +206,6 @@ public:
 			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estadistidcasDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->Ad1 = (gcnew System::Windows::Forms::PictureBox());
-			this->Ad2 = (gcnew System::Windows::Forms::PictureBox());
-			this->Ad3 = (gcnew System::Windows::Forms::PictureBox());
-			this->Ad4 = (gcnew System::Windows::Forms::PictureBox());
 			this->AppPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->lbSeventhProduct = (gcnew System::Windows::Forms::Label());
 			this->lbSixthProduct = (gcnew System::Windows::Forms::Label());
@@ -245,11 +253,19 @@ public:
 			this->gbMenuStoreManager = (gcnew System::Windows::Forms::GroupBox());
 			this->btnSignOutStoreMager = (gcnew System::Windows::Forms::Button());
 			this->Idlb = (gcnew System::Windows::Forms::Label());
+			this->company4 = (gcnew System::Windows::Forms::Label());
+			this->company3 = (gcnew System::Windows::Forms::Label());
+			this->company2 = (gcnew System::Windows::Forms::Label());
+			this->company1 = (gcnew System::Windows::Forms::Label());
+			this->linkLabel4 = (gcnew System::Windows::Forms::LinkLabel());
+			this->linkLabel3 = (gcnew System::Windows::Forms::LinkLabel());
+			this->linkLabel2 = (gcnew System::Windows::Forms::LinkLabel());
+			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
+			this->Ad4 = (gcnew System::Windows::Forms::PictureBox());
+			this->Ad3 = (gcnew System::Windows::Forms::PictureBox());
+			this->Ad2 = (gcnew System::Windows::Forms::PictureBox());
+			this->Ad1 = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AppPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->BeginInit();
@@ -270,6 +286,10 @@ public:
 			this->gbMenuCustomer->SuspendLayout();
 			this->gbMenuAnnouncer->SuspendLayout();
 			this->gbMenuStoreManager->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -364,54 +384,6 @@ public:
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
 			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 26);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
-			// 
-			// Ad1
-			// 
-			this->Ad1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad1->Location = System::Drawing::Point(11, 441);
-			this->Ad1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->Ad1->Name = L"Ad1";
-			this->Ad1->Size = System::Drawing::Size(300, 157);
-			this->Ad1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->Ad1->TabIndex = 11;
-			this->Ad1->TabStop = false;
-			// 
-			// Ad2
-			// 
-			this->Ad2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad2->Location = System::Drawing::Point(331, 441);
-			this->Ad2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->Ad2->Name = L"Ad2";
-			this->Ad2->Size = System::Drawing::Size(300, 157);
-			this->Ad2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->Ad2->TabIndex = 12;
-			this->Ad2->TabStop = false;
-			// 
-			// Ad3
-			// 
-			this->Ad3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad3->Location = System::Drawing::Point(651, 441);
-			this->Ad3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->Ad3->Name = L"Ad3";
-			this->Ad3->Size = System::Drawing::Size(300, 157);
-			this->Ad3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->Ad3->TabIndex = 13;
-			this->Ad3->TabStop = false;
-			// 
-			// Ad4
-			// 
-			this->Ad4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->Ad4->Location = System::Drawing::Point(971, 441);
-			this->Ad4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->Ad4->Name = L"Ad4";
-			this->Ad4->Size = System::Drawing::Size(300, 157);
-			this->Ad4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->Ad4->TabIndex = 14;
-			this->Ad4->TabStop = false;
 			// 
 			// AppPictureBox
 			// 
@@ -772,9 +744,9 @@ public:
 			this->gbMenuLogin->Controls->Add(this->btnNewCustomer);
 			this->gbMenuLogin->Controls->Add(this->btnLoginCustomer);
 			this->gbMenuLogin->Location = System::Drawing::Point(971, 156);
-			this->gbMenuLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuLogin->Margin = System::Windows::Forms::Padding(4);
 			this->gbMenuLogin->Name = L"gbMenuLogin";
-			this->gbMenuLogin->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuLogin->Padding = System::Windows::Forms::Padding(4);
 			this->gbMenuLogin->Size = System::Drawing::Size(301, 135);
 			this->gbMenuLogin->TabIndex = 73;
 			this->gbMenuLogin->TabStop = false;
@@ -784,7 +756,7 @@ public:
 			// btnNewCustomer
 			// 
 			this->btnNewCustomer->Location = System::Drawing::Point(11, 57);
-			this->btnNewCustomer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnNewCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->btnNewCustomer->Name = L"btnNewCustomer";
 			this->btnNewCustomer->Size = System::Drawing::Size(283, 38);
 			this->btnNewCustomer->TabIndex = 0;
@@ -795,7 +767,7 @@ public:
 			// btnLoginCustomer
 			// 
 			this->btnLoginCustomer->Location = System::Drawing::Point(11, 23);
-			this->btnLoginCustomer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnLoginCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->btnLoginCustomer->Name = L"btnLoginCustomer";
 			this->btnLoginCustomer->Size = System::Drawing::Size(283, 38);
 			this->btnLoginCustomer->TabIndex = 0;
@@ -811,9 +783,9 @@ public:
 			this->gbMenuCustomer->Controls->Add(this->btnRecord);
 			this->gbMenuCustomer->Controls->Add(this->btnEdit);
 			this->gbMenuCustomer->Location = System::Drawing::Point(972, 153);
-			this->gbMenuCustomer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->gbMenuCustomer->Name = L"gbMenuCustomer";
-			this->gbMenuCustomer->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuCustomer->Padding = System::Windows::Forms::Padding(4);
 			this->gbMenuCustomer->Size = System::Drawing::Size(300, 208);
 			this->gbMenuCustomer->TabIndex = 74;
 			this->gbMenuCustomer->TabStop = false;
@@ -823,7 +795,7 @@ public:
 			// btnSignOut
 			// 
 			this->btnSignOut->Location = System::Drawing::Point(9, 158);
-			this->btnSignOut->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSignOut->Margin = System::Windows::Forms::Padding(4);
 			this->btnSignOut->Name = L"btnSignOut";
 			this->btnSignOut->Size = System::Drawing::Size(283, 38);
 			this->btnSignOut->TabIndex = 0;
@@ -834,7 +806,7 @@ public:
 			// btnShopping
 			// 
 			this->btnShopping->Location = System::Drawing::Point(9, 123);
-			this->btnShopping->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnShopping->Margin = System::Windows::Forms::Padding(4);
 			this->btnShopping->Name = L"btnShopping";
 			this->btnShopping->Size = System::Drawing::Size(283, 38);
 			this->btnShopping->TabIndex = 0;
@@ -845,7 +817,7 @@ public:
 			// btnWishList
 			// 
 			this->btnWishList->Location = System::Drawing::Point(9, 87);
-			this->btnWishList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnWishList->Margin = System::Windows::Forms::Padding(4);
 			this->btnWishList->Name = L"btnWishList";
 			this->btnWishList->Size = System::Drawing::Size(283, 38);
 			this->btnWishList->TabIndex = 0;
@@ -856,7 +828,7 @@ public:
 			// btnRecord
 			// 
 			this->btnRecord->Location = System::Drawing::Point(9, 52);
-			this->btnRecord->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnRecord->Margin = System::Windows::Forms::Padding(4);
 			this->btnRecord->Name = L"btnRecord";
 			this->btnRecord->Size = System::Drawing::Size(283, 38);
 			this->btnRecord->TabIndex = 0;
@@ -867,7 +839,7 @@ public:
 			// btnEdit
 			// 
 			this->btnEdit->Location = System::Drawing::Point(9, 16);
-			this->btnEdit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnEdit->Margin = System::Windows::Forms::Padding(4);
 			this->btnEdit->Name = L"btnEdit";
 			this->btnEdit->Size = System::Drawing::Size(283, 38);
 			this->btnEdit->TabIndex = 0;
@@ -880,9 +852,9 @@ public:
 			this->gbMenuAnnouncer->Controls->Add(this->btnSingOutAnnouncer);
 			this->gbMenuAnnouncer->Controls->Add(this->btnMyAdd);
 			this->gbMenuAnnouncer->Location = System::Drawing::Point(971, 145);
-			this->gbMenuAnnouncer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuAnnouncer->Margin = System::Windows::Forms::Padding(4);
 			this->gbMenuAnnouncer->Name = L"gbMenuAnnouncer";
-			this->gbMenuAnnouncer->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuAnnouncer->Padding = System::Windows::Forms::Padding(4);
 			this->gbMenuAnnouncer->Size = System::Drawing::Size(313, 105);
 			this->gbMenuAnnouncer->TabIndex = 75;
 			this->gbMenuAnnouncer->TabStop = false;
@@ -892,7 +864,7 @@ public:
 			// btnSingOutAnnouncer
 			// 
 			this->btnSingOutAnnouncer->Location = System::Drawing::Point(8, 57);
-			this->btnSingOutAnnouncer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSingOutAnnouncer->Margin = System::Windows::Forms::Padding(4);
 			this->btnSingOutAnnouncer->Name = L"btnSingOutAnnouncer";
 			this->btnSingOutAnnouncer->Size = System::Drawing::Size(283, 38);
 			this->btnSingOutAnnouncer->TabIndex = 0;
@@ -903,7 +875,7 @@ public:
 			// btnMyAdd
 			// 
 			this->btnMyAdd->Location = System::Drawing::Point(8, 23);
-			this->btnMyAdd->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnMyAdd->Margin = System::Windows::Forms::Padding(4);
 			this->btnMyAdd->Name = L"btnMyAdd";
 			this->btnMyAdd->Size = System::Drawing::Size(283, 38);
 			this->btnMyAdd->TabIndex = 0;
@@ -915,9 +887,9 @@ public:
 			// 
 			this->gbMenuStoreManager->Controls->Add(this->btnSignOutStoreMager);
 			this->gbMenuStoreManager->Location = System::Drawing::Point(971, 145);
-			this->gbMenuStoreManager->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuStoreManager->Margin = System::Windows::Forms::Padding(4);
 			this->gbMenuStoreManager->Name = L"gbMenuStoreManager";
-			this->gbMenuStoreManager->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->gbMenuStoreManager->Padding = System::Windows::Forms::Padding(4);
 			this->gbMenuStoreManager->Size = System::Drawing::Size(321, 95);
 			this->gbMenuStoreManager->TabIndex = 76;
 			this->gbMenuStoreManager->TabStop = false;
@@ -927,7 +899,7 @@ public:
 			// btnSignOutStoreMager
 			// 
 			this->btnSignOutStoreMager->Location = System::Drawing::Point(13, 23);
-			this->btnSignOutStoreMager->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSignOutStoreMager->Margin = System::Windows::Forms::Padding(4);
 			this->btnSignOutStoreMager->Name = L"btnSignOutStoreMager";
 			this->btnSignOutStoreMager->Size = System::Drawing::Size(283, 38);
 			this->btnSignOutStoreMager->TabIndex = 0;
@@ -945,12 +917,148 @@ public:
 			this->Idlb->Text = L"0";
 			this->Idlb->Visible = false;
 			// 
+			// company4
+			// 
+			this->company4->AutoSize = true;
+			this->company4->Location = System::Drawing::Point(988, 412);
+			this->company4->Name = L"company4";
+			this->company4->Size = System::Drawing::Size(83, 16);
+			this->company4->TabIndex = 90;
+			this->company4->Text = L"Anunciante 4";
+			// 
+			// company3
+			// 
+			this->company3->AutoSize = true;
+			this->company3->Location = System::Drawing::Point(666, 412);
+			this->company3->Name = L"company3";
+			this->company3->Size = System::Drawing::Size(83, 16);
+			this->company3->TabIndex = 89;
+			this->company3->Text = L"Anunciante 3";
+			// 
+			// company2
+			// 
+			this->company2->AutoSize = true;
+			this->company2->Location = System::Drawing::Point(359, 412);
+			this->company2->Name = L"company2";
+			this->company2->Size = System::Drawing::Size(83, 16);
+			this->company2->TabIndex = 88;
+			this->company2->Text = L"Anunciante 2";
+			// 
+			// company1
+			// 
+			this->company1->AutoSize = true;
+			this->company1->Location = System::Drawing::Point(18, 413);
+			this->company1->Name = L"company1";
+			this->company1->Size = System::Drawing::Size(83, 16);
+			this->company1->TabIndex = 87;
+			this->company1->Text = L"Anunciante 1";
+			// 
+			// linkLabel4
+			// 
+			this->linkLabel4->AutoSize = true;
+			this->linkLabel4->Location = System::Drawing::Point(988, 611);
+			this->linkLabel4->Name = L"linkLabel4";
+			this->linkLabel4->Size = System::Drawing::Size(34, 16);
+			this->linkLabel4->TabIndex = 86;
+			this->linkLabel4->TabStop = true;
+			this->linkLabel4->Text = L"link4";
+			// 
+			// linkLabel3
+			// 
+			this->linkLabel3->AutoSize = true;
+			this->linkLabel3->Location = System::Drawing::Point(668, 611);
+			this->linkLabel3->Name = L"linkLabel3";
+			this->linkLabel3->Size = System::Drawing::Size(34, 16);
+			this->linkLabel3->TabIndex = 85;
+			this->linkLabel3->TabStop = true;
+			this->linkLabel3->Text = L"link3";
+			// 
+			// linkLabel2
+			// 
+			this->linkLabel2->AutoSize = true;
+			this->linkLabel2->Location = System::Drawing::Point(335, 611);
+			this->linkLabel2->Name = L"linkLabel2";
+			this->linkLabel2->Size = System::Drawing::Size(34, 16);
+			this->linkLabel2->TabIndex = 84;
+			this->linkLabel2->TabStop = true;
+			this->linkLabel2->Text = L"link2";
+			// 
+			// linkLabel1
+			// 
+			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->Location = System::Drawing::Point(18, 611);
+			this->linkLabel1->Name = L"linkLabel1";
+			this->linkLabel1->Size = System::Drawing::Size(34, 16);
+			this->linkLabel1->TabIndex = 83;
+			this->linkLabel1->TabStop = true;
+			this->linkLabel1->Text = L"link1";
+			// 
+			// Ad4
+			// 
+			this->Ad4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Ad4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->Ad4->Location = System::Drawing::Point(976, 433);
+			this->Ad4->Margin = System::Windows::Forms::Padding(4);
+			this->Ad4->Name = L"Ad4";
+			this->Ad4->Size = System::Drawing::Size(300, 157);
+			this->Ad4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->Ad4->TabIndex = 82;
+			this->Ad4->TabStop = false;
+			// 
+			// Ad3
+			// 
+			this->Ad3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Ad3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->Ad3->Location = System::Drawing::Point(656, 433);
+			this->Ad3->Margin = System::Windows::Forms::Padding(4);
+			this->Ad3->Name = L"Ad3";
+			this->Ad3->Size = System::Drawing::Size(300, 157);
+			this->Ad3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->Ad3->TabIndex = 81;
+			this->Ad3->TabStop = false;
+			// 
+			// Ad2
+			// 
+			this->Ad2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Ad2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->Ad2->Location = System::Drawing::Point(336, 433);
+			this->Ad2->Margin = System::Windows::Forms::Padding(4);
+			this->Ad2->Name = L"Ad2";
+			this->Ad2->Size = System::Drawing::Size(300, 157);
+			this->Ad2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->Ad2->TabIndex = 80;
+			this->Ad2->TabStop = false;
+			// 
+			// Ad1
+			// 
+			this->Ad1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Ad1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->Ad1->Location = System::Drawing::Point(16, 433);
+			this->Ad1->Margin = System::Windows::Forms::Padding(4);
+			this->Ad1->Name = L"Ad1";
+			this->Ad1->Size = System::Drawing::Size(300, 157);
+			this->Ad1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->Ad1->TabIndex = 79;
+			this->Ad1->TabStop = false;
+			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->ClientSize = System::Drawing::Size(1319, 633);
+			this->Controls->Add(this->company4);
+			this->Controls->Add(this->company3);
+			this->Controls->Add(this->company2);
+			this->Controls->Add(this->company1);
+			this->Controls->Add(this->linkLabel4);
+			this->Controls->Add(this->linkLabel3);
+			this->Controls->Add(this->linkLabel2);
+			this->Controls->Add(this->linkLabel1);
+			this->Controls->Add(this->Ad4);
+			this->Controls->Add(this->Ad3);
+			this->Controls->Add(this->Ad2);
+			this->Controls->Add(this->Ad1);
 			this->Controls->Add(this->Idlb);
 			this->Controls->Add(this->gbMenuStoreManager);
 			this->Controls->Add(this->gbMenuAnnouncer);
@@ -988,11 +1096,7 @@ public:
 			this->Controls->Add(this->pbFourthProduct);
 			this->Controls->Add(this->pbSecondProduct);
 			this->Controls->Add(this->pbFirstProduct);
-			this->Controls->Add(this->Ad4);
-			this->Controls->Add(this->Ad3);
-			this->Controls->Add(this->Ad2);
 			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->Ad1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
@@ -1002,10 +1106,6 @@ public:
 			this->Load += gcnew System::EventHandler(this, &SalesMainForm::SalesMainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AppPictureBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->EndInit();
@@ -1026,6 +1126,10 @@ public:
 			this->gbMenuCustomer->ResumeLayout(false);
 			this->gbMenuAnnouncer->ResumeLayout(false);
 			this->gbMenuStoreManager->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1036,18 +1140,36 @@ public:
 			subirAnuncioToolStripMenuItem->Visible = false;
 			List<Announcer^>^ AnounList = gcnew List<Announcer^>();
 			AnounList = Controller::QueryAllAnnouncer();
+
+			company1->Text = " ";
+			linkLabel1->Text = " ";
+			company2->Text = " ";
+			linkLabel2->Text = " ";
+			company3->Text = " ";
+			linkLabel3->Text = " ";
+			company4->Text = " ";
+			linkLabel4->Text = " ";
+
 			for (int i = 0; i < AnounList->Count; i++) {
 				if (AnounList[i]->AdInSistem) {
 
 					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
 					switch (AnounList[i]->NumberPictureBox) {
 					case 1: Ad1->Image = Image::FromStream(ms);
+						company1->Text = AnounList[i]->CompanyName;
+						linkLabel1->Text = AnounList[i]->WebSiteLink;
 						break;
 					case 2: Ad2->Image = Image::FromStream(ms);
+						company2->Text = AnounList[i]->CompanyName;
+						linkLabel2->Text = AnounList[i]->WebSiteLink;
 						break;
 					case 3: Ad3->Image = Image::FromStream(ms);
+						company3->Text = AnounList[i]->CompanyName;
+						linkLabel3->Text = AnounList[i]->WebSiteLink;
 						break;
 					case 4: Ad4->Image = Image::FromStream(ms);
+						company4->Text = AnounList[i]->CompanyName;
+						linkLabel4->Text = AnounList[i]->WebSiteLink;
 						break;
 					default:
 						break;
