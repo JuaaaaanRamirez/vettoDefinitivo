@@ -206,11 +206,10 @@ private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Window
 	if (e->KeyData == Keys::Enter)
 		btnOk->PerformClick();
 }
-private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
+private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e);
+
 private: System::Void btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
-	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm();
+	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm(this);
 	newCustomerForm->ShowDialog();
 }
 };

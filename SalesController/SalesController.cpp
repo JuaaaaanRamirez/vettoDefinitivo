@@ -257,3 +257,26 @@ int SalesController::Controller::FindNewId(Person^ user)
     return numMayor + 1;
 }
 
+bool SalesController::Controller::ExistUsername(String^ username)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->Username->Equals(username))
+            return true;
+    }
+
+    return false;
+}
+
+bool SalesController::Controller::ExistDocNumber(String^ docnumber)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->DocNumber->Equals(docnumber))
+            return true;
+    }
+
+    return false;
+}
+
+

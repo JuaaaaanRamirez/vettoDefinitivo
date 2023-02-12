@@ -18,13 +18,15 @@ namespace SalesView {
 	/// </summary>
 	public ref class NewCustomerForm : public System::Windows::Forms::Form
 	{
+		Form^ refForm;
 	public:
-		NewCustomerForm(void)
+		NewCustomerForm(Form^ form)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			refForm = form;
 		}
 
 	protected:
@@ -134,6 +136,8 @@ namespace SalesView {
 			// label12
 			// 
 			this->label12->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label12->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label12->Location = System::Drawing::Point(0, 0);
 			this->label12->Name = L"label12";
@@ -344,7 +348,7 @@ namespace SalesView {
 			this->btnRegister->Name = L"btnRegister";
 			this->btnRegister->Size = System::Drawing::Size(75, 23);
 			this->btnRegister->TabIndex = 6;
-			this->btnRegister->Text = L"Registrarse";
+			this->btnRegister->Text = L"Aceptar";
 			this->btnRegister->UseVisualStyleBackColor = true;
 			this->btnRegister->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnRegister_Click);
 			// 
@@ -354,7 +358,7 @@ namespace SalesView {
 			this->btnBack->Name = L"btnBack";
 			this->btnBack->Size = System::Drawing::Size(75, 23);
 			this->btnBack->TabIndex = 6;
-			this->btnBack->Text = L"Volver";
+			this->btnBack->Text = L"Cancelar";
 			this->btnBack->UseVisualStyleBackColor = true;
 			this->btnBack->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnBack_Click);
 			// 
@@ -390,7 +394,6 @@ namespace SalesView {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Name = L"NewCustomerForm";
-			this->Text = L"NewCustomerForm";
 			this->Load += gcnew System::EventHandler(this, &NewCustomerForm::NewCustomerForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -445,6 +448,14 @@ namespace SalesView {
 			MessageBox::Show("Las contraseña no son iguales");
 			return;
 		}
+		if (Controller::ExistUsername(txtUsername->Text)) {
+			MessageBox::Show("El nombre usuario ingresado ya existe");
+			return;
+		}
+		if (Controller::ExistDocNumber(txtDocNumber->Text)) {
+			MessageBox::Show("El numero de DNI  ingresado ya existe");
+			return;
+		}
 
 		//p->Id = Int32::Parse(txtPersonId->Text);
 		p->Id = Controller::FindNewId(p);
@@ -478,8 +489,7 @@ namespace SalesView {
 		   this->Close();
 		
 	}
-private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
+private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e);
+
 };
 }
