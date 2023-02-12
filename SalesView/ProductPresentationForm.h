@@ -18,14 +18,16 @@ namespace SalesView {
 	public ref class ProductPresentationForm : public System::Windows::Forms::Form
 	{
 		Form^ refForm;
+	public:	int userId;
 	public:
-		ProductPresentationForm(Form^ form)
+		ProductPresentationForm(Form^ form1, int userId)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
-			refForm = form;
+			refForm = form1;
+			this->userId = userId;
 		}
 
 	protected:
@@ -47,6 +49,7 @@ namespace SalesView {
 
 	private: System::Windows::Forms::Label^ lbName;
 	private: System::Windows::Forms::Label^ lbDescription;
+	public: System::Windows::Forms::TextBox^ txtId;
 	protected:
 
 
@@ -54,12 +57,13 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::TextBox^ txtProductName;
+
 	private: System::Windows::Forms::TextBox^ txtDescription;
 
 
 	private: System::Windows::Forms::Button^ Addbtn;
-	private: System::Windows::Forms::NumericUpDown^ amountProduct;
+	private: System::Windows::Forms::NumericUpDown^ nudAmount;
+
 	private: System::Windows::Forms::Label^ lbAmount;
 	private: System::Windows::Forms::Label^ lbStarts;
 	private: System::Windows::Forms::PictureBox^ pbSellers;
@@ -88,6 +92,9 @@ namespace SalesView {
 
 	private: System::Windows::Forms::GroupBox^ gbinformation;
 	private: System::Windows::Forms::Button^ Wishbtn;
+	private: System::Windows::Forms::TextBox^ txtProductName;
+
+	private: System::Windows::Forms::Label^ lbId;
 
 
 
@@ -112,10 +119,10 @@ namespace SalesView {
 			this->pbxProductImagen = (gcnew System::Windows::Forms::PictureBox());
 			this->lbName = (gcnew System::Windows::Forms::Label());
 			this->lbDescription = (gcnew System::Windows::Forms::Label());
-			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
+			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->txtDescription = (gcnew System::Windows::Forms::TextBox());
 			this->Addbtn = (gcnew System::Windows::Forms::Button());
-			this->amountProduct = (gcnew System::Windows::Forms::NumericUpDown());
+			this->nudAmount = (gcnew System::Windows::Forms::NumericUpDown());
 			this->lbAmount = (gcnew System::Windows::Forms::Label());
 			this->lbStarts = (gcnew System::Windows::Forms::Label());
 			this->pbSellers = (gcnew System::Windows::Forms::PictureBox());
@@ -125,9 +132,11 @@ namespace SalesView {
 			this->ComentLabel = (gcnew System::Windows::Forms::Label());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
+			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
+			this->lbId = (gcnew System::Windows::Forms::Label());
 			this->Wishbtn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
@@ -147,7 +156,7 @@ namespace SalesView {
 			// lbName
 			// 
 			this->lbName->AutoSize = true;
-			this->lbName->Location = System::Drawing::Point(0, 0);
+			this->lbName->Location = System::Drawing::Point(0, 30);
 			this->lbName->Name = L"lbName";
 			this->lbName->Size = System::Drawing::Size(59, 16);
 			this->lbName->TabIndex = 4;
@@ -156,25 +165,25 @@ namespace SalesView {
 			// lbDescription
 			// 
 			this->lbDescription->AutoSize = true;
-			this->lbDescription->Location = System::Drawing::Point(0, 30);
+			this->lbDescription->Location = System::Drawing::Point(0, 60);
 			this->lbDescription->Name = L"lbDescription";
 			this->lbDescription->Size = System::Drawing::Size(82, 16);
 			this->lbDescription->TabIndex = 5;
 			this->lbDescription->Text = L"Descripción:";
 			// 
-			// txtProductName
+			// txtId
 			// 
-			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->txtProductName->Location = System::Drawing::Point(100, 0);
-			this->txtProductName->Name = L"txtProductName";
-			this->txtProductName->ReadOnly = true;
-			this->txtProductName->Size = System::Drawing::Size(346, 15);
-			this->txtProductName->TabIndex = 6;
+			this->txtId->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtId->Location = System::Drawing::Point(100, 0);
+			this->txtId->Name = L"txtId";
+			this->txtId->ReadOnly = true;
+			this->txtId->Size = System::Drawing::Size(346, 15);
+			this->txtId->TabIndex = 6;
 			// 
 			// txtDescription
 			// 
 			this->txtDescription->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->txtDescription->Location = System::Drawing::Point(100, 30);
+			this->txtDescription->Location = System::Drawing::Point(100, 60);
 			this->txtDescription->Multiline = true;
 			this->txtDescription->Name = L"txtDescription";
 			this->txtDescription->ReadOnly = true;
@@ -193,12 +202,12 @@ namespace SalesView {
 			this->Addbtn->UseVisualStyleBackColor = true;
 			this->Addbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Addbtn_Click);
 			// 
-			// amountProduct
+			// nudAmount
 			// 
-			this->amountProduct->Location = System::Drawing::Point(370, 150);
-			this->amountProduct->Name = L"amountProduct";
-			this->amountProduct->Size = System::Drawing::Size(345, 22);
-			this->amountProduct->TabIndex = 9;
+			this->nudAmount->Location = System::Drawing::Point(370, 150);
+			this->nudAmount->Name = L"nudAmount";
+			this->nudAmount->Size = System::Drawing::Size(345, 22);
+			this->nudAmount->TabIndex = 9;
 			// 
 			// lbAmount
 			// 
@@ -288,16 +297,36 @@ namespace SalesView {
 			// 
 			// gbinformation
 			// 
+			this->gbinformation->Controls->Add(this->txtProductName);
+			this->gbinformation->Controls->Add(this->lbId);
 			this->gbinformation->Controls->Add(this->txtDescription);
 			this->gbinformation->Controls->Add(this->lbName);
 			this->gbinformation->Controls->Add(this->lbDescription);
-			this->gbinformation->Controls->Add(this->txtProductName);
+			this->gbinformation->Controls->Add(this->txtId);
 			this->gbinformation->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->gbinformation->Location = System::Drawing::Point(270, 30);
 			this->gbinformation->Name = L"gbinformation";
 			this->gbinformation->Size = System::Drawing::Size(450, 100);
 			this->gbinformation->TabIndex = 19;
 			this->gbinformation->TabStop = false;
+			// 
+			// txtProductName
+			// 
+			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtProductName->Location = System::Drawing::Point(100, 30);
+			this->txtProductName->Name = L"txtProductName";
+			this->txtProductName->ReadOnly = true;
+			this->txtProductName->Size = System::Drawing::Size(346, 15);
+			this->txtProductName->TabIndex = 9;
+			// 
+			// lbId
+			// 
+			this->lbId->AutoSize = true;
+			this->lbId->Location = System::Drawing::Point(0, 0);
+			this->lbId->Name = L"lbId";
+			this->lbId->Size = System::Drawing::Size(23, 16);
+			this->lbId->TabIndex = 8;
+			this->lbId->Text = L"ID:";
 			// 
 			// Wishbtn
 			// 
@@ -309,6 +338,7 @@ namespace SalesView {
 			this->Wishbtn->TabIndex = 20;
 			this->Wishbtn->Text = L"Agregar a la lista de deseos";
 			this->Wishbtn->UseVisualStyleBackColor = true;
+			this->Wishbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Wishbtn_Click);
 			// 
 			// ProductPresentationForm
 			// 
@@ -325,7 +355,7 @@ namespace SalesView {
 			this->Controls->Add(this->pbSellers);
 			this->Controls->Add(this->lbStarts);
 			this->Controls->Add(this->lbAmount);
-			this->Controls->Add(this->amountProduct);
+			this->Controls->Add(this->nudAmount);
 			this->Controls->Add(this->Addbtn);
 			this->Controls->Add(this->pbxProductImagen);
 			this->MaximizeBox = false;
@@ -334,7 +364,7 @@ namespace SalesView {
 			this->Text = L"Producto Selccionado";
 			this->Load += gcnew System::EventHandler(this, &ProductPresentationForm::ProductPresentationForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
@@ -348,12 +378,47 @@ namespace SalesView {
 
 		void ShowProduct();
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		SaleDetailForm^ SaleDetail = gcnew SaleDetailForm();
-		SaleDetail->Show();
+		// Verification
+		if (userId != 0) {
+			if (Convert::ToInt32(nudAmount->Text) != 0) {
+				// Add new Sale
+				Sale^ newSale = gcnew Sale();
+				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+				newSale->SaleDate = Convert::ToString(DateTime::Now);											 // Date
+				// Save and Get Id
+				unsigned long int saleId = Controller::AddSale(newSale);
+
+				//Add SaleDetail
+				SaleDetail^ newSaleDetail = gcnew SaleDetail();
+				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
+				newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+				newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
+				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
+				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
+				List<SaleDetail^>^ newSaleDetailList = gcnew List<SaleDetail^>();
+				newSaleDetailList->Add(newSaleDetail);
+				newSale->SoldProducts = newSaleDetailList;													  //SaleDetail
+
+				// Update
+				Controller::UpdateSale(newSale);
+
+				MessageBox::Show("¡Agregado con éxito!");
+
+				SaleDetailForm^ SalesDetail = gcnew SaleDetailForm(saleId);
+				SalesDetail->ShowDialog();
+			}
+			else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
+		}
+		else {
+			MessageBox::Show("Debe loguearse como estudiante primero.");
+		}
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowProduct();
 	}
-};
+	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show("Agregado a la lista de deseos :3");
+	}
+	};
 }
 

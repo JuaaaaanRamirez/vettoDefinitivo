@@ -11,6 +11,7 @@
 using namespace System;
 using namespace System::Collections::Generic;
 
+
 namespace SalesModel {
     [Serializable]
     public ref class Sale {
@@ -20,12 +21,13 @@ namespace SalesModel {
         property char Status;
         property double Total;
         property String^ Address;
+        property String^ Reference;
         property char PaidMode;
         property String^ SaleDate;
         //La asociación se convierte en un atributo
         property StoreManager^ StoreManager;
         property Customer^ Customer;
-
+        property List<SaleDetail^>^ SoldProducts;
         property List<SaleDetail^>^ SaleDetails;
 
         Sale() {

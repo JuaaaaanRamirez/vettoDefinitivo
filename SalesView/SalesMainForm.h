@@ -1285,8 +1285,8 @@ private: System::Void btnWishList_Click(System::Object^ sender, System::EventArg
 	//Form de la LISTA DE DESEOS DEL CLIENTE
 }
 private: System::Void btnShopping_Click(System::Object^ sender, System::EventArgs^ e) {
-	SaleDetailForm^ saleDetailForm = gcnew SaleDetailForm();
-	saleDetailForm->ShowDialog();
+	//SaleDetailForm^ saleDetailForm = gcnew SaleDetailForm();
+	//saleDetailForm->ShowDialog();
 }
 private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();

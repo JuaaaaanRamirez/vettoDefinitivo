@@ -50,7 +50,7 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::TextBox^ txtSearchBox;
-public: System::Windows::Forms::DataGridView^ dgvProductList;
+	public: System::Windows::Forms::DataGridView^ dgvProductList;
 
 
 
@@ -223,7 +223,7 @@ public: System::Windows::Forms::DataGridView^ dgvProductList;
 				for (int j = 0; j < myProductList[i]->Career->Count; j++) {
 					careersString = careersString + "/" + myProductList[i]->Career[j];
 				}
-				
+
 				dgvProductList->Rows->Add(gcnew array<String^>{
 					"" + myProductList[i]->Id,
 						"" + myProductList[i]->Name,
@@ -234,28 +234,19 @@ public: System::Windows::Forms::DataGridView^ dgvProductList;
 			}
 		}
 
-	// Dgv
-	private: System::Void dgvProductList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		// Verification
-		int selectedRowIndex = dgvProductList->SelectedCells[0]->RowIndex;
-		List<Product^>^ myProductList = Controller::QueryProductsByNameOrDescription(txtSearchBox->Text);
-		if (selectedRowIndex >= (myProductList->Count)) return;
-
-
-		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this);
-		ProductPresentation->ShowDialog();
-	}
-	// Load
+		// Dgv
+	private: System::Void dgvProductList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+		   // Load
 	private: System::Void ProductListForm_Load(System::Object^ sender, System::EventArgs^ e);
-	// Search
+		   // Search
 	private: System::Void Searchbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	ShowProducts();
-}
-    private: System::Void txtSearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyData == Keys::Enter) Searchbtn->PerformClick();
-}
+		ShowProducts();
+	}
+	private: System::Void txtSearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyData == Keys::Enter) Searchbtn->PerformClick();
+	}
 
-};
+	};
 }
 
 
