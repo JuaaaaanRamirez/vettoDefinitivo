@@ -75,7 +75,7 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
     return careerList;
 }
 
-
+// Login
 Person^ SalesController::Controller::Login(String^ username, String^ password)
 {
     /*
@@ -99,7 +99,6 @@ Person^ SalesController::Controller::Login(String^ username, String^ password)
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucci�n "return" aqu�
 }
-
 int SalesController::Controller::AddCustomer(Customer^ customer)
 {
 
@@ -110,6 +109,105 @@ int SalesController::Controller::AddCustomer(Customer^ customer)
     //return Int32(customer->Id);
     return 1;
 }
+List<Customer^>^ SalesController::Controller::QueryAllCustomer()
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    List<Customer^>^ activeCustomerList = gcnew List<Customer^>();
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->GetType() == Customer::typeid) {
+            activeCustomerList->Add((Customer^)personList[i]);
+
+        }
+    }
+
+
+    return activeCustomerList;
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer() {
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    List<Announcer^>^ activeAnnouncerList = gcnew List<Announcer^>();
+
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->GetType() == Announcer::typeid) {
+            activeAnnouncerList->Add((Announcer^)personList[i]);
+
+        }
+    }
+
+
+    return activeAnnouncerList;
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ username, String^ password)
+{
+
+    CustomerList = (List<Customer^>^)Persistance::LoadBinaryData("customer.bin");
+    for (int i = 0; i < CustomerList->Count; i++) {
+        if (CustomerList[i]->Username->Equals(username) &&
+            CustomerList[i]->Password->Equals(password)) {
+            return CustomerList[i];
+        }
+    }
+    return nullptr;
+
+    //TRABAJO CON CASTING
+        /*
+        Customer^ c = gcnew Customer();
+        Customer^ c_2 = gcnew Customer();
+        Person^ p = gcnew Person();
+        List <Person^>^ Lista = gcnew List<Person^>();
+        List <Customer^>^ ListaCust = gcnew List<Customer^>();
+
+        c->CustomerPoints = 100;
+        Lista->Add(c);
+        //(Customer^)Lista[0]->DocNumber = 758; //no tengo los atributos propios de customer,
+                                                //solo de person(Lista[0] contiene la direccions de un Customer)
+        c_2 = (Customer^)Lista[0];
+        c_2->CustomerPoints = 50;
+
+        ListaCust->Add((Customer^)Lista[0]);
+        // c->CustomerPoints sigue siendo 100??? o se perdio el valor
+        ListaCust[0]->CustomerPoints = 5;
+
+        */
+        //throw gcnew System::NotImplementedException();
+        // TODO: Insertar una instrucción "return" aquí
+
+}
+Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, String^ password)
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->Username->Equals(username) &&
+            personList[i]->Password->Equals(password)) {
+            return personList[i];
+        }
+    }
+    return nullptr;
+
+
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+}
+int SalesController::Controller::FindNewId(Person^ user)
+{
+    int i = 0, numMayor;
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    numMayor = personList[i]->Id;
+    for (i = 0; i < personList->Count; i++) {
+
+        if (numMayor < personList[i]->Id) {
+            numMayor = personList[i]->Id;
+        }
+    }
+    return numMayor + 1;
+}
+
 
 // For Person (Users)
 int SalesController::Controller::AddUser(Person^ user)
@@ -153,107 +251,62 @@ int SalesController::Controller::DeleteUser(int userId)
     return 0;
 }
 
-List<Customer^>^ SalesController::Controller::QueryAllCustomer()
+// For Sales
+int SalesController::Controller::AddSale(Sale^ sale)
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    List<Customer^>^ activeCustomerList = gcnew List<Customer^>();
-    for (int i = 0; i < personList->Count; i++) {
-        if ( personList[i]->GetType() == Customer::typeid) {
-            activeCustomerList->Add((Customer^)personList[i]);
-            
-        }
-    }
-   
-    
-    return activeCustomerList;
-    
-    //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    // Amount
+    if (saleList->Count == 0) sale->Id = 0;
+    else { sale->Id = saleList->Count; }
+    saleList->Add(sale);
+    Persistance::PersistBinary("sales.bin", saleList);
+    return Int32(sale->Id);
 }
-
-List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer(){
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    List<Announcer^>^ activeAnnouncerList = gcnew List<Announcer^>();
-
-    for (int i = 0; i < personList->Count; i++) {
-        if (personList[i]->GetType() == Announcer::typeid) {
-            activeAnnouncerList->Add((Announcer^)personList[i]);
-
-        }
-    }
-
-
-    return activeAnnouncerList;
-
-    //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
-}
-
-
-Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ username, String^ password)
+Sale^ SalesController::Controller::QuerySaleById(int saleId)
 {
-
-    CustomerList = (List<Customer^>^)Persistance::LoadBinaryData("customer.bin");
-    for (int i = 0; i < CustomerList->Count; i++) {
-        if (CustomerList[i]->Username->Equals(username) &&
-            CustomerList[i]->Password->Equals(password)) {
-            return CustomerList[i];
-        }
-    }
+    
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == saleId)
+            return saleList[i];
     return nullptr;
-    
-//TRABAJO CON CASTING
-    /*
-    Customer^ c = gcnew Customer();
-    Customer^ c_2 = gcnew Customer();
-    Person^ p = gcnew Person();
-    List <Person^>^ Lista = gcnew List<Person^>();
-    List <Customer^>^ ListaCust = gcnew List<Customer^>();
-
-    c->CustomerPoints = 100;
-    Lista->Add(c);
-    //(Customer^)Lista[0]->DocNumber = 758; //no tengo los atributos propios de customer,
-                                            //solo de person(Lista[0] contiene la direccions de un Customer)
-    c_2 = (Customer^)Lista[0];
-    c_2->CustomerPoints = 50;
-
-    ListaCust->Add((Customer^)Lista[0]);
-    // c->CustomerPoints sigue siendo 100??? o se perdio el valor
-    ListaCust[0]->CustomerPoints = 5;
-    
-    */
-    //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
-
 }
-
-Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, String^ password)
+List<Sale^>^ SalesController::Controller::QueryAllSales()
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    for (int i = 0; i < personList->Count; i++) {
-        if (personList[i]->Username->Equals(username) &&
-            personList[i]->Password->Equals(password)) {
-            return personList[i];
-        }
-    }
-    return nullptr;
-    
-    
-    //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    return saleList;
 }
-
-int SalesController::Controller::FindNewId(Person^ user)
+int SalesController::Controller::UpdateSale(Sale^ sale)
 {
-    int i = 0, numMayor;
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    numMayor = personList[i]->Id;
-    for (i = 0; i < personList->Count; i++) {
-
-        if (numMayor < personList[i]->Id) {
-            numMayor = personList[i]->Id;
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == sale->Id) {
+            saleList[i] = sale;
+            Persistance::PersistBinary("sales.bin", saleList);
+            return sale->Id;
         }
-    }
-    return numMayor + 1;
+    return -1;
 }
+int SalesController::Controller::DeleteSale(int saleId)
+{
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == saleId) {
+            saleList->RemoveAt(i);
+            Persistance::PersistBinary("sales.bin", saleList);
+            return saleId;
+        }
+    return 0;
+}
+
+/*int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
+{
+    // Repeat?
+    for (int i = 0; i < saleList[saleId]->SoldProducts->Count; i++) {
+        if (saleDetail->Id == saleList[saleId]->SoldProducts[i]->Id) return -1;
+    }
+    // Amount
+    saleList[saleId]->SoldProducts->Add(saleDetail);
+    Persistance::PersistBinary("sales.bin", saleList);
+    return Int32(saleDetail->Id);
+}*/
+
+
 

@@ -35,7 +35,6 @@ void SalesPersistance::Persistance::Persist(String^ fileName, Object^ persistObj
         if (archivo != nullptr) archivo->Close();
     }
 }
-
 void SalesPersistance::Persistance::PersistXML(String^ fileName, Object^ persistObject)
 {
     StreamWriter^ output;
@@ -61,7 +60,6 @@ void SalesPersistance::Persistance::PersistXML(String^ fileName, Object^ persist
         if (output != nullptr) output->Close();
     }
 }
-
 void SalesPersistance::Persistance::PersistBinary(String^ fileName, Object^ persistObject)
 {
     FileStream^ output;
@@ -131,7 +129,6 @@ Object^ SalesPersistance::Persistance::LoadData(String^ fileName)
     }
     return res;
 }
-
 Object^ SalesPersistance::Persistance::LoadXMLData(String^ fileName)
 {
     Object^ res;
@@ -178,7 +175,6 @@ Object^ SalesPersistance::Persistance::LoadXMLData(String^ fileName)
     }
     return res;
 }
-
 Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
 {
     Object^ res;
@@ -195,12 +191,12 @@ Object^ SalesPersistance::Persistance::LoadBinaryData(String^ fileName)
                 res = (List<Product^>^)formateador->Deserialize(input);
             }
         }
-        /*if (fileName->Equals("salesmen.bin")) {
-            res = gcnew List<DeliveryMan^>();
+        if (fileName->Equals("sales.bin")) {
+            res = gcnew List<Sale^>();
             if (File::Exists(fileName)) {
-                res = (List<DeliveryMan^>^)formateador->Deserialize(input);
+                res = (List<Sale^>^)formateador->Deserialize(input);
             }
-        }*/
+        }
         if (fileName->Equals("users.bin")) {
             res = gcnew List<Person^>();
             if (File::Exists(fileName)) {

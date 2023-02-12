@@ -13,8 +13,8 @@ namespace SalesController {
 		// TODO: Agregue aquí los métodos de esta clase.
 	private:
 		static List<Product^>^ productList = gcnew List<Product^>(); // Variable de clase (global) para la lista de productos
-		static List<Person^>^ personList = gcnew List<Person^>();		// List of people
-		static List<Sale^>^ saleList = gcnew List<Sale^>();		// List of people
+		static List<Person^>^ personList = gcnew List<Person^>();	 // List of people
+		static List<Sale^>^ saleList = gcnew List<Sale^>();  // List of sales
 
 		static List<Customer^>^ CustomerList = gcnew List<Customer^>();
 		static List<Announcer^>^ AnnouncerList = gcnew List<Announcer^>();
@@ -82,5 +82,16 @@ namespace SalesController {
 		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
 		static Person^ QueryPersonByCredentials(String^ username, String^ password);
 		static int FindNewId(Person^ user);
+
+		//Métodos CRUD de Sale (C:Create, R:Request, U:Update, D:Delete)
+		static int AddSale(Sale^ sale);
+		static Sale^ QuerySaleById(int saleId);
+		static List<Sale^>^ QueryAllSales();
+		static int UpdateSale(Sale^ sale);
+		static int DeleteSale(int saleId);
+		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
+
+		//static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
+		//static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);
 	};
 }

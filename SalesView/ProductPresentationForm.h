@@ -62,7 +62,8 @@ public: System::Windows::Forms::TextBox^ txtId;
 
 
 	private: System::Windows::Forms::Button^ Addbtn;
-	private: System::Windows::Forms::NumericUpDown^ amountProduct;
+	private: System::Windows::Forms::NumericUpDown^ nudAmount;
+
 	private: System::Windows::Forms::Label^ lbAmount;
 	private: System::Windows::Forms::Label^ lbStarts;
 	private: System::Windows::Forms::PictureBox^ pbSellers;
@@ -121,7 +122,7 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->txtDescription = (gcnew System::Windows::Forms::TextBox());
 			this->Addbtn = (gcnew System::Windows::Forms::Button());
-			this->amountProduct = (gcnew System::Windows::Forms::NumericUpDown());
+			this->nudAmount = (gcnew System::Windows::Forms::NumericUpDown());
 			this->lbAmount = (gcnew System::Windows::Forms::Label());
 			this->lbStarts = (gcnew System::Windows::Forms::Label());
 			this->pbSellers = (gcnew System::Windows::Forms::PictureBox());
@@ -131,11 +132,11 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->ComentLabel = (gcnew System::Windows::Forms::Label());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
-			this->Wishbtn = (gcnew System::Windows::Forms::Button());
-			this->lbId = (gcnew System::Windows::Forms::Label());
 			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
+			this->lbId = (gcnew System::Windows::Forms::Label());
+			this->Wishbtn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
@@ -201,12 +202,12 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->Addbtn->UseVisualStyleBackColor = true;
 			this->Addbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Addbtn_Click);
 			// 
-			// amountProduct
+			// nudAmount
 			// 
-			this->amountProduct->Location = System::Drawing::Point(370, 150);
-			this->amountProduct->Name = L"amountProduct";
-			this->amountProduct->Size = System::Drawing::Size(345, 22);
-			this->amountProduct->TabIndex = 9;
+			this->nudAmount->Location = System::Drawing::Point(370, 150);
+			this->nudAmount->Name = L"nudAmount";
+			this->nudAmount->Size = System::Drawing::Size(345, 22);
+			this->nudAmount->TabIndex = 9;
 			// 
 			// lbAmount
 			// 
@@ -309,6 +310,24 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->gbinformation->TabIndex = 19;
 			this->gbinformation->TabStop = false;
 			// 
+			// txtProductName
+			// 
+			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtProductName->Location = System::Drawing::Point(100, 30);
+			this->txtProductName->Name = L"txtProductName";
+			this->txtProductName->ReadOnly = true;
+			this->txtProductName->Size = System::Drawing::Size(346, 15);
+			this->txtProductName->TabIndex = 9;
+			// 
+			// lbId
+			// 
+			this->lbId->AutoSize = true;
+			this->lbId->Location = System::Drawing::Point(0, 0);
+			this->lbId->Name = L"lbId";
+			this->lbId->Size = System::Drawing::Size(23, 16);
+			this->lbId->TabIndex = 8;
+			this->lbId->Text = L"ID:";
+			// 
 			// Wishbtn
 			// 
 			this->Wishbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -320,24 +339,6 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->Wishbtn->Text = L"Agregar a la lista de deseos";
 			this->Wishbtn->UseVisualStyleBackColor = true;
 			this->Wishbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Wishbtn_Click);
-			// 
-			// lbId
-			// 
-			this->lbId->AutoSize = true;
-			this->lbId->Location = System::Drawing::Point(0, 0);
-			this->lbId->Name = L"lbId";
-			this->lbId->Size = System::Drawing::Size(23, 16);
-			this->lbId->TabIndex = 8;
-			this->lbId->Text = L"ID:";
-			// 
-			// txtProductName
-			// 
-			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->txtProductName->Location = System::Drawing::Point(100, 30);
-			this->txtProductName->Name = L"txtProductName";
-			this->txtProductName->ReadOnly = true;
-			this->txtProductName->Size = System::Drawing::Size(346, 15);
-			this->txtProductName->TabIndex = 9;
 			// 
 			// ProductPresentationForm
 			// 
@@ -354,7 +355,7 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->Controls->Add(this->pbSellers);
 			this->Controls->Add(this->lbStarts);
 			this->Controls->Add(this->lbAmount);
-			this->Controls->Add(this->amountProduct);
+			this->Controls->Add(this->nudAmount);
 			this->Controls->Add(this->Addbtn);
 			this->Controls->Add(this->pbxProductImagen);
 			this->MaximizeBox = false;
@@ -363,7 +364,7 @@ public: System::Windows::Forms::TextBox^ txtId;
 			this->Text = L"Producto Selccionado";
 			this->Load += gcnew System::EventHandler(this, &ProductPresentationForm::ProductPresentationForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->amountProduct))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
@@ -377,8 +378,40 @@ public: System::Windows::Forms::TextBox^ txtId;
 
 		void ShowProduct();
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		SaleDetailForm^ SaleDetail = gcnew SaleDetailForm(userId);
-		SaleDetail->ShowDialog();
+		// Verification
+		if (userId != 0) {
+			if (Convert::ToInt32(nudAmount->Text) != 0) {
+				// Add new Sale
+				Sale^ newSale = gcnew Sale();
+				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+				newSale->SaleDate = Convert::ToString(DateTime::Now);											 // Date
+				// Save and Get Id
+				unsigned long int saleId = Controller::AddSale(newSale);
+
+				//Add SaleDetail
+				SaleDetail^ newSaleDetail = gcnew SaleDetail();
+				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
+				newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+				newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
+				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
+				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
+				List<SaleDetail^>^ newSaleDetailList = gcnew List<SaleDetail^>();
+				newSaleDetailList->Add(newSaleDetail);
+				newSale->SoldProducts = newSaleDetailList;													  //SaleDetail
+
+				// Update
+				Controller::UpdateSale(newSale);
+
+				MessageBox::Show("¡Agregado con éxito!");
+
+				SaleDetailForm^ SalesDetail = gcnew SaleDetailForm(saleId);
+				SalesDetail->ShowDialog();
+			}
+			else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
+		}
+		else {
+			MessageBox::Show("Debe loguearse como estudiante primero.");
+		}
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowProduct();

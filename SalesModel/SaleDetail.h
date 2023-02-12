@@ -12,11 +12,11 @@ namespace SalesModel {
     public ref class SaleDetail {
     public:
         property int Id;
+        property Product^ Product;
         property int Quantity;
         property double SubTotal;
         property double UnitPrice;
-        property Product^ Product;
-
+        
     };
 
 }
