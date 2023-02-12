@@ -36,7 +36,7 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 			((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = "Compañia ";
 		}
 		SalesMainForm::MenuVisibility = false;
-
+		((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text = "" + emp->Id;
 		
 		// Put Imagen
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(emp->Photo);
