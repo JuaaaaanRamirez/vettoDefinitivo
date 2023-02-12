@@ -18,7 +18,7 @@ namespace SalesView {
 	/// </summary>
 	public ref class ProductListForm : public System::Windows::Forms::Form
 	{
-		Form^ refForm; //Variable de instancia
+	Form^ refForm; //Variable de instancia
 	public:
 		ProductListForm(Form^ form)
 		{
@@ -235,16 +235,7 @@ public: System::Windows::Forms::DataGridView^ dgvProductList;
 		}
 
 	// Dgv
-	private: System::Void dgvProductList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		// Verification
-		int selectedRowIndex = dgvProductList->SelectedCells[0]->RowIndex;
-		List<Product^>^ myProductList = Controller::QueryProductsByNameOrDescription(txtSearchBox->Text);
-		if (selectedRowIndex >= (myProductList->Count)) return;
-
-
-		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this);
-		ProductPresentation->ShowDialog();
-	}
+	private: System::Void dgvProductList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 	// Load
 	private: System::Void ProductListForm_Load(System::Object^ sender, System::EventArgs^ e);
 	// Search

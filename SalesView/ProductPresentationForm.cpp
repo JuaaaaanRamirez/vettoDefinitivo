@@ -13,6 +13,7 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	// Get Product
 	Product^ p = Controller::QueryProductById(productId);
 	// Put on Data
+	txtId->Text = "" + p->Id;
 	txtProductName->Text = "" + p->Name;
 	txtDescription->Text = "" + p->Description;
 	lbHearts->Text = "" + p->Starts;

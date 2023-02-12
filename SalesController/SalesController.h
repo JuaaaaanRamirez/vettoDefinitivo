@@ -14,7 +14,8 @@ namespace SalesController {
 	private:
 		static List<Product^>^ productList = gcnew List<Product^>(); // Variable de clase (global) para la lista de productos
 		static List<Person^>^ personList = gcnew List<Person^>();		// List of people
-		
+		static List<Sale^>^ saleList = gcnew List<Sale^>();		// List of people
+
 		static List<Customer^>^ CustomerList = gcnew List<Customer^>();
 		static List<Announcer^>^ AnnouncerList = gcnew List<Announcer^>();
 		static List<StoreManager^>^ StoreManagerList = gcnew List<StoreManager^>();
@@ -43,6 +44,17 @@ namespace SalesController {
 		static int DeleteProduct(int productId);
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
 		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);
+		static List<Product^>^ GetTopProducts() {
+			List<Product^>^ myProductList = Controller::QueryAllProducts();
+			for (int i = 0; i < myProductList->Count; i++) // Look for!
+				for (int j = i; j < myProductList->Count; j++)
+					if (myProductList[j]->Searches > myProductList[i]->Searches) {
+						Product^ temp = myProductList[i];
+						myProductList[i] = myProductList[j];
+						myProductList[j] = temp;
+					}
+			return myProductList;
+		}
 
 		//Métodos CRUD de carreras (C:Create, R:Request, U:Update, D:Delete)
 		static List<String^>^ QueryAllCareers();

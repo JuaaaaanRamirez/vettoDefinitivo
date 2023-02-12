@@ -24,7 +24,7 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 		}
 		else if (emp->Profile == 'M') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Jefe de Ventas " + emp->Name;
 		else if (emp->Profile == 'A') ((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = "Anunciante " + emp->Name;
-		
+		((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text = "" + emp->Id;
 		// Put Imagen
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(emp->Photo);
 		((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);

@@ -9,18 +9,24 @@ namespace SalesView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace SalesController;		// Controller
+	using namespace SalesModel;				// Classes and Instances
+	using namespace System::Collections::Generic;	 // List^
+
 	/// <summary>
 	/// Resumen de SaleDetailForm
 	/// </summary>
 	public ref class SaleDetailForm : public System::Windows::Forms::Form
 	{
+		int userId;
 	public:
-		SaleDetailForm(void)
+		SaleDetailForm(int userId)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->userId = userId;
 		}
 
 	protected:
@@ -34,30 +40,48 @@ namespace SalesView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ Datelabel;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Label^ lbDate;
+	protected:
+
+
+	private: System::Windows::Forms::TextBox^ txtUserName;
+	private: System::Windows::Forms::TextBox^ txtAddress;
+	private: System::Windows::Forms::TextBox^ txtReference;
+	private: System::Windows::Forms::Button^ btnAdd;
+	private: System::Windows::Forms::Button^ btnDelete;
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^ lbUser;
+	private: System::Windows::Forms::Label^ lbAddress;
+	private: System::Windows::Forms::Label^ lbReference;
+	private: System::Windows::Forms::DataGridView^ dgvSaleDetail;
+
+
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ btnPaid;
+
 
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::TextBox^ textBox7;
+	private: System::Windows::Forms::TextBox^ txtSubTotal;
+	private: System::Windows::Forms::TextBox^ txtIGV;
+	private: System::Windows::Forms::TextBox^ txtTotal;
+	private: System::Windows::Forms::TextBox^ txtDate;
+
+
+
+
 	protected:
 
 	private:
@@ -73,127 +97,122 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->Datelabel = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->lbDate = (gcnew System::Windows::Forms::Label());
+			this->txtUserName = (gcnew System::Windows::Forms::TextBox());
+			this->txtAddress = (gcnew System::Windows::Forms::TextBox());
+			this->txtReference = (gcnew System::Windows::Forms::TextBox());
+			this->btnAdd = (gcnew System::Windows::Forms::Button());
+			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			this->lbUser = (gcnew System::Windows::Forms::Label());
+			this->lbAddress = (gcnew System::Windows::Forms::Label());
+			this->lbReference = (gcnew System::Windows::Forms::Label());
+			this->dgvSaleDetail = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->btnPaid = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->txtSubTotal = (gcnew System::Windows::Forms::TextBox());
+			this->txtIGV = (gcnew System::Windows::Forms::TextBox());
+			this->txtTotal = (gcnew System::Windows::Forms::TextBox());
+			this->txtDate = (gcnew System::Windows::Forms::TextBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// Datelabel
+			// lbDate
 			// 
-			this->Datelabel->AutoSize = true;
-			this->Datelabel->Location = System::Drawing::Point(12, 23);
-			this->Datelabel->Name = L"Datelabel";
-			this->Datelabel->Size = System::Drawing::Size(48, 16);
-			this->Datelabel->TabIndex = 0;
-			this->Datelabel->Text = L"Fecha:";
+			this->lbDate->AutoSize = true;
+			this->lbDate->Location = System::Drawing::Point(10, 20);
+			this->lbDate->Name = L"lbDate";
+			this->lbDate->Size = System::Drawing::Size(82, 16);
+			this->lbDate->TabIndex = 0;
+			this->lbDate->Text = L"Fecha/Hora:";
 			// 
-			// textBox1
+			// txtUserName
 			// 
-			this->textBox1->Location = System::Drawing::Point(100, 23);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(356, 22);
-			this->textBox1->TabIndex = 1;
+			this->txtUserName->BackColor = System::Drawing::SystemColors::Window;
+			this->txtUserName->Location = System::Drawing::Point(100, 50);
+			this->txtUserName->Name = L"txtUserName";
+			this->txtUserName->ReadOnly = true;
+			this->txtUserName->Size = System::Drawing::Size(356, 22);
+			this->txtUserName->TabIndex = 2;
 			// 
-			// textBox2
+			// txtAddress
 			// 
-			this->textBox2->Location = System::Drawing::Point(100, 52);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(356, 22);
-			this->textBox2->TabIndex = 2;
+			this->txtAddress->Location = System::Drawing::Point(100, 80);
+			this->txtAddress->Name = L"txtAddress";
+			this->txtAddress->Size = System::Drawing::Size(356, 22);
+			this->txtAddress->TabIndex = 3;
 			// 
-			// textBox3
+			// txtReference
 			// 
-			this->textBox3->Location = System::Drawing::Point(100, 81);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(356, 22);
-			this->textBox3->TabIndex = 3;
+			this->txtReference->Location = System::Drawing::Point(100, 110);
+			this->txtReference->Name = L"txtReference";
+			this->txtReference->Size = System::Drawing::Size(356, 22);
+			this->txtReference->TabIndex = 4;
 			// 
-			// textBox4
+			// btnAdd
 			// 
-			this->textBox4->Location = System::Drawing::Point(100, 110);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(356, 22);
-			this->textBox4->TabIndex = 4;
+			this->btnAdd->Location = System::Drawing::Point(40, 150);
+			this->btnAdd->Name = L"btnAdd";
+			this->btnAdd->Size = System::Drawing::Size(180, 30);
+			this->btnAdd->TabIndex = 5;
+			this->btnAdd->Text = L"Agregar producto";
+			this->btnAdd->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// btnDelete
 			// 
-			this->button1->Location = System::Drawing::Point(43, 151);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(180, 29);
-			this->button1->TabIndex = 5;
-			this->button1->Text = L"Agregar producto";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnDelete->Location = System::Drawing::Point(250, 150);
+			this->btnDelete->Name = L"btnDelete";
+			this->btnDelete->Size = System::Drawing::Size(180, 30);
+			this->btnDelete->TabIndex = 6;
+			this->btnDelete->Text = L"Eliminar producto";
+			this->btnDelete->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// lbUser
 			// 
-			this->button2->Location = System::Drawing::Point(256, 151);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(190, 29);
-			this->button2->TabIndex = 6;
-			this->button2->Text = L"Eliminar producto";
-			this->button2->UseVisualStyleBackColor = true;
+			this->lbUser->AutoSize = true;
+			this->lbUser->Location = System::Drawing::Point(10, 50);
+			this->lbUser->Name = L"lbUser";
+			this->lbUser->Size = System::Drawing::Size(51, 16);
+			this->lbUser->TabIndex = 7;
+			this->lbUser->Text = L"Cliente:";
 			// 
-			// label1
+			// lbAddress
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 58);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 16);
-			this->label1->TabIndex = 7;
-			this->label1->Text = L"Cliente:";
+			this->lbAddress->AutoSize = true;
+			this->lbAddress->Location = System::Drawing::Point(10, 80);
+			this->lbAddress->Name = L"lbAddress";
+			this->lbAddress->Size = System::Drawing::Size(67, 16);
+			this->lbAddress->TabIndex = 8;
+			this->lbAddress->Text = L"Dirección:";
 			// 
-			// label2
+			// lbReference
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 87);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(67, 16);
-			this->label2->TabIndex = 8;
-			this->label2->Text = L"Dirección:";
+			this->lbReference->AutoSize = true;
+			this->lbReference->Location = System::Drawing::Point(10, 110);
+			this->lbReference->Name = L"lbReference";
+			this->lbReference->Size = System::Drawing::Size(76, 16);
+			this->lbReference->TabIndex = 9;
+			this->lbReference->Text = L"Referencia:";
 			// 
-			// label3
+			// dgvSaleDetail
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 116);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(76, 16);
-			this->label3->TabIndex = 9;
-			this->label3->Text = L"Referencia:";
-			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dgvSaleDetail->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvSaleDetail->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(13, 200);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(443, 150);
-			this->dataGridView1->TabIndex = 10;
+			this->dgvSaleDetail->Location = System::Drawing::Point(10, 200);
+			this->dgvSaleDetail->Name = L"dgvSaleDetail";
+			this->dgvSaleDetail->RowHeadersWidth = 51;
+			this->dgvSaleDetail->RowTemplate->Height = 24;
+			this->dgvSaleDetail->Size = System::Drawing::Size(446, 150);
+			this->dgvSaleDetail->TabIndex = 10;
 			// 
 			// Column1
 			// 
@@ -230,20 +249,20 @@ namespace SalesView {
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 125;
 			// 
-			// button3
+			// btnPaid
 			// 
-			this->button3->Location = System::Drawing::Point(64, 443);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(119, 28);
-			this->button3->TabIndex = 11;
-			this->button3->Text = L"Pagar";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &SaleDetailForm::button3_Click);
+			this->btnPaid->Location = System::Drawing::Point(65, 440);
+			this->btnPaid->Name = L"btnPaid";
+			this->btnPaid->Size = System::Drawing::Size(120, 30);
+			this->btnPaid->TabIndex = 11;
+			this->btnPaid->Text = L"Pagar";
+			this->btnPaid->UseVisualStyleBackColor = true;
+			this->btnPaid->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnPaid_Click);
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(284, 399);
+			this->label5->Location = System::Drawing::Point(285, 400);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(38, 16);
 			this->label5->TabIndex = 13;
@@ -252,7 +271,7 @@ namespace SalesView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(284, 424);
+			this->label6->Location = System::Drawing::Point(285, 425);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(38, 16);
 			this->label6->TabIndex = 14;
@@ -261,73 +280,101 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(284, 374);
+			this->label4->Location = System::Drawing::Point(285, 375);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(65, 16);
 			this->label4->TabIndex = 15;
 			this->label4->Text = L"SubTotal:";
 			// 
-			// textBox5
+			// txtSubTotal
 			// 
-			this->textBox5->Location = System::Drawing::Point(356, 374);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(100, 22);
-			this->textBox5->TabIndex = 16;
+			this->txtSubTotal->Location = System::Drawing::Point(355, 375);
+			this->txtSubTotal->Name = L"txtSubTotal";
+			this->txtSubTotal->ReadOnly = true;
+			this->txtSubTotal->Size = System::Drawing::Size(100, 22);
+			this->txtSubTotal->TabIndex = 16;
 			// 
-			// textBox6
+			// txtIGV
 			// 
-			this->textBox6->Location = System::Drawing::Point(356, 403);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(100, 22);
-			this->textBox6->TabIndex = 17;
+			this->txtIGV->Location = System::Drawing::Point(355, 400);
+			this->txtIGV->Name = L"txtIGV";
+			this->txtIGV->ReadOnly = true;
+			this->txtIGV->Size = System::Drawing::Size(100, 22);
+			this->txtIGV->TabIndex = 17;
 			// 
-			// textBox7
+			// txtTotal
 			// 
-			this->textBox7->Location = System::Drawing::Point(356, 432);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(100, 22);
-			this->textBox7->TabIndex = 18;
+			this->txtTotal->Location = System::Drawing::Point(355, 425);
+			this->txtTotal->Name = L"txtTotal";
+			this->txtTotal->ReadOnly = true;
+			this->txtTotal->Size = System::Drawing::Size(100, 22);
+			this->txtTotal->TabIndex = 18;
+			// 
+			// txtDate
+			// 
+			this->txtDate->BackColor = System::Drawing::SystemColors::Window;
+			this->txtDate->Location = System::Drawing::Point(100, 20);
+			this->txtDate->Name = L"txtDate";
+			this->txtDate->ReadOnly = true;
+			this->txtDate->Size = System::Drawing::Size(356, 22);
+			this->txtDate->TabIndex = 19;
 			// 
 			// SaleDetailForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(474, 475);
-			this->Controls->Add(this->textBox7);
-			this->Controls->Add(this->textBox6);
-			this->Controls->Add(this->textBox5);
+			this->ClientSize = System::Drawing::Size(472, 473);
+			this->Controls->Add(this->txtDate);
+			this->Controls->Add(this->txtTotal);
+			this->Controls->Add(this->txtIGV);
+			this->Controls->Add(this->txtSubTotal);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->Datelabel);
+			this->Controls->Add(this->btnPaid);
+			this->Controls->Add(this->dgvSaleDetail);
+			this->Controls->Add(this->lbReference);
+			this->Controls->Add(this->lbAddress);
+			this->Controls->Add(this->lbUser);
+			this->Controls->Add(this->btnDelete);
+			this->Controls->Add(this->btnAdd);
+			this->Controls->Add(this->txtReference);
+			this->Controls->Add(this->txtAddress);
+			this->Controls->Add(this->txtUserName);
+			this->Controls->Add(this->lbDate);
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"SaleDetailForm";
+			this->Text = L"Detalle de la venta";
 			this->Load += gcnew System::EventHandler(this, &SaleDetailForm::SaleDetailForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		void ShowData() {
+			txtDate->Text = Convert::ToString(DateTime::Now);
+			if (userId != 0) {
+				Customer^ user = gcnew Customer();
+				user = (Customer^)(Controller::QueryUserById(userId));
+				if (user->Profile == 'S' || user->Profile == 'C') {
+					txtUserName->Text = "" + user->Username;
+					txtAddress->Text  = "" + user->Address;
+				}
+			}
+			else {
+				MessageBox::Show("Usted no es un cliente");
+				Close();
+			}
+				
+		}
+
+	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("¡Venta Exitosa!");
 
 	}
 	private: System::Void SaleDetailForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowData();
 	}
 };
 }

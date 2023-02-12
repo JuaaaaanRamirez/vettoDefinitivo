@@ -31,7 +31,7 @@ namespace SalesView {
 
 		//static Person^ person; //Variable de clase
     
-		static Person^ person; //Variable de clase
+	    static Person^ person; //Variable de clase
 		//static Object^ person; //Variable de clase o miembro u atributo estático (global).
 
 		SalesMainForm(void)
@@ -136,6 +136,7 @@ public:
 public: System::Windows::Forms::Label^ Userlb;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ btnSearch;
+public: System::Windows::Forms::Label^ Idlb;
 	public:
 	public:
 
@@ -206,6 +207,7 @@ public:
 			this->Userlb = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->btnSearch = (gcnew System::Windows::Forms::Button());
+			this->Idlb = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
@@ -239,7 +241,7 @@ public:
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1362, 30);
+			this->menuStrip1->Size = System::Drawing::Size(1362, 28);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -247,7 +249,7 @@ public:
 			// 
 			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 26);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(73, 24);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// salirToolStripMenuItem
@@ -264,7 +266,7 @@ public:
 					this->usuariosToolStripMenuItem, this->subirAnuncioToolStripMenuItem
 			});
 			this->mantenimientoToolStripMenuItem->Name = L"mantenimientoToolStripMenuItem";
-			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(124, 26);
+			this->mantenimientoToolStripMenuItem->Size = System::Drawing::Size(124, 24);
 			this->mantenimientoToolStripMenuItem->Text = L"Mantenimiento";
 			// 
 			// productoToolStripMenuItem
@@ -292,7 +294,7 @@ public:
 			// 
 			this->operacionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->realizarUnaVentaToolStripMenuItem });
 			this->operacionesToolStripMenuItem->Name = L"operacionesToolStripMenuItem";
-			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(106, 26);
+			this->operacionesToolStripMenuItem->Size = System::Drawing::Size(106, 24);
 			this->operacionesToolStripMenuItem->Text = L"Operaciones";
 			// 
 			// realizarUnaVentaToolStripMenuItem
@@ -305,7 +307,7 @@ public:
 			// 
 			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->estadistidcasDeVentasToolStripMenuItem });
 			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
-			this->reportesToolStripMenuItem->Size = System::Drawing::Size(82, 26);
+			this->reportesToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->reportesToolStripMenuItem->Text = L"Reportes";
 			// 
 			// estadistidcasDeVentasToolStripMenuItem
@@ -318,7 +320,7 @@ public:
 			// ayudaToolStripMenuItem
 			// 
 			this->ayudaToolStripMenuItem->Name = L"ayudaToolStripMenuItem";
-			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 26);
+			this->ayudaToolStripMenuItem->Size = System::Drawing::Size(65, 24);
 			this->ayudaToolStripMenuItem->Text = L"Ayuda";
 			// 
 			// Ad1
@@ -683,12 +685,23 @@ public:
 			this->btnSearch->UseVisualStyleBackColor = true;
 			this->btnSearch->Click += gcnew System::EventHandler(this, &SalesMainForm::btnSearch_Click);
 			// 
+			// Idlb
+			// 
+			this->Idlb->AutoSize = true;
+			this->Idlb->Location = System::Drawing::Point(1020, 74);
+			this->Idlb->Name = L"Idlb";
+			this->Idlb->Size = System::Drawing::Size(14, 16);
+			this->Idlb->TabIndex = 71;
+			this->Idlb->Text = L"0";
+			this->Idlb->Visible = false;
+			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->ClientSize = System::Drawing::Size(1362, 633);
+			this->Controls->Add(this->Idlb);
 			this->Controls->Add(this->btnSearch);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->Userlb);
@@ -783,17 +796,6 @@ public:
 				}
 			}
 		}
-		List<Product^>^ GetTop() {
-			List<Product^>^ myProductList = Controller::QueryAllProducts();
-			for (int i = 0; i < myProductList->Count; i++) // Look for!
-				for (int j = i; j < myProductList->Count; j++)
-					if (myProductList[j]->Searches> myProductList[i]->Searches) { 
-						Product^ temp = myProductList[i];
-						 myProductList[i] = myProductList[j];
-						 myProductList[j] = temp;
-					}
-			return myProductList;
-	    }
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
@@ -836,7 +838,7 @@ public:
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
-		PutTop(GetTop());
+		PutTop(Controller::GetTopProducts());
 	}
 	// Login
 	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
