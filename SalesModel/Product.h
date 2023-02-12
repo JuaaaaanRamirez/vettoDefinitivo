@@ -25,6 +25,7 @@ namespace SalesModel {
         property double Starts;
         property int Searches;
         property int Sales;
+        property int SalesByTime;
         //property RelacionatedCareer^ RelacionatedCareer;
     };
 }

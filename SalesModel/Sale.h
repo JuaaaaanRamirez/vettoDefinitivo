@@ -6,7 +6,10 @@
 #pragma once
 #include "StoreManager.h"
 #include "Customer.h"
+#include "SaleDetail.h"
+
 using namespace System;
+using namespace System::Collections::Generic;
 
 namespace SalesModel {
     [Serializable]
@@ -22,6 +25,12 @@ namespace SalesModel {
         //La asociación se convierte en un atributo
         property StoreManager^ StoreManager;
         property Customer^ Customer;
+
+        property List<SaleDetail^>^ SaleDetails;
+
+        Sale() {
+            SaleDetails = gcnew List<SaleDetail^>();
+        }
 
     };
 }
