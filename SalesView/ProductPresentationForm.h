@@ -384,6 +384,14 @@ namespace SalesView {
 				// Add new Sale
 				Sale^ newSale = gcnew Sale();
 				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+
+				//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
+				// o tener un ID = 0 para el estore manager del tipo asistente virtual 
+				StoreManager^ storeManager = gcnew StoreManager();
+				storeManager->Name= "Asistente virtual";
+				newSale->StoreManager = storeManager;
+				newSale->PaidMode = "Virtual";//virtual
+
 				newSale->SaleDate = Convert::ToString(DateTime::Now);											 // Date
 				// Save and Get Id
 				unsigned long int saleId = Controller::AddSale(newSale);
