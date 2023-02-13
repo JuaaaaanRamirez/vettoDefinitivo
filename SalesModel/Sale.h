@@ -22,7 +22,7 @@ namespace SalesModel {
         property double Total;
         property String^ Address;
         property String^ Reference;
-        property char PaidMode;
+        property String^ PaidMode;
         property String^ SaleDate;
         //La asociación se convierte en un atributo
         property StoreManager^ StoreManager;

@@ -58,6 +58,12 @@ namespace SalesController {
 			return myProductList;
 		}
 
+		static List<Product^>^ GetListProductOrderBySearches(List<Product^>^ ListProductByTime);//usualmente el argumento sera toda la lista de products
+		static List<Product^>^ GetListProductOrderBySells(List<Sale^>^ ListProductByTime);
+
+
+	
+
 		//Métodos CRUD de carreras (C:Create, R:Request, U:Update, D:Delete)
 		static List<String^>^ QueryAllCareers();
 
@@ -95,6 +101,14 @@ namespace SalesController {
 		static int UpdateSale(Sale^ sale);
 		static int DeleteSale(int saleId);
 		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
+
+		       //metodos para extraer listas de ventas en distintos rangos de tiempo:
+		static List <Sale^>^ DaySalesList(DateTime Date);
+		static List <Sale^>^ LastSevenDaysSalesList();
+		static List <Sale^>^ LastWeekSalesList();
+		static List <Sale^>^ Last30DaysSalesList();
+		static List <Sale^>^ LastMonthSalesList();
+		static List <Sale^>^ SalesListByRangeOfTime(DateTime inferiorLimit, DateTime superiorLimit);
 
 	};
 }

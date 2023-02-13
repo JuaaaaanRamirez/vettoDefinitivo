@@ -69,6 +69,50 @@ List<Product^>^ SalesController::Controller::QueryProductsByNameOrCareer(String^
     }
     return newProductList;
 }
+//...for products to order
+List<Product^>^ SalesController::Controller::GetListProductOrderBySearches(List<Product^>^ ListProductByTime)
+{
+    for (int i = 0; i < ListProductByTime->Count; i++) // Look for!
+        for (int j = i; j < ListProductByTime->Count; j++)
+            if (ListProductByTime[j]->Searches > ListProductByTime[i]->Searches) {
+                Product^ temp = ListProductByTime[i];
+                ListProductByTime[i] = ListProductByTime[j];
+                ListProductByTime[j] = temp;
+            }
+    return ListProductByTime;
+}
+List<Product^>^ SalesController::Controller::GetListProductOrderBySells(List<Sale^>^ ListSellsByTime)//nuestro productList
+{
+    List<Product^>^ productListAux = gcnew  List<Product^>();
+
+    productListAux = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    for (int i = 0; i < productListAux->Count; i++) {
+        productListAux[i]->SalesByTime = 0;
+    }
+    for (int i = 0; i < ListSellsByTime->Count; i++) // Look for!
+        for (int j = 0; j < ListSellsByTime[i]->SaleDetails->Count; j++) {
+            for (int k = 0; k < productListAux->Count; k++) {
+                if (ListSellsByTime[i]->SaleDetails[j]->Id == productListAux[k]->Id) {
+                    productListAux[k]->SalesByTime += ListSellsByTime[i]->SaleDetails[j]->Quantity;
+                    break;
+                }
+            }
+
+        }
+
+    for (int i = 0; i < productListAux->Count; i++) // Look for!
+        for (int j = i; j < productListAux->Count; j++)
+            if (productListAux[j]->SalesByTime > productListAux[i]->SalesByTime) {
+                Product^ temp = productListAux[i];
+                productListAux[i] = productListAux[j];
+                productListAux[j] = temp;
+            }
+    return productListAux; //Ya ordenado por numero de ventas
+}
+
+
+
+
 List<String^>^ SalesController::Controller::QueryAllCareers()
 {
     //careerList = (List<String^>^)Persistance::LoadXMLData("career.xml");
@@ -335,5 +379,111 @@ int SalesController::Controller::DeleteSale(int saleId)
     Persistance::PersistBinary("sales.bin", saleList);
     return Int32(saleDetail->Id);
 }*/
+
+
+//for sales...Juan
+//for sales
+List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
+{
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+        if (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate).Date, DateDay.Date) == 0) ListSalesByTime->Add(saleList[i]);
+    }
+    return ListSalesByTime; //puede ser nulo
+    /*
+    int dayDate, monthDate, yearDate;
+    int dayList, monthList, yearList;
+
+    dayDate = Convert::ToDateTime(Date).Day;
+    monthDate = Convert::ToDateTime(Date).Month;
+    yearDate= Convert::ToDateTime(Date).Year;
+
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+        dayList = Convert::ToDateTime(saleList[i]->SaleDate).Day;
+        monthList = Convert::ToDateTime(saleList[i]->SaleDate).Month;
+        yearList = Convert::ToDateTime(saleList[i]->SaleDate).Year;
+
+        if (dayDate == dayList && monthDate == monthList && yearDate == yearList) ListSalesByTime->Add(saleList[i]);
+    }
+    return ListSalesByTime; //puede ser nulo
+    */
+}
+List<Sale^>^ SalesController::Controller::LastSevenDaysSalesList()
+{
+    DateTime lastWeek = (DateTime::Today.AddDays(-6)).Date;//desde la medianoche de hace 7 dias
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+
+        if (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), lastWeek) >= 0) ListSalesByTime->Add(saleList[i]);
+    }
+    return ListSalesByTime; //puede ser nulo
+}
+List<Sale^>^ SalesController::Controller::LastWeekSalesList()
+{
+    DateTime LastSunday = DateTime::Today;
+    DateTime LastMonday;
+    LastSunday = LastSunday.AddDays(-(int)(DateTime::Today.DayOfWeek));
+    /*while (!((int)(LastSunday.DayOfWeek) == (0))) {    //?????????????????????????????????????????????????????
+        LastSunday.AddDays(-1);
+    }*/
+    LastSunday.AddDays(1).Date;//domingo a media noche
+    LastMonday = LastSunday.AddDays(-7);//lunes pasado a media noche
+
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+
+        if ((DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), LastMonday) >= 0) && (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), LastSunday) < 0)) ListSalesByTime->Add(saleList[i]);
+
+    }
+    return ListSalesByTime; //puede ser nulo
+}
+List<Sale^>^ SalesController::Controller::Last30DaysSalesList()
+{
+    DateTime lastMonth = (DateTime::Today.AddDays(-29)).Date;//desde la medianoche de hace 30 dias
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+
+        if (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), lastMonth) >= 0) ListSalesByTime->Add(saleList[i]);
+    }
+    return ListSalesByTime; //puede ser nulo
+}
+List<Sale^>^ SalesController::Controller::LastMonthSalesList()
+{
+    DateTime LastEndDayLastMonth = DateTime::Today.AddDays(-(DateTime::Today.Day));
+    DateTime LastFirstDayLastMonth = LastEndDayLastMonth.AddDays(-(LastEndDayLastMonth.Day - 1)).Date;//primer dia del mes pasado a media noche
+    LastEndDayLastMonth = LastEndDayLastMonth.AddDays(1).Date; //1er dia del mes actual a media noche.
+
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+
+        if ((DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), LastFirstDayLastMonth) >= 0) && (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), LastEndDayLastMonth) < 0)) ListSalesByTime->Add(saleList[i]);
+
+    }
+    return ListSalesByTime; //puede ser nulo
+}
+List<Sale^>^ SalesController::Controller::SalesListByRangeOfTime(DateTime inferiorLimit, DateTime superiorLimit)
+{
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+    for (int i = 0; i < saleList->Count; i++) {
+
+        if ((DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), inferiorLimit) >= 0) && (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate), superiorLimit) < 0)) ListSalesByTime->Add(saleList[i]);
+    }
+    return ListSalesByTime; //puede ser nulo
+}
 
 
