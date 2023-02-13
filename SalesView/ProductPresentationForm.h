@@ -405,7 +405,7 @@ namespace SalesView {
 				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
 				List<SaleDetail^>^ newSaleDetailList = gcnew List<SaleDetail^>();
 				newSaleDetailList->Add(newSaleDetail);
-				newSale->SoldProducts = newSaleDetailList;													  //SaleDetail
+				newSale->SaleDetails = newSaleDetailList;													  //SaleDetail
 
 				// Update
 				Controller::UpdateSale(newSale);

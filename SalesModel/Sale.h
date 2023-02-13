@@ -27,7 +27,7 @@ namespace SalesModel {
         //La asociación se convierte en un atributo
         property StoreManager^ StoreManager;
         property Customer^ Customer;
-        property List<SaleDetail^>^ SoldProducts;
+        //property List<SaleDetail^>^ SoldProducts;
         property List<SaleDetail^>^ SaleDetails;
 
         Sale() {

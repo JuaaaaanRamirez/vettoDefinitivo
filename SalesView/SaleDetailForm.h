@@ -417,15 +417,15 @@ namespace SalesView {
 
 			for (int i = 0; i < mysaleList->Count; i++)		   // Look for!
 				if (i == saleId)
-					for (int j = 0; j < mysaleList[i]->SoldProducts->Count; j++) {
+					for (int j = 0; j < mysaleList[i]->SaleDetails->Count; j++) {
 						dgvSaleDetail->Rows->Add(gcnew array<String^>{
-							"" + mysaleList[i]->SoldProducts[j]->Id,
-								"" + mysaleList[i]->SoldProducts[j]->Product->Name,
-								"" + mysaleList[i]->SoldProducts[j]->UnitPrice,
-								"" + mysaleList[i]->SoldProducts[j]->Quantity,
-								"" + mysaleList[i]->SoldProducts[j]->SubTotal
+							"" + mysaleList[i]->SaleDetails[j]->Id,
+								"" + mysaleList[i]->SaleDetails[j]->Product->Name,
+								"" + mysaleList[i]->SaleDetails[j]->UnitPrice,
+								"" + mysaleList[i]->SaleDetails[j]->Quantity,
+								"" + mysaleList[i]->SaleDetails[j]->SubTotal
 						});
-						SubTotal += mysaleList[i]->SoldProducts[j]->SubTotal;
+						SubTotal += mysaleList[i]->SaleDetails[j]->SubTotal;
 					}
 			txtSubTotal->Text = "" + SubTotal * (0.82);
 			txtIGV->Text = "" + SubTotal * (0.18);
