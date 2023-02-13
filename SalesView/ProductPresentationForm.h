@@ -383,8 +383,11 @@ namespace SalesView {
 			if (Convert::ToInt32(nudAmount->Text) != 0) {
 				// Add new Sale
 				Sale^ newSale = gcnew Sale();
-				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
 
+				// Put Customer
+				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+				// Create Instance
+				SalesModel::Sale::Sale(); 
 				//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
 				// o tener un ID = 0 para el estore manager del tipo asistente virtual 
 				StoreManager^ storeManager = gcnew StoreManager();

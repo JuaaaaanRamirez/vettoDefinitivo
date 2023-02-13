@@ -419,17 +419,18 @@ namespace SalesView {
 				if (i == saleId)
 					for (int j = 0; j < mysaleList[i]->SaleDetails->Count; j++) {
 						dgvSaleDetail->Rows->Add(gcnew array<String^>{
-							"" + mysaleList[i]->SaleDetails[j]->Id,
+								"" + mysaleList[i]->SaleDetails[j]->Id,
 								"" + mysaleList[i]->SaleDetails[j]->Product->Name,
 								"" + mysaleList[i]->SaleDetails[j]->UnitPrice,
 								"" + mysaleList[i]->SaleDetails[j]->Quantity,
 								"" + mysaleList[i]->SaleDetails[j]->SubTotal
 						});
-						SubTotal += mysaleList[i]->SaleDetails[j]->SubTotal;
+						mysaleList[i]->Total += mysaleList[i]->SaleDetails[j]->SubTotal;
+						txtSubTotal->Text = "" + mysaleList[i]->Total * (0.82);
+						txtIGV->Text = "" + mysaleList[i]->Total * (0.18);
+						txtTotal->Text = "" + mysaleList[i]->Total;
 					}
-			txtSubTotal->Text = "" + SubTotal * (0.82);
-			txtIGV->Text = "" + SubTotal * (0.18);
-			txtTotal->Text = "" + SubTotal;
+			
 
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
