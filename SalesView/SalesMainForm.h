@@ -59,7 +59,9 @@ namespace SalesView {
 	public: System::Windows::Forms::PictureBox^ Ad3;
 	public: System::Windows::Forms::PictureBox^ Ad2;
 	public: System::Windows::Forms::PictureBox^ Ad1;
-		  //static Object^ person; //Variable de clase o miembro u atributo estático (global).
+	private: System::Windows::Forms::PictureBox^ pbFake;
+	public:
+		//static Object^ person; //Variable de clase o miembro u atributo estático (global).
 	public:	static bool MenuVisibility = false;
 	public:
 		SalesMainForm(void)
@@ -265,6 +267,7 @@ public:
 			this->Ad3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad2 = (gcnew System::Windows::Forms::PictureBox());
 			this->Ad1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pbFake = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AppPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
@@ -290,6 +293,7 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFake))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -1041,12 +1045,24 @@ public:
 			this->Ad1->TabIndex = 79;
 			this->Ad1->TabStop = false;
 			// 
+			// pbFake
+			// 
+			this->pbFake->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFake.BackgroundImage")));
+			this->pbFake->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFake->Location = System::Drawing::Point(1297, 611);
+			this->pbFake->Name = L"pbFake";
+			this->pbFake->Size = System::Drawing::Size(10, 10);
+			this->pbFake->TabIndex = 91;
+			this->pbFake->TabStop = false;
+			this->pbFake->Visible = false;
+			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->ClientSize = System::Drawing::Size(1319, 633);
+			this->Controls->Add(this->pbFake);
 			this->Controls->Add(this->company4);
 			this->Controls->Add(this->company3);
 			this->Controls->Add(this->company2);
@@ -1130,6 +1146,7 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ad1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFake))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1296,7 +1313,9 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 		   lbJob->Text = "";
 		   Userlb->Text = "Invitado";
 		   lbCompany->Text = "";
-		   //btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main.png");
+		  // btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main/Anonymous.png");
+		   //btnLogin->BackgroundImage = gcnew Bitmap("resources/UserPictures/Default.png");
+		   btnLogin->BackgroundImage = pbFake->BackgroundImage; // Bv
 		   gbMenuLogin->Visible = false;
 		   gbMenuCustomer->Visible = false;
 		   gbMenuAnnouncer->Visible = false;
