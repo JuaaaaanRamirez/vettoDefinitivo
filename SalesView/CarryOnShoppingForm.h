@@ -1,4 +1,5 @@
 #pragma once
+#include "SaleDetailForm.h"
 
 namespace SalesView {
 
@@ -14,13 +15,15 @@ namespace SalesView {
 	/// </summary>
 	public ref class CarryOnShoppingForm : public System::Windows::Forms::Form
 	{
+		int saleId;
 	public:
-		CarryOnShoppingForm(void)
+		CarryOnShoppingForm(int saleId)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->saleId = saleId;
 		}
 
 	protected:
@@ -88,6 +91,7 @@ namespace SalesView {
 			this->btnCarryOn->TabIndex = 2;
 			this->btnCarryOn->Text = L"Continuar comprando";
 			this->btnCarryOn->UseVisualStyleBackColor = true;
+			this->btnCarryOn->Click += gcnew System::EventHandler(this, &CarryOnShoppingForm::btnCarryOn_Click);
 			// 
 			// btnWatchaShopping
 			// 
@@ -97,6 +101,7 @@ namespace SalesView {
 			this->btnWatchaShopping->TabIndex = 3;
 			this->btnWatchaShopping->Text = L"Ir al carrito/Pagar";
 			this->btnWatchaShopping->UseVisualStyleBackColor = true;
+			this->btnWatchaShopping->Click += gcnew System::EventHandler(this, &CarryOnShoppingForm::btnWatchaShopping_Click);
 			// 
 			// CarryOnShoppingForm
 			// 
@@ -117,5 +122,12 @@ namespace SalesView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void btnWatchaShopping_Click(System::Object^ sender, System::EventArgs^ e) {
+		SaleDetailForm^ saleDetail = gcnew SaleDetailForm(saleId);
+		saleDetail->ShowDialog();
+	}
+private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e) {
+	Close();
+}
+};
 }
