@@ -410,6 +410,7 @@ namespace SalesView {
 				unsigned long int saleId = Controller::AddSale(newSale);												  //SaleDetail
 				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 				carryOn->ShowDialog();
+				this->Close();
 			}
 			else {
 				// LookForSale
@@ -434,6 +435,7 @@ namespace SalesView {
 				unsigned long int saleId = Controller::UpdateSale(lastSale);												  //SaleDetail
 				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 				carryOn->ShowDialog();
+				this->Close();
 			}
 		}
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
