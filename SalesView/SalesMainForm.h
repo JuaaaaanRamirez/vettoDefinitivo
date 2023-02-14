@@ -1049,7 +1049,7 @@ public:
 			// 
 			this->pbFake->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFake.BackgroundImage")));
 			this->pbFake->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbFake->Location = System::Drawing::Point(1297, 611);
+			this->pbFake->Location = System::Drawing::Point(1298, 605);
 			this->pbFake->Name = L"pbFake";
 			this->pbFake->Size = System::Drawing::Size(10, 10);
 			this->pbFake->TabIndex = 91;
@@ -1310,6 +1310,7 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 }
 	   void SignOff() {
 		   person = nullptr;
+		   Idlb->Text = "0";
 		   lbJob->Text = "";
 		   Userlb->Text = "Invitado";
 		   lbCompany->Text = "";

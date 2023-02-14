@@ -410,16 +410,21 @@ namespace SalesView {
 		}
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification
-		if (userId != 0) {
-			if (Convert::ToInt32(nudAmount->Text) != 0) {
-				// Sale
-				Sale^ newSale = CreateSale();
-				// Save and Get Id
-				unsigned long int saleId = Controller::AddSale(newSale);												  //SaleDetail
-				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
-				carryOn->ShowDialog();
+		if (userId != 0) {	// It's not an user
+			Person^ user = Controller::QueryUserById(userId);
+			if (user->Profile == 'S' || user->Profile == 'C') { // Is it a customer
+				if (Convert::ToInt32(nudAmount->Text) != 0) {	// You choosed an amount?
+					// Sale
+					Sale^ newSale = CreateSale();
+					// Save and Get Id
+					unsigned long int saleId = Controller::AddSale(newSale);												  //SaleDetail
+					CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
+					carryOn->ShowDialog();
+				}
+				else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
 			}
-			else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
+			else MessageBox::Show("¡Debe ser un cliente para comprar!");
+			
 		}
 		else {
 			LoginFirstForm^ getLoguin = gcnew LoginFirstForm();
