@@ -97,6 +97,7 @@ namespace SalesController {
 		//Métodos CRUD de Sale (C:Create, R:Request, U:Update, D:Delete)
 		static int AddSale(Sale^ sale);
 		static Sale^ QuerySaleById(int saleId);
+		static Sale^ QueryLastSale();
 		static List<Sale^>^ QueryAllSales();
 		static int UpdateSale(Sale^ sale);
 		static int DeleteSale(int saleId);

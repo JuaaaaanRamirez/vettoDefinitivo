@@ -342,6 +342,14 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
             return saleList[i];
     return nullptr;
 }
+Sale^ SalesController::Controller::QueryLastSale()
+{
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    for (int i = 0; i < saleList->Count; i++)
+        if (saleList[i]->Id == saleList->Count-1)
+            return saleList[i];
+    return nullptr;
+}
 List<Sale^>^ SalesController::Controller::QueryAllSales()
 {
     saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");

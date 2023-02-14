@@ -378,35 +378,59 @@ namespace SalesView {
 #pragma endregion
 
 		void ShowProduct();
-		Sale^ CreateSale() {
-			// Create Instance
-			SalesModel::Sale::Sale();
-			// Add new Sale
-			Sale^ newSale = gcnew Sale();
-			// Put Customer
-			Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
-			
-			//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
-			// o tener un ID = 0 para el estore manager del tipo asistente virtual
+		void GetSale() {
 
-			// Is it Online?
-			StoreManager^ storeManager = gcnew StoreManager();
-			storeManager->Name= "Asistente virtual";
-			newSale->StoreManager = storeManager;
-			newSale->PaidMode = "Virtual";
+			List<Sale^>^ mysaleList = Controller::QueryAllSales();
+			if (mysaleList->Count == 0) {
+				// Add new Sale
+				SalesModel::Sale::Sale();
+				Sale^ newSale = gcnew Sale();
+				
+				// Put Customer
+				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+				/*//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
+				// o tener un ID = 0 para el estore manager del tipo asistente virtual*/
 
-			newSale->SaleDate = Convert::ToString(DateTime::Now);
-			//Add SaleDetail
-			SaleDetail^ newSaleDetail = gcnew SaleDetail();
-			newSaleDetail->Id = Convert::ToInt32(txtId->Text);
-			newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
-			newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
-			newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
-			newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
-			// Add this SaleDetail
-			newSale->SaleDetails->Add(newSaleDetail);
 
-			return newSale;
+				// Is it Online?
+				StoreManager^ storeManager = gcnew StoreManager();
+				storeManager->Name = "Asistente virtual";
+				newSale->StoreManager = storeManager;
+				newSale->PaidMode = "Virtual";
+				newSale->SaleDate = Convert::ToString(DateTime::Now);
+
+
+				//Add SaleDetail
+				SaleDetail^ newSaleDetail = gcnew SaleDetail();
+				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
+				newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+				newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
+				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
+				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
+				newSale->SaleDetails->Add(newSaleDetail);
+				unsigned long int saleId = Controller::AddSale(newSale);												  //SaleDetail
+				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
+				carryOn->ShowDialog();
+			}
+			else {
+
+				//Add SaleDetail
+				SaleDetail^ newSaleDetail = gcnew SaleDetail();
+				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
+				newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+				newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
+				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
+				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
+
+				// LookForSale
+				Sale^ lastSale = Controller::QueryLastSale();
+				lastSale->SaleDetails->Add(newSaleDetail);
+
+				// Update
+				unsigned long int saleId = Controller::UpdateSale(lastSale);												  //SaleDetail
+				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
+				carryOn->ShowDialog();
+			}
 		}
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification
@@ -414,12 +438,7 @@ namespace SalesView {
 			Person^ user = Controller::QueryUserById(userId);
 			if (user->Profile == 'S' || user->Profile == 'C') { // Is it a customer
 				if (Convert::ToInt32(nudAmount->Text) != 0) {	// You choosed an amount?
-					// Sale
-					Sale^ newSale = CreateSale();
-					// Save and Get Id
-					unsigned long int saleId = Controller::AddSale(newSale);												  //SaleDetail
-					CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
-					carryOn->ShowDialog();
+					GetSale();
 				}
 				else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
 			}
