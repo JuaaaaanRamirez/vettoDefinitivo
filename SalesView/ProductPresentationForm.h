@@ -1,4 +1,5 @@
 #pragma once
+#include "LoginFirstForm.h"
 #include "SaleDetailForm.h"
 namespace SalesView {
 
@@ -381,24 +382,21 @@ namespace SalesView {
 		// Verification
 		if (userId != 0) {
 			if (Convert::ToInt32(nudAmount->Text) != 0) {
+				// Create Instance
+				SalesModel::Sale::Sale();
 				// Add new Sale
 				Sale^ newSale = gcnew Sale();
-
 				// Put Customer
 				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
-				// Create Instance
-				SalesModel::Sale::Sale(); 
-				//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
+				/*//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
 				// o tener un ID = 0 para el estore manager del tipo asistente virtual 
+
 				StoreManager^ storeManager = gcnew StoreManager();
 				storeManager->Name= "Asistente virtual";
 				newSale->StoreManager = storeManager;
-				newSale->PaidMode = "Virtual";//virtual
-
-				newSale->SaleDate = Convert::ToString(DateTime::Now);											 // Date
-				// Save and Get Id
-				unsigned long int saleId = Controller::AddSale(newSale);
-
+				newSale->PaidMode = "Virtual";//virtual*/
+				// Date
+				newSale->SaleDate = Convert::ToString(DateTime::Now);	
 				//Add SaleDetail
 				SaleDetail^ newSaleDetail = gcnew SaleDetail();
 				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
@@ -406,13 +404,16 @@ namespace SalesView {
 				newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
 				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
 				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
-				List<SaleDetail^>^ newSaleDetailList = gcnew List<SaleDetail^>();
+				// Add this SaleDetail
+				newSale->SaleDetails->Add(newSaleDetail);
+				// Save and Get Id
+				unsigned long int saleId = Controller::AddSale(newSale);
+				/**List<SaleDetail^>^ newSaleDetailList = gcnew List<SaleDetail^>();
 				newSaleDetailList->Add(newSaleDetail);
-				newSale->SaleDetails = newSaleDetailList;													  //SaleDetail
+				newSale->SaleDetails = newSaleDetailList;*/													  //SaleDetail
 
 				// Update
 				Controller::UpdateSale(newSale);
-
 				MessageBox::Show("¡Agregado con éxito!");
 
 				SaleDetailForm^ SalesDetail = gcnew SaleDetailForm(saleId);
@@ -421,7 +422,8 @@ namespace SalesView {
 			else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
 		}
 		else {
-			MessageBox::Show("Debe loguearse como estudiante primero.");
+			LoginFirstForm^ getLoguin = gcnew LoginFirstForm();
+			getLoguin->ShowDialog();
 		}
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {

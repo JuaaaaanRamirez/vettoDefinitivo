@@ -914,7 +914,7 @@ public:
 			// Idlb
 			// 
 			this->Idlb->AutoSize = true;
-			this->Idlb->Location = System::Drawing::Point(524, 134);
+			this->Idlb->Location = System::Drawing::Point(1294, 605);
 			this->Idlb->Name = L"Idlb";
 			this->Idlb->Size = System::Drawing::Size(14, 16);
 			this->Idlb->TabIndex = 77;
