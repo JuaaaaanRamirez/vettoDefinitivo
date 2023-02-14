@@ -103,6 +103,7 @@ namespace SalesView {
 			this->Controls->Add(this->btnLoguin);
 			this->Controls->Add(this->lbCart);
 			this->Controls->Add(this->pbWait);
+			this->MaximizeBox = false;
 			this->Name = L"LoginFirstForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¡Logueáte!";

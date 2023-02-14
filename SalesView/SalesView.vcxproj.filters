@@ -68,6 +68,9 @@
     <ClInclude Include="LoginFirstForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="CarryOnShoppingForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SalesView.cpp">
@@ -116,6 +119,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="LoginFirstForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="CarryOnShoppingForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

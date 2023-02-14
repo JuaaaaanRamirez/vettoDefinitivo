@@ -1,6 +1,6 @@
 #pragma once
 #include "LoginFirstForm.h"
-#include "SaleDetailForm.h"
+#include "CarryOnShoppingForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -414,10 +414,8 @@ namespace SalesView {
 
 				// Update
 				Controller::UpdateSale(newSale);
-				MessageBox::Show("¡Agregado con éxito!");
-
-				SaleDetailForm^ SalesDetail = gcnew SaleDetailForm(saleId);
-				SalesDetail->ShowDialog();
+				CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm();
+				carryOn->ShowDialog();
 			}
 			else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
 		}
