@@ -40,8 +40,8 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 		
 		// Put Imagen
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(emp->Photo);
-		((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
-
+		//((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
+		SalesMainForm::instance->userPhoto->BackgroundImage = Image::FromStream(ms);
 		//SalesMainForm::person = emp;
 
 

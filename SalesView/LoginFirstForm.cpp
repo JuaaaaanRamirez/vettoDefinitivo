@@ -5,7 +5,7 @@
 
 System::Void SalesView::LoginFirstForm::btnLoguin_Click(System::Object^ sender, System::EventArgs^ e)
 {
-    SalesMainForm^ SalesMain = gcnew SalesMainForm();
-    LoginForm^ login = gcnew LoginForm(SalesMain);
+    LoginForm^ login = gcnew LoginForm(SalesMainForm::instance);
     login->ShowDialog();
+    this->Close();
 }

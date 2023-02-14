@@ -29,11 +29,12 @@ namespace SalesView {
 	/// </summary>
 	public ref class SalesMainForm : public System::Windows::Forms::Form
 	{
+		
 	public:
 
 		//static Person^ person; //Variable de clase
-    
-		static Person^ person; //Variable de clase
+		
+
 	public: System::Windows::Forms::GroupBox^ gbMenuCustomer;
 	private: System::Windows::Forms::Button^ btnSignOut;
 
@@ -64,10 +65,15 @@ namespace SalesView {
 		//static Object^ person; //Variable de clase o miembro u atributo estático (global).
 	public:	static bool MenuVisibility = false;
 	public:
+		static SalesMainForm^ instance;		// Easy data
+		static Person^ person; //Variable de clase
+		static Button^ userPhoto;
+
 		SalesMainForm(void)
 		{
 			InitializeComponent();
-			//
+			instance = this; // Easy Data
+			userPhoto = btnLogin;
 			//TODO: agregar código de constructor aquí
 			//
 		}

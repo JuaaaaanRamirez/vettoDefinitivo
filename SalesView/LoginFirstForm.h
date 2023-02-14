@@ -69,6 +69,7 @@ namespace SalesView {
 			this->pbWait->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbWait->TabIndex = 0;
 			this->pbWait->TabStop = false;
+			this->pbWait->Click += gcnew System::EventHandler(this, &LoginFirstForm::pbWait_Click);
 			// 
 			// lbCart
 			// 
@@ -117,6 +118,8 @@ namespace SalesView {
 	private: System::Void LoginFirstForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void btnLoguin_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void pbWait_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
 

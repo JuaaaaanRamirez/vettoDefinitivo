@@ -452,6 +452,7 @@ namespace SalesView {
 		else {
 			LoginFirstForm^ getLoguin = gcnew LoginFirstForm();
 			getLoguin->ShowDialog();
+			this->Close();
 		}
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
