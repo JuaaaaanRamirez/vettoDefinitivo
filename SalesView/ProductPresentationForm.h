@@ -399,7 +399,6 @@ namespace SalesView {
 				newSale->PaidMode = "Virtual";
 				newSale->SaleDate = Convert::ToString(DateTime::Now);
 
-
 				//Add SaleDetail
 				SaleDetail^ newSaleDetail = gcnew SaleDetail();
 				newSaleDetail->Id = Convert::ToInt32(txtId->Text);
@@ -413,6 +412,12 @@ namespace SalesView {
 				carryOn->ShowDialog();
 			}
 			else {
+				// LookForSale
+				Sale^ lastSale = Controller::QueryLastSale();
+
+				//Is the product repeated?
+				for (int i = 0; i < lastSale->SaleDetails->Count; i++)
+					if (lastSale->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
 
 				//Add SaleDetail
 				SaleDetail^ newSaleDetail = gcnew SaleDetail();
@@ -422,8 +427,7 @@ namespace SalesView {
 				newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
 				newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
 
-				// LookForSale
-				Sale^ lastSale = Controller::QueryLastSale();
+				
 				lastSale->SaleDetails->Add(newSaleDetail);
 
 				// Update
