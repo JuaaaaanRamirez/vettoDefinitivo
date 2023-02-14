@@ -116,6 +116,7 @@ namespace SalesView {
 			this->Name = L"CarryOnShoppingForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¡Producto Comprado!";
+			this->Load += gcnew System::EventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCheck))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -129,6 +130,8 @@ namespace SalesView {
 	}
 private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e) {
 	Close();
+}
+private: System::Void CarryOnShoppingForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

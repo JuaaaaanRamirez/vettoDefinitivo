@@ -19,7 +19,13 @@ namespace SalesView {
 	public ref class SaleDetailForm : public System::Windows::Forms::Form
 	{
 		int saleId;
+
 	public:
+
+		// Instances
+		static bool paid = true;
+		static SaleDetailForm^ mySaleDetail;
+
 		SaleDetailForm(int saleId)
 		{
 			InitializeComponent();
@@ -27,6 +33,7 @@ namespace SalesView {
 			//TODO: agregar código de constructor aquí
 			//
 			this->saleId = saleId;
+			mySaleDetail = this;
 		}
 
 	protected:
@@ -430,10 +437,9 @@ namespace SalesView {
 						txtIGV->Text = "" + mysaleList[i]->Total * (0.18);
 						txtTotal->Text = "" + mysaleList[i]->Total;
 					}
-			
-
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
+		paid = true;
 		MessageBox::Show("¡Venta Exitosa!");
 		this->Close();
 
