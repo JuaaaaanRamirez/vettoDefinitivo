@@ -125,6 +125,7 @@ namespace SalesView {
 	private: System::Void btnWatchaShopping_Click(System::Object^ sender, System::EventArgs^ e) {
 		SaleDetailForm^ saleDetail = gcnew SaleDetailForm(saleId);
 		saleDetail->ShowDialog();
+		this->Close();
 	}
 private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e) {
 	Close();

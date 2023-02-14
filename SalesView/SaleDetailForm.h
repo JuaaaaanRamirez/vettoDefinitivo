@@ -435,6 +435,7 @@ namespace SalesView {
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("¡Venta Exitosa!");
+		this->Close();
 
 	}
 	private: System::Void SaleDetailForm_Load(System::Object^ sender, System::EventArgs^ e) {
