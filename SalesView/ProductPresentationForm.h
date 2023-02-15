@@ -22,7 +22,7 @@ namespace SalesView {
 	public:	
 	public:
 		Form^ refForm;
-		int userId, saleId=0;
+		int userId, saleId;
 		ProductPresentationForm(Form^ form1, int userId)
 		{
 			InitializeComponent();
@@ -395,6 +395,10 @@ namespace SalesView {
 				SaleDetailForm::mySaleDetail->paid = false;
 				Sale^ newSale = gcnew Sale();
 				saleId = Controller::AddSale(newSale);
+			}
+			else {
+				Sale^ mysale = Controller::QueryLastSale();
+				saleId = mysale->Id;
 			}
 			// New SaleDeatil?
 			List<Sale^>^ mysaleList = Controller::QueryAllSales();
