@@ -1448,6 +1448,11 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 		   MenuVisibility = false;
 		   menuStrip1->Visible = false;
 
+		   // Have you paid?
+		   if (!SaleDetailForm::mySaleDetail->paid) {
+			   Sale^ mySale = Controller::QueryLastSale();
+			   Controller::DeleteSale(mySale->Id);
+		   }
 	   }
 private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	UploadAdForm^ A = gcnew UploadAdForm(this);
