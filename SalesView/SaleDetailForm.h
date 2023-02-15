@@ -436,6 +436,7 @@ namespace SalesView {
 						txtSubTotal->Text = "" + mysaleList[i]->Total * (0.82);
 						txtIGV->Text = "" + mysaleList[i]->Total * (0.18);
 						txtTotal->Text = "" + mysaleList[i]->Total;
+						Controller::UpdateSale(mysaleList[i]);
 					}
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
