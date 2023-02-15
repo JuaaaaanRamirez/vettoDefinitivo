@@ -988,7 +988,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			   else if (rbtnStoreManager->Checked) {
 				   user = gcnew StoreManager();
 				   user->Profile = 'M';
-				   safe_cast<StoreManager^>(user)->Goals = txtGoal->Text;
+				   safe_cast<StoreManager^>(user)->Goals = Convert::ToDouble(txtGoal->Text);
 				   safe_cast<StoreManager^>(user)->Salary = txtSalary->Text;
 				   safe_cast<StoreManager^>(user)->Store = txtAStore->Text;
 				   safe_cast<StoreManager^>(user)->Status = txtStatus->Text;

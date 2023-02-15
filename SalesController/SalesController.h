@@ -45,6 +45,9 @@ namespace SalesController {
 		static int DeleteProduct(int productId);
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
 		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);
+
+		static List<Product^>^ QueryProductsByStockLimit(int stock);
+
 		static List<Product^>^ GetTopProducts() {
 			List<Product^>^ myProductList = Controller::QueryAllProducts();
 			for (int i = 0; i < myProductList->Count; i++) // Look for!
@@ -85,6 +88,7 @@ namespace SalesController {
 
 		//static List<Person^>^ QueryUsersByNickNameOrPhoneNumber(String^ namePhone);
 		static List<Customer^>^ QueryAllCustomer();
+		static List<StoreManager^>^ QueryAllStoreManager();
 		static List<Announcer^>^ QueryAllAnnouncer();
 		static Customer^ QueryCustomerByCredentials(String^ username, String^ password);
 		static Person^ QueryPersonByCredentials(String^ username, String^ password);
