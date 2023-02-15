@@ -422,7 +422,7 @@ namespace SalesView {
 
 			// Put On Data
 			SaleDetail^ newSaleDetail= CreateSaleDetail();
-			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]);												  //SaleDetail
+			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 			carryOn->ShowDialog();
 			this->Close();

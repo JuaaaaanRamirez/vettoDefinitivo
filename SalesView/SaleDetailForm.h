@@ -409,11 +409,13 @@ namespace SalesView {
 
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
-
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			txtUserName->Text = "" + mySale->Customer->Username;
 			txtAddress->Text = "" + mySale->Customer->Address;
+			// Edit Customer
+			if (mySale->Customer->Username == "") txtUserName->ReadOnly = false;
+
 			//	Reference empty
 		}
 		void ShowShoppingCart() {
