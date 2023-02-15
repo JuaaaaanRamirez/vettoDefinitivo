@@ -394,7 +394,7 @@ public:
 			// realizarUnaVentaToolStripMenuItem
 			// 
 			this->realizarUnaVentaToolStripMenuItem->Name = L"realizarUnaVentaToolStripMenuItem";
-			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(213, 26);
 			this->realizarUnaVentaToolStripMenuItem->Text = L"Realizar una venta";
 			this->realizarUnaVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::realizarUnaVentaToolStripMenuItem_Click);
 			// 
@@ -1246,6 +1246,7 @@ public:
 			this->Name = L"SalesMainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Vetto Project";
+			//this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &SalesMainForm::SalesMainForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &SalesMainForm::SalesMainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -1323,7 +1324,6 @@ public:
 				}
 			}
 		}
-		
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
@@ -1486,7 +1486,6 @@ private: System::Void btnShopping_Click(System::Object^ sender, System::EventArg
 private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }
-	  
 private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	UploadAdForm^ A = gcnew UploadAdForm(this);
 	A->ShowDialog();

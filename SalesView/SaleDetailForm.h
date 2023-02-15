@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ProductSearchForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -191,6 +191,7 @@ namespace SalesView {
 			this->btnAdd->TabIndex = 5;
 			this->btnAdd->Text = L"Agregar producto";
 			this->btnAdd->UseVisualStyleBackColor = true;
+			this->btnAdd->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnAdd_Click);
 			// 
 			// btnDelete
 			// 
@@ -398,6 +399,7 @@ namespace SalesView {
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Detalle de la venta";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &SaleDetailForm::SaleDetailForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &SaleDetailForm::SaleDetailForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->EndInit();
 			this->ResumeLayout(false);
@@ -451,5 +453,17 @@ namespace SalesView {
 		ShowData();
 		ShowShoppingCart();
 	}
-	};
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+		Sale^ thisSale = Controller::QuerySaleById(saleId);
+		if (thisSale->Customer->Profile=='S') Close();
+		else {
+			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
+			mySearch->ShowDialog();
+		}
+	}
+private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+
+	if (txtUserName->Text == ""||dgvSaleDetail->Rows[0]->Cells[0]->Value->ToString()=="") Controller::DeleteSale(saleId);
+}
+};
 }
