@@ -414,7 +414,7 @@ namespace SalesView {
 			storeManager->Name = "Asistente virtual";
 			mysaleList[saleId]->StoreManager = storeManager;
 			mysaleList[saleId]->PaidMode = "Virtual";
-			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now);
+			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(-6)); ///////Para generar ventas hace un mes
 
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
