@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ProductSearchForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -191,6 +191,7 @@ namespace SalesView {
 			this->btnAdd->TabIndex = 5;
 			this->btnAdd->Text = L"Agregar producto";
 			this->btnAdd->UseVisualStyleBackColor = true;
+			this->btnAdd->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnAdd_Click);
 			// 
 			// btnDelete
 			// 
@@ -451,5 +452,13 @@ namespace SalesView {
 		ShowData();
 		ShowShoppingCart();
 	}
-	};
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+		Sale^ thisSale = Controller::QuerySaleById(saleId);
+		if (thisSale->Customer->Profile=='S') Close();
+		else {
+			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
+			mySearch->ShowDialog();
+		}
+	}
+};
 }
