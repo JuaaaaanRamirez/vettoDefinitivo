@@ -334,7 +334,7 @@ public:
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(989, 24);
+			this->menuStrip1->Size = System::Drawing::Size(1021, 24);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->Visible = false;
@@ -349,7 +349,7 @@ public:
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(96, 22);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -366,21 +366,21 @@ public:
 			// productoToolStripMenuItem
 			// 
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(133, 22);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(133, 22);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::usuariosToolStripMenuItem_Click);
 			// 
 			// subirAnuncioToolStripMenuItem
 			// 
 			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
-			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(133, 22);
+			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
 			this->subirAnuncioToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::subirAnuncioToolStripMenuItem_Click);
 			// 
@@ -394,7 +394,7 @@ public:
 			// realizarUnaVentaToolStripMenuItem
 			// 
 			this->realizarUnaVentaToolStripMenuItem->Name = L"realizarUnaVentaToolStripMenuItem";
-			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(169, 22);
+			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->realizarUnaVentaToolStripMenuItem->Text = L"Realizar una venta";
 			// 
 			// reportesToolStripMenuItem
@@ -1445,6 +1445,7 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 		   gbMenuCustomer->Visible = false;
 		   gbMenuAnnouncer->Visible = false;
 		   gbMenuStoreManager->Visible = false;
+		   gbSellerCompany->Visible = false;
 		   MenuVisibility = false;
 		   menuStrip1->Visible = false;
 
