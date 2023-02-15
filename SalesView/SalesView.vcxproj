@@ -140,7 +140,9 @@
     <ClInclude Include="NewCustomerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ProductSearchForm.h" />
+    <ClInclude Include="ProductSearchForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SalesMainForAllForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -233,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerForm.resx">
       <DependentUpon>NewCustomerForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSearchForm.resx">
+      <DependentUpon>ProductSearchForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.h</DependentUpon>

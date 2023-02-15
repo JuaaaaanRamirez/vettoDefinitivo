@@ -1365,7 +1365,7 @@ public:
 			Sale^ newSale = gcnew Sale();
 			int saleId = Controller::AddSale(newSale); mysaleList = Controller::QueryAllSales();
 			// Add Customer
-			Customer^ myCustomer = gcnew Customer(); myCustomer->Name = ""; myCustomer->Username = ""; myCustomer->Address = ""; mysaleList[saleId]->Customer = myCustomer;
+			Customer^ myCustomer = gcnew Customer(); myCustomer->Name = "Cliente Presencial"; myCustomer->Username = ""; myCustomer->Address = ""; mysaleList[saleId]->Customer = myCustomer;
 			// Add Store manager
 			StoreManager^ storeManager = gcnew StoreManager(); storeManager->Name = person->Name; mysaleList[saleId]->StoreManager = storeManager;
 			mysaleList[saleId]->PaidMode = "Presencial";
