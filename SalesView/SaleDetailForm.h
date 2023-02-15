@@ -399,6 +399,7 @@ namespace SalesView {
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Detalle de la venta";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &SaleDetailForm::SaleDetailForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &SaleDetailForm::SaleDetailForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->EndInit();
 			this->ResumeLayout(false);
@@ -460,5 +461,9 @@ namespace SalesView {
 			mySearch->ShowDialog();
 		}
 	}
+private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+
+	if (txtUserName->Text == ""||dgvSaleDetail->Rows[0]->Cells[0]->Value->ToString()=="") Controller::DeleteSale(saleId);
+}
 };
 }
