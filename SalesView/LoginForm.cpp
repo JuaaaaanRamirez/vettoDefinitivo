@@ -45,9 +45,9 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 		//SalesMainForm::person = emp;
 
 
-		((SalesMainForm^)refForm)->SalesMainForm::subirAnuncioToolStripMenuItem->Visible = true;
+		//((SalesMainForm^)refForm)->SalesMainForm::subirAnuncioToolStripMenuItem->Visible = true;
 		((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
-		((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
+		//((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
 
 		SalesMainForm::person = emp;
 		/*
@@ -64,6 +64,22 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 		
 		this->Close();
 	}
+	else if (txtUsername->Text == "Vetto" && txtPassword->Text == "password") {
+		MessageBox::Show("Bienvenido administrador");
+		Person^ emp = gcnew Person;
+		emp->Profile = 'B';
+		emp->Name = "ADMI";
+		emp->Id = 0;
+
+		((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = nullptr;
+		((SalesMainForm^)refForm)->SalesMainForm::lbJob->Text = "Jefe ";
+		((SalesMainForm^)refForm)->SalesMainForm::Userlb->Text = emp->Name;
+		((SalesMainForm^)refForm)->SalesMainForm::lbCompany->Text = "Vetto S.A.C. ";
+		SalesMainForm::MenuVisibility = false;
+		SalesMainForm::person = emp;
+		((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
+		this->Close();
+	}
 	else {
 		MessageBox::Show("Usuario y contraseña incorrectos.");
 	}
@@ -75,7 +91,7 @@ System::Void SalesView::LoginForm::btnCancel_Click(System::Object^ sender, Syste
 	this->Close();
 	SalesMainForm::MenuVisibility = false;
 	((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
-	((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
+	//((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
 
 
 }
