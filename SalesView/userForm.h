@@ -1051,8 +1051,9 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 
 
 		// Is there anyone already?
-		Person^ theresone = Controller::QueryUserById(Convert::ToInt32(txtCustomerId->Text));
-		if (theresone != nullptr) { MessageBox::Show("El ID de usuario ya existe."); return; }
+		Person^ theresone = Controller::QueryPersonByCredentials(txtUser->Text,txtPassword->Text);
+		Person^ theresone2 = Controller::QueryUserById(Convert::ToInt32(txtCustomerId->Text));
+		if (theresone != nullptr || theresone2 != nullptr) { MessageBox::Show("El usuario ya existe."); return; }
 
 
 		// Save Data

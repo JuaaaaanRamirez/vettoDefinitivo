@@ -1405,7 +1405,7 @@ public:
 	ProductListForm^ productListForm = gcnew ProductListForm(this);
 	//productListForm->MdiParent = this;
 	productListForm->ShowDialog();
-
+	this->Refresh();
 }
 private: System::Void btnLoginCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 	LoginForm^ loginForm = gcnew LoginForm(this);
