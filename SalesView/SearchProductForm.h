@@ -69,12 +69,12 @@ namespace SalesView {
 			this->btSearch = (gcnew System::Windows::Forms::Button());
 			this->btCancel = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->txtProductId = (gcnew System::Windows::Forms::TextBox());
-			this->txtNameCareer = (gcnew System::Windows::Forms::TextBox());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->txtProductId = (gcnew System::Windows::Forms::TextBox());
+			this->txtNameCareer = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -104,6 +104,7 @@ namespace SalesView {
 			this->btSearch->TabIndex = 2;
 			this->btSearch->Text = L"Buscar";
 			this->btSearch->UseVisualStyleBackColor = true;
+			this->btSearch->Click += gcnew System::EventHandler(this, &SearchProductForm::btSearch_Click);
 			// 
 			// btCancel
 			// 
@@ -129,20 +130,6 @@ namespace SalesView {
 			this->dataGridView1->Size = System::Drawing::Size(563, 150);
 			this->dataGridView1->TabIndex = 4;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SearchProductForm::dataGridView1_CellContentClick);
-			// 
-			// txtProductId
-			// 
-			this->txtProductId->Location = System::Drawing::Point(263, 66);
-			this->txtProductId->Name = L"txtProductId";
-			this->txtProductId->Size = System::Drawing::Size(100, 22);
-			this->txtProductId->TabIndex = 5;
-			// 
-			// txtNameCareer
-			// 
-			this->txtNameCareer->Location = System::Drawing::Point(263, 112);
-			this->txtNameCareer->Name = L"txtNameCareer";
-			this->txtNameCareer->Size = System::Drawing::Size(100, 22);
-			this->txtNameCareer->TabIndex = 6;
 			// 
 			// Column1
 			// 
@@ -172,6 +159,20 @@ namespace SalesView {
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 125;
 			// 
+			// txtProductId
+			// 
+			this->txtProductId->Location = System::Drawing::Point(263, 66);
+			this->txtProductId->Name = L"txtProductId";
+			this->txtProductId->Size = System::Drawing::Size(100, 22);
+			this->txtProductId->TabIndex = 5;
+			// 
+			// txtNameCareer
+			// 
+			this->txtNameCareer->Location = System::Drawing::Point(263, 112);
+			this->txtNameCareer->Name = L"txtNameCareer";
+			this->txtNameCareer->Size = System::Drawing::Size(100, 22);
+			this->txtNameCareer->TabIndex = 6;
+			// 
 			// SearchProductForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -196,6 +197,8 @@ namespace SalesView {
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
 private: System::Void SearchProductForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btSearch_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

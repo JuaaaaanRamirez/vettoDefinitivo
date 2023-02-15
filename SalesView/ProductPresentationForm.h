@@ -405,9 +405,6 @@ namespace SalesView {
 
 			// Put Customer
 			Customer^ customer = (Customer^)Controller::QueryUserById(userId); mysaleList[saleId]->Customer = customer; // Customer
-			/*//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
-			// o tener un ID = 0 para el estore manager del tipo asistente virtual*/
-
 
 			// Is it Online?
 			StoreManager^ storeManager = gcnew StoreManager();

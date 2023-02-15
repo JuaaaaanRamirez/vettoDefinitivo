@@ -201,6 +201,7 @@ namespace SalesView {
 			this->btnDelete->TabIndex = 6;
 			this->btnDelete->Text = L"Eliminar producto";
 			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnDelete_Click);
 			// 
 			// lbUser
 			// 
@@ -444,6 +445,10 @@ namespace SalesView {
 					}
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
+		if (txtAddress->Text->Trim() == "") { MessageBox::Show("La dirección del cliente no puede estar vacía"); return; }
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		if (mySale->SaleDetails->Count==0){ MessageBox::Show("La lista no puede estar vacía"); return; }
 		paid = true;
 		MessageBox::Show("¡Venta Exitosa!");
 		this->Close();
@@ -459,11 +464,35 @@ namespace SalesView {
 		else {
 			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
 			mySearch->ShowDialog();
+			ShowData(); ShowShoppingCart();
 		}
 	}
 private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-
-	if (txtUserName->Text == ""||dgvSaleDetail->Rows[0]->Cells[0]->Value->ToString()=="") Controller::DeleteSale(saleId);
+	Sale^ mySale = Controller::QuerySaleById(saleId);
+	if (txtUserName->Text == ""|| mySale->SaleDetails->Count == 0) Controller::DeleteSale(saleId);
+}
+private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (dgvSaleDetail->SelectedCells->Count == 1) {
+		if (dgvSaleDetail->SelectedCells[0]->Value->ToString()->Trim() != "") {
+			int selectedRowIndex = dgvSaleDetail->SelectedCells[0]->RowIndex;
+			int saleDetailId = Convert::ToInt32(dgvSaleDetail->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
+			Sale^ mySale = Controller::QuerySaleById(saleId);
+			for (int i = 0; i < mySale->SaleDetails->Count; i++) {
+				if (mySale->SaleDetails[i]->Id == saleDetailId) {
+					mySale->SaleDetails->RemoveAt(i); 
+					Controller::UpdateSale(mySale); break;
+				}
+			}
+			ShowData(); ShowShoppingCart();
+		}
+			
+		else
+			MessageBox::Show("No se puede eliminar una fila vacía.");
+	}
+	else
+		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
+	ShowData();
+	ShowShoppingCart();
 }
 };
 }
