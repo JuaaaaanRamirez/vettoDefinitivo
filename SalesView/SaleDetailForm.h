@@ -145,6 +145,11 @@ namespace SalesView {
 			this->lbAddress = (gcnew System::Windows::Forms::Label());
 			this->lbReference = (gcnew System::Windows::Forms::Label());
 			this->dgvSaleDetail = (gcnew System::Windows::Forms::DataGridView());
+			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->SubTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnPaid = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -155,11 +160,6 @@ namespace SalesView {
 			this->txtDate = (gcnew System::Windows::Forms::TextBox());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
 			this->lbSaleID = (gcnew System::Windows::Forms::Label());
-			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->SubTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -180,6 +180,7 @@ namespace SalesView {
 			this->txtUserName->ReadOnly = true;
 			this->txtUserName->Size = System::Drawing::Size(351, 22);
 			this->txtUserName->TabIndex = 2;
+			this->txtUserName->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtUserName_TextChanged);
 			// 
 			// txtAddress
 			// 
@@ -187,6 +188,7 @@ namespace SalesView {
 			this->txtAddress->Name = L"txtAddress";
 			this->txtAddress->Size = System::Drawing::Size(350, 22);
 			this->txtAddress->TabIndex = 3;
+			this->txtAddress->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtAddress_TextChanged);
 			// 
 			// txtReference
 			// 
@@ -194,6 +196,7 @@ namespace SalesView {
 			this->txtReference->Name = L"txtReference";
 			this->txtReference->Size = System::Drawing::Size(350, 22);
 			this->txtReference->TabIndex = 4;
+			this->txtReference->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtReference_TextChanged);
 			// 
 			// btnAdd
 			// 
@@ -255,7 +258,46 @@ namespace SalesView {
 			this->dgvSaleDetail->RowTemplate->Height = 24;
 			this->dgvSaleDetail->Size = System::Drawing::Size(451, 150);
 			this->dgvSaleDetail->TabIndex = 10;
-			//this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
+			this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
+			// 
+			// Id
+			// 
+			this->Id->HeaderText = L"ID";
+			this->Id->MinimumWidth = 6;
+			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
+			this->Id->Width = 125;
+			// 
+			// Nombre
+			// 
+			this->Nombre->HeaderText = L"Nombre";
+			this->Nombre->MinimumWidth = 6;
+			this->Nombre->Name = L"Nombre";
+			this->Nombre->ReadOnly = true;
+			this->Nombre->Width = 125;
+			// 
+			// Precio
+			// 
+			this->Precio->HeaderText = L"Precio";
+			this->Precio->MinimumWidth = 6;
+			this->Precio->Name = L"Precio";
+			this->Precio->ReadOnly = true;
+			this->Precio->Width = 125;
+			// 
+			// Cantidad
+			// 
+			this->Cantidad->HeaderText = L"Cantidad";
+			this->Cantidad->MinimumWidth = 6;
+			this->Cantidad->Name = L"Cantidad";
+			this->Cantidad->Width = 125;
+			// 
+			// SubTotal
+			// 
+			this->SubTotal->HeaderText = L"SubTotal";
+			this->SubTotal->MinimumWidth = 6;
+			this->SubTotal->Name = L"SubTotal";
+			this->SubTotal->ReadOnly = true;
+			this->SubTotal->Width = 125;
 			// 
 			// btnPaid
 			// 
@@ -345,45 +387,6 @@ namespace SalesView {
 			this->lbSaleID->TabIndex = 21;
 			this->lbSaleID->Text = L"ID de venta:";
 			// 
-			// Id
-			// 
-			this->Id->HeaderText = L"ID";
-			this->Id->MinimumWidth = 6;
-			this->Id->Name = L"Id";
-			this->Id->ReadOnly = true;
-			this->Id->Width = 125;
-			// 
-			// Nombre
-			// 
-			this->Nombre->HeaderText = L"Nombre";
-			this->Nombre->MinimumWidth = 6;
-			this->Nombre->Name = L"Nombre";
-			this->Nombre->ReadOnly = true;
-			this->Nombre->Width = 125;
-			// 
-			// Precio
-			// 
-			this->Precio->HeaderText = L"Precio";
-			this->Precio->MinimumWidth = 6;
-			this->Precio->Name = L"Precio";
-			this->Precio->ReadOnly = true;
-			this->Precio->Width = 125;
-			// 
-			// Cantidad
-			// 
-			this->Cantidad->HeaderText = L"Cantidad";
-			this->Cantidad->MinimumWidth = 6;
-			this->Cantidad->Name = L"Cantidad";
-			this->Cantidad->Width = 125;
-			// 
-			// SubTotal
-			// 
-			this->SubTotal->HeaderText = L"SubTotal";
-			this->SubTotal->MinimumWidth = 6;
-			this->SubTotal->Name = L"SubTotal";
-			this->SubTotal->ReadOnly = true;
-			this->SubTotal->Width = 125;
-			// 
 			// SaleDetailForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -440,10 +443,11 @@ namespace SalesView {
 			double SubTotal = 0;
 
 			for (int i = 0; i < mysaleList->Count; i++)		   // Look for!
-				if (i == saleId)
+				if (i == saleId){
+					mysaleList[i]->Total = 0;
 					for (int j = 0; j < mysaleList[i]->SaleDetails->Count; j++) {
 						dgvSaleDetail->Rows->Add(gcnew array<String^>{
-								"" + mysaleList[i]->SaleDetails[j]->Id,
+							"" + mysaleList[i]->SaleDetails[j]->Id,
 								"" + mysaleList[i]->SaleDetails[j]->Product->Name,
 								"" + mysaleList[i]->SaleDetails[j]->UnitPrice,
 								"" + mysaleList[i]->SaleDetails[j]->Quantity,
@@ -455,6 +459,8 @@ namespace SalesView {
 						txtTotal->Text = "" + mysaleList[i]->Total;
 						Controller::UpdateSale(mysaleList[i]);
 					}
+				}
+					
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
@@ -505,6 +511,41 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
 	ShowData();
 	ShowShoppingCart();
+}
+private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	if (dgvSaleDetail->Columns[e->ColumnIndex]->Name == "Cantidad") {
+		dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
+			Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
+			Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+		// Update Sale
+		Sale^ currentSale = Controller::QuerySaleById(saleId);
+		currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
+		currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+		Controller::UpdateSale(currentSale);
+		ShowData();
+		ShowShoppingCart();
+	}
+}
+private: System::Void txtUserName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (txtUserName->Text->Trim() != "") {
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		mySale->Customer->Username = txtUserName->Text;
+		Controller::UpdateSale(mySale);
+	}
+}
+private: System::Void txtAddress_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (txtAddress->Text->Trim() != "") {
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		mySale->Address = txtUserName->Text;
+		Controller::UpdateSale(mySale);
+	}
+}
+private: System::Void txtReference_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (txtReference->Text->Trim() != "") {
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		mySale->Reference = txtUserName->Text;
+		Controller::UpdateSale(mySale);
+	}
 }
 };
 }
