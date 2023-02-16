@@ -536,14 +536,15 @@ private: System::Void txtUserName_TextChanged(System::Object^ sender, System::Ev
 private: System::Void txtAddress_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (txtAddress->Text->Trim() != "") {
 		Sale^ mySale = Controller::QuerySaleById(saleId);
-		mySale->Address = txtUserName->Text;
+		mySale->Address = txtAddress->Text;
+		mySale->Customer->Address = txtAddress->Text;
 		Controller::UpdateSale(mySale);
 	}
 }
 private: System::Void txtReference_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (txtReference->Text->Trim() != "") {
 		Sale^ mySale = Controller::QuerySaleById(saleId);
-		mySale->Reference = txtUserName->Text;
+		mySale->Reference = txtReference->Text;
 		Controller::UpdateSale(mySale);
 	}
 }
