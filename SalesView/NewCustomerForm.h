@@ -379,8 +379,9 @@ namespace SalesView {
 			// 
 			// pbCustomer
 			// 
+			this->pbCustomer->ErrorImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.ErrorImage")));
 			this->pbCustomer->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.Image")));
-			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
+			this->pbCustomer->InitialImage = nullptr;
 			this->pbCustomer->Location = System::Drawing::Point(308, 281);
 			this->pbCustomer->Name = L"pbCustomer";
 			this->pbCustomer->Size = System::Drawing::Size(61, 50);
@@ -510,8 +511,8 @@ namespace SalesView {
 					   pbCustomer->Image = Image::FromStream(ms);
 				   }*/
 				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-				   if (pbCustomer != nullptr && pbCustomer->BackgroundImage != nullptr) {
-					   pbCustomer->BackgroundImage->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+				   if (pbCustomer != nullptr && pbCustomer->Image != nullptr) {
+					   pbCustomer->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					   p->Photo = ms->ToArray();
 				   }
 				   else {
