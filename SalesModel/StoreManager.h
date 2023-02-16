@@ -12,7 +12,7 @@ namespace SalesModel {
     public ref class StoreManager : public Person {
     public:
 
-        property String^ Goals;
+        property Double Goals; // String^ Goals;
         property String^ Salary;
         property String^ Store;
 

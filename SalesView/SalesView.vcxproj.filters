@@ -71,7 +71,11 @@
     <ClInclude Include="CarryOnShoppingForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+
     <ClInclude Include="MySaleHistory.h">
+
+    <ClInclude Include="ProductSearchForm.h">
+    
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -127,7 +131,11 @@
     <ClCompile Include="CarryOnShoppingForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+
     <ClCompile Include="MySaleHistory.cpp">
+
+    <ClCompile Include="ProductSearchForm.cpp">
+
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

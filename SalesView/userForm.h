@@ -988,7 +988,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			   else if (rbtnStoreManager->Checked) {
 				   user = gcnew StoreManager();
 				   user->Profile = 'M';
-				   safe_cast<StoreManager^>(user)->Goals = txtGoal->Text;
+				   safe_cast<StoreManager^>(user)->Goals = Convert::ToDouble(txtGoal->Text);
 				   safe_cast<StoreManager^>(user)->Salary = txtSalary->Text;
 				   safe_cast<StoreManager^>(user)->Store = txtAStore->Text;
 				   safe_cast<StoreManager^>(user)->Status = txtStatus->Text;
@@ -1051,8 +1051,9 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 
 
 		// Is there anyone already?
-		Person^ theresone = Controller::QueryUserById(Convert::ToInt32(txtCustomerId->Text));
-		if (theresone != nullptr) { MessageBox::Show("El ID de usuario ya existe."); return; }
+		Person^ theresone = Controller::QueryPersonByCredentials(txtUser->Text,txtPassword->Text);
+		Person^ theresone2 = Controller::QueryUserById(Convert::ToInt32(txtCustomerId->Text));
+		if (theresone != nullptr || theresone2 != nullptr) { MessageBox::Show("El usuario ya existe."); return; }
 
 
 		// Save Data

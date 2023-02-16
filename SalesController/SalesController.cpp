@@ -69,6 +69,16 @@ List<Product^>^ SalesController::Controller::QueryProductsByNameOrCareer(String^
     }
     return newProductList;
 }
+List<Product^>^ SalesController::Controller::QueryProductsByStockLimit(int stock)
+{
+    productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    List<Product^>^ newProductList = gcnew List<Product^>();
+    for (int i = 0; i < productList->Count; i++) {
+        if (productList[i]->Stock <= stock)
+            newProductList->Add(productList[i]);
+    }
+    return newProductList;
+}
 //...for products to order
 List<Product^>^ SalesController::Controller::GetListProductOrderBySearches(List<Product^>^ ListProductByTime)
 {
@@ -213,6 +223,21 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
     
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucción "return" aquí
+}
+
+List<StoreManager^>^ SalesController::Controller::QueryAllStoreManager()
+{
+    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    List<StoreManager^>^ activeStoreManagerList = gcnew List<StoreManager^>();
+    for (int i = 0; i < personList->Count; i++) {
+        if (personList[i]->GetType() == StoreManager::typeid) {
+            activeStoreManagerList->Add((StoreManager^)personList[i]);
+
+        }
+    }
+
+
+    return activeStoreManagerList;
 }
 
 List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer(){
@@ -389,7 +414,7 @@ int SalesController::Controller::DeleteSale(int saleId)
 }*/
 
 
-//for sales...Juan
+// for sales...Juan
 //for sales
 List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
 {

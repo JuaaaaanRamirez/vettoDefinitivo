@@ -22,7 +22,7 @@ namespace SalesView {
 	public:	
 	public:
 		Form^ refForm;
-		int userId, saleId=0;
+		int userId, saleId;
 		ProductPresentationForm(Form^ form1, int userId)
 		{
 			InitializeComponent();
@@ -396,33 +396,30 @@ namespace SalesView {
 				Sale^ newSale = gcnew Sale();
 				saleId = Controller::AddSale(newSale);
 			}
-
+			else {
+				Sale^ mysale = Controller::QueryLastSale();
+				saleId = mysale->Id;
+			}
 			// New SaleDeatil?
 			List<Sale^>^ mysaleList = Controller::QueryAllSales();
-			if (mysaleList[saleId]->SaleDetails->Count == 0) {
-				
-				// Put Customer
-				Customer^ customer = (Customer^)Controller::QueryUserById(userId); mysaleList[saleId]->Customer = customer; // Customer
-				/*//PONER UN IF ...PARA EL MODO COMPRA ONLINE O VENTA PRESENCIAL PARA AÑADIR EL NOMBRE DEL STORE MANAGER julio
-				// o tener un ID = 0 para el estore manager del tipo asistente virtual*/
 
+			// Put Customer
+			Customer^ customer = (Customer^)Controller::QueryUserById(userId); mysaleList[saleId]->Customer = customer; // Customer
 
-				// Is it Online?
-				StoreManager^ storeManager = gcnew StoreManager();
-				storeManager->Name = "Asistente virtual";
-				mysaleList[saleId]->StoreManager = storeManager;
-				mysaleList[saleId]->PaidMode = "Virtual";
-				mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now);
-			}
-			else {
-				//Is the product repeated?
-				for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
-					if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
-			}
+			// Is it Online?
+			StoreManager^ storeManager = gcnew StoreManager();
+			storeManager->Name = "Asistente virtual";
+			mysaleList[saleId]->StoreManager = storeManager;
+			mysaleList[saleId]->PaidMode = "Virtual";
+			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(-6)); ///////Para generar ventas hace un mes
+
+			//Is the product repeated?
+			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
+				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
 
 			// Put On Data
 			SaleDetail^ newSaleDetail= CreateSaleDetail();
-			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]);												  //SaleDetail
+			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 			carryOn->ShowDialog();
 			this->Close();
@@ -447,6 +444,8 @@ namespace SalesView {
 		}
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		// Reload
+		List<Sale^>^ mySaleList = Controller::QueryAllSales(); // Really necesary
 		ShowProduct();
 	}
 	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {

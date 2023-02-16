@@ -469,7 +469,7 @@ namespace SalesView {
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		if (txtProductId->Text->Trim() == "") {
-			
+
 		}
 		if (txtName->Text->Trim() == "") {
 			MessageBox::Show("El nombre del producto no debe estar vacío.");
@@ -491,7 +491,7 @@ namespace SalesView {
 			MessageBox::Show("El stock no debe estar vacío.");
 			return;
 		}
-		
+
 
 		Product^ product = gcnew Product();
 		product->Id = Convert::ToInt32(txtProductId->Text);
@@ -502,13 +502,13 @@ namespace SalesView {
 		product->Stock = Convert::ToInt32(txtStock->Text);
 		product->Status = 'A';
 		product->Career = gcnew List<String^>();
-		product->Searches = 0; 
+		product->Searches = 0;
 		product->Starts = 5;
 		product->Sales = 0;
 		for (int i = 0; i < Controller::RelationatedCareers->Count; i++) {
 			product->Career->Add(Controller::RelationatedCareers[i]);
 		}
-		
+
 		if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			pbPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -527,7 +527,7 @@ namespace SalesView {
 
 		CleanControls();
 		MessageBox::Show("Se agrego el producto exitosamente");
-	
+		Controller::RelationatedCareers->Clear();
 		ShowProducts();
 	}
 	private: System::Void ProductForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -590,7 +590,7 @@ namespace SalesView {
 
 		CleanControls();
 		MessageBox::Show("Se modifico el producto exitosamente");
-		
+		Controller::RelationatedCareers->Clear();
 		ShowProducts();
 	}
 	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -598,7 +598,8 @@ namespace SalesView {
 		Controller::DeleteProduct(ID);
 		CleanControls();
 		MessageBox::Show("Eliminacion exitosa");
-		
+		Controller::RelationatedCareers->Clear();
+
 		ShowProducts();
 	}
 	private: System::Void btnSetImage_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -642,7 +643,7 @@ namespace SalesView {
 		//################################################
 	}
 	private: System::Void btnCarrer_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+
 		CareerListForm^ CareerList = gcnew CareerListForm();
 		CareerList->ShowDialog();
 
@@ -653,5 +654,5 @@ namespace SalesView {
 		CleanControls();
 		Controller::RelationatedCareers->Clear();
 	}
-};
+	};
 }

@@ -129,6 +129,7 @@ namespace SalesView {
 		this->Close();
 	}
 private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e) {
+	SaleDetailForm::mySaleDetail->paid = false;
 	Close();
 }
 private: System::Void CarryOnShoppingForm_Load(System::Object^ sender, System::EventArgs^ e) {

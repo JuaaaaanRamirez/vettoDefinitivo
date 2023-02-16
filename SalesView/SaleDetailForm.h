@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ProductSearchForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -191,6 +191,7 @@ namespace SalesView {
 			this->btnAdd->TabIndex = 5;
 			this->btnAdd->Text = L"Agregar producto";
 			this->btnAdd->UseVisualStyleBackColor = true;
+			this->btnAdd->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnAdd_Click);
 			// 
 			// btnDelete
 			// 
@@ -200,6 +201,7 @@ namespace SalesView {
 			this->btnDelete->TabIndex = 6;
 			this->btnDelete->Text = L"Eliminar producto";
 			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnDelete_Click);
 			// 
 			// lbUser
 			// 
@@ -398,6 +400,7 @@ namespace SalesView {
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Detalle de la venta";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &SaleDetailForm::SaleDetailForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &SaleDetailForm::SaleDetailForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->EndInit();
 			this->ResumeLayout(false);
@@ -409,11 +412,13 @@ namespace SalesView {
 
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
-
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			txtUserName->Text = "" + mySale->Customer->Username;
 			txtAddress->Text = "" + mySale->Customer->Address;
+			// Edit Customer
+			if (mySale->Customer->Username == "") txtUserName->ReadOnly = false;
+
 			//	Reference empty
 		}
 		void ShowShoppingCart() {
@@ -436,9 +441,14 @@ namespace SalesView {
 						txtSubTotal->Text = "" + mysaleList[i]->Total * (0.82);
 						txtIGV->Text = "" + mysaleList[i]->Total * (0.18);
 						txtTotal->Text = "" + mysaleList[i]->Total;
+						Controller::UpdateSale(mysaleList[i]);
 					}
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
+		if (txtAddress->Text->Trim() == "") { MessageBox::Show("La dirección del cliente no puede estar vacía"); return; }
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		if (mySale->SaleDetails->Count==0){ MessageBox::Show("La lista no puede estar vacía"); return; }
 		paid = true;
 		MessageBox::Show("¡Venta Exitosa!");
 		this->Close();
@@ -448,5 +458,41 @@ namespace SalesView {
 		ShowData();
 		ShowShoppingCart();
 	}
-	};
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+		Sale^ thisSale = Controller::QuerySaleById(saleId);
+		if (thisSale->Customer->Profile=='S') Close();
+		else {
+			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
+			mySearch->ShowDialog();
+			ShowData(); ShowShoppingCart();
+		}
+	}
+private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	Sale^ mySale = Controller::QuerySaleById(saleId);
+	if (txtUserName->Text == ""|| mySale->SaleDetails->Count == 0) Controller::DeleteSale(saleId);
+}
+private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (dgvSaleDetail->SelectedCells->Count == 1) {
+		if (dgvSaleDetail->SelectedCells[0]->Value->ToString()->Trim() != "") {
+			int selectedRowIndex = dgvSaleDetail->SelectedCells[0]->RowIndex;
+			int saleDetailId = Convert::ToInt32(dgvSaleDetail->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
+			Sale^ mySale = Controller::QuerySaleById(saleId);
+			for (int i = 0; i < mySale->SaleDetails->Count; i++) {
+				if (mySale->SaleDetails[i]->Id == saleDetailId) {
+					mySale->SaleDetails->RemoveAt(i); 
+					Controller::UpdateSale(mySale); break;
+				}
+			}
+			ShowData(); ShowShoppingCart();
+		}
+			
+		else
+			MessageBox::Show("No se puede eliminar una fila vacía.");
+	}
+	else
+		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
+	ShowData();
+	ShowShoppingCart();
+}
+};
 }

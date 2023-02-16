@@ -4,7 +4,6 @@
 
 void SalesView::ProductPresentationForm::ShowProduct()
 {
-
 	// Get RowIndex
 	int selectedRowIndex = ((ProductListForm^)refForm)->ProductListForm::dgvProductList->SelectedCells[0]->RowIndex;
 	// Get ID
