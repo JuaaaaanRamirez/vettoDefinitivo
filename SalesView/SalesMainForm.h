@@ -1285,6 +1285,7 @@ public:
 		}
 #pragma endregion
 		// Functions
+		
 		void Ad() {
 			subirAnuncioToolStripMenuItem->Visible = false;
 			List<Announcer^>^ AnounList = gcnew List<Announcer^>();
@@ -1361,6 +1362,7 @@ public:
 				Controller::DeleteSale(mySale->Id);
 			}
 		}
+		
 		void GoSale() {
 			// Reload
 			List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
@@ -1492,24 +1494,7 @@ private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs
 	SignOff();
 }
 
-	   void SignOff() {
-		   person = nullptr;
-		   Idlb->Text = "0";
-		   lbJob->Text = "";
-		   Userlb->Text = "Invitado";
-		   lbCompany->Text = "";
-		  // btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main/Anonymous.png");
-		   //btnLogin->BackgroundImage = gcnew Bitmap("resources/UserPictures/Default.png");
-		   btnLogin->BackgroundImage = pbFake->BackgroundImage; // Bv 
-		   gbMenuLogin->Visible = false;
-		   gbMenuCustomer->Visible = false;
-		   gbMenuAnnouncer->Visible = false;
-		   gbMenuStoreManager->Visible = false;
-		   gbSellerCompany->Visible = false;
-		   MenuVisibility = false;
-		   menuStrip1->Visible = false;
-
-	   }
+	
 
 private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	UploadAdForm^ A = gcnew UploadAdForm(this);
