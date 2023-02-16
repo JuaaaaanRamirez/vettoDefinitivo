@@ -89,6 +89,9 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::TextBox^ txtCustomerPoints;
+
+	private: System::Windows::Forms::PictureBox^ pbCustomer;
 
 
 
@@ -105,6 +108,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(NewCustomerForm::typeid));
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -131,6 +135,9 @@ namespace SalesView {
 			this->txtPasswordAgain = (gcnew System::Windows::Forms::TextBox());
 			this->btnRegister = (gcnew System::Windows::Forms::Button());
 			this->btnBack = (gcnew System::Windows::Forms::Button());
+			this->txtCustomerPoints = (gcnew System::Windows::Forms::TextBox());
+			this->pbCustomer = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label12
@@ -362,11 +369,32 @@ namespace SalesView {
 			this->btnBack->UseVisualStyleBackColor = true;
 			this->btnBack->Click += gcnew System::EventHandler(this, &NewCustomerForm::btnBack_Click);
 			// 
+			// txtCustomerPoints
+			// 
+			this->txtCustomerPoints->Location = System::Drawing::Point(277, 213);
+			this->txtCustomerPoints->Name = L"txtCustomerPoints";
+			this->txtCustomerPoints->Size = System::Drawing::Size(67, 20);
+			this->txtCustomerPoints->TabIndex = 5;
+			this->txtCustomerPoints->Visible = false;
+			// 
+			// pbCustomer
+			// 
+			this->pbCustomer->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.Image")));
+			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
+			this->pbCustomer->Location = System::Drawing::Point(308, 281);
+			this->pbCustomer->Name = L"pbCustomer";
+			this->pbCustomer->Size = System::Drawing::Size(61, 50);
+			this->pbCustomer->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbCustomer->TabIndex = 15;
+			this->pbCustomer->TabStop = false;
+			this->pbCustomer->Visible = false;
+			// 
 			// NewCustomerForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(423, 494);
+			this->Controls->Add(this->pbCustomer);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->btnBack);
 			this->Controls->Add(this->btnRegister);
@@ -382,6 +410,7 @@ namespace SalesView {
 			this->Controls->Add(this->txtAddress);
 			this->Controls->Add(this->txtEmail);
 			this->Controls->Add(this->txtDocNumber);
+			this->Controls->Add(this->txtCustomerPoints);
 			this->Controls->Add(this->txtPhoneNumber);
 			this->Controls->Add(this->txtLastName);
 			this->Controls->Add(this->txtFirstName);
@@ -395,6 +424,7 @@ namespace SalesView {
 			this->Controls->Add(this->label3);
 			this->Name = L"NewCustomerForm";
 			this->Load += gcnew System::EventHandler(this, &NewCustomerForm::NewCustomerForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -404,91 +434,105 @@ namespace SalesView {
 	}
 	private: System::Void label11_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void NewCustomerForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btnRegister_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void NewCustomerForm_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void btnRegister_Click(System::Object^ sender, System::EventArgs^ e);
+		   void RegisterCustomer() {
+			   Customer^ p = gcnew Customer();
+			   try {
 
-		
-		Customer^ p = gcnew Customer();
-	try {
-		
-		if (txtFirstName->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su nombre.");
-			return;
-		}
-		if (txtLastName->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su apellido.");
-			return;
-		}
-		if (txtEmail->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su email.");
-			return;
-		}
-		if (txtDocNumber->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su DNI.");
-			return;
-		}
-		/*if (txtDocNumber->Text->Trim() == "") {
-			MessageBox::Show("Su DNI debe tener 8 dígitos.");
-			return;
-		}*/
-		if (txtUsername->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su nombre de usuario.");
-			return;
-		}
-		if (txtPassword->Text->Trim() == "") {
-			MessageBox::Show("Ingrese su contraseña.");
-			return;
-		}
-		if (txtPasswordAgain->Text->Trim() == "") {
-			MessageBox::Show("Repita su contraseña.");
-			return;
-		}
-		if (txtPasswordAgain->Text->Trim() != txtPassword->Text->Trim()) {
-			MessageBox::Show("Las contraseña no son iguales");
-			return;
-		}
-		if (Controller::ExistUsername(txtUsername->Text)) {
-			MessageBox::Show("El nombre usuario ingresado ya existe");
-			return;
-		}
-		if (Controller::ExistDocNumber(txtDocNumber->Text)) {
-			MessageBox::Show("El numero de DNI  ingresado ya existe");
-			return;
-		}
+				   if (txtFirstName->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su nombre.");
+					   return;
+				   }
+				   if (txtLastName->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su apellido.");
+					   return;
+				   }
+				   if (txtEmail->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su email.");
+					   return;
+				   }
+				   if (txtDocNumber->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su DNI.");
+					   return;
+				   }
+				   /*if (txtDocNumber->Text->Trim() == "") {
+					   MessageBox::Show("Su DNI debe tener 8 dígitos.");
+					   return;
+				   }*/
+				   if (txtUsername->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su nombre de usuario.");
+					   return;
+				   }
+				   if (txtPassword->Text->Trim() == "") {
+					   MessageBox::Show("Ingrese su contraseña.");
+					   return;
+				   }
+				   if (txtPasswordAgain->Text->Trim() == "") {
+					   MessageBox::Show("Repita su contraseña.");
+					   return;
+				   }
+				   if (txtPasswordAgain->Text->Trim() != txtPassword->Text->Trim()) {
+					   MessageBox::Show("Las contraseña no son iguales");
+					   return;
+				   }
+				   if (Controller::ExistUsername(txtUsername->Text)) {
+					   MessageBox::Show("El nombre usuario ingresado ya existe");
+					   return;
+				   }
+				   if (Controller::ExistDocNumber(txtDocNumber->Text)) {
+					   MessageBox::Show("El numero de DNI  ingresado ya existe");
+					   return;
+				   }
 
-		//p->Id = Int32::Parse(txtPersonId->Text);
-		p->Id = Controller::FindNewId(p);
-		p->Name = txtFirstName->Text;
-		p->LastName = txtLastName->Text;
-		p->DocNumber = txtDocNumber->Text;
-		p->Address = txtAddress->Text;
-		p->Email = txtEmail->Text;
-		p->PhoneNumber = txtPhoneNumber->Text;
-		p->Birthday = dtpBirthday->Value.ToString();
-		p->Password = txtPassword->Text;
-		p->Username = txtUsername->Text;
-		p->Profile = 'S';
-		if (rbtnMasc->Checked) p->Gender = 'M';
-		else p->Gender = 'F';
-		
-		/*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
-			txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
-			txtEmail->Text,
-			rbtnMasc->Checked ? 'M' : 'F',
-			dtpBirthday->Value.ToString("yyyy-MM-dd"));*/
-		}	
-		   catch (Exception^ ex) {
-			   MessageBox::Show(ex->ToString(), "Comparta el error al área de TI.");
-			   return;
+				   //p->Id = Int32::Parse(txtPersonId->Text);
+				   p->Id = Controller::FindNewId(p);
+				   p->Name = txtFirstName->Text;
+				   p->LastName = txtLastName->Text;
+				   p->DocNumber = txtDocNumber->Text;
+				   p->Address = txtAddress->Text;
+				   p->Email = txtEmail->Text;
+				   p->PhoneNumber = txtPhoneNumber->Text;
+				   p->Birthday = dtpBirthday->Value.ToString();
+				   p->Password = txtPassword->Text;
+				   p->Username = txtUsername->Text;
+				   p->Profile = 'S';
+				   if (rbtnMasc->Checked) p->Gender = 'M';
+				   else p->Gender = 'F';
+
+				   /*p = gcnew Customer(Int32::Parse(txtId->Text), txtFirstName->Text, txtLastName->Text,
+					   txtDocNumber->Text, txtAddress->Text, txtPhoneNumber->Text,
+					   txtEmail->Text,
+					   rbtnMasc->Checked ? 'M' : 'F',
+					   dtpBirthday->Value.ToString("yyyy-MM-dd"));*/
+				   /*if (p->Photo != nullptr) {
+					   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
+					   pbCustomer->Image = Image::FromStream(ms);
+				   }*/
+				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+				   if (pbCustomer != nullptr && pbCustomer->BackgroundImage != nullptr) {
+					   pbCustomer->BackgroundImage->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+					   p->Photo = ms->ToArray();
+				   }
+				   else {
+					   pbCustomer->InitialImage->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+					   p->Photo = ms->ToArray();
+				   }
+
+
+
+			   }
+			   catch (Exception^ ex) {
+				   MessageBox::Show(ex->ToString(), "Comparta el error al área de TI.");
+				   return;
+			   }
+
+			   Controller::AddUser(p);
+			   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
+			   //MessageBox::Show("Hola");
+			  
+			   this->Close();
 		   }
-
-		  Controller::AddUser(p);
-		   MessageBox::Show("Se ha regitrado el nuevo usuario con exito");
-		   //MessageBox::Show("Hola");
-		   this->Close();
-		
-	}
 private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e);
 
 };

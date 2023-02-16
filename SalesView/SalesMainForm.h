@@ -9,6 +9,7 @@
 #include "StadisticReportForm.h"
 #include "NewCustomerForm.h"
 #include "SaleDetailForm.h"
+#include "MySaleHistory.h"
 
 
 namespace SalesView {
@@ -373,7 +374,9 @@ public:
 			// usuariosToolStripMenuItem
 			// 
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
+
 			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::usuariosToolStripMenuItem_Click);
 			// 
@@ -1475,6 +1478,8 @@ private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void btnRecord_Click(System::Object^ sender, System::EventArgs^ e) {
 	//Form de HISTORIAL DE VENTAS DEL CLIENTE
+	MySaleHistory^ mySaleHistory = gcnew MySaleHistory();
+	mySaleHistory->ShowDialog();
 }
 private: System::Void btnWishList_Click(System::Object^ sender, System::EventArgs^ e) {
 	//Form de la LISTA DE DESEOS DEL CLIENTE
@@ -1486,6 +1491,26 @@ private: System::Void btnShopping_Click(System::Object^ sender, System::EventArg
 private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }
+
+	   void SignOff() {
+		   person = nullptr;
+		   Idlb->Text = "0";
+		   lbJob->Text = "";
+		   Userlb->Text = "Invitado";
+		   lbCompany->Text = "";
+		  // btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main/Anonymous.png");
+		   //btnLogin->BackgroundImage = gcnew Bitmap("resources/UserPictures/Default.png");
+		   btnLogin->BackgroundImage = pbFake->BackgroundImage; // Bv 
+		   gbMenuLogin->Visible = false;
+		   gbMenuCustomer->Visible = false;
+		   gbMenuAnnouncer->Visible = false;
+		   gbMenuStoreManager->Visible = false;
+		   gbSellerCompany->Visible = false;
+		   MenuVisibility = false;
+		   menuStrip1->Visible = false;
+
+	   }
+
 private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	UploadAdForm^ A = gcnew UploadAdForm(this);
 	A->ShowDialog();
