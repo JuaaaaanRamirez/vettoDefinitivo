@@ -1372,7 +1372,7 @@ public:
 			// Add Store manager
 			StoreManager^ storeManager = gcnew StoreManager(); storeManager->Name = person->Name; mysaleList[saleId]->StoreManager = storeManager;
 			mysaleList[saleId]->PaidMode = "Presencial";
-			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now);
+			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
 
 			// Update
 			Controller::UpdateSale(mysaleList[saleId]);
