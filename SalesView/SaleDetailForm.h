@@ -24,7 +24,19 @@ namespace SalesView {
 
 		// Instances
 		static bool paid = true;
-		static SaleDetailForm^ mySaleDetail;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
+	public:
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cantidad;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubTotal;
+
+	public:
+
+
+
+
+		   static SaleDetailForm^ mySaleDetail;
 
 		SaleDetailForm(int saleId)
 		{
@@ -89,11 +101,11 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::Label^ lbSaleID;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 
 
 
@@ -133,11 +145,6 @@ namespace SalesView {
 			this->lbAddress = (gcnew System::Windows::Forms::Label());
 			this->lbReference = (gcnew System::Windows::Forms::Label());
 			this->dgvSaleDetail = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnPaid = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -148,6 +155,11 @@ namespace SalesView {
 			this->txtDate = (gcnew System::Windows::Forms::TextBox());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
 			this->lbSaleID = (gcnew System::Windows::Forms::Label());
+			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->SubTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -234,8 +246,8 @@ namespace SalesView {
 			// 
 			this->dgvSaleDetail->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvSaleDetail->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+				this->Id, this->Nombre,
+					this->Precio, this->Cantidad, this->SubTotal
 			});
 			this->dgvSaleDetail->Location = System::Drawing::Point(5, 230);
 			this->dgvSaleDetail->Name = L"dgvSaleDetail";
@@ -243,46 +255,7 @@ namespace SalesView {
 			this->dgvSaleDetail->RowTemplate->Height = 24;
 			this->dgvSaleDetail->Size = System::Drawing::Size(451, 150);
 			this->dgvSaleDetail->TabIndex = 10;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Nombre";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Precio";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Cantidad";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"SubTotal";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 125;
+			this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
 			// 
 			// btnPaid
 			// 
@@ -371,6 +344,45 @@ namespace SalesView {
 			this->lbSaleID->Size = System::Drawing::Size(78, 16);
 			this->lbSaleID->TabIndex = 21;
 			this->lbSaleID->Text = L"ID de venta:";
+			// 
+			// Id
+			// 
+			this->Id->HeaderText = L"ID";
+			this->Id->MinimumWidth = 6;
+			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
+			this->Id->Width = 125;
+			// 
+			// Nombre
+			// 
+			this->Nombre->HeaderText = L"Nombre";
+			this->Nombre->MinimumWidth = 6;
+			this->Nombre->Name = L"Nombre";
+			this->Nombre->ReadOnly = true;
+			this->Nombre->Width = 125;
+			// 
+			// Precio
+			// 
+			this->Precio->HeaderText = L"Precio";
+			this->Precio->MinimumWidth = 6;
+			this->Precio->Name = L"Precio";
+			this->Precio->ReadOnly = true;
+			this->Precio->Width = 125;
+			// 
+			// Cantidad
+			// 
+			this->Cantidad->HeaderText = L"Cantidad";
+			this->Cantidad->MinimumWidth = 6;
+			this->Cantidad->Name = L"Cantidad";
+			this->Cantidad->Width = 125;
+			// 
+			// SubTotal
+			// 
+			this->SubTotal->HeaderText = L"SubTotal";
+			this->SubTotal->MinimumWidth = 6;
+			this->SubTotal->Name = L"SubTotal";
+			this->SubTotal->ReadOnly = true;
+			this->SubTotal->Width = 125;
 			// 
 			// SaleDetailForm
 			// 
@@ -493,6 +505,20 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
 	ShowData();
 	ShowShoppingCart();
+}
+private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	if (dgvSaleDetail->Columns[e->ColumnIndex]->Name == "Cantidad") {
+		dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
+			Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
+			Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+		// Update Sale
+		Sale^ currentSale = Controller::QuerySaleById(saleId);
+		currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
+		currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+		Controller::UpdateSale(currentSale);
+		ShowData();
+		ShowShoppingCart();
+	}
 }
 };
 }
