@@ -741,16 +741,23 @@ namespace SalesView {
 			ListStoreManager = Controller::QueryAllStoreManager();
 			double monto;
 			for (int i = 0; i < ListStoreManager->Count; i++) {
-				chartReportGoals->Series["Monto en soles"]->Points[i]->AxisLabel = ListStoreManager[i]->Name;
+
 				monto = 0;
 				for (int j = 0; j < salesList1->Count; j++) {
+
 					if (salesList1[j]->StoreManager->Name->Equals(ListStoreManager[i]->Name)) {
+
 						monto += salesList1[j]->Total;
 					}
 				}
 				chartReportGoals->Series["Monto en soles"]->Points->Add(monto);
+				chartReportGoals->Series["Monto en soles"]->Points[i]->AxisLabel = ListStoreManager[i]->Name;
 				chartReportGoals->Series["Monto en soles"]->Points[i]->Label = Convert::ToString(monto);
 			}
+			//Orden correcto
+			/*chartReportGoals->Series["Monto en soles"]->Points->Add(5);
+			chartReportGoals->Series["Monto en soles"]->Points[0]->AxisLabel = "ffddfdfd";
+			chartReportGoals->Series["Monto en soles"]->Points[0]->Label = Convert::ToString(ListStoreManager->Count); */
 		}
 
 		void ShowSells() {
@@ -777,7 +784,7 @@ namespace SalesView {
 		RefreshReportToday();
 		RefreshReportLastWeek();
 		RefreshReportLastMonth();
-		//RefreshReportGoalsLastMonth();
+		RefreshReportGoalsLastMonth();
 	}
 	private: System::Void chartSellsLastWeek_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
