@@ -255,7 +255,7 @@ namespace SalesView {
 			this->dgvSaleDetail->RowTemplate->Height = 24;
 			this->dgvSaleDetail->Size = System::Drawing::Size(451, 150);
 			this->dgvSaleDetail->TabIndex = 10;
-			this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
+			//this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
 			// 
 			// btnPaid
 			// 
@@ -505,20 +505,6 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
 	ShowData();
 	ShowShoppingCart();
-}
-private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (dgvSaleDetail->Columns[e->ColumnIndex]->Name == "Cantidad") {
-		dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
-			Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
-			Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
-		// Update Sale
-		Sale^ currentSale = Controller::QuerySaleById(saleId);
-		currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
-		currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
-		Controller::UpdateSale(currentSale);
-		ShowData();
-		ShowShoppingCart();
-	}
 }
 };
 }
