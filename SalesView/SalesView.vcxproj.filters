@@ -1,147 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="CareerListForm.cpp" />
+    <ClCompile Include="CarryOnShoppingForm.cpp" />
+    <ClCompile Include="LoginFirstForm.cpp" />
+    <ClCompile Include="MySaleHistory.cpp" />
+    <ClCompile Include="ProductSearchForm.cpp" />
+    <ClCompile Include="SalesMainForAllForm.cpp" />
+    <ClCompile Include="UserForm.cpp" />
+    <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="NewCustomerForm.cpp" />
+    <ClCompile Include="ProductListForm.cpp" />
+    <ClCompile Include="ProductPresentationForm.cpp" />
+    <ClCompile Include="SaleDetailForm.cpp" />
+    <ClCompile Include="SalesMainForm.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="SalesView.cpp" />
+    <ClCompile Include="SearchProductForm.cpp" />
+    <ClCompile Include="StadisticReportForm.cpp" />
+    <ClCompile Include="UploadAdForm.cpp" />
+    <ClCompile Include="ProductStatusForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc">
-      <Filter>Archivos de recursos</Filter>
-    </ResourceCompile>
+    <ClInclude Include="CareerListForm.h" />
+    <ClInclude Include="CarryOnShoppingForm.h" />
+    <ClInclude Include="LoginFirstForm.h" />
+    <ClInclude Include="MySaleHistory.h" />
+    <ClInclude Include="NewCustomerForm.h" />
+    <ClInclude Include="ProductSearchForm.h" />
+    <ClInclude Include="SalesMainForAllForm.h" />
+    <ClInclude Include="UserForm.h" />
+    <ClInclude Include="LoginForm.h" />
+    <ClInclude Include="ProductForm.h" />
+    <ClInclude Include="ProductListForm.h" />
+    <ClInclude Include="ProductPresentationForm.h" />
+    <ClInclude Include="SaleDetailForm.h" />
+    <ClInclude Include="SalesMainForm.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SearchProductForm.h" />
+    <ClInclude Include="StadisticReportForm.h" />
+    <ClInclude Include="UploadAdForm.h" />
+    <ClInclude Include="ProductStatusForm.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="SalesMainForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="CareerListForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="UploadAdForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="StadisticReportForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="SearchProductForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="UserForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ProductListForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ProductPresentationForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="SaleDetailForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ProductForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="NewCustomerForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="SalesMainForAllForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginFirstForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="CarryOnShoppingForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-
-    <ClInclude Include="MySaleHistory.h">
-
-    <ClInclude Include="ProductSearchForm.h">
-    
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SalesView.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="SalesMainForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="CareerListForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="UploadAdForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="StadisticReportForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="SearchProductForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="UserForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductListForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductPresentationForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="SaleDetailForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="NewCustomerForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="SalesMainForAllForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginFirstForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="CarryOnShoppingForm.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-
-    <ClCompile Include="MySaleHistory.cpp">
-
-    <ClCompile Include="ProductSearchForm.cpp">
-
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="app.ico">
-      <Filter>Archivos de recursos</Filter>
-    </Image>
+    <Image Include="app.ico" />
   </ItemGroup>
 </Project>
