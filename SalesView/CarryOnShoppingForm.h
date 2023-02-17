@@ -108,7 +108,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 103);
+			this->ClientSize = System::Drawing::Size(307, 103);
 			this->Controls->Add(this->btnWatchaShopping);
 			this->Controls->Add(this->btnCarryOn);
 			this->Controls->Add(this->pbCheck);
@@ -116,7 +116,7 @@ namespace SalesView {
 			this->MaximizeBox = false;
 			this->Name = L"CarryOnShoppingForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"¡Producto Comprado!";
+			this->Text = L"¡Carrito actualizado!";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCheck))->EndInit();

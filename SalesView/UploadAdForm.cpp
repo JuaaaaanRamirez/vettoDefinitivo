@@ -23,7 +23,8 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 				case 1: ((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image = gcnew Bitmap(opnfd->FileName);
 					((SalesMainForm^)refForm)->SalesMainForm::company1->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->Text = anoun->WebSiteLink;
-									
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->LinkVisited = false;
+
 					((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
 					
@@ -36,6 +37,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 				case 2: ((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image = gcnew Bitmap(opnfd->FileName);
 					((SalesMainForm^)refForm)->SalesMainForm::company2->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->LinkVisited = false;
 
 					((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
@@ -47,6 +49,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 				case 3: ((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image = gcnew Bitmap(opnfd->FileName);
 					((SalesMainForm^)refForm)->SalesMainForm::company3->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->LinkVisited = false;
 
 					((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
@@ -58,6 +61,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 				case 4: ((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image = gcnew Bitmap(opnfd->FileName);
 					((SalesMainForm^)refForm)->SalesMainForm::company4->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->LinkVisited = false;
 
 					((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 					anoun->Ad = ms->ToArray();
@@ -77,6 +81,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					((SalesMainForm^)refForm)->SalesMainForm::company1->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->LinkVisited = false;
 
 					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 					((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -93,6 +98,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					((SalesMainForm^)refForm)->SalesMainForm::company2->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->LinkVisited = false;
 
 					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 					((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -109,6 +115,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					((SalesMainForm^)refForm)->SalesMainForm::company3->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->LinkVisited = false;
 
 					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 					((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -125,6 +132,7 @@ System::Void SalesView::UploadAdForm::button1_Click(System::Object^ sender, Syst
 
 					((SalesMainForm^)refForm)->SalesMainForm::company4->Text = anoun->CompanyName;
 					((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->Text = anoun->WebSiteLink;
+					((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->LinkVisited = false;
 
 					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 					((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -170,21 +178,25 @@ System::Void SalesView::UploadAdForm::button2_Click(System::Object^ sender, Syst
 		case 1: ((SalesMainForm^)refForm)->SalesMainForm::Ad1->Image = nullptr;
 			((SalesMainForm^)refForm)->SalesMainForm::company1->Text = "";
 			((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->Text = "";
+			((SalesMainForm^)refForm)->SalesMainForm::linkLabel1->LinkVisited = false;
 			aux = 1;
 			break;
 		case 2: ((SalesMainForm^)refForm)->SalesMainForm::Ad2->Image = nullptr;
 			((SalesMainForm^)refForm)->SalesMainForm::company2->Text = "";
 			((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->Text = "";
+			((SalesMainForm^)refForm)->SalesMainForm::linkLabel2->LinkVisited = false;
 			aux = 1;
 			break;
 		case 3: ((SalesMainForm^)refForm)->SalesMainForm::Ad3->Image = nullptr;
 			((SalesMainForm^)refForm)->SalesMainForm::company3->Text = "";
 			((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->Text = "";
+			((SalesMainForm^)refForm)->SalesMainForm::linkLabel3->LinkVisited = false;
 			aux = 1;
 			break;
 		case 4: ((SalesMainForm^)refForm)->SalesMainForm::Ad4->Image = nullptr;
 			((SalesMainForm^)refForm)->SalesMainForm::company4->Text = "";
 			((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->Text = "";
+			((SalesMainForm^)refForm)->SalesMainForm::linkLabel4->LinkVisited = false;
 			aux = 1;
 			break;
 		default:

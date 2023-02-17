@@ -100,14 +100,14 @@ namespace SalesView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Window;
-			this->ClientSize = System::Drawing::Size(217, 203);
+			this->ClientSize = System::Drawing::Size(237, 203);
 			this->Controls->Add(this->btnLoguin);
 			this->Controls->Add(this->lbCart);
 			this->Controls->Add(this->pbWait);
 			this->MaximizeBox = false;
 			this->Name = L"LoginFirstForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"¡Logueáte!";
+			this->Text = L"¡Loguearse!";
 			this->Load += gcnew System::EventHandler(this, &LoginFirstForm::LoginFirstForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbWait))->EndInit();
 			this->ResumeLayout(false);

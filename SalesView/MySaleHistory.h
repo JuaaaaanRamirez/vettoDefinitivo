@@ -86,39 +86,50 @@ namespace SalesView {
 				this->IdSale,
 					this->DateSale, this->SaleSeller, this->PriceSale
 			});
-			this->dgvMyShopping->Location = System::Drawing::Point(38, 88);
+			this->dgvMyShopping->Location = System::Drawing::Point(51, 108);
+			this->dgvMyShopping->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgvMyShopping->Name = L"dgvMyShopping";
-			this->dgvMyShopping->Size = System::Drawing::Size(453, 288);
+			this->dgvMyShopping->RowHeadersWidth = 51;
+			this->dgvMyShopping->Size = System::Drawing::Size(604, 354);
 			this->dgvMyShopping->TabIndex = 0;
 			// 
 			// IdSale
 			// 
 			this->IdSale->HeaderText = L"Id";
+			this->IdSale->MinimumWidth = 6;
 			this->IdSale->Name = L"IdSale";
+			this->IdSale->Width = 125;
 			// 
 			// DateSale
 			// 
 			this->DateSale->HeaderText = L"Fecha de compra";
+			this->DateSale->MinimumWidth = 6;
 			this->DateSale->Name = L"DateSale";
+			this->DateSale->Width = 125;
 			// 
 			// SaleSeller
 			// 
 			this->SaleSeller->HeaderText = L"Vendedor";
+			this->SaleSeller->MinimumWidth = 6;
 			this->SaleSeller->Name = L"SaleSeller";
+			this->SaleSeller->Width = 125;
 			// 
 			// PriceSale
 			// 
 			this->PriceSale->HeaderText = L"Precio total de la venta";
+			this->PriceSale->MinimumWidth = 6;
 			this->PriceSale->Name = L"PriceSale";
+			this->PriceSale->Width = 125;
 			// 
 			// lbTitle
 			// 
 			this->lbTitle->AutoSize = true;
 			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbTitle->Location = System::Drawing::Point(111, 26);
+			this->lbTitle->Location = System::Drawing::Point(148, 32);
+			this->lbTitle->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbTitle->Name = L"lbTitle";
-			this->lbTitle->Size = System::Drawing::Size(173, 20);
+			this->lbTitle->Size = System::Drawing::Size(208, 25);
 			this->lbTitle->TabIndex = 1;
 			this->lbTitle->Text = L"Historial de compras";
 			this->lbTitle->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -126,23 +137,25 @@ namespace SalesView {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(38, 13);
+			this->pictureBox1->Location = System::Drawing::Point(51, 16);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(89, 47);
+			this->pictureBox1->Size = System::Drawing::Size(119, 58);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
 			// 
 			// MySaleHistory
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(541, 432);
+			this->ClientSize = System::Drawing::Size(721, 532);
 			this->Controls->Add(this->lbTitle);
 			this->Controls->Add(this->dgvMyShopping);
 			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MySaleHistory";
-			this->Text = L"MySaleHistory";
+			this->Text = L"Mis compras";
 			this->Load += gcnew System::EventHandler(this, &MySaleHistory::MySaleHistory_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMyShopping))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
