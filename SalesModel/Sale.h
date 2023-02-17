@@ -18,7 +18,7 @@ namespace SalesModel {
     public:
         property int Id;
         //property String^ TxnDate;
-        property char Status;  // Thsi is to SALE STATES
+        property String^ Status;  // Thsi is to SALE STATES
         property double Total;
         property String^ Address;
         property String^ Reference;

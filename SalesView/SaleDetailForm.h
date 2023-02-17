@@ -30,6 +30,9 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cantidad;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubTotal;
+	private: System::Windows::Forms::Label^ lbPaidMode;
+	private: System::Windows::Forms::ComboBox^ cbPaidMode;
+
 
 	public:
 		   static SaleDetailForm^ mySaleDetail;
@@ -156,6 +159,8 @@ namespace SalesView {
 			this->txtDate = (gcnew System::Windows::Forms::TextBox());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
 			this->lbSaleID = (gcnew System::Windows::Forms::Label());
+			this->lbPaidMode = (gcnew System::Windows::Forms::Label());
+			this->cbPaidMode = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -196,7 +201,7 @@ namespace SalesView {
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->Location = System::Drawing::Point(40, 180);
+			this->btnAdd->Location = System::Drawing::Point(40, 210);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(180, 30);
 			this->btnAdd->TabIndex = 5;
@@ -206,7 +211,7 @@ namespace SalesView {
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(250, 180);
+			this->btnDelete->Location = System::Drawing::Point(250, 210);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(180, 30);
 			this->btnDelete->TabIndex = 6;
@@ -248,7 +253,7 @@ namespace SalesView {
 				this->Id, this->Nombre,
 					this->Precio, this->Cantidad, this->SubTotal
 			});
-			this->dgvSaleDetail->Location = System::Drawing::Point(5, 230);
+			this->dgvSaleDetail->Location = System::Drawing::Point(5, 260);
 			this->dgvSaleDetail->Name = L"dgvSaleDetail";
 			this->dgvSaleDetail->RowHeadersWidth = 51;
 			this->dgvSaleDetail->RowTemplate->Height = 24;
@@ -297,7 +302,7 @@ namespace SalesView {
 			// 
 			// btnPaid
 			// 
-			this->btnPaid->Location = System::Drawing::Point(65, 470);
+			this->btnPaid->Location = System::Drawing::Point(65, 500);
 			this->btnPaid->Name = L"btnPaid";
 			this->btnPaid->Size = System::Drawing::Size(120, 30);
 			this->btnPaid->TabIndex = 11;
@@ -308,7 +313,7 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(260, 425);
+			this->label5->Location = System::Drawing::Point(260, 455);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(75, 16);
 			this->label5->TabIndex = 13;
@@ -317,7 +322,7 @@ namespace SalesView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(260, 450);
+			this->label6->Location = System::Drawing::Point(260, 480);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 14;
@@ -326,7 +331,7 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(260, 400);
+			this->label4->Location = System::Drawing::Point(260, 430);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 15;
@@ -335,7 +340,7 @@ namespace SalesView {
 			// 
 			// txtSubTotal
 			// 
-			this->txtSubTotal->Location = System::Drawing::Point(355, 400);
+			this->txtSubTotal->Location = System::Drawing::Point(355, 430);
 			this->txtSubTotal->Name = L"txtSubTotal";
 			this->txtSubTotal->ReadOnly = true;
 			this->txtSubTotal->Size = System::Drawing::Size(100, 22);
@@ -343,7 +348,7 @@ namespace SalesView {
 			// 
 			// txtIGV
 			// 
-			this->txtIGV->Location = System::Drawing::Point(355, 425);
+			this->txtIGV->Location = System::Drawing::Point(355, 455);
 			this->txtIGV->Name = L"txtIGV";
 			this->txtIGV->ReadOnly = true;
 			this->txtIGV->Size = System::Drawing::Size(100, 22);
@@ -351,7 +356,7 @@ namespace SalesView {
 			// 
 			// txtTotal
 			// 
-			this->txtTotal->Location = System::Drawing::Point(355, 450);
+			this->txtTotal->Location = System::Drawing::Point(355, 480);
 			this->txtTotal->Name = L"txtTotal";
 			this->txtTotal->ReadOnly = true;
 			this->txtTotal->Size = System::Drawing::Size(100, 22);
@@ -384,11 +389,32 @@ namespace SalesView {
 			this->lbSaleID->TabIndex = 21;
 			this->lbSaleID->Text = L"ID de venta:";
 			// 
+			// lbPaidMode
+			// 
+			this->lbPaidMode->AutoSize = true;
+			this->lbPaidMode->Location = System::Drawing::Point(5, 170);
+			this->lbPaidMode->Name = L"lbPaidMode";
+			this->lbPaidMode->Size = System::Drawing::Size(75, 32);
+			this->lbPaidMode->TabIndex = 22;
+			this->lbPaidMode->Text = L"Método de \r\npago:";
+			// 
+			// cbPaidMode
+			// 
+			this->cbPaidMode->FormattingEnabled = true;
+			this->cbPaidMode->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Efectivo", L"Paypal", L"PagoEfectivo", L"Tarjeta de débito/crédito" });
+			this->cbPaidMode->Location = System::Drawing::Point(105, 170);
+			this->cbPaidMode->Name = L"cbPaidMode";
+			this->cbPaidMode->Size = System::Drawing::Size(350, 24);
+			this->cbPaidMode->TabIndex = 23;
+			this->cbPaidMode->SelectedValueChanged += gcnew System::EventHandler(this, &SaleDetailForm::cbPaidMode_SelectedValueChanged);
+			// 
 			// SaleDetailForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(472, 503);
+			this->ClientSize = System::Drawing::Size(472, 533);
+			this->Controls->Add(this->cbPaidMode);
+			this->Controls->Add(this->lbPaidMode);
 			this->Controls->Add(this->lbSaleID);
 			this->Controls->Add(this->txtSaleId);
 			this->Controls->Add(this->txtDate);
@@ -428,6 +454,7 @@ namespace SalesView {
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			txtUserName->Text = "" + mySale->Customer->Username;
 			txtAddress->Text = "" + mySale->Customer->Address;
+			cbPaidMode->Text = "" + mySale->PaidMode;
 			// Edit Customer
 			if (mySale->Customer->Username == "") txtUserName->ReadOnly = false;
 
@@ -463,6 +490,10 @@ namespace SalesView {
 		// Verification
 		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
 		if (txtAddress->Text->Trim() == "") { MessageBox::Show("La dirección del cliente no puede estar vacía"); return; }
+		if (!(cbPaidMode->Text->Equals("Efectivo") ||
+			cbPaidMode->Text->Equals("Paypal") ||
+			cbPaidMode->Text->Equals("PagoEfectivo") ||
+			cbPaidMode->Text->Equals("Tarjeta de débito/crédito"))) { MessageBox::Show("Seleccione un método de pago correcto"); return;}
 		Sale^ mySale = Controller::QuerySaleById(saleId);
 		if (mySale->SaleDetails->Count==0){ MessageBox::Show("La lista no puede estar vacía"); return; }
 		paid = true;
@@ -559,6 +590,11 @@ private: System::Void txtReference_TextChanged(System::Object^ sender, System::E
 	}
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void cbPaidMode_SelectedValueChanged(System::Object^ sender, System::EventArgs^ e) {
+		Sale^ mySale = Controller::QuerySaleById(saleId);
+		mySale->PaidMode = cbPaidMode->Text;
+		Controller::UpdateSale(mySale);
 }
 };
 }
