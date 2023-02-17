@@ -9,18 +9,24 @@ namespace SalesView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+	using namespace SalesController;		// Controller
+	using namespace SalesModel;				// Classes and Instances
+	using namespace System::Collections::Generic;	 // List^
+
 	/// <summary>
 	/// Resumen de ProductStatusForm
 	/// </summary>
 	public ref class ProductStatusForm : public System::Windows::Forms::Form
 	{
 	public:
-		ProductStatusForm(void)
+		int saleId;
+		ProductStatusForm(int saleId)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->saleId = saleId;
 		}
 
 	protected:
@@ -49,7 +55,7 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubTotal;
 	private: System::Windows::Forms::Button^ btnCancel;
 	private: System::Windows::Forms::Button^ btnClaim;
-	private: System::Windows::Forms::ComboBox^ cbPaidMode;
+
 	private: System::Windows::Forms::Label^ lbPaidMode;
 	private: System::Windows::Forms::Label^ lbSaleID;
 	private: System::Windows::Forms::TextBox^ txtSaleId;
@@ -70,6 +76,8 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ lbStatus;
 	private: System::Windows::Forms::TextBox^ txtStatus;
 	private: System::Windows::Forms::TextBox^ txtClaim;
+	private: System::Windows::Forms::TextBox^ txtPaidMode;
+
 
 
 
@@ -103,7 +111,6 @@ namespace SalesView {
 			this->SubTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnCancel = (gcnew System::Windows::Forms::Button());
 			this->btnClaim = (gcnew System::Windows::Forms::Button());
-			this->cbPaidMode = (gcnew System::Windows::Forms::ComboBox());
 			this->lbPaidMode = (gcnew System::Windows::Forms::Label());
 			this->lbSaleID = (gcnew System::Windows::Forms::Label());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
@@ -120,6 +127,7 @@ namespace SalesView {
 			this->lbStatus = (gcnew System::Windows::Forms::Label());
 			this->txtStatus = (gcnew System::Windows::Forms::TextBox());
 			this->txtClaim = (gcnew System::Windows::Forms::TextBox());
+			this->txtPaidMode = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -259,16 +267,6 @@ namespace SalesView {
 			this->btnClaim->TabIndex = 28;
 			this->btnClaim->Text = L"Reclamar";
 			this->btnClaim->UseVisualStyleBackColor = true;
-			// 
-			// cbPaidMode
-			// 
-			this->cbPaidMode->BackColor = System::Drawing::SystemColors::Control;
-			this->cbPaidMode->FormattingEnabled = true;
-			this->cbPaidMode->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Efectivo", L"Paypal", L"PagoEfectivo", L"Tarjeta de débito/crédito" });
-			this->cbPaidMode->Location = System::Drawing::Point(126, 172);
-			this->cbPaidMode->Name = L"cbPaidMode";
-			this->cbPaidMode->Size = System::Drawing::Size(325, 24);
-			this->cbPaidMode->TabIndex = 40;
 			// 
 			// lbPaidMode
 			// 
@@ -414,17 +412,26 @@ namespace SalesView {
 			this->txtClaim->Size = System::Drawing::Size(350, 55);
 			this->txtClaim->TabIndex = 45;
 			// 
+			// txtPaidMode
+			// 
+			this->txtPaidMode->BackColor = System::Drawing::SystemColors::Control;
+			this->txtPaidMode->Location = System::Drawing::Point(126, 174);
+			this->txtPaidMode->Name = L"txtPaidMode";
+			this->txtPaidMode->ReadOnly = true;
+			this->txtPaidMode->Size = System::Drawing::Size(324, 22);
+			this->txtPaidMode->TabIndex = 46;
+			// 
 			// ProductStatusForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(982, 503);
+			this->Controls->Add(this->txtPaidMode);
 			this->Controls->Add(this->txtClaim);
 			this->Controls->Add(this->lbStatus);
 			this->Controls->Add(this->txtStatus);
 			this->Controls->Add(this->lbAddress);
 			this->Controls->Add(this->txtAddress);
-			this->Controls->Add(this->cbPaidMode);
 			this->Controls->Add(this->lbPaidMode);
 			this->Controls->Add(this->lbSaleID);
 			this->Controls->Add(this->txtSaleId);
@@ -448,11 +455,53 @@ namespace SalesView {
 			this->Controls->Add(this->lbTitle);
 			this->Name = L"ProductStatusForm";
 			this->Text = L"ProductStatusForm";
+			this->Load += gcnew System::EventHandler(this, &ProductStatusForm::ProductStatusForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+
+		void ShowData() {
+
+			// Sale
+			Sale^ mySale = Controller::QuerySaleById(saleId);
+			txtSaleId->Text = "" + mySale->Id;
+			txtDate->Text = "" + mySale->SaleDate; // Today
+			txtUserName->Text = "" + mySale->Customer->Username;
+			txtSalePerson->Text = "" + mySale->StoreManager->Name;
+			txtReference->Text = "" + mySale->Reference;
+			txtAddress->Text = "" + mySale->Customer->Address;
+			txtPaidMode->Text = "" + mySale->PaidMode;
+			txtStatus->Text = "" + mySale->Status;
+		}
+		void ShowShoppingCart() {
+			// Dgv SaleDetails
+			List<Sale^>^ mysaleList = Controller::QueryAllSales();		// Make List
+			dgvSaleDetail->Rows->Clear();							    // Clear Dgv
+			double SubTotal = 0;
+
+			for (int i = 0; i < mysaleList->Count; i++)		   // Look for!
+				if (i == saleId) {
+					for (int j = 0; j < mysaleList[i]->SaleDetails->Count; j++) {
+						dgvSaleDetail->Rows->Add(gcnew array<String^>{
+							"" + mysaleList[i]->SaleDetails[j]->Id,
+								"" + mysaleList[i]->SaleDetails[j]->Product->Name,
+								"" + mysaleList[i]->SaleDetails[j]->UnitPrice,
+								"" + mysaleList[i]->SaleDetails[j]->Quantity,
+								"" + mysaleList[i]->SaleDetails[j]->SubTotal
+						});
+					}
+					txtSubTotal->Text = "" + mysaleList[i]->Total * (0.82);
+					txtIGV->Text = "" + mysaleList[i]->Total * (0.18);
+					txtTotal->Text = "" + mysaleList[i]->Total;
+				}
+
+		}
+	private: System::Void ProductStatusForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowData();
+		ShowShoppingCart();
+	}
+};
 }
