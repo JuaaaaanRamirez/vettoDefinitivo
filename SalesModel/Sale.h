@@ -17,8 +17,8 @@ namespace SalesModel {
     public ref class Sale {
     public:
         property int Id;
-        property String^ TxnDate;
-        property char Status;
+        //property String^ TxnDate;
+        property char Status;  // Thsi is to SALE STATES
         property double Total;
         property String^ Address;
         property String^ Reference;
