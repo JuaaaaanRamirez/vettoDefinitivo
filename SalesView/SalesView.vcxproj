@@ -140,6 +140,9 @@
     <ClInclude Include="MySaleHistory.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MyWishList.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="NewCustomerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -191,6 +194,7 @@
     <ClCompile Include="CarryOnShoppingForm.cpp" />
     <ClCompile Include="LoginFirstForm.cpp" />
     <ClCompile Include="MySaleHistory.cpp" />
+    <ClCompile Include="MyWishList.cpp" />
     <ClCompile Include="ProductSearchForm.cpp" />
     <ClCompile Include="ProductStatusForm.cpp" />
     <ClCompile Include="SalesMainForAllForm.cpp" />
@@ -243,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MySaleHistory.resx">
       <DependentUpon>MySaleHistory.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyWishList.resx">
+      <DependentUpon>MyWishList.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerForm.resx">
       <DependentUpon>NewCustomerForm.h</DependentUpon>
