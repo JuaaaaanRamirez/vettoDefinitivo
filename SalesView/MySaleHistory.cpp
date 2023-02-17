@@ -23,3 +23,25 @@ System::Void SalesView::MySaleHistory::MySaleHistory_Load(System::Object^ sender
 	dgvMyShopping->ReadOnly=true;
     //return System::Void();
 }
+
+System::Void SalesView::MySaleHistory::dgvMyShopping_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+	ProductStatusForm^ myStatus = gcnew ProductStatusForm(Int32::Parse(dgvMyShopping->Rows[e->RowIndex]->Cells[0]->Value->ToString()));
+	//int bruh = Int32::Parse(dgvMyShopping->Rows[e->RowIndex]->Cells[0]->Value->ToString());
+	myStatus->ShowDialog();
+	List<Sale^>^ mySells = Controller::QueryAllSales();
+	dgvMyShopping->Rows->Clear();
+	for (int i = 0; i < mySells->Count; i++) {
+		if (SalesMainForm::person->Name == mySells[i]->Customer->Name) {
+			dgvMyShopping->Rows->Add(gcnew array<String^>{
+
+				"" + mySells[i]->Id,
+					mySells[i]->SaleDate,
+					mySells[i]->StoreManager->Name,
+					"" + mySells[i]->Total,
+					mySells[i]->PaidMode
+			});
+		}
+	}
+	dgvMyShopping->ReadOnly = true;
+}

@@ -75,7 +75,7 @@ namespace SalesView {
 
 	private: System::Windows::Forms::Label^ lbStatus;
 	private: System::Windows::Forms::TextBox^ txtStatus;
-	private: System::Windows::Forms::TextBox^ txtClaim;
+
 	private: System::Windows::Forms::TextBox^ txtPaidMode;
 
 
@@ -126,7 +126,6 @@ namespace SalesView {
 			this->txtAddress = (gcnew System::Windows::Forms::TextBox());
 			this->lbStatus = (gcnew System::Windows::Forms::Label());
 			this->txtStatus = (gcnew System::Windows::Forms::TextBox());
-			this->txtClaim = (gcnew System::Windows::Forms::TextBox());
 			this->txtPaidMode = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
@@ -257,6 +256,7 @@ namespace SalesView {
 			this->btnCancel->TabIndex = 27;
 			this->btnCancel->Text = L"Cancelar Pedido";
 			this->btnCancel->UseVisualStyleBackColor = true;
+			this->btnCancel->Click += gcnew System::EventHandler(this, &ProductStatusForm::btnCancel_Click);
 			// 
 			// btnClaim
 			// 
@@ -267,6 +267,7 @@ namespace SalesView {
 			this->btnClaim->TabIndex = 28;
 			this->btnClaim->Text = L"Reclamar";
 			this->btnClaim->UseVisualStyleBackColor = true;
+			this->btnClaim->Click += gcnew System::EventHandler(this, &ProductStatusForm::btnClaim_Click);
 			// 
 			// lbPaidMode
 			// 
@@ -405,16 +406,6 @@ namespace SalesView {
 			this->txtStatus->Size = System::Drawing::Size(350, 22);
 			this->txtStatus->TabIndex = 43;
 			// 
-			// txtClaim
-			// 
-			this->txtClaim->Location = System::Drawing::Point(570, 144);
-			this->txtClaim->Multiline = true;
-			this->txtClaim->Name = L"txtClaim";
-			this->txtClaim->ReadOnly = true;
-			this->txtClaim->Size = System::Drawing::Size(350, 55);
-			this->txtClaim->TabIndex = 45;
-			this->txtClaim->Visible = false;
-			// 
 			// txtPaidMode
 			// 
 			this->txtPaidMode->BackColor = System::Drawing::SystemColors::Control;
@@ -430,7 +421,6 @@ namespace SalesView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(982, 503);
 			this->Controls->Add(this->txtPaidMode);
-			this->Controls->Add(this->txtClaim);
 			this->Controls->Add(this->lbStatus);
 			this->Controls->Add(this->txtStatus);
 			this->Controls->Add(this->lbAddress);
@@ -479,10 +469,11 @@ namespace SalesView {
 			if (mySale->Status=='A') txtStatus->Text = "REGISTRADO";
 			if (mySale->Status == 'B') txtStatus->Text = "ENVIADO";
 			if (mySale->Status == 'C') txtStatus->Text = "ENTREGADO";
-			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F') txtClaim->Visible = true;
+			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F') btnClaim->Visible = false;
 			if (mySale->Status == 'D') txtStatus->Text = "PRESENTA RECLAMO";
 			if (mySale->Status == 'E') txtStatus->Text = "REEMBOLSADO";
 			if (mySale->Status == 'F') txtStatus->Text = "NO PROCEDE RECLAMO";
+			if (mySale->Status == 'G') { txtStatus->Text = "CANCELADO"; btnCancel->Visible = false; }
 		}
 		void ShowShoppingCart() {
 			// Dgv SaleDetails
@@ -508,6 +499,8 @@ namespace SalesView {
 
 		}
 	private: System::Void ProductStatusForm_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnClaim_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
 

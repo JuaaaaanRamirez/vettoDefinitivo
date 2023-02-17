@@ -166,11 +166,6 @@ namespace SalesView {
 		}
 #pragma endregion
 	private: System::Void MySaleHistory_Load(System::Object^ sender, System::EventArgs^ e);
-
-	private: System::Void dgvMyShopping_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		ProductStatusForm^ myStatus = gcnew ProductStatusForm(Int32::Parse(dgvMyShopping->Rows[e->RowIndex]->Cells[0]->Value->ToString()));
-		//int bruh = Int32::Parse(dgvMyShopping->Rows[e->RowIndex]->Cells[0]->Value->ToString());
-		myStatus->ShowDialog();
-	}
+	private: System::Void dgvMyShopping_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }
