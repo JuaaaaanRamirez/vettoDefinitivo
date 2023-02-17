@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ProductStatusForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -87,11 +87,12 @@ namespace SalesView {
 					this->DateSale, this->SaleSeller, this->PriceSale
 			});
 			this->dgvMyShopping->Location = System::Drawing::Point(51, 108);
-			this->dgvMyShopping->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgvMyShopping->Margin = System::Windows::Forms::Padding(4);
 			this->dgvMyShopping->Name = L"dgvMyShopping";
 			this->dgvMyShopping->RowHeadersWidth = 51;
 			this->dgvMyShopping->Size = System::Drawing::Size(604, 354);
 			this->dgvMyShopping->TabIndex = 0;
+			this->dgvMyShopping->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MySaleHistory::dgvMyShopping_CellDoubleClick);
 			// 
 			// IdSale
 			// 
@@ -138,7 +139,7 @@ namespace SalesView {
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(51, 16);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(119, 58);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -153,7 +154,7 @@ namespace SalesView {
 			this->Controls->Add(this->lbTitle);
 			this->Controls->Add(this->dgvMyShopping);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MySaleHistory";
 			this->Text = L"Mis compras";
 			this->Load += gcnew System::EventHandler(this, &MySaleHistory::MySaleHistory_Load);
@@ -166,5 +167,9 @@ namespace SalesView {
 #pragma endregion
 	private: System::Void MySaleHistory_Load(System::Object^ sender, System::EventArgs^ e);
 
-	};
+	private: System::Void dgvMyShopping_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		ProductStatusForm^ myStatus = gcnew ProductStatusForm();
+		myStatus->ShowDialog();
+	}
+};
 }

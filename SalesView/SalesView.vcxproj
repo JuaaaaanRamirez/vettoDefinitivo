@@ -257,6 +257,9 @@
     <EmbeddedResource Include="ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductStatusForm.resx">
+      <DependentUpon>ProductStatusForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.h</DependentUpon>
     </EmbeddedResource>
