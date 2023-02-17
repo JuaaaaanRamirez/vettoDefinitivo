@@ -437,6 +437,7 @@ namespace SalesView {
 			mysaleList[saleId]->StoreManager = storeManager;
 			mysaleList[saleId]->PaidMode = "Efectivo";
 			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); ///////Para generar ventas hace un mes
+			mysaleList[saleId]->Status = 'R';
 
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)

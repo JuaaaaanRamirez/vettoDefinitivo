@@ -1,5 +1,4 @@
 #pragma once
-
 namespace SalesView {
 
 	using namespace System;
@@ -251,7 +250,7 @@ namespace SalesView {
 			// btnCancel
 			// 
 			this->btnCancel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			this->btnCancel->Location = System::Drawing::Point(290, 430);
+			this->btnCancel->Location = System::Drawing::Point(320, 430);
 			this->btnCancel->Name = L"btnCancel";
 			this->btnCancel->Size = System::Drawing::Size(200, 35);
 			this->btnCancel->TabIndex = 27;
@@ -263,7 +262,7 @@ namespace SalesView {
 			this->btnClaim->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
 			this->btnClaim->Location = System::Drawing::Point(150, 430);
 			this->btnClaim->Name = L"btnClaim";
-			this->btnClaim->Size = System::Drawing::Size(120, 35);
+			this->btnClaim->Size = System::Drawing::Size(150, 35);
 			this->btnClaim->TabIndex = 28;
 			this->btnClaim->Text = L"Reclamar";
 			this->btnClaim->UseVisualStyleBackColor = true;
@@ -397,6 +396,8 @@ namespace SalesView {
 			// txtStatus
 			// 
 			this->txtStatus->BackColor = System::Drawing::SystemColors::Control;
+			this->txtStatus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->txtStatus->Location = System::Drawing::Point(570, 114);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->ReadOnly = true;
@@ -411,6 +412,7 @@ namespace SalesView {
 			this->txtClaim->ReadOnly = true;
 			this->txtClaim->Size = System::Drawing::Size(350, 55);
 			this->txtClaim->TabIndex = 45;
+			this->txtClaim->Visible = false;
 			// 
 			// txtPaidMode
 			// 
@@ -465,6 +467,7 @@ namespace SalesView {
 
 		void ShowData() {
 
+			//if (SalesMainForm::instance->person->Profile == 'M') { btnClaim->Text = "REVISAR RECLAMO"; btnCancel->Text = "ELIMINAR PEDIDO"; }
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
 			txtSaleId->Text = "" + mySale->Id;
@@ -474,7 +477,13 @@ namespace SalesView {
 			txtReference->Text = "" + mySale->Reference;
 			txtAddress->Text = "" + mySale->Customer->Address;
 			txtPaidMode->Text = "" + mySale->PaidMode;
-			txtStatus->Text = "" + mySale->Status;
+			if (mySale->Status=='R'||mySale->Status=='A') txtStatus->Text = "REGISTRADO";
+			if (mySale->Status == 'B') txtStatus->Text = "ENVIADO";
+			if (mySale->Status == 'C') txtStatus->Text = "ENTREGADO";
+			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F') txtClaim->Visible = true;
+			if (mySale->Status == 'D') txtStatus->Text = "PRESENTA RECLAMO";
+			if (mySale->Status == 'E') txtStatus->Text = "REEMBOLSADO";
+			if (mySale->Status == 'F') txtStatus->Text = "NO PROCEDE RECLAMO";
 		}
 		void ShowShoppingCart() {
 			// Dgv SaleDetails
