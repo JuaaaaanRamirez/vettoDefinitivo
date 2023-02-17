@@ -435,7 +435,7 @@ namespace SalesView {
 			StoreManager^ storeManager = gcnew StoreManager();
 			storeManager->Name = "Asistente virtual";
 			mysaleList[saleId]->StoreManager = storeManager;
-			mysaleList[saleId]->PaidMode = "Virtual";
+			mysaleList[saleId]->PaidMode = "Efectivo";
 			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); ///////Para generar ventas hace un mes
 
 			//Is the product repeated?
