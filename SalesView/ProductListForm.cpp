@@ -12,7 +12,7 @@ System::Void SalesView::ProductListForm::dgvProductList_CellDoubleClick(System::
 	int myUserId = Convert::ToInt32(((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text);
 	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this, myUserId);
 	ProductPresentation->ShowDialog();
-	this->Close();
+	//this->Close();
 }
 System::Void SalesView::ProductListForm::ProductListForm_Load(System::Object^ sender, System::EventArgs^ e)
 {

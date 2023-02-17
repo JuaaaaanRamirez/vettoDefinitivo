@@ -422,7 +422,7 @@ namespace SalesView {
 			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 			carryOn->ShowDialog();
-			this->Close();
+			//this->Close();
 		}
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification

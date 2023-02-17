@@ -32,10 +32,6 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubTotal;
 
 	public:
-
-
-
-
 		   static SaleDetailForm^ mySaleDetail;
 
 		SaleDetailForm(int saleId)
