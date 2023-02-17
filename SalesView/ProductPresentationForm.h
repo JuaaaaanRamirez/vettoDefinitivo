@@ -23,6 +23,9 @@ namespace SalesView {
 	public:
 		Form^ refForm;
 		int userId, saleId;
+	public: System::Windows::Forms::TextBox^ txtStock;
+	private: System::Windows::Forms::Label^ lbStock;
+	public:
 		ProductPresentationForm(Form^ form1, int userId)
 		{
 			InitializeComponent();
@@ -138,6 +141,8 @@ namespace SalesView {
 			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
 			this->lbId = (gcnew System::Windows::Forms::Label());
 			this->Wishbtn = (gcnew System::Windows::Forms::Button());
+			this->txtStock = (gcnew System::Windows::Forms::TextBox());
+			this->lbStock = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
@@ -197,7 +202,7 @@ namespace SalesView {
 			// 
 			this->Addbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Addbtn->Location = System::Drawing::Point(400, 250);
+			this->Addbtn->Location = System::Drawing::Point(400, 280);
 			this->Addbtn->Name = L"Addbtn";
 			this->Addbtn->Size = System::Drawing::Size(220, 40);
 			this->Addbtn->TabIndex = 8;
@@ -207,7 +212,7 @@ namespace SalesView {
 			// 
 			// nudAmount
 			// 
-			this->nudAmount->Location = System::Drawing::Point(370, 150);
+			this->nudAmount->Location = System::Drawing::Point(370, 180);
 			this->nudAmount->Name = L"nudAmount";
 			this->nudAmount->Size = System::Drawing::Size(345, 22);
 			this->nudAmount->TabIndex = 9;
@@ -215,7 +220,7 @@ namespace SalesView {
 			// lbAmount
 			// 
 			this->lbAmount->AutoSize = true;
-			this->lbAmount->Location = System::Drawing::Point(270, 150);
+			this->lbAmount->Location = System::Drawing::Point(270, 180);
 			this->lbAmount->Name = L"lbAmount";
 			this->lbAmount->Size = System::Drawing::Size(64, 16);
 			this->lbAmount->TabIndex = 10;
@@ -224,7 +229,7 @@ namespace SalesView {
 			// lbStarts
 			// 
 			this->lbStarts->AutoSize = true;
-			this->lbStarts->Location = System::Drawing::Point(270, 190);
+			this->lbStarts->Location = System::Drawing::Point(270, 220);
 			this->lbStarts->Name = L"lbStarts";
 			this->lbStarts->Size = System::Drawing::Size(79, 16);
 			this->lbStarts->TabIndex = 11;
@@ -234,7 +239,7 @@ namespace SalesView {
 			// 
 			this->pbSellers->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSellers.BackgroundImage")));
 			this->pbSellers->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbSellers->Location = System::Drawing::Point(565, 188);
+			this->pbSellers->Location = System::Drawing::Point(565, 218);
 			this->pbSellers->Name = L"pbSellers";
 			this->pbSellers->Size = System::Drawing::Size(35, 35);
 			this->pbSellers->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -245,7 +250,7 @@ namespace SalesView {
 			// 
 			this->pbStars->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbStars.BackgroundImage")));
 			this->pbStars->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbStars->Location = System::Drawing::Point(430, 188);
+			this->pbStars->Location = System::Drawing::Point(430, 218);
 			this->pbStars->Name = L"pbStars";
 			this->pbStars->Size = System::Drawing::Size(35, 35);
 			this->pbStars->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -257,7 +262,7 @@ namespace SalesView {
 			this->lbHearts->AutoSize = true;
 			this->lbHearts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbHearts->Location = System::Drawing::Point(395, 190);
+			this->lbHearts->Location = System::Drawing::Point(395, 220);
 			this->lbHearts->Name = L"lbHearts";
 			this->lbHearts->Size = System::Drawing::Size(48, 29);
 			this->lbHearts->TabIndex = 14;
@@ -269,7 +274,7 @@ namespace SalesView {
 			this->lbSales->AutoSize = true;
 			this->lbSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbSales->Location = System::Drawing::Point(496, 190);
+			this->lbSales->Location = System::Drawing::Point(496, 220);
 			this->lbSales->Name = L"lbSales";
 			this->lbSales->Size = System::Drawing::Size(69, 29);
 			this->lbSales->TabIndex = 15;
@@ -335,7 +340,7 @@ namespace SalesView {
 			// 
 			this->Wishbtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Wishbtn->Location = System::Drawing::Point(390, 300);
+			this->Wishbtn->Location = System::Drawing::Point(390, 330);
 			this->Wishbtn->Name = L"Wishbtn";
 			this->Wishbtn->Size = System::Drawing::Size(240, 40);
 			this->Wishbtn->TabIndex = 20;
@@ -343,11 +348,31 @@ namespace SalesView {
 			this->Wishbtn->UseVisualStyleBackColor = true;
 			this->Wishbtn->Click += gcnew System::EventHandler(this, &ProductPresentationForm::Wishbtn_Click);
 			// 
+			// txtStock
+			// 
+			this->txtStock->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->txtStock->Location = System::Drawing::Point(370, 150);
+			this->txtStock->Name = L"txtStock";
+			this->txtStock->ReadOnly = true;
+			this->txtStock->Size = System::Drawing::Size(346, 15);
+			this->txtStock->TabIndex = 21;
+			// 
+			// lbStock
+			// 
+			this->lbStock->AutoSize = true;
+			this->lbStock->Location = System::Drawing::Point(270, 150);
+			this->lbStock->Name = L"lbStock";
+			this->lbStock->Size = System::Drawing::Size(44, 16);
+			this->lbStock->TabIndex = 22;
+			this->lbStock->Text = L"Stock:";
+			// 
 			// ProductPresentationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(740, 523);
+			this->Controls->Add(this->lbStock);
+			this->Controls->Add(this->txtStock);
 			this->Controls->Add(this->Wishbtn);
 			this->Controls->Add(this->gbinformation);
 			this->Controls->Add(this->pictureBox7);
@@ -420,9 +445,11 @@ namespace SalesView {
 			// Put On Data
 			SaleDetail^ newSaleDetail= CreateSaleDetail();
 			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail
+			
+			// Carry on?
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
 			carryOn->ShowDialog();
-			//this->Close();
+			if (SaleDetailForm::paid) this->Close();
 		}
 	private: System::Void Addbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification

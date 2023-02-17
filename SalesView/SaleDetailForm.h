@@ -23,7 +23,7 @@ namespace SalesView {
 	public:
 
 		// Instances
-		static bool paid = true;
+		static bool paid=true;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
 	public:
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
@@ -460,14 +460,23 @@ namespace SalesView {
 					
 		}
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Verification
 		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
 		if (txtAddress->Text->Trim() == "") { MessageBox::Show("La dirección del cliente no puede estar vacía"); return; }
 		Sale^ mySale = Controller::QuerySaleById(saleId);
 		if (mySale->SaleDetails->Count==0){ MessageBox::Show("La lista no puede estar vacía"); return; }
 		paid = true;
+		
+		// Update Products
+		for (int i = 0; i < mySale->SaleDetails->Count; i++) {
+			Product^ myProduct = Controller::QueryProductById(mySale->SaleDetails[i]->Id);
+			myProduct->Stock= myProduct->Stock - mySale->SaleDetails[i]->Quantity;
+			Controller::UpdateProduct(myProduct);
+		}
+
+		// Great!
 		MessageBox::Show("¡Venta Exitosa!");
 		this->Close();
-
 	}
 	private: System::Void SaleDetailForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowData();
@@ -511,14 +520,18 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	if (dgvSaleDetail->Columns[e->ColumnIndex]->Name == "Cantidad") {
-		dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
-			Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
-			Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
-		// Update Sale
+		// Sale
 		Sale^ currentSale = Controller::QuerySaleById(saleId);
-		currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
-		currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
-		Controller::UpdateSale(currentSale);
+		if (Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) > currentSale->SaleDetails[e->RowIndex]->Product->Stock) MessageBox::Show("Stock superado");
+		else {
+			dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
+				Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
+				Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+			// Update Sale
+			currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
+			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+			Controller::UpdateSale(currentSale);
+		}
 		ShowData();
 		ShowShoppingCart();
 	}

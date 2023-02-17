@@ -14,10 +14,11 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	// Put on Data
 	txtId->Text = "" + p->Id;
 	txtProductName->Text = "" + p->Name;
+	txtStock->Text = "" + p->Stock;
 	txtDescription->Text = "" + p->Description;
 	lbHearts->Text = "" + p->Starts;
 	lbSales->Text = "" + p->Sales;
-	p->Searches++;  // Got a search
+	p->Searches++;  // Plus search
 
 	Controller::UpdateProduct(p);
 

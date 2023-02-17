@@ -20,6 +20,7 @@ namespace SalesView {
 	{
 		Form^ refForm; //Variable de instancia
 	public:
+
 		ProductListForm(Form^ form)
 		{
 			InitializeComponent();
