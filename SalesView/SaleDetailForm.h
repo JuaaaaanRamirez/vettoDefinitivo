@@ -312,29 +312,30 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(285, 425);
+			this->label5->Location = System::Drawing::Point(260, 425);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(38, 16);
+			this->label5->Size = System::Drawing::Size(75, 16);
 			this->label5->TabIndex = 13;
-			this->label5->Text = L"I.G.V.";
+			this->label5->Text = L"I.G.V (18%).";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(285, 450);
+			this->label6->Location = System::Drawing::Point(260, 450);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(38, 16);
+			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 14;
-			this->label6->Text = L"Total";
+			this->label6->Text = L"Total (S/.):";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(285, 400);
+			this->label4->Location = System::Drawing::Point(260, 400);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(65, 16);
+			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 15;
-			this->label4->Text = L"SubTotal:";
+			this->label4->Text = L"SubTotal (S/.):";
+			this->label4->Click += gcnew System::EventHandler(this, &SaleDetailForm::label4_Click);
 			// 
 			// txtSubTotal
 			// 
@@ -547,6 +548,8 @@ private: System::Void txtReference_TextChanged(System::Object^ sender, System::E
 		mySale->Reference = txtReference->Text;
 		Controller::UpdateSale(mySale);
 	}
+}
+private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

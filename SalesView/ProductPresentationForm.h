@@ -430,7 +430,9 @@ namespace SalesView {
 			Person^ user = Controller::QueryUserById(userId);
 			if (user->Profile == 'S' || user->Profile == 'C') { // Is it a customer?
 				if (Convert::ToInt32(nudAmount->Text) != 0) {	// You choosed an amount?
-					GetSale();
+					Product^ myProduct = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+					if (Convert::ToInt32(nudAmount->Text) > myProduct->Stock) { MessageBox::Show("La cantidad seleccionada supera el stock"); return; }
+					else GetSale();
 				}
 				else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
 			}
