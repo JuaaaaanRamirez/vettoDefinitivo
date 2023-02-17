@@ -5,6 +5,7 @@
 
 #pragma once
 #include "Person.h"
+#include "Product.h"
 using namespace System;
 using namespace System::Collections::Generic;
 
