@@ -147,8 +147,9 @@ namespace SalesView {
 				static_cast<System::Byte>(0)));
 			this->label12->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label12->Location = System::Drawing::Point(0, 0);
+			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(423, 49);
+			this->label12->Size = System::Drawing::Size(564, 60);
 			this->label12->TabIndex = 7;
 			this->label12->Text = L"Registro de nuevo ususario";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -156,63 +157,70 @@ namespace SalesView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(60, 60);
+			this->label2->Location = System::Drawing::Point(80, 74);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 13);
+			this->label2->Size = System::Drawing::Size(56, 16);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nombre";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(60, 89);
+			this->label3->Location = System::Drawing::Point(80, 110);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(47, 13);
+			this->label3->Size = System::Drawing::Size(60, 16);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Apellido ";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(60, 125);
+			this->label4->Location = System::Drawing::Point(80, 154);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(35, 13);
+			this->label4->Size = System::Drawing::Size(44, 16);
 			this->label4->TabIndex = 0;
 			this->label4->Text = L"Email ";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(60, 159);
+			this->label5->Location = System::Drawing::Point(80, 196);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(46, 13);
+			this->label5->Size = System::Drawing::Size(57, 16);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"Direción";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(60, 213);
+			this->label6->Location = System::Drawing::Point(80, 262);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(42, 13);
+			this->label6->Size = System::Drawing::Size(52, 16);
 			this->label6->TabIndex = 0;
 			this->label6->Text = L"Celular ";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(60, 281);
+			this->label7->Location = System::Drawing::Point(80, 346);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(26, 13);
+			this->label7->Size = System::Drawing::Size(30, 16);
 			this->label7->TabIndex = 0;
 			this->label7->Text = L"DNI";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(60, 251);
+			this->label8->Location = System::Drawing::Point(80, 309);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(54, 13);
+			this->label8->Size = System::Drawing::Size(64, 16);
 			this->label8->TabIndex = 0;
 			this->label8->Text = L"Fec. Nac.";
 			this->label8->Click += gcnew System::EventHandler(this, &NewCustomerForm::label8_Click);
@@ -220,68 +228,77 @@ namespace SalesView {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(60, 312);
+			this->label10->Location = System::Drawing::Point(80, 384);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(42, 13);
+			this->label10->Size = System::Drawing::Size(52, 16);
 			this->label10->TabIndex = 0;
 			this->label10->Text = L"Género";
 			// 
 			// txtFirstName
 			// 
-			this->txtFirstName->Location = System::Drawing::Point(132, 60);
+			this->txtFirstName->Location = System::Drawing::Point(176, 74);
+			this->txtFirstName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtFirstName->Name = L"txtFirstName";
-			this->txtFirstName->Size = System::Drawing::Size(212, 20);
+			this->txtFirstName->Size = System::Drawing::Size(281, 22);
 			this->txtFirstName->TabIndex = 1;
 			// 
 			// txtLastName
 			// 
-			this->txtLastName->Location = System::Drawing::Point(132, 89);
+			this->txtLastName->Location = System::Drawing::Point(176, 110);
+			this->txtLastName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtLastName->Name = L"txtLastName";
-			this->txtLastName->Size = System::Drawing::Size(212, 20);
+			this->txtLastName->Size = System::Drawing::Size(281, 22);
 			this->txtLastName->TabIndex = 2;
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(132, 213);
+			this->txtPhoneNumber->Location = System::Drawing::Point(176, 262);
+			this->txtPhoneNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
-			this->txtPhoneNumber->Size = System::Drawing::Size(139, 20);
+			this->txtPhoneNumber->Size = System::Drawing::Size(184, 22);
 			this->txtPhoneNumber->TabIndex = 5;
 			// 
 			// txtAddress
 			// 
-			this->txtAddress->Location = System::Drawing::Point(132, 152);
+			this->txtAddress->Location = System::Drawing::Point(176, 187);
+			this->txtAddress->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtAddress->Multiline = true;
 			this->txtAddress->Name = L"txtAddress";
-			this->txtAddress->Size = System::Drawing::Size(212, 47);
+			this->txtAddress->Size = System::Drawing::Size(281, 57);
 			this->txtAddress->TabIndex = 4;
 			// 
 			// txtEmail
 			// 
-			this->txtEmail->Location = System::Drawing::Point(132, 122);
+			this->txtEmail->Location = System::Drawing::Point(176, 150);
+			this->txtEmail->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtEmail->Name = L"txtEmail";
-			this->txtEmail->Size = System::Drawing::Size(212, 20);
+			this->txtEmail->Size = System::Drawing::Size(281, 22);
 			this->txtEmail->TabIndex = 3;
 			// 
 			// txtDocNumber
 			// 
-			this->txtDocNumber->Location = System::Drawing::Point(132, 278);
+			this->txtDocNumber->Location = System::Drawing::Point(176, 342);
+			this->txtDocNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtDocNumber->Name = L"txtDocNumber";
-			this->txtDocNumber->Size = System::Drawing::Size(139, 20);
+			this->txtDocNumber->Size = System::Drawing::Size(184, 22);
 			this->txtDocNumber->TabIndex = 7;
 			// 
 			// dtpBirthday
 			// 
-			this->dtpBirthday->Location = System::Drawing::Point(132, 251);
+			this->dtpBirthday->Location = System::Drawing::Point(176, 309);
+			this->dtpBirthday->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dtpBirthday->Name = L"dtpBirthday";
-			this->dtpBirthday->Size = System::Drawing::Size(212, 20);
+			this->dtpBirthday->Size = System::Drawing::Size(281, 22);
 			this->dtpBirthday->TabIndex = 6;
 			// 
 			// rbtnMasc
 			// 
 			this->rbtnMasc->AutoSize = true;
-			this->rbtnMasc->Location = System::Drawing::Point(209, 312);
+			this->rbtnMasc->Location = System::Drawing::Point(279, 384);
+			this->rbtnMasc->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->rbtnMasc->Name = L"rbtnMasc";
-			this->rbtnMasc->Size = System::Drawing::Size(73, 17);
+			this->rbtnMasc->Size = System::Drawing::Size(89, 20);
 			this->rbtnMasc->TabIndex = 9;
 			this->rbtnMasc->TabStop = true;
 			this->rbtnMasc->Text = L"Masculino";
@@ -290,9 +307,10 @@ namespace SalesView {
 			// rbtnFem
 			// 
 			this->rbtnFem->AutoSize = true;
-			this->rbtnFem->Location = System::Drawing::Point(132, 310);
+			this->rbtnFem->Location = System::Drawing::Point(176, 382);
+			this->rbtnFem->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->rbtnFem->Name = L"rbtnFem";
-			this->rbtnFem->Size = System::Drawing::Size(71, 17);
+			this->rbtnFem->Size = System::Drawing::Size(88, 20);
 			this->rbtnFem->TabIndex = 8;
 			this->rbtnFem->TabStop = true;
 			this->rbtnFem->Text = L"Femenino";
@@ -301,59 +319,66 @@ namespace SalesView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(60, 349);
+			this->label1->Location = System::Drawing::Point(80, 430);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(46, 13);
+			this->label1->Size = System::Drawing::Size(57, 16);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Usuario ";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(60, 378);
+			this->label9->Location = System::Drawing::Point(80, 465);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(64, 13);
+			this->label9->Size = System::Drawing::Size(79, 16);
 			this->label9->TabIndex = 4;
 			this->label9->Text = L"Contraseña ";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(60, 406);
+			this->label11->Location = System::Drawing::Point(80, 500);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(100, 13);
+			this->label11->Size = System::Drawing::Size(124, 16);
 			this->label11->TabIndex = 4;
 			this->label11->Text = L"Repetir contraseña ";
 			this->label11->Click += gcnew System::EventHandler(this, &NewCustomerForm::label11_Click);
 			// 
 			// txtUsername
 			// 
-			this->txtUsername->Location = System::Drawing::Point(199, 349);
+			this->txtUsername->Location = System::Drawing::Point(265, 430);
+			this->txtUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtUsername->Name = L"txtUsername";
-			this->txtUsername->Size = System::Drawing::Size(145, 20);
+			this->txtUsername->Size = System::Drawing::Size(192, 22);
 			this->txtUsername->TabIndex = 10;
 			// 
 			// txtPassword
 			// 
-			this->txtPassword->Location = System::Drawing::Point(199, 375);
+			this->txtPassword->Location = System::Drawing::Point(265, 462);
+			this->txtPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
-			this->txtPassword->Size = System::Drawing::Size(145, 20);
+			this->txtPassword->Size = System::Drawing::Size(192, 22);
 			this->txtPassword->TabIndex = 11;
 			// 
 			// txtPasswordAgain
 			// 
-			this->txtPasswordAgain->Location = System::Drawing::Point(199, 401);
+			this->txtPasswordAgain->Location = System::Drawing::Point(265, 494);
+			this->txtPasswordAgain->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPasswordAgain->Name = L"txtPasswordAgain";
 			this->txtPasswordAgain->PasswordChar = '*';
-			this->txtPasswordAgain->Size = System::Drawing::Size(145, 20);
+			this->txtPasswordAgain->Size = System::Drawing::Size(192, 22);
 			this->txtPasswordAgain->TabIndex = 12;
 			// 
 			// btnRegister
 			// 
-			this->btnRegister->Location = System::Drawing::Point(78, 449);
+			this->btnRegister->Location = System::Drawing::Point(104, 553);
+			this->btnRegister->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnRegister->Name = L"btnRegister";
-			this->btnRegister->Size = System::Drawing::Size(75, 23);
+			this->btnRegister->Size = System::Drawing::Size(100, 28);
 			this->btnRegister->TabIndex = 13;
 			this->btnRegister->Text = L"Aceptar";
 			this->btnRegister->UseVisualStyleBackColor = true;
@@ -361,9 +386,10 @@ namespace SalesView {
 			// 
 			// btnBack
 			// 
-			this->btnBack->Location = System::Drawing::Point(248, 449);
+			this->btnBack->Location = System::Drawing::Point(331, 553);
+			this->btnBack->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnBack->Name = L"btnBack";
-			this->btnBack->Size = System::Drawing::Size(75, 23);
+			this->btnBack->Size = System::Drawing::Size(100, 28);
 			this->btnBack->TabIndex = 14;
 			this->btnBack->Text = L"Cancelar";
 			this->btnBack->UseVisualStyleBackColor = true;
@@ -371,20 +397,21 @@ namespace SalesView {
 			// 
 			// txtCustomerPoints
 			// 
-			this->txtCustomerPoints->Location = System::Drawing::Point(277, 213);
+			this->txtCustomerPoints->Location = System::Drawing::Point(369, 262);
+			this->txtCustomerPoints->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtCustomerPoints->Name = L"txtCustomerPoints";
-			this->txtCustomerPoints->Size = System::Drawing::Size(67, 20);
+			this->txtCustomerPoints->Size = System::Drawing::Size(88, 22);
 			this->txtCustomerPoints->TabIndex = 5;
 			this->txtCustomerPoints->Visible = false;
 			// 
 			// pbCustomer
 			// 
-			this->pbCustomer->ErrorImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.ErrorImage")));
-			this->pbCustomer->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.Image")));
-			this->pbCustomer->InitialImage = nullptr;
-			this->pbCustomer->Location = System::Drawing::Point(308, 281);
+			this->pbCustomer->ErrorImage = nullptr;
+			this->pbCustomer->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCustomer.InitialImage")));
+			this->pbCustomer->Location = System::Drawing::Point(411, 346);
+			this->pbCustomer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pbCustomer->Name = L"pbCustomer";
-			this->pbCustomer->Size = System::Drawing::Size(61, 50);
+			this->pbCustomer->Size = System::Drawing::Size(81, 62);
 			this->pbCustomer->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbCustomer->TabIndex = 15;
 			this->pbCustomer->TabStop = false;
@@ -392,9 +419,9 @@ namespace SalesView {
 			// 
 			// NewCustomerForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(423, 494);
+			this->ClientSize = System::Drawing::Size(564, 608);
 			this->Controls->Add(this->pbCustomer);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->btnBack);
@@ -423,6 +450,7 @@ namespace SalesView {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"NewCustomerForm";
 			this->Load += gcnew System::EventHandler(this, &NewCustomerForm::NewCustomerForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->EndInit();
@@ -474,7 +502,7 @@ namespace SalesView {
 					   return;
 				   }
 				   if (txtPasswordAgain->Text->Trim() != txtPassword->Text->Trim()) {
-					   MessageBox::Show("Las contraseña no son iguales");
+					   MessageBox::Show("Las contraseñas no son iguales");
 					   return;
 				   }
 				   if (Controller::ExistUsername(txtUsername->Text)) {
