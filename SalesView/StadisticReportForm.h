@@ -11,7 +11,7 @@ namespace SalesView {
 	using namespace System::Collections::Generic;
 	using namespace SalesModel;
 	using namespace SalesController;
-
+	using namespace System::Windows::Forms::DataVisualization::Charting;
 
 
 	/// <summary>
@@ -193,7 +193,7 @@ namespace SalesView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(48, 28);
+			this->label1->Location = System::Drawing::Point(48, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(108, 16);
 			this->label1->TabIndex = 0;
@@ -202,7 +202,7 @@ namespace SalesView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(48, 68);
+			this->label2->Location = System::Drawing::Point(45, 47);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(45, 16);
 			this->label2->TabIndex = 1;
@@ -211,7 +211,7 @@ namespace SalesView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(48, 103);
+			this->label3->Location = System::Drawing::Point(45, 89);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(73, 16);
 			this->label3->TabIndex = 2;
@@ -219,14 +219,14 @@ namespace SalesView {
 			// 
 			// dtpSaleDate
 			// 
-			this->dtpSaleDate->Location = System::Drawing::Point(130, 68);
+			this->dtpSaleDate->Location = System::Drawing::Point(145, 41);
 			this->dtpSaleDate->Name = L"dtpSaleDate";
 			this->dtpSaleDate->Size = System::Drawing::Size(200, 22);
 			this->dtpSaleDate->TabIndex = 3;
 			// 
 			// txtSaleId
 			// 
-			this->txtSaleId->Location = System::Drawing::Point(145, 103);
+			this->txtSaleId->Location = System::Drawing::Point(145, 83);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->Size = System::Drawing::Size(100, 22);
 			this->txtSaleId->TabIndex = 4;
@@ -289,7 +289,7 @@ namespace SalesView {
 			// 
 			// btShowAllSales
 			// 
-			this->btShowAllSales->Location = System::Drawing::Point(658, 68);
+			this->btShowAllSales->Location = System::Drawing::Point(719, 82);
 			this->btShowAllSales->Name = L"btShowAllSales";
 			this->btShowAllSales->Size = System::Drawing::Size(124, 59);
 			this->btShowAllSales->TabIndex = 6;
@@ -300,15 +300,15 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(139, 1328);
+			this->label4->Location = System::Drawing::Point(85, 1334);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(186, 16);
+			this->label4->Size = System::Drawing::Size(211, 16);
 			this->label4->TabIndex = 13;
-			this->label4->Text = L"Productos con stock menor a: ";
+			this->label4->Text = L"Productos cuyo stock es menor a: ";
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(341, 1328);
+			this->txtStock->Location = System::Drawing::Point(315, 1328);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(100, 22);
 			this->txtStock->TabIndex = 14;
@@ -316,11 +316,11 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(460, 1334);
+			this->label5->Location = System::Drawing::Point(433, 1334);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(66, 16);
+			this->label5->Size = System::Drawing::Size(63, 16);
 			this->label5->TabIndex = 15;
-			this->label5->Text = L"Unidades";
+			this->label5->Text = L"unidades";
 			// 
 			// btToShow
 			// 
@@ -345,6 +345,7 @@ namespace SalesView {
 			// 
 			// tabReportToday
 			// 
+			this->tabReportToday->AutoScroll = true;
 			this->tabReportToday->Controls->Add(this->chartReportToday);
 			this->tabReportToday->Location = System::Drawing::Point(4, 25);
 			this->tabReportToday->Name = L"tabReportToday";
@@ -360,13 +361,13 @@ namespace SalesView {
 			this->chartReportToday->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chartReportToday->Legends->Add(legend1);
-			this->chartReportToday->Location = System::Drawing::Point(62, 59);
+			this->chartReportToday->Location = System::Drawing::Point(6, 59);
 			this->chartReportToday->Name = L"chartReportToday";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Unidades vendidas";
 			this->chartReportToday->Series->Add(series1);
-			this->chartReportToday->Size = System::Drawing::Size(585, 473);
+			this->chartReportToday->Size = System::Drawing::Size(802, 473);
 			this->chartReportToday->TabIndex = 0;
 			this->chartReportToday->Text = L"chart1";
 			title1->Name = L"Productos vendidos hoy";
@@ -476,7 +477,7 @@ namespace SalesView {
 			// 
 			// btLookFor2
 			// 
-			this->btLookFor2->Location = System::Drawing::Point(262, 101);
+			this->btLookFor2->Location = System::Drawing::Point(270, 82);
 			this->btLookFor2->Name = L"btLookFor2";
 			this->btLookFor2->Size = System::Drawing::Size(75, 23);
 			this->btLookFor2->TabIndex = 18;
@@ -487,7 +488,7 @@ namespace SalesView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(38, 84);
+			this->label6->Location = System::Drawing::Point(45, 68);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(15, 16);
 			this->label6->TabIndex = 19;
@@ -495,7 +496,7 @@ namespace SalesView {
 			// 
 			// btLookFor1
 			// 
-			this->btLookFor1->Location = System::Drawing::Point(354, 70);
+			this->btLookFor1->Location = System::Drawing::Point(364, 41);
 			this->btLookFor1->Name = L"btLookFor1";
 			this->btLookFor1->Size = System::Drawing::Size(75, 23);
 			this->btLookFor1->TabIndex = 20;
@@ -543,7 +544,7 @@ namespace SalesView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1015, 919);
+			this->ClientSize = System::Drawing::Size(1036, 919);
 			this->Controls->Add(this->dgvStock);
 			this->Controls->Add(this->btLookFor1);
 			this->Controls->Add(this->label6);
@@ -589,8 +590,10 @@ namespace SalesView {
 				List<Product^>^ productLis1 = gcnew  List<Product^>();
 				productLis1 = Controller::GetListProductOrderBySells(salesList1);
 				int quantityOthers = 0;
-				int ToShow = 4;
+				int ToShow = 8;
 				if (productLis1->Count >= ToShow) {
+					chartReportToday->Palette = ChartColorPalette::Fire;
+
 					for (int i = 0; i < productLis1->Count; i++) {
 						if (i < ToShow) {
 							chartReportToday->Series["Unidades vendidas"]->Points->Add(productLis1[i]->SalesByTime);
@@ -624,22 +627,22 @@ namespace SalesView {
 					SellLunes++;
 					break;
 				case(2): martes += salesList1[i]->Total;
-					SellMartes;
+					SellMartes++;
 					break;
 				case(3): miercoles += salesList1[i]->Total;
-					SellMiercoles;
+					SellMiercoles++;
 					break;
 				case(4): jueves += salesList1[i]->Total;
-					SellJueves;
+					SellJueves++;
 					break;
 				case(5): viernes += salesList1[i]->Total;
-					SellViernes;
+					SellViernes++;
 					break;
 				case(6): sabado += salesList1[i]->Total;
-					SellSabado;
+					SellSabado++;
 					break;
 				case(0): domingo += salesList1[i]->Total;
-					SellDomingo;
+					SellDomingo++;
 					break;
 				default:
 					break;
@@ -648,6 +651,7 @@ namespace SalesView {
 
 			}
 			//CHART
+			chartMoneyLastWeek->Palette = ChartColorPalette::Bright;
 			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(lunes);
 			chartMoneyLastWeek->Series["Ingresos totales"]->Points[0]->AxisLabel = "Lunes";
 			chartMoneyLastWeek->Series["Ingresos totales"]->Points[0]->Label = Convert::ToString(lunes);
@@ -679,31 +683,31 @@ namespace SalesView {
 			//PIE  ############################################################################
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellLunes);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[0]->LegendText = "Lunes";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[0]->Label = Convert::ToString(SellLunes);
+			if(SellLunes!=0) pieSellsLastWeek->Series["Numero de ventas"]->Points[0]->Label = Convert::ToString(SellLunes);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellMartes);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[1]->LegendText = "Martes";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[1]->Label = Convert::ToString(SellMartes);
+			if (SellMartes != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[1]->Label = Convert::ToString(SellMartes);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellMiercoles);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[2]->LegendText = "Miercoles";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[2]->Label = Convert::ToString(SellMiercoles);
+			if (SellMiercoles != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[2]->Label = Convert::ToString(SellMiercoles);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellJueves);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[3]->LegendText = "Jueves";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[3]->Label = Convert::ToString(SellJueves);
+			if (SellJueves != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[3]->Label = Convert::ToString(SellJueves);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellViernes);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[4]->LegendText = "Viernes";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[4]->Label = Convert::ToString(SellViernes);
+			if (SellViernes != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[4]->Label = Convert::ToString(SellViernes);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellSabado);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[5]->LegendText = "Sabado";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[5]->Label = Convert::ToString(SellSabado);
+			if (SellSabado != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[5]->Label = Convert::ToString(SellSabado);
 
 			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellDomingo);
 			pieSellsLastWeek->Series["Numero de ventas"]->Points[6]->LegendText = "Domingo";
-			pieSellsLastWeek->Series["Numero de ventas"]->Points[6]->Label = Convert::ToString(SellDomingo);
+			if (SellDomingo != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[6]->Label = Convert::ToString(SellDomingo);
 
 
 		}
@@ -715,8 +719,9 @@ namespace SalesView {
 			List<Product^>^ productLis1 = gcnew  List<Product^>();
 			productLis1 = Controller::GetListProductOrderBySells(salesList1);
 			int quantityOthers = 0;
-			int ToShow = 4;
+			int ToShow = 8;
 			if (productLis1->Count >= ToShow) {
+				chartReportLastMonth->Palette = ChartColorPalette::EarthTones;
 				for (int i = 0; i < productLis1->Count; i++) {
 					if (i < ToShow) {
 						chartReportLastMonth->Series["Unidades vendidas"]->Points->Add(productLis1[i]->SalesByTime);
@@ -740,6 +745,7 @@ namespace SalesView {
 			List<StoreManager^>^ ListStoreManager = gcnew List<StoreManager^>();
 			ListStoreManager = Controller::QueryAllStoreManager();
 			double monto;
+			chartReportGoals->Palette = ChartColorPalette::Berry;
 			for (int i = 0; i < ListStoreManager->Count; i++) {
 
 				monto = 0;
