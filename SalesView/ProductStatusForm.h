@@ -19,6 +19,7 @@ namespace SalesView {
 	{
 	public:
 		int saleId;
+
 		ProductStatusForm(int saleId)
 		{
 			InitializeComponent();
@@ -466,8 +467,6 @@ namespace SalesView {
 #pragma endregion
 
 		void ShowData() {
-
-			//if (SalesMainForm::instance->person->Profile == 'M') { btnClaim->Text = "REVISAR RECLAMO"; btnCancel->Text = "ELIMINAR PEDIDO"; }
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
 			txtSaleId->Text = "" + mySale->Id;
@@ -477,7 +476,7 @@ namespace SalesView {
 			txtReference->Text = "" + mySale->Reference;
 			txtAddress->Text = "" + mySale->Customer->Address;
 			txtPaidMode->Text = "" + mySale->PaidMode;
-			if (mySale->Status=='R'||mySale->Status=='A') txtStatus->Text = "REGISTRADO";
+			if (mySale->Status=='A') txtStatus->Text = "REGISTRADO";
 			if (mySale->Status == 'B') txtStatus->Text = "ENVIADO";
 			if (mySale->Status == 'C') txtStatus->Text = "ENTREGADO";
 			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F') txtClaim->Visible = true;
@@ -508,9 +507,7 @@ namespace SalesView {
 				}
 
 		}
-	private: System::Void ProductStatusForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowData();
-		ShowShoppingCart();
-	}
+	private: System::Void ProductStatusForm_Load(System::Object^ sender, System::EventArgs^ e);
 };
 }
+
