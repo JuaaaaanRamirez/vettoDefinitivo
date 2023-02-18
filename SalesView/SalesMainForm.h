@@ -10,6 +10,7 @@
 #include "NewCustomerForm.h"
 #include "SaleDetailForm.h"
 #include "MySaleHistory.h"
+#include "MyWishList.h"
 
 
 namespace SalesView {
@@ -1486,6 +1487,9 @@ public:	void PutTop(List<Product^>^ myTopList) {
 }
     private: System::Void btnWishList_Click(System::Object^ sender, System::EventArgs^ e) {
 	//Form de la LISTA DE DESEOS DEL CLIENTE
+	MyWishList^ myWishList = gcnew MyWishList(this);
+	myWishList->ShowDialog();
+
 }
     private: System::Void btnShopping_Click(System::Object^ sender, System::EventArgs^ e) {
 	//SaleDetailForm^ saleDetailForm = gcnew SaleDetailForm();

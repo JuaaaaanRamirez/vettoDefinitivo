@@ -21,7 +21,7 @@
     <ClCompile Include="StadisticReportForm.cpp" />
     <ClCompile Include="UploadAdForm.cpp" />
     <ClCompile Include="ProductStatusForm.cpp" />
-    <ClInclude Include="MyWishList.h" />
+    <ClCompile Include="MyWishList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CareerListForm.h" />
@@ -44,6 +44,7 @@
     <ClInclude Include="StadisticReportForm.h" />
     <ClInclude Include="UploadAdForm.h" />
     <ClInclude Include="ProductStatusForm.h" />
+    <ClInclude Include="MyWishList.h" />
     <ClInclude Include="MyWishList.h" />
   </ItemGroup>
   <ItemGroup>

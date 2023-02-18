@@ -228,14 +228,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SalesController\SalesController.vcxproj">
-      <Project>{63666083-ccba-4a9b-a70e-6c2d713340b1}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\SalesModel\SalesModel.vcxproj">
-      <Project>{b010715e-563a-4215-b250-9dc0b511f4f2}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="CareerListForm.resx">
       <DependentUpon>CareerListForm.h</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +282,14 @@
     <EmbeddedResource Include="UploadAdForm.resx">
       <DependentUpon>UploadAdForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SalesController\SalesController.vcxproj">
+      <Project>{63666083-ccba-4a9b-a70e-6c2d713340b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SalesModel\SalesModel.vcxproj">
+      <Project>{b010715e-563a-4215-b250-9dc0b511f4f2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

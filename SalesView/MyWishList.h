@@ -1,7 +1,4 @@
 #pragma once
-//#include "SalesMainForm.h"
-#include "ProductSearchForm.h"
-#include "SalesMainForm.h"
 
 
 namespace SalesView {
@@ -12,21 +9,23 @@ namespace SalesView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace SalesController;		
-	using namespace SalesModel;				
+	using namespace SalesController;
+	using namespace SalesModel;
 	using namespace System::Collections::Generic;
 	/// <summary>
 	/// Resumen de MyWishList
 	/// </summary>
 	public ref class MyWishList : public System::Windows::Forms::Form
 	{
+		Form^ refForm;
 	public:
-		MyWishList(void)
+		MyWishList(Form^ form)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			refForm = form;
 		}
 
 	protected:
@@ -57,7 +56,7 @@ namespace SalesView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -83,7 +82,7 @@ namespace SalesView {
 			// pbwishList
 			// 
 			this->pbwishList->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbwishList.Image")));
-			this->pbwishList->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbwishList.InitialImage")));
+			this->pbwishList->InitialImage = nullptr;
 			this->pbwishList->Location = System::Drawing::Point(43, 27);
 			this->pbwishList->Name = L"pbwishList";
 			this->pbwishList->Size = System::Drawing::Size(59, 50);
@@ -144,6 +143,7 @@ namespace SalesView {
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Eliminar producto";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyWishList::button2_Click);
 			// 
 			// button3
 			// 
@@ -153,6 +153,7 @@ namespace SalesView {
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Volver";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyWishList::button3_Click);
 			// 
 			// MyWishList
 			// 
@@ -175,7 +176,23 @@ namespace SalesView {
 		}
 #pragma endregion
 
-	private: System::Void MyWishList_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void MyWishList_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
 	}
+
+	public: Void AddProductToWishList(Product^ p) {
+		dgvWishList->Rows->Add(gcnew array<String^> {
+			Convert::ToString(p->Id),
+				p->Name,
+				Convert::ToString(p->PriceMin),
+				p->Description
+		});
+	}
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+}
 };
 }
