@@ -467,7 +467,8 @@ namespace SalesView {
 	private: System::Void NewCustomerForm_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnRegister_Click(System::Object^ sender, System::EventArgs^ e);
 		   void RegisterCustomer() {
-			   Customer^ p = gcnew Customer();
+			   
+			   Customer^ p = gcnew Customer();;
 			   try {
 
 				   if (txtFirstName->Text->Trim() == "") {

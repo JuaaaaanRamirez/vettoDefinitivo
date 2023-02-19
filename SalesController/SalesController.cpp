@@ -25,7 +25,8 @@ Product^ SalesController::Controller::QueryProductById(int productId)
 }
 List<Product^>^ SalesController::Controller::QueryAllProducts()
 {
-    productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    //productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    productList = Persistance::QueryAllActiveProducts();
     return productList;
 }
 int SalesController::Controller::UpdateProduct(Product^ product)

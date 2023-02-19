@@ -27,5 +27,10 @@ namespace SalesModel {
         property int Sales;
         property int SalesByTime;
         //property RelacionatedCareer^ RelacionatedCareer;
+
+         //IMPORTANTE PARA CUANDO HACEMOS UN SELECT DE PRODUCT DESDE BASE DE DATOS Y GUARDAMOS LAS CARRERAS...Juan
+        Product() {
+            Career = gcnew List<String^>();
+        }
     };
 }
