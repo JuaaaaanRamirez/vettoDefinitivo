@@ -29,7 +29,11 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	}
 
 	// Request WishList
-	Person^ thisPerson = (Customer^)Controller::QueryUserById(userId);
-	for (int i = 0; i < ((Customer^)thisPerson)->WishList->Count; i++)
-		if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break;}
+	if (userId != 0) {
+		Person^ thisPerson = (Customer^)Controller::QueryUserById(userId);
+		if (thisPerson->Profile == 'S' || thisPerson->Profile =='C')
+			for (int i = 0; i < ((Customer^)thisPerson)->WishList->Count; i++)
+				if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
+	}
+	
 }

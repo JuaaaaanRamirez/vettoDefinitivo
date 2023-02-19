@@ -498,20 +498,30 @@ namespace SalesView {
 		ShowProduct();
 	}
 	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		// Get Person
-		Person^ thisPerson = gcnew Customer();
-		thisPerson = (Customer^) Controller::QueryUserById(userId);
-		
-		// Get Product
-		Product^ thisProduct = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
-		thisProduct->Starts++
-			;
-		((Customer^)thisPerson)->WishList->Add(thisProduct);
-		Controller::UpdateProduct(thisProduct);
-		Controller::UpdateUser(thisPerson);
-		MessageBox::Show("Agregado a la lista de deseos :3");
-		ShowProduct();
+		// Verification
+		if (userId != 0) {	// It's not an user
+			Person^ user = Controller::QueryUserById(userId);
+			if (user->Profile == 'S' || user->Profile == 'C') { // Is it a customer?
+				
+				user = (Customer^)Controller::QueryUserById(userId);
+				// Get Product
+				Product^ thisProduct = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+				thisProduct->Starts++;
+				((Customer^)user)->WishList->Add(thisProduct);
+				Controller::UpdateProduct(thisProduct);
+				Controller::UpdateUser(user);
+				
+				MessageBox::Show("Agregado a la lista de deseos :3");
+				ShowProduct();
+			}
+			else MessageBox::Show("¡Debe ser un cliente para comprar!");
+
+		}
+		else {
+			LoginFirstForm^ getLoguin = gcnew LoginFirstForm();
+			getLoguin->ShowDialog();
+			this->Close();
+		}
 	}
 	};
 }
