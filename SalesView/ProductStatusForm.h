@@ -469,7 +469,7 @@ namespace SalesView {
 			if (mySale->Status=='A') txtStatus->Text = "REGISTRADO";
 			if (mySale->Status == 'B') txtStatus->Text = "ENVIADO";
 			if (mySale->Status == 'C') txtStatus->Text = "ENTREGADO";
-			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F') btnClaim->Visible = false;
+			if (mySale->Status == 'D' || mySale->Status == 'E' || mySale->Status == 'F' || mySale->Status == 'G') btnClaim->Visible = false;
 			if (mySale->Status == 'D') txtStatus->Text = "PRESENTA RECLAMO";
 			if (mySale->Status == 'E') txtStatus->Text = "REEMBOLSADO";
 			if (mySale->Status == 'F') txtStatus->Text = "NO PROCEDE RECLAMO";
