@@ -24,6 +24,8 @@ namespace SalesView {
 		Form^ refForm;
 		int userId, saleId;
 	public: System::Windows::Forms::TextBox^ txtStock;
+	private: System::Windows::Forms::GroupBox^ gbSecret;
+	public:
 	private: System::Windows::Forms::Label^ lbStock;
 	public:
 		ProductPresentationForm(Form^ form1, int userId)
@@ -74,14 +76,17 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ lbStarts;
 	private: System::Windows::Forms::PictureBox^ pbSellers;
 	private: System::Windows::Forms::PictureBox^ pbStars;
+	private: System::Windows::Forms::Label^ txtStarts;
+	private: System::Windows::Forms::Label^ txtSales;
 
 
 
 
 
 
-	private: System::Windows::Forms::Label^ lbHearts;
-	private: System::Windows::Forms::Label^ lbSales;
+
+
+
 
 
 
@@ -133,8 +138,8 @@ namespace SalesView {
 			this->lbStarts = (gcnew System::Windows::Forms::Label());
 			this->pbSellers = (gcnew System::Windows::Forms::PictureBox());
 			this->pbStars = (gcnew System::Windows::Forms::PictureBox());
-			this->lbHearts = (gcnew System::Windows::Forms::Label());
-			this->lbSales = (gcnew System::Windows::Forms::Label());
+			this->txtStarts = (gcnew System::Windows::Forms::Label());
+			this->txtSales = (gcnew System::Windows::Forms::Label());
 			this->ComentLabel = (gcnew System::Windows::Forms::Label());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
@@ -143,12 +148,14 @@ namespace SalesView {
 			this->Wishbtn = (gcnew System::Windows::Forms::Button());
 			this->txtStock = (gcnew System::Windows::Forms::TextBox());
 			this->lbStock = (gcnew System::Windows::Forms::Label());
+			this->gbSecret = (gcnew System::Windows::Forms::GroupBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
 			this->gbinformation->SuspendLayout();
+			this->gbSecret->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pbxProductImagen
@@ -257,36 +264,36 @@ namespace SalesView {
 			this->pbStars->TabIndex = 13;
 			this->pbStars->TabStop = false;
 			// 
-			// lbHearts
+			// txtStarts
 			// 
-			this->lbHearts->AutoSize = true;
-			this->lbHearts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtStarts->AutoSize = true;
+			this->txtStarts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbHearts->Location = System::Drawing::Point(395, 220);
-			this->lbHearts->Name = L"lbHearts";
-			this->lbHearts->Size = System::Drawing::Size(48, 29);
-			this->lbHearts->TabIndex = 14;
-			this->lbHearts->Text = L"4.7";
-			this->lbHearts->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->txtStarts->Location = System::Drawing::Point(395, 220);
+			this->txtStarts->Name = L"txtStarts";
+			this->txtStarts->Size = System::Drawing::Size(48, 29);
+			this->txtStarts->TabIndex = 14;
+			this->txtStarts->Text = L"4.7";
+			this->txtStarts->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// lbSales
+			// txtSales
 			// 
-			this->lbSales->AutoSize = true;
-			this->lbSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtSales->AutoSize = true;
+			this->txtSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbSales->Location = System::Drawing::Point(496, 220);
-			this->lbSales->Name = L"lbSales";
-			this->lbSales->Size = System::Drawing::Size(69, 29);
-			this->lbSales->TabIndex = 15;
-			this->lbSales->Text = L"5000";
-			this->lbSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->txtSales->Location = System::Drawing::Point(496, 220);
+			this->txtSales->Name = L"txtSales";
+			this->txtSales->Size = System::Drawing::Size(69, 29);
+			this->txtSales->TabIndex = 15;
+			this->txtSales->Text = L"5000";
+			this->txtSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// ComentLabel
 			// 
 			this->ComentLabel->AutoSize = true;
 			this->ComentLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ComentLabel->Location = System::Drawing::Point(20, 360);
+			this->ComentLabel->Location = System::Drawing::Point(21, 26);
 			this->ComentLabel->Name = L"ComentLabel";
 			this->ComentLabel->Size = System::Drawing::Size(83, 16);
 			this->ComentLabel->TabIndex = 16;
@@ -296,7 +303,7 @@ namespace SalesView {
 			// 
 			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
 			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(110, 355);
+			this->pictureBox7->Location = System::Drawing::Point(111, 21);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(40, 37);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -366,19 +373,29 @@ namespace SalesView {
 			this->lbStock->TabIndex = 22;
 			this->lbStock->Text = L"Stock:";
 			// 
+			// gbSecret
+			// 
+			this->gbSecret->Controls->Add(this->pictureBox7);
+			this->gbSecret->Controls->Add(this->ComentLabel);
+			this->gbSecret->Location = System::Drawing::Point(20, 314);
+			this->gbSecret->Name = L"gbSecret";
+			this->gbSecret->Size = System::Drawing::Size(200, 87);
+			this->gbSecret->TabIndex = 23;
+			this->gbSecret->TabStop = false;
+			this->gbSecret->Visible = false;
+			// 
 			// ProductPresentationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(740, 523);
+			this->ClientSize = System::Drawing::Size(740, 393);
+			this->Controls->Add(this->gbSecret);
 			this->Controls->Add(this->lbStock);
 			this->Controls->Add(this->txtStock);
 			this->Controls->Add(this->Wishbtn);
 			this->Controls->Add(this->gbinformation);
-			this->Controls->Add(this->pictureBox7);
-			this->Controls->Add(this->ComentLabel);
-			this->Controls->Add(this->lbSales);
-			this->Controls->Add(this->lbHearts);
+			this->Controls->Add(this->txtSales);
+			this->Controls->Add(this->txtStarts);
 			this->Controls->Add(this->pbStars);
 			this->Controls->Add(this->pbSellers);
 			this->Controls->Add(this->lbStarts);
@@ -398,6 +415,8 @@ namespace SalesView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
 			this->gbinformation->ResumeLayout(false);
 			this->gbinformation->PerformLayout();
+			this->gbSecret->ResumeLayout(false);
+			this->gbSecret->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -479,7 +498,20 @@ namespace SalesView {
 		ShowProduct();
 	}
 	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		// Get Person
+		Person^ thisPerson = gcnew Customer();
+		thisPerson = (Customer^) Controller::QueryUserById(userId);
+		
+		// Get Product
+		Product^ thisProduct = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
+		thisProduct->Starts++
+			;
+		((Customer^)thisPerson)->WishList->Add(thisProduct);
+		Controller::UpdateProduct(thisProduct);
+		Controller::UpdateUser(thisPerson);
 		MessageBox::Show("Agregado a la lista de deseos :3");
+		ShowProduct();
 	}
 	};
 }

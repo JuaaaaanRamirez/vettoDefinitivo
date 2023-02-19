@@ -16,8 +16,8 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	txtProductName->Text = "" + p->Name;
 	txtStock->Text = "" + p->Stock;
 	txtDescription->Text = "" + p->Description;
-	lbHearts->Text = "" + p->Starts;
-	lbSales->Text = "" + p->Sales;
+	txtStarts->Text = "" + p->Starts;
+	txtSales->Text = "" + p->Sales;
 	p->Searches++;  // Plus search
 
 	Controller::UpdateProduct(p);
@@ -27,4 +27,9 @@ void SalesView::ProductPresentationForm::ShowProduct()
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 		pbxProductImagen->Image = Image::FromStream(ms);
 	}
+
+	// Request WishList
+	Person^ thisPerson = (Customer^)Controller::QueryUserById(userId);
+	for (int i = 0; i < ((Customer^)thisPerson)->WishList->Count; i++)
+		if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break;}
 }

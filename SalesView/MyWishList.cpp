@@ -14,7 +14,6 @@ System::Void SalesView::MyWishList::MyWishList_Load(System::Object^ sender, Syst
 	
 	if(safe_cast<Customer^>(customer)->WishList==nullptr){
 		dgvWishList->Rows->Clear();
-		
 	}
 	else {
 		for (int j = 0; j < safe_cast<Customer^>(customer)->WishList->Count; j++) {
