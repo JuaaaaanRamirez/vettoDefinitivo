@@ -112,6 +112,7 @@ namespace SalesView {
 			this->dgvWishList->Name = L"dgvWishList";
 			this->dgvWishList->Size = System::Drawing::Size(406, 245);
 			this->dgvWishList->TabIndex = 2;
+			this->dgvWishList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyWishList::dgvWishList_CellDoubleClick);
 			// 
 			// IdProduct
 			// 
@@ -191,8 +192,7 @@ namespace SalesView {
 		});
 	}
 
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-
-}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void dgvWishList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }

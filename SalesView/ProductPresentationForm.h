@@ -1,6 +1,8 @@
 #pragma once
 #include "LoginFirstForm.h"
 #include "CarryOnShoppingForm.h"
+#include "MyWishList.h"
+
 namespace SalesView {
 
 	using namespace System;
@@ -32,7 +34,7 @@ namespace SalesView {
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
+			//TODO: agregar cÃ³digo de constructor aquÃ­
 			//
 			refForm = form1;
 			this->userId = userId;
@@ -40,7 +42,7 @@ namespace SalesView {
 
 	protected:
 		/// <summary>
-		/// Limpiar los recursos que se estén usando.
+		/// Limpiar los recursos que se estÃ©n usando.
 		/// </summary>
 		~ProductPresentationForm()
 		{
@@ -115,14 +117,14 @@ namespace SalesView {
 
 	private:
 		/// <summary>
-		/// Variable del diseñador necesaria.
+		/// Variable del diseÃ±ador necesaria.
 		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
+		/// MÃ©todo necesario para admitir el DiseÃ±ador. No se puede modificar
+		/// el contenido de este mÃ©todo con el editor de cÃ³digo.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -184,7 +186,7 @@ namespace SalesView {
 			this->lbDescription->Name = L"lbDescription";
 			this->lbDescription->Size = System::Drawing::Size(82, 16);
 			this->lbDescription->TabIndex = 5;
-			this->lbDescription->Text = L"Descripción:";
+			this->lbDescription->Text = L"DescripciÃ³n:";
 			// 
 			// txtId
 			// 
@@ -240,7 +242,7 @@ namespace SalesView {
 			this->lbStarts->Name = L"lbStarts";
 			this->lbStarts->Size = System::Drawing::Size(79, 16);
 			this->lbStarts->TabIndex = 11;
-			this->lbStarts->Text = L"Calificación:";
+			this->lbStarts->Text = L"CalificaciÃ³n:";
 			// 
 			// pbSellers
 			// 
@@ -460,7 +462,7 @@ namespace SalesView {
 
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
-				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
+				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido aÃ±adido al carrito"); return;}
 
 			// Put On Data
 			SaleDetail^ newSaleDetail= CreateSaleDetail();
@@ -481,9 +483,9 @@ namespace SalesView {
 					if (Convert::ToInt32(nudAmount->Text) > myProduct->Stock) { MessageBox::Show("La cantidad seleccionada supera el stock"); return; }
 					else GetSale();
 				}
-				else MessageBox::Show("¡Debe seleccionar la cantidad de productos a comprar!");
+				else MessageBox::Show("Â¡Debe seleccionar la cantidad de productos a comprar!");
 			}
-			else MessageBox::Show("¡Debe ser un cliente para comprar!");
+			else MessageBox::Show("Â¡Debe ser un cliente para comprar!");
 			
 		}
 		else {
@@ -497,32 +499,8 @@ namespace SalesView {
 		List<Sale^>^ mySaleList = Controller::QueryAllSales(); // Really necesary
 		ShowProduct();
 	}
-	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Verification
-		if (userId != 0) {	// It's not an user
-			Person^ user = Controller::QueryUserById(userId);
-			if (user->Profile == 'S' || user->Profile == 'C') { // Is it a customer?
-				
-				user = (Customer^)Controller::QueryUserById(userId);
-				// Get Product
-				Product^ thisProduct = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
-				thisProduct->Starts++;
-				((Customer^)user)->WishList->Add(thisProduct);
-				Controller::UpdateProduct(thisProduct);
-				Controller::UpdateUser(user);
-				
-				MessageBox::Show("Agregado a la lista de deseos :3");
-				ShowProduct();
-			}
-			else MessageBox::Show("¡Debe ser un cliente para acceder a la lista de deseos!");
+	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e);
 
-		}
-		else {
-			LoginFirstForm^ getLoguin = gcnew LoginFirstForm();
-			getLoguin->ShowDialog();
-			this->Close();
-		}
-	}
 	};
 }
 
