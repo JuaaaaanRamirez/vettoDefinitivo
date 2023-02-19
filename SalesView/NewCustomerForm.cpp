@@ -76,7 +76,8 @@ System::Void SalesView::NewCustomerForm::btnRegister_Click(System::Object^ sende
 	}
 	else {
 		//Actualizar datos
-		Person^ p = gcnew Customer();
+		//Person^ p = gcnew Customer();
+		Person^ p = Controller ::QueryUserById(SalesMainForm::person->Id);
 		try {
 
 			
@@ -104,27 +105,27 @@ System::Void SalesView::NewCustomerForm::btnRegister_Click(System::Object^ sende
 			
 			
 
-			p->Profile = 'S';
-			p->Id = Convert::ToInt32(SalesMainForm::person->Id);
-			p->Name = txtFirstName->Text;
-			p->LastName = txtLastName->Text;
+			//p->Profile = 'S';
+			//p->Id = Convert::ToInt32(SalesMainForm::person->Id);
+			//p->Name = txtFirstName->Text;
+			//p->LastName = txtLastName->Text;
 			p->Email = txtEmail->Text;
 			//p->Address = txtAddress->Text;
 			p->PhoneNumber = txtPhoneNumber->Text-> Trim();
-			p->DocNumber = txtDocNumber->Text;
-			p->Gender = SalesMainForm::person->Gender;
-			p->Username = txtUsername->Text;
+			//p->DocNumber = txtDocNumber->Text;
+			//p->Gender = SalesMainForm::person->Gender;
+			//p->Username = txtUsername->Text;
 			p->Password = txtPassword->Text;
 
-			String^ birthday = Convert::ToString(dtpBirthday->Value);
-			p->Birthday = birthday;
+			//String^ birthday = Convert::ToString(dtpBirthday->Value);
+			//p->Birthday = birthday;
 
 			//p->Birthday = dtpBirthday->Value.ToString("yyyy-MM-dd");
-			p->Gender = SalesMainForm::person->Gender;
+			//p->Gender = SalesMainForm::person->Gender;
 
 			//dynamic_cast<Company^>(customer)->Name;
 			//p->CustomerPoints = ; "" + customer->CustomerPoints; ,<Company^>(customer)
-			safe_cast<Customer^>(p)->CustomerPoints = Int32::Parse(txtCustomerPoints->Text);
+			//safe_cast<Customer^>(p)->CustomerPoints = Int32::Parse(txtCustomerPoints->Text);
 			safe_cast<Customer^>(p)->Address = txtAddress->Text;
 			
 			 System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
@@ -137,10 +138,7 @@ System::Void SalesView::NewCustomerForm::btnRegister_Click(System::Object^ sende
 			MessageBox::Show(ex->ToString(), "Comparta el error al área de TI.");
 			return;
 		}
-
 		Controller::UpdateUser(p);
-
-
 		MessageBox::Show("Sus datos se han modificado con exito");
 		this->Close();
 	}

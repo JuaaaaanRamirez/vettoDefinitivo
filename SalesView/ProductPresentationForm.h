@@ -1,6 +1,8 @@
 #pragma once
 #include "LoginFirstForm.h"
 #include "CarryOnShoppingForm.h"
+#include "MyWishList.h"
+
 namespace SalesView {
 
 	using namespace System;
@@ -478,9 +480,7 @@ namespace SalesView {
 		List<Sale^>^ mySaleList = Controller::QueryAllSales(); // Really necesary
 		ShowProduct();
 	}
-	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Agregado a la lista de deseos :3");
-	}
+	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }
 

@@ -1,12 +1,14 @@
 #include "pch.h"
 #include "ProductSearchForm.h"
 #include "SaleDetailForm.h"
+#include "SalesMainForm.h"
 
 System::Void SalesView::ProductSearchForm::dgvProducts_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
 	if (e->RowIndex < 0) return;
 	if (e->RowIndex >= 0) {
 		String^ productId = dgvProducts->Rows[e->RowIndex]->Cells[0]->Value->ToString();
+		SalesMainForm::product= Controller::QueryProductById(Int32::Parse(productId));
 		Product^ p = Controller::QueryProductById(Int32::Parse(productId));
 		if (refForm->GetType() == SaleDetailForm::typeid) {
 			

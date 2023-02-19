@@ -9,11 +9,18 @@ System::Void SalesView::ProductListForm::dgvProductList_CellDoubleClick(System::
 	List<Product^>^ myProductList = Controller::QueryProductsByNameOrDescription(txtSearchBox->Text);
 	if (selectedRowIndex >= (myProductList->Count)) return;
 
-	int myUserId = Convert::ToInt32(((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text);
-	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this, myUserId);
+	if (e->RowIndex < 0) return;
+	if (e->RowIndex >= 0) {
+		String^ productId = dgvProductList->Rows[e->RowIndex]->Cells[0]->Value->ToString();
+		SalesMainForm::product = Controller::QueryProductById(Int32::Parse(productId));
+	}
+
+
+	//int myUserId = Convert::ToInt32(((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text);
+	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this, SalesMainForm::person->Id);
 	ProductPresentation->ShowDialog();
 	((SalesMainForm^)refForm)->PutTop(Controller::GetTopProducts());
-	//this->Close();
+	this->Close();
 }
 System::Void SalesView::ProductListForm::ProductListForm_Load(System::Object^ sender, System::EventArgs^ e)
 {
