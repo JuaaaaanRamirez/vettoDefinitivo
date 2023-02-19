@@ -1412,7 +1412,7 @@ public:	void PutTop(List<Product^>^ myTopList) {
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
-		PutTop(Controller::GetTopProducts());
+		//PutTop(Controller::GetTopProducts());
 		lbCompany->Text = "";
 		lbJob->Text = "";
 	}
