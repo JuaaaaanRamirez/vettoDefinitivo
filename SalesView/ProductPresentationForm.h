@@ -514,7 +514,7 @@ namespace SalesView {
 				MessageBox::Show("Agregado a la lista de deseos :3");
 				ShowProduct();
 			}
-			else MessageBox::Show("¡Debe ser un cliente para comprar!");
+			else MessageBox::Show("¡Debe ser un cliente para acceder a la lista de deseos!");
 
 		}
 		else {
