@@ -89,12 +89,12 @@ namespace SalesView {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chartReportGoals;
 
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chartReportLastMonth;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ btLookFor2;
 
 	private: System::Windows::Forms::Label^ label6;
@@ -103,6 +103,20 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10;
+
+
+
+
+
+
+
 
 
 
@@ -150,12 +164,6 @@ namespace SalesView {
 			this->dtpSaleDate = (gcnew System::Windows::Forms::DateTimePicker());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
 			this->dgvSells = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btShowAllSales = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->txtStock = (gcnew System::Windows::Forms::TextBox());
@@ -177,6 +185,13 @@ namespace SalesView {
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSells))->BeginInit();
 			this->tabControl1->SuspendLayout();
 			this->tabReportToday->SuspendLayout();
@@ -234,58 +249,16 @@ namespace SalesView {
 			// dgvSells
 			// 
 			this->dgvSells->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvSells->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dgvSells->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1, this->Column2,
-					this->Column3, this->Column6, this->Column4, this->Column5
+					this->Column3, this->Column6, this->Column4, this->Column5, this->Column10
 			});
-			this->dgvSells->Location = System::Drawing::Point(41, 150);
+			this->dgvSells->Location = System::Drawing::Point(12, 147);
 			this->dgvSells->Name = L"dgvSells";
 			this->dgvSells->RowHeadersWidth = 51;
 			this->dgvSells->RowTemplate->Height = 24;
-			this->dgvSells->Size = System::Drawing::Size(845, 316);
+			this->dgvSells->Size = System::Drawing::Size(972, 316);
 			this->dgvSells->TabIndex = 5;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Fecha de venta";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Usuario";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Vendedor";
-			this->Column6->MinimumWidth = 6;
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Importe total";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Tipo de venta";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
 			// 
 			// btShowAllSales
 			// 
@@ -539,6 +512,55 @@ namespace SalesView {
 			this->Column9->Name = L"Column9";
 			this->Column9->Width = 125;
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"ID";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 90;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Fecha de venta";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Usuario";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Vendedor";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 125;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Importe total";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Tipo de venta";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
+			// 
+			// Column10
+			// 
+			this->Column10->HeaderText = L"Estado";
+			this->Column10->MinimumWidth = 6;
+			this->Column10->Name = L"Column10";
+			this->Column10->Width = 200;
+			// 
 			// StadisticReportForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -768,9 +790,30 @@ namespace SalesView {
 
 		void ShowSells() {
 			List<Sale^>^ mySells = Controller::QueryAllSales();
+			String^ Estado="-";
 
 			dgvSells->Rows->Clear();
 			for (int i = 0; i < mySells->Count; i++) {
+				switch (mySells[i]->Status)
+				{
+				case 'A': Estado = "REGISTRADO";
+					break;
+				case 'B': Estado = "ENVIADO";
+					break;
+				case 'C': Estado = "ENTREGADO";
+					break;
+				case 'D': Estado = "PRESENTA RECLAMO";
+					break;
+				case 'E': Estado = "REEMBOLSADO";
+					break;
+				case 'F': Estado = "NO PROCEDE RECLAMO";
+					break;
+				case 'G': Estado = "CANCELADO";
+					break;
+
+				default:
+					break;
+				}
 				dgvSells->Rows->Add(gcnew array<String^>{
 
 					"" + mySells[i]->Id,
@@ -778,7 +821,8 @@ namespace SalesView {
 						mySells[i]->Customer->Name,
 						mySells[i]->StoreManager->Name,
 						"" + mySells[i]->Total,
-						mySells[i]->PaidMode
+						mySells[i]->PaidMode,
+						Estado
 				});
 
 			}
