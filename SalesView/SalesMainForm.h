@@ -1332,7 +1332,9 @@ public:
 				}
 			}
 		}
-public:	void PutTop(List<Product^>^ myTopList) {
+public:	
+	
+		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
 
@@ -1397,7 +1399,7 @@ public:	void PutTop(List<Product^>^ myTopList) {
 		//UploadAdForm->MdiParent = this;
 		A->ShowDialog();
 	}
-	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sendePutTopr, System::EventArgs^ e) {
 		UserForm^ userForm = gcnew UserForm();
 		//productForm->MdiParent = this;
 		userForm->ShowDialog();
