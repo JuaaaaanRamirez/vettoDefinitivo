@@ -182,7 +182,7 @@ namespace SalesView {
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-
+/*
 	public: Void AddProductToWishList(Product^ p) {
 		dgvWishList->Rows->Add(gcnew array<String^> {
 			Convert::ToString(p->Id),
@@ -190,7 +190,7 @@ namespace SalesView {
 				Convert::ToString(p->PriceMin),
 				p->Description
 		});
-	}
+	}*/
 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void dgvWishList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);

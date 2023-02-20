@@ -31,12 +31,22 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	}
 
 	// Request WishList
+	/*
 	if (userId != 0) {
 		Person^ thisPerson = (Customer^)Controller::QueryUserById(userId);
-		if (thisPerson->Profile == 'S' || thisPerson->Profile =='C')
+		if (thisPerson->Profile == 'S' || thisPerson->Profile == 'C') {
+			
+			safe_cast<Customer^>(user)->WishList
+			
 			for (int i = 0; i < ((Customer^)thisPerson)->WishList->Count; i++)
-				if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
-	}
+							if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
+							
+			for (int i = 0; i < safe_cast<Customer^>(thisPerson)->WishList->Count; i++)
+				if (safe_cast<Customer^>(thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
+
+		}
+			
+	}*/
 	
 }
 
@@ -47,31 +57,40 @@ System::Void SalesView::ProductPresentationForm::Wishbtn_Click(System::Object^ s
 	//int productId = Convert::ToInt32(((ProductListForm^)refForm)->ProductListForm::dgvProductList->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 	//Product^ p = Controller::QueryProductById(productId);
 
-	
-	 
-	Person^ user = Controller::QueryUserById(SalesMainForm::person->Id);
-	List<Product^>^ mywishList = safe_cast<Customer^>(user)->WishList;
-	Product^ p = Controller::QueryProductById(SalesMainForm::product->Id);
+	if(userId!=0){
+		Person^ user = Controller::QueryUserById(SalesMainForm::person->Id);
+		List<Product^>^ mywishList = safe_cast<Customer^>(user)->WishList;
+		Product^ p = Controller::QueryProductById(SalesMainForm::product->Id);
 
-	//verificar que no se repita el producto
-	
-		for (int i = 0; i < mywishList->Count; i++)
-			if (mywishList[i]->Id == p->Id) {
+		//verificar que no se repita el producto
 
-				MessageBox::Show("Este producto ya ha sido añadido a la lista de deseo");
-				return;
-			}
+		if (mywishList ==nullptr) {
 			
-			//Agregar a la LISTA DE DESEOS
+			MessageBox::Show("A ocurrido un error, comuniquese con admiVetto@vetto.com  ");
+		}
+		else {
 
-				safe_cast<Customer^>(user)->WishList->Add(p);
-				Controller::UpdateUser(user);
-
-				MessageBox::Show("Agregado a la lista de deseos :3");
-			
 	
+			for (int i = 0; i < safe_cast<Customer^>(user)->WishList->Count; i++)
+				if (safe_cast<Customer^>(user)->WishList[i]->Id == p->Id) {
 
+					MessageBox::Show("Este producto ya ha sido añadido a la lista de deseo");
+					return;
+				}
+	
+				//Agregar a la LISTA DE DESEOS
 
+					safe_cast<Customer^>(user)->WishList->Add(p);
+					Controller::UpdateUser(user);
+
+					MessageBox::Show("Agregado a la lista de deseos :3");
+			
+		}
+
+	}
+	else {
+		MessageBox::Show("Primero tiene que registrarse");
+	}
 	
 	/*
 	MyWishList^ myWishList = gcnew MyWishList(this);
