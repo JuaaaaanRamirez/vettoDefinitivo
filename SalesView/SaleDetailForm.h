@@ -498,11 +498,18 @@ namespace SalesView {
 		if (mySale->SaleDetails->Count==0){ MessageBox::Show("La lista no puede estar vacía"); return; }
 		paid = true;
 		
-		// Update Products
+		// Update Products and Cutomer Points
 		for (int i = 0; i < mySale->SaleDetails->Count; i++) {
+
+			// Update Products
 			Product^ myProduct = Controller::QueryProductById(mySale->SaleDetails[i]->Id);
 			myProduct->Stock= myProduct->Stock - mySale->SaleDetails[i]->Quantity;
 			Controller::UpdateProduct(myProduct);
+
+			// Cp
+			Person^ myPerson = (Customer^)Controller::QueryUserById(mySale->Customer->Id);
+			((Customer^)myPerson)->CustomerPoints = ((Customer^)myPerson)->CustomerPoints + mySale->SaleDetails[i]->Quantity;
+			Controller::UpdateUser(myPerson);
 		}
 
 		// Great!

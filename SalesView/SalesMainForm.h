@@ -69,6 +69,7 @@ namespace SalesView {
 	public:
 		static SalesMainForm^ instance;		// Easy data
 		static Person^ person; //Variable de clase
+		static Product^ product;
 	public: System::Windows::Forms::GroupBox^ gbMenuStoreManager;
 	private: System::Windows::Forms::Button^ btnReportSales;
 	public:
