@@ -12,12 +12,14 @@ int SalesController::Controller::AddProduct(Product^ product)
         if (product->Id == productList[i]->Id) return -1;
     }
     productList->Add(product);
-    Persistance::PersistBinary("products.bin", productList);
+    //Persistance::PersistBinary("products.bin", productList);
+    Persistance::AddProduct(product);
     return Int32(product->Id);
 }
 Product^ SalesController::Controller::QueryProductById(int productId)
 {
-    productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    //productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    productList = Persistance::QueryAllActiveProducts();
     for (int i = 0; i < productList->Count; i++)
         if (productList[i]->Id == productId)
             return productList[i];
@@ -34,7 +36,8 @@ int SalesController::Controller::UpdateProduct(Product^ product)
     for (int i = 0; i < productList->Count; i++)
         if (productList[i]->Id == product->Id) {
             productList[i] = product;
-            Persistance::PersistBinary("products.bin", productList);
+            //Persistance::PersistBinary("products.bin", productList);
+            Persistance::UpdateProduct(product);
             return product->Id;
         }
 
@@ -45,14 +48,16 @@ int SalesController::Controller::DeleteProduct(int productId)
     for (int i = 0; i < productList->Count; i++)
         if (productList[i]->Id == productId) {
             productList->RemoveAt(i);
-            Persistance::PersistBinary("products.bin", productList);
+            //Persistance::PersistBinary("products.bin", productList);
+            Persistance::DeleteProduct(productId);
             return productId;
         }
     return 0;
 }
 List<Product^>^ SalesController::Controller::QueryProductsByNameOrDescription(String^ nameDesc)
 {
-    productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    //productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    productList = Persistance::QueryAllActiveProducts();
     List<Product^>^ newProductList = gcnew List<Product^>();
     for (int i = 0; i < productList->Count; i++) {
         if (productList[i]->Name->Contains(nameDesc) || productList[i]->Description->Contains(nameDesc))
@@ -62,7 +67,8 @@ List<Product^>^ SalesController::Controller::QueryProductsByNameOrDescription(St
 }
 List<Product^>^ SalesController::Controller::QueryProductsByNameOrCareer(String^ nameCaree)
 {
-    productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    //productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    productList = Persistance::QueryAllActiveProducts();
     List<Product^>^ newProductList = gcnew List<Product^>();
     for (int i = 0; i < productList->Count; i++) {
         if (productList[i]->Name->Contains(nameCaree) || productList[i]->Career->Contains(nameCaree))

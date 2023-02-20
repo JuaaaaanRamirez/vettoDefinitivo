@@ -18,8 +18,10 @@ namespace SalesPersistance {
 
 		static SqlConnection^ GetConnection();
 		static List<Product^>^ QueryAllActiveProducts();
-		//static Product^ QueryProductById(int productId);
-		//static List<Product^>^ QueryProductsByNameOrDescription(String^ value);
-		static int AddProduct(Product^ p);
+		static Product^ QueryProductById(int productId); //redundande, basta con el QueryAllActiveProducts
+		static List<Product^>^ QueryProductsByNameOrDescription(String^ value); //redundande, basta con el QueryAllActiveProducts
+		static int AddProduct(Product^ p); 
+		static int UpdateProduct(Product^ p);
+		static int DeleteProduct(int id);
 	};
 }

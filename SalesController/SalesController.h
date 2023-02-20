@@ -44,7 +44,7 @@ namespace SalesController {
 		static int UpdateProduct(Product^ product);
 		static int DeleteProduct(int productId);
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
-		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);
+		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);  
 
 		static List<Product^>^ QueryProductsByStockLimit(int stock);
 
