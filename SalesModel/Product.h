@@ -21,7 +21,6 @@ namespace SalesModel {
         property char Status;
         property array<Byte>^ Photo;
         property List<String^>^ Career;
-        property List<String^>^ Coments;
         property double Starts;
         property int Searches;
         property int Sales;

@@ -15,7 +15,6 @@ namespace SalesModel {
         property Double Goals; // String^ Goals;
         property String^ Salary;
         property String^ Store;
-
         property String^  Status;
 
     };
