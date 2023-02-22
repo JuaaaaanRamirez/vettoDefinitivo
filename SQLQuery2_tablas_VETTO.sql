@@ -76,3 +76,129 @@ WHERE id=2
 UPDATE PRODUCT
 SET status='I'
 WHERE id=3
+
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_AddProduct]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_AddProduct]
+END
+GO
+CREATE PROCEDURE usp_AddProduct(
+	@name VARCHAR(250),
+	@description VARCHAR(500),
+	
+	@priceMin DECIMAL(10,2),
+	@priceMaj DECIMAL(10,2),
+	@stock INT ,
+	@status CHAR(1),
+	@photo IMAGE ,
+	
+	@starts DECIMAL(10,2),
+	@searches INT,
+	@sales INT ,
+	@salesByTime INT,
+	@id INT OUT
+) AS
+	BEGIN
+		INSERT INTO PRODUCT (name, description, priceMin,priceMaj, stock, status,photo, starts, searches, sales, salesByTime)
+		SELECT @name, @description, @priceMin, @priceMaj, @stock, @status, @photo, @starts, @searches, @sales, @salesByTime
+		SET @id = SCOPE_IDENTITY()
+	END
+
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_AddCarrer]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_AddProduct]
+END
+GO
+CREATE PROCEDURE usp_AddCarrer(
+	@product_id INT,
+	@carrer VARCHAR(50),	
+	@id INT OUT
+) AS
+	BEGIN
+		INSERT INTO CARRER (product_id, carrer)
+		SELECT @product_id, @carrer
+		SET @id = SCOPE_IDENTITY()
+	END
+
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_UpdateProduct]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_UpdateProduct]
+END
+GO
+CREATE PROCEDURE usp_UpdateProduct(
+	@id INT,
+	@name VARCHAR(250),
+	@description VARCHAR(500),
+	
+	@priceMin DECIMAL(10,2),
+	@priceMaj DECIMAL(10,2),
+	@stock INT ,
+	@status CHAR(1),
+	@photo IMAGE ,
+	
+	@starts DECIMAL(10,2),
+	@searches INT,
+	@sales INT ,
+	@salesByTime INT
+) AS
+	BEGIN
+		UPDATE PRODUCT 
+		SET name=@name, description=@description, priceMin=@priceMin,priceMaj=@priceMaj, stock=@stock, status=@status,photo=@photo, starts=@starts, searches=@searches, sales=@sales, salesByTime=@salesByTime
+		WHERE id=@id
+	END
+
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_UpdateCarrer]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_UpdateProduct]
+END
+GO
+CREATE PROCEDURE usp_UpdateCarrer(
+	@product_id INT,
+	@carrer VARCHAR(50)
+	
+) AS
+	BEGIN
+		UPDATE CARRER 
+		SET carrer=@carrer
+		WHERE product_id=@product_id
+	END
+
+
+
+	GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_DeleteProduct]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_UpdateProduct]
+END
+GO
+CREATE PROCEDURE usp_DeleteProduct(
+	@id INT,
+	@status CHAR(1)
+) AS
+	BEGIN
+		UPDATE PRODUCT 
+		SET status=@status
+		WHERE id=@id
+	END
+
+SELECT * FROM PRODUCT
+SELECT * FROM CARRER
