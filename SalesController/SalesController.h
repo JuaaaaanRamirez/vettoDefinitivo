@@ -104,6 +104,7 @@ namespace SalesController {
 		static List<Sale^>^ QueryAllSales();
 		static int UpdateSale(Sale^ sale);
 		static int DeleteSale(int saleId);
+
 		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
 
 		       //metodos para extraer listas de ventas en distintos rangos de tiempo:
