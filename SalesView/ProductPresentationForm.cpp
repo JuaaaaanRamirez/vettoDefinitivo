@@ -50,6 +50,18 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	
 }
 
+void SalesView::ProductPresentationForm::ShowProductToThread()
+{
+	Product^ p = Controller::QueryProductById(SalesMainForm::product->Id);
+	// Put on Data
+	txtId->Text = "" + p->Id;
+	txtProductName->Text = "" + p->Name;
+	txtStock->Text = "" + p->Stock;  //lo importante
+	txtDescription->Text = "" + p->Description;
+	txtStarts->Text = "" + p->Starts;
+	txtSales->Text = "" + p->Sales;  //lo importante
+}
+
 System::Void SalesView::ProductPresentationForm::Wishbtn_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	//return System::Void();

@@ -14,13 +14,15 @@ namespace SalesView {
 	using namespace SalesController;		// Controller
 	using namespace SalesModel;				// Classes and Instances
 	using namespace System::Collections::Generic;	 // List^
+	using namespace Threading;
 
 	/// <summary>
 	/// Resumen de ProductPresentationForm
 	/// </summary>
 	public ref class ProductPresentationForm : public System::Windows::Forms::Form
 	{
-		
+	private:
+		Thread^ myThread;
 	public:	
 	public:
 		Form^ refForm;
@@ -38,6 +40,22 @@ namespace SalesView {
 			//
 			refForm = form1;
 			this->userId = userId;
+			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
+			myThread->IsBackground = true;
+			myThread->Start();
+		}
+		delegate void MyDelegate();
+
+		void MyRun() {
+			while (true) {
+				try {
+					myThread->Sleep(1000);
+					Invoke(gcnew MyDelegate(this, &ProductPresentationForm::ShowProductToThread));
+				}
+				catch (Exception^ ex) {
+					return;
+				}
+			}
 		}
 
 	protected:
@@ -434,6 +452,7 @@ namespace SalesView {
 			return newSaleDetail;
 		}
 		void ShowProduct();
+		void ShowProductToThread();
 		void GetSale() {
 
 			// New Sale?
