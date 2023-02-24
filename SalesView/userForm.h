@@ -11,21 +11,39 @@ namespace SalesView {
 	using namespace SalesController;
 	using namespace SalesModel;
 	using namespace System::Collections::Generic;
-
+	using namespace Threading;
 	/// <summary>
 	/// Resumen de UserForm
 	/// </summary>
 	public ref class UserForm : public System::Windows::Forms::Form
 	{
+	private:
+		Thread^ myThread;
 	public:
 		UserForm(void)
 		{
 			InitializeComponent();
+			myThread = gcnew Thread(gcnew ThreadStart(this, &UserForm::MyRun));
+			myThread->IsBackground = true;
+			myThread->Start();
 			//
 			//TODO: agregar código de constructor aquí
 			//
 		}
 
+		delegate void MyDelegate();
+
+		void MyRun() {
+			while (true) {
+				try {
+					myThread->Sleep(10000);//10s
+					Invoke(gcnew MyDelegate(this, &UserForm::ShowUsers));
+				}
+				catch (Exception^ ex) {
+					return;
+				}
+			}
+		}
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
