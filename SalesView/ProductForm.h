@@ -13,21 +13,39 @@ namespace SalesView {
 	using namespace SalesController;
 	using namespace SalesModel;
 	using namespace System::Collections::Generic;
+	using namespace Threading;
 
 	/// <summary>
 	/// Resumen de ProductForm
 	/// </summary>
 	public ref class ProductForm : public System::Windows::Forms::Form
 	{
+	private:
+		Thread^ myThread;
 	public:
 		ProductForm(void)
 		{
 			InitializeComponent();
+			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductForm::MyRun));
+			myThread->IsBackground = true;
+			//       myThread->Start();  //resulta incomodo para el que da mantenimiento
 			//
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		delegate void MyDelegate();
 
+		void MyRun() {
+			while (true) {
+				try {
+					myThread->Sleep(1000);
+					Invoke(gcnew MyDelegate(this, &ProductForm::ShowProducts));
+				}
+				catch (Exception^ ex) {
+					return;
+				}
+			}
+		}
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.

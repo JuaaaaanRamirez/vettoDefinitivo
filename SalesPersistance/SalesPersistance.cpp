@@ -9,6 +9,7 @@ using namespace SalesModel;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::Runtime::Serialization;
 
+
 void SalesPersistance::Persistance::Persist(String^ fileName, Object^ persistObject)
 {
     FileStream^ archivo;
@@ -504,7 +505,8 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
 {
     SqlConnection^ conn;
      SqlCommand^ comm;
-     int output_id, output_id2;
+     int id_product_aux;
+     
      try {
          //Paso 1: Se obtiene la conexión
          conn = GetConnection();
@@ -549,7 +551,7 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
          //Paso 3: Se ejecuta la sentencia
          comm->ExecuteNonQuery();
          //Paso 4: Se procesan los resultados
-         output_id = Convert::ToInt32(comm->Parameters["@id"]->Value);
+         id_product_aux = Convert::ToInt32(comm->Parameters["@id"]->Value);
          if (conn != nullptr) conn->Close();
 
          for (int i = 0; i < p->Career->Count; i++) {
@@ -564,13 +566,14 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
              outputIdParam->Direction = System::Data::ParameterDirection::Output;
              comm->Parameters->Add(outputIdParam);
              comm->Prepare();
-             comm->Parameters["@product_id"]->Value = p->Id;
+             comm->Parameters["@product_id"]->Value = id_product_aux;
              comm->Parameters["@carrer"]->Value = p->Career[i];
 
              //Paso 3: Se ejecuta la sentencia
              comm->ExecuteNonQuery();
              //Paso 4: Se procesan los resultados
-             output_id2 = Convert::ToInt32(comm->Parameters["@id"]->Value);
+            
+
              if (conn != nullptr) conn->Close();
            
          }
@@ -580,14 +583,14 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
          //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
          if (conn != nullptr) conn->Close();
      }
-     return output_id;
+     return id_product_aux;
    // return 1;
 }
 int SalesPersistance::Persistance::UpdateProduct(Product^ p)
 {
     SqlConnection^ conn;
     SqlCommand^ comm;
-    int output_id, output_id2;
+    int output_id;
 
     SqlDataReader^ reader;
     try {
@@ -669,7 +672,7 @@ int SalesPersistance::Persistance::UpdateProduct(Product^ p)
                 //Paso 3: Se ejecuta la sentencia
                 comm->ExecuteNonQuery();
                 //Paso 4: Se procesan los resultados
-                output_id2 = Convert::ToInt32(comm->Parameters["@id"]->Value);
+                //--
                 if (conn != nullptr) conn->Close();
 
             }

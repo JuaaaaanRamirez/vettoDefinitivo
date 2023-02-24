@@ -12,6 +12,7 @@ namespace SalesView {
 	using namespace SalesModel;
 	using namespace SalesController;
 	using namespace System::Windows::Forms::DataVisualization::Charting;
+	using namespace Threading;
 
 
 	/// <summary>
@@ -19,13 +20,31 @@ namespace SalesView {
 	/// </summary>
 	public ref class StadisticReportForm : public System::Windows::Forms::Form
 	{
+	private:
+		Thread^ myThread;
 	public:
 		StadisticReportForm(void)
 		{
 			InitializeComponent();
+			myThread = gcnew Thread(gcnew ThreadStart(this, &StadisticReportForm::MyRun));
+			myThread->IsBackground = true;
+			myThread->Start();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		delegate void MyDelegate();
+
+		void MyRun() {
+			while (true) {
+				try {
+					myThread->Sleep(1000);
+					Invoke(gcnew MyDelegate(this, &StadisticReportForm::RefreshReportToday));
+				}
+				catch (Exception^ ex) {
+					return;
+				}
+			}
 		}
 
 	protected:
@@ -603,6 +622,7 @@ namespace SalesView {
 		}
 #pragma endregion
 		void RefreshReportToday() {
+			chartReportToday->Series["Unidades vendidas"]->Points->Clear();
 
 			List <Sale^>^ salesList1 = gcnew  List<Sale^>();
 

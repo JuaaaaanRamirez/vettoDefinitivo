@@ -104,8 +104,8 @@ List<Product^>^ SalesController::Controller::GetListProductOrderBySearches(List<
 List<Product^>^ SalesController::Controller::GetListProductOrderBySells(List<Sale^>^ ListSellsByTime)//nuestro productList
 {
     List<Product^>^ productListAux = gcnew  List<Product^>();
-    //productListAux = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
-    productListAux=Persistance::QueryAllActiveProducts();
+    productListAux = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    //productListAux=Persistance::QueryAllActiveProducts();                           //DESCOMENTAR CUNADO LAS VENTAS CON DB ESTE TERMINADA
     for (int i = 0; i < productListAux->Count; i++) {
         productListAux[i]->SalesByTime = 0;
     }
