@@ -102,7 +102,55 @@ GO
 
 -- QUERYLASTSALE
 GO
-CREATE PROCEDURE usp_QueryLastSale() AS
+CREATE PROCEDURE usp_QueryLastSale AS
 	SELECT * FROM SALE
-	WHERE	id= 
+	WHERE	id=(SELECT COUNT(*) FROM SALE)-1
+GO
+
+-- QUERYALLLSALES
+GO
+CREATE PROCEDURE usp_QueryAllSales AS
+	SELECT * FROM SALE
+GO
+
+
+-- UPDATE SALE
+GO
+CREATE PROCEDURE dbo.usp_UpdateSale(
+	@status				CHAR(1),
+	@total				DECIMAL(10,2),
+	@address			VARCHAR(500),
+	@reference			VARCHAR(500),
+	@paidmode			VARCHAR(100),
+	@saledate			VARCHAR(100),
+
+	--RELATION
+	@customer_id			INT,
+	@storemanager_id		INT,
+	@id						INT
+ ) AS 
+	BEGIN
+		UPDATE SALE
+		SET status=@status,
+			total=@total, 
+			address=@address, 
+			reference=@reference, 
+			paidmode=@paidmode,  
+			saledate=@saledate,
+			customer_id=@customer_id,
+			storemanager_id=@storemanager_id
+				WHERE id=@id
+	END
+GO
+
+-- "DELETE" SALE
+GO
+CREATE PROCEDURE dbo.usp_DeleteSale(
+	@id INT
+) AS
+	BEGIN
+		UPDATE SALE
+		SET status='H'
+		WHERE id=@id
+	END
 GO

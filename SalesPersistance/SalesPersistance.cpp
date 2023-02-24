@@ -243,6 +243,7 @@ SqlConnection^ SalesPersistance::Persistance::GetConnection()
     return conn;
 }
 
+// For Product
 List<Product^>^ SalesPersistance::Persistance::QueryAllActiveProducts()
 {
     SqlConnection^ conn;
@@ -308,7 +309,6 @@ List<Product^>^ SalesPersistance::Persistance::QueryAllActiveProducts()
     }
     return activeProductsList;
 }
-
 Product^ SalesPersistance::Persistance::QueryProductById(int productId)
 {
     SqlConnection^ conn;
@@ -364,7 +364,6 @@ Product^ SalesPersistance::Persistance::QueryProductById(int productId)
     }
     return activeProduct;
 }
-
 List<Product^>^ SalesPersistance::Persistance::QueryProductsByNameOrDescription(String^ value)
 {
     SqlConnection^ conn;
@@ -433,7 +432,6 @@ List<Product^>^ SalesPersistance::Persistance::QueryProductsByNameOrDescription(
     }
     return activeProductsList;
 }
-
 int SalesPersistance::Persistance::AddProduct(Product^ p)
 {
     SqlConnection^ conn;
@@ -508,9 +506,6 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
              if (conn != nullptr) conn->Close();
            
          }
-        
-
-
      }
      catch (Exception^ ex) {}
      finally {
@@ -518,10 +513,8 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
          if (conn != nullptr) conn->Close();
      }
      return output_id;
-
    // return 1;
 }
-
 int SalesPersistance::Persistance::UpdateProduct(Product^ p)
 {
     SqlConnection^ conn;
@@ -624,7 +617,6 @@ int SalesPersistance::Persistance::UpdateProduct(Product^ p)
     }
     return output_id;
 }
-
 int SalesPersistance::Persistance::DeleteProduct(int id)
 {
     SqlConnection^ conn;
@@ -654,4 +646,226 @@ int SalesPersistance::Persistance::DeleteProduct(int id)
         if (conn != nullptr) conn->Close();
     }
     return output_id;
+}
+
+
+// For Sale
+int SalesPersistance::Persistance::AddSale(Sale^ sale)
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   int output_id;
+    
+    try {
+        // Connection+Command
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_AddSale", conn);   comm->CommandType = System::Data::CommandType::StoredProcedure;
+        
+#pragma region PUT DATA
+        comm->Parameters->Add("@status",            System::Data::SqlDbType::Char, 1);
+        comm->Parameters->Add("@total",             System::Data::SqlDbType::Decimal, 10);
+        comm->Parameters["@total"]->Precision = 10;
+        comm->Parameters["@total"]->Scale = 2;
+
+        comm->Parameters->Add("@address",           System::Data::SqlDbType::VarChar, 500);
+        comm->Parameters->Add("@reference",         System::Data::SqlDbType::VarChar, 500);
+        comm->Parameters->Add("@paidmode",          System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@saledate",          System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@customer_id",       System::Data::SqlDbType::Int);
+        comm->Parameters->Add("@storemanager_id",   System::Data::SqlDbType::Int);
+
+        // ID
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@id", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+
+        // Push
+        comm->Parameters->Add(outputIdParam);
+        comm->Prepare();
+        comm->Parameters["@status"]->Value          = Char::ToString(sale->Status);
+        comm->Parameters["@total"]->Value           = sale->Total;
+        comm->Parameters["@address"]->Value         = sale->Address;
+        comm->Parameters["@reference"]->Value       = sale->Reference;
+        comm->Parameters["@paidmode"]->Value        = sale->PaidMode;
+        comm->Parameters["@saledate"]->Value        = sale->SaleDate;
+        comm->Parameters["@customer_id"]->Value     = sale->Customer->Id;
+        comm->Parameters["@storemanager_id"]->Value = sale->StoreManager->Id;
+#pragma endregion
+
+        // Run + GetId
+        comm->ExecuteNonQuery(); output_id = Convert::ToInt32(comm->Parameters["@id"]->Value); 
+    }
+    catch (Exception^ ex) {}
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return output_id;
+}
+Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
+    Sale^ activeSale;
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QuerySaleById", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@id", System::Data::SqlDbType::Int); comm->Prepare();    comm->Parameters["@id"]->Value = saleId;
+
+        // Read!
+        reader = comm->ExecuteReader();        
+        if (reader->Read()) {
+            Sale^ mySale = gcnew Sale();
+
+            mySale->Id          =   Convert::ToInt32(reader["id"]->ToString());
+            mySale->Status      =   reader["status"]->ToString()[0];
+            mySale->Total       =   Convert::ToDouble(reader["total"]->ToString());
+            mySale->Address     =   reader["address"]->ToString();
+            mySale->Reference   =   reader["reference"]->ToString();
+            mySale->PaidMode    =   reader["paidmode"]->ToString();
+            mySale->SaleDate    =   reader["saledate"]->ToString();
+
+            // Relation
+            mySale->Customer->Id     =      Convert::ToInt32(reader["customer_id"]->ToString());
+            mySale->StoreManager->Id =      Convert::ToInt32(reader["storemanager_id"]->ToString());
+
+            //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
+            //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
+            activeSale = mySale;
+        }
+    }
+    catch (Exception^ ex) {}
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activeSale;
+}
+Sale^ SalesPersistance::Persistance::QueryLastSale()
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
+    Sale^ activeSale;
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QueryLastSale", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Prepare();
+
+        // Read!
+        reader = comm->ExecuteReader();
+        if (reader->Read()) {
+            Sale^ mySale = gcnew Sale();
+
+            mySale->Id = Convert::ToInt32(reader["id"]->ToString());
+            mySale->Status = reader["status"]->ToString()[0];
+            mySale->Total = Convert::ToDouble(reader["total"]->ToString());
+            mySale->Address = reader["address"]->ToString();
+            mySale->Reference = reader["reference"]->ToString();
+            mySale->PaidMode = reader["paidmode"]->ToString();
+            mySale->SaleDate = reader["saledate"]->ToString();
+
+            // Relation
+            mySale->Customer->Id = Convert::ToInt32(reader["customer_id"]->ToString());
+            mySale->StoreManager->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
+
+            //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
+            //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
+            activeSale = mySale;
+        }
+    }
+    catch (Exception^ ex) {}
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activeSale;
+}
+List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
+    List<Sale^>^ activeSaleList = gcnew List<Sale^>();
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QueryAllSales", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Prepare();    reader = comm->ExecuteReader();
+        
+        // Read
+        while (reader->Read()) {
+            Sale^ mySale = gcnew Sale();
+
+            mySale->Id = Convert::ToInt32(reader["id"]->ToString());
+            mySale->Status = reader["status"]->ToString()[0];
+            mySale->Total = Convert::ToDouble(reader["total"]->ToString());
+            mySale->Address = reader["address"]->ToString();
+            mySale->Reference = reader["reference"]->ToString();
+            mySale->PaidMode = reader["paidmode"]->ToString();
+            mySale->SaleDate = reader["saledate"]->ToString();
+
+            // Relation
+            mySale->Customer->Id = Convert::ToInt32(reader["customer_id"]->ToString());
+            mySale->StoreManager->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
+
+            //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
+            //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
+            activeSaleList->Add(mySale);
+        }
+    }
+    catch (Exception^ ex) {}
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activeSaleList;
+}
+int SalesPersistance::Persistance::UpdateSale(Sale^ sale)
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   int result;
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_UpdateSale", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        
+#pragma region PUT DATA
+        comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+        comm->Parameters->Add("@status", System::Data::SqlDbType::Char, 1);
+        comm->Parameters->Add("@total", System::Data::SqlDbType::Decimal, 10);
+        comm->Parameters["@total"]->Precision = 10;
+        comm->Parameters["@total"]->Scale = 2;
+
+        comm->Parameters->Add("@address", System::Data::SqlDbType::VarChar, 500);
+        comm->Parameters->Add("@reference", System::Data::SqlDbType::VarChar, 500);
+        comm->Parameters->Add("@paidmode", System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@saledate", System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@customer_id", System::Data::SqlDbType::Int);
+        comm->Parameters->Add("@storemanager_id", System::Data::SqlDbType::Int);
+
+        comm->Prepare();
+        comm->Parameters["@id"]->Value = sale->Id;
+        comm->Parameters["@status"]->Value = Char::ToString(sale->Status);
+        comm->Parameters["@total"]->Value = sale->Total;
+        comm->Parameters["@address"]->Value = sale->Address;
+        comm->Parameters["@reference"]->Value = sale->Reference;
+        comm->Parameters["@paidmode"]->Value = sale->PaidMode;
+        comm->Parameters["@saledate"]->Value = sale->SaleDate;
+        comm->Parameters["@customer_id"]->Value = sale->Customer->Id;
+        comm->Parameters["@storemanager_id"]->Value = sale->StoreManager->Id;
+#pragma endregion
+        result = comm->ExecuteNonQuery(); // Affedted rows       
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (conn != nullptr) conn->Close();
+    }
+    return result;
+}
+int SalesPersistance::Persistance::DeleteSale(int saleId)
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   int result;
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_DeleteSale", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@id", System::Data::SqlDbType::Int); comm->Prepare(); comm->Parameters["@id"]->Value = saleId;
+        result = comm->ExecuteNonQuery();       // Affected rows
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (conn != nullptr) conn->Close();
+    }
+    return result;
 }

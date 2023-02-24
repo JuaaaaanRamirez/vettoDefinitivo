@@ -453,7 +453,7 @@ namespace SalesView {
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			txtUserName->Text = "" + mySale->Customer->Username;
-			txtAddress->Text = "" + mySale->Customer->Address;
+			txtAddress->Text = "" + mySale->Address;
 			cbPaidMode->Text = "" + mySale->PaidMode;
 			// Edit Customer
 			if (mySale->Customer->Username == "") txtUserName->ReadOnly = false;
@@ -585,7 +585,7 @@ private: System::Void txtAddress_TextChanged(System::Object^ sender, System::Eve
 	if (txtAddress->Text->Trim() != "") {
 		Sale^ mySale = Controller::QuerySaleById(saleId);
 		mySale->Address = txtAddress->Text;
-		mySale->Customer->Address = txtAddress->Text;
+		//mySale->Customer->Address = txtAddress->Text;
 		Controller::UpdateSale(mySale);
 	}
 }
