@@ -459,33 +459,37 @@ namespace SalesView {
 			if (SaleDetailForm::mySaleDetail->paid) {
 				SaleDetailForm::mySaleDetail->paid = false;
 				Sale^ newSale = gcnew Sale();
+
+				// Put Customer
+				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
+
+				// Is it Online?
+				StoreManager^ storeManager = gcnew StoreManager();
+				storeManager->Name = "Asistente virtual";
+				newSale->StoreManager = storeManager;
+				newSale->PaidMode = "Efectivo";
+				newSale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); ///////Para generar ventas hace un mes
+				newSale->Status = 'A';
+				newSale->Address = customer->Address;
+				newSale->Reference = "-";
 				saleId = Controller::AddSale(newSale);
 			}
 			else {
 				Sale^ mysale = Controller::QueryLastSale();
 				saleId = mysale->Id;
 			}
+			
 			// New SaleDeatil?
 			List<Sale^>^ mysaleList = Controller::QueryAllSales();
 
-			// Put Customer
-			Customer^ customer = (Customer^)Controller::QueryUserById(userId); mysaleList[saleId]->Customer = customer; // Customer
-
-			// Is it Online?
-			StoreManager^ storeManager = gcnew StoreManager();
-			storeManager->Name = "Asistente virtual";
-			mysaleList[saleId]->StoreManager = storeManager;
-			mysaleList[saleId]->PaidMode = "Efectivo";
-			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); ///////Para generar ventas hace un mes
-			mysaleList[saleId]->Status = 'A';
-			mysaleList[saleId]->Address = customer->Address;
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
 				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
 
 			// Put On Data
-			SaleDetail^ newSaleDetail= CreateSaleDetail();
-			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail
+			/*SaleDetail^ newSaleDetail = CreateSaleDetail();
+			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail*/
+			Controller::AddSaleDetail(CreateSaleDetail(), saleId);
 			
 			// Carry on?
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
@@ -515,7 +519,7 @@ namespace SalesView {
 	}
 	private: System::Void ProductPresentationForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		// Reload
-		List<Sale^>^ mySaleList = Controller::QueryAllSales(); // Really necesary
+		//List<Sale^>^ mySaleList = Controller::QueryAllSales(); // Really necesary
 		ShowProduct();
 	}
 	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e);

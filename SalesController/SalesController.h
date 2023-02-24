@@ -97,13 +97,21 @@ namespace SalesController {
 		static bool ExistUsername(String^ username);
 		static bool ExistDocNumber(String^ docnumber);
 
-		//Métodos CRUD de Sale (C:Create, R:Request, U:Update, D:Delete)
+		//CRUD Methods to Sale (C:Create, R:Request, U:Update, D:Delete)
 		static int AddSale(Sale^ sale);
 		static Sale^ QuerySaleById(int saleId);
 		static Sale^ QueryLastSale();
 		static List<Sale^>^ QueryAllSales();
 		static int UpdateSale(Sale^ sale);
 		static int DeleteSale(int saleId);
+
+		//CRUD Methods to SaleDetail
+		static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
+		static List<SaleDetail^>^ QuerySalesDetailsBySaleId(int saleid);
+		static SaleDetail^ QuerySaleDetailBySaleIdAndProductId(int saleid, int productid);
+		static int UpdateSaleDetail(SaleDetail^ saleDetail, int saleId);
+		static int DeleteSaleDetail(int saleid, int productid);
+
 
 		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
 

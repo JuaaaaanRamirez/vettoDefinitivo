@@ -6,11 +6,11 @@ DROP TABLE dbo.SALE
 -- CREATE TABLE SALES
 GO
 CREATE TABLE SALE(
-	id					INT				NOT NULL PRIMARY KEY IDENTITY(0,1),
+	id					INT				NOT NULL PRIMARY KEY, 
 	status				CHAR(1)			NOT NULL,
 	total				DECIMAL(10, 2)	NOT NULL,
 	address				VARCHAR(500)	NOT NULL,
-	reference			VARCHAR(500)	NULL,
+	reference			VARCHAR(500)	NOT NULL,
 	paidmode			VARCHAR(100)	NOT NULL,
 	saledate			VARCHAR(100)	NOT NULL,
 
@@ -23,7 +23,7 @@ CREATE TABLE SALE(
 -- CREATE TABLE SALE_DETAIL
 GO
 CREATE TABLE SALE_DETAIL (
-	id					INT				NOT NULL PRIMARY KEY IDENTITY(1,1),
+	id					INT				NOT NULL PRIMARY KEY IDENTITY(0,1),
 	quantity			INT				NULL,
 	subtotal			DECIMAL(10,2)	NULL,
 	unit_price			DECIMAL(10,2)	NULL,
@@ -68,6 +68,9 @@ GO
 
 -- CRUD METHODS
 
+
+-- SALE
+
 -- ADD SALE
 GO
 CREATE PROCEDURE usp_AddSale(
@@ -84,9 +87,8 @@ CREATE PROCEDURE usp_AddSale(
 	@id						INT OUT
 ) AS
 	BEGIN
-		INSERT INTO SALE (status, total, address,reference, paidmode,saledate,customer_id, storemanager_id)
-		SELECT @status, @total, @address, @reference, @paidmode, @saledate, @customer_id, @storemanager_id
-		SET @id = SCOPE_IDENTITY()
+		INSERT INTO SALE (status, total, address,reference, paidmode,saledate,customer_id, storemanager_id,id)
+		SELECT @status, @total, @address, @reference, @paidmode, @saledate, @customer_id, @storemanager_id, @id
 	END
 
 -- QUERY
@@ -117,6 +119,7 @@ GO
 -- UPDATE SALE
 GO
 CREATE PROCEDURE dbo.usp_UpdateSale(
+
 	@status				CHAR(1),
 	@total				DECIMAL(10,2),
 	@address			VARCHAR(500),
@@ -152,5 +155,81 @@ CREATE PROCEDURE dbo.usp_DeleteSale(
 		UPDATE SALE
 		SET status='H'
 		WHERE id=@id
+	END
+GO
+
+-- SALE DETAIL
+
+
+-- ADD SALEDETAIL
+GO
+CREATE PROCEDURE usp_AddSaleDetail(
+	@id				    INT OUT,
+	@quantity			INT,
+	@subtotal			DECIMAL(10,2),
+	@unit_price			DECIMAL(10,2),
+
+	-- RELATION
+
+	@sale_id			INT,
+	@product_id			INT
+) AS
+	BEGIN
+		INSERT INTO SALE_DETAIL(quantity, subtotal, unit_price, sale_id,product_id)
+		SELECT @quantity, @subtotal, @unit_price, @sale_id, @product_id
+		SET @id = SCOPE_IDENTITY()
+	END
+
+-- QUERYSALESDETAILSBYSALE_ID
+GO
+CREATE PROCEDURE usp_QuerySalesDetailsBySaleId (
+	@sale_id INT
+)AS
+	BEGIN
+		SELECT * FROM SALE_DETAIL WHERE sale_id=@sale_id
+	END
+GO
+
+-- QUERYSALESDETAILBYSALE_IDANDPRODUCT_ID
+GO
+CREATE PROCEDURE usp_QuerySaleDetailBySaleIdAndProductId (
+	@sale_id INT,
+	@product_d INT
+)AS
+	BEGIN
+		SELECT * FROM SALE_DETAIL WHERE (sale_id=@sale_id AND product_id=@product_d)
+	END
+GO
+
+-- UPDATE SALE DETAIL
+GO
+CREATE PROCEDURE dbo.usp_UpdateSaleDetail(
+	@quantity			INT,
+	@subtotal			DECIMAL(10,2),
+	@unit_price			DECIMAL(10,2),
+
+	-- RELATION
+
+	@sale_id			INT,
+	@product_id			INT
+
+ ) AS 
+	BEGIN
+		UPDATE SALE_DETAIL
+		SET quantity=@quantity,
+			subtotal=@subtotal, 
+			unit_price=@unit_price
+		WHERE (sale_id=@sale_id AND product_id=@product_id)
+	END
+GO
+
+-- "DELETE" SALEDETAIL
+GO
+CREATE PROCEDURE dbo.usp_DeleteSaleDetail(
+	@sale_id INT,
+	@product_id INT
+) AS
+	BEGIN
+		DELETE FROM SALE_DETAIL WHERE (sale_id=@sale_id AND product_id=@product_id)
 	END
 GO
