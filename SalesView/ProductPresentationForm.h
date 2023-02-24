@@ -459,7 +459,7 @@ namespace SalesView {
 			mysaleList[saleId]->PaidMode = "Efectivo";
 			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); ///////Para generar ventas hace un mes
 			mysaleList[saleId]->Status = 'A';
-
+			mysaleList[saleId]->Address = customer->Address;
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
 				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}

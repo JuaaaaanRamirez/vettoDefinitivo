@@ -24,5 +24,14 @@ namespace SalesPersistance {
 		static int AddProduct(Product^ p); 
 		static int UpdateProduct(Product^ p);
 		static int DeleteProduct(int id);
+
+
+		// For Sale
+		static int AddSale(Sale^ sale);
+		static Sale^ QuerySaleById(int saleId);
+		static Sale^ QueryLastSale();
+		static List<Sale^>^ QueryAllSales();
+		static int UpdateSale(Sale^ sale);
+		static int DeleteSale(int saleId);
 	};
 }
