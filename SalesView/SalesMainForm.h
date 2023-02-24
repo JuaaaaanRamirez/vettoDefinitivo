@@ -24,6 +24,7 @@ namespace SalesView {
 	using namespace SalesController;    // Controller
 	using namespace SalesModel;			// Classes and Instances
 	using namespace System::Collections::Generic;	// List
+	using namespace Threading;
 
 
 	/// <summary>
@@ -31,7 +32,8 @@ namespace SalesView {
 	/// </summary>
 	public ref class SalesMainForm : public System::Windows::Forms::Form
 	{
-		
+	private:
+		Thread^ myThread;
 	public:
 
 		//static Person^ person; //Variable de clase
@@ -90,10 +92,26 @@ namespace SalesView {
 			InitializeComponent();
 			instance = this; // Easy Data
 			userPhoto = btnLogin;
+
+			myThread = gcnew Thread(gcnew ThreadStart(this, &SalesMainForm::MyRun));
+			myThread->IsBackground = true;
+			myThread->Start();
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		delegate void MyDelegate();
 
+		void MyRun() {
+			while (true) {
+				try {
+					myThread->Sleep(1000);
+					Invoke(gcnew MyDelegate(this, &SalesMainForm::PutTopToThread));
+				}
+				catch (Exception^ ex) {
+					return;
+				}
+			}
+		}
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -1333,7 +1351,7 @@ public:
 			}
 		}
 public:	
-	
+		
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
@@ -1345,6 +1363,9 @@ public:
 			ms = gcnew System::IO::MemoryStream(myTopList[4]->Photo); pbFifthProduct->BackgroundImage = Image::FromStream(ms); lbFifthProduct->Text = "" + myTopList[4]->Searches;
 			ms = gcnew System::IO::MemoryStream(myTopList[5]->Photo); pbSixthProduct->BackgroundImage = Image::FromStream(ms); lbSixthProduct->Text = "" + myTopList[5]->Searches;
 			ms = gcnew System::IO::MemoryStream(myTopList[6]->Photo); pbSeventhProduct->BackgroundImage = Image::FromStream(ms); lbSeventhProduct->Text = "" + myTopList[6]->Searches;
+		}
+		void PutTopToThread() {
+			PutTop(Controller::GetTopProducts());
 		}
 		void SignOff() {
 			person = nullptr;
@@ -1415,7 +1436,7 @@ public:
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
-		//PutTop(Controller::GetTopProducts());
+		PutTop(Controller::GetTopProducts());
 		lbCompany->Text = "";
 		lbJob->Text = "";
 	}
