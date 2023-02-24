@@ -20,6 +20,7 @@ namespace SalesPersistance {
 		static List<Product^>^ QueryAllActiveProducts();
 		static Product^ QueryProductById(int productId); //redundande, basta con el QueryAllActiveProducts
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ value); //redundande, basta con el QueryAllActiveProducts
+		static List<Product^>^ QueryProductsByStockLimit(int stock);
 		static int AddProduct(Product^ p); 
 		static int UpdateProduct(Product^ p);
 		static int DeleteProduct(int id);
