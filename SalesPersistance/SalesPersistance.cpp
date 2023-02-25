@@ -537,7 +537,7 @@ int SalesPersistance::Persistance::AddProduct(Product^ p)
          comm->Parameters["@name"]->Value = p->Name;
          comm->Parameters["@description"]->Value = p->Description;
          comm->Parameters["@priceMin"]->Value = p->PriceMin;
-         comm->Parameters["@priceMaj"]->Value = p->PriceMin;
+         comm->Parameters["@priceMaj"]->Value = p->PriceMaj;
          comm->Parameters["@stock"]->Value = p->Stock;
          comm->Parameters["@status"]->Value = Char::ToString(p->Status);
          if (p->Photo == nullptr)
@@ -623,7 +623,7 @@ int SalesPersistance::Persistance::UpdateProduct(Product^ p)
         comm->Parameters["@name"]->Value = p->Name;
         comm->Parameters["@description"]->Value = p->Description;
         comm->Parameters["@priceMin"]->Value = p->PriceMin;
-        comm->Parameters["@priceMaj"]->Value = p->PriceMin;
+        comm->Parameters["@priceMaj"]->Value = p->PriceMaj;
         comm->Parameters["@stock"]->Value = p->Stock;
         comm->Parameters["@status"]->Value = Char::ToString(p->Status);
         if (p->Photo == nullptr)
