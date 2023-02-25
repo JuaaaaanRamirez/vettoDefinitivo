@@ -361,12 +361,13 @@ bool SalesController::Controller::ExistDocNumber(String^ docnumber)
 // For Sales
 int SalesController::Controller::AddSale(Sale^ sale)
 {
-    // Amount
-    if (saleList->Count == 0) sale->Id = 0;
-    else { sale->Id = saleList->Count; }
-    saleList->Add(sale);
-    Persistance::PersistBinary("sales.bin", saleList);
-    return Int32(sale->Id);
+    /*// Amount
+    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    */
+    int count = Persistance::GetSalesCounter();
+    if (count == 0) sale->Id = 0;
+    else { sale->Id = count; }
+    return Persistance::AddSale(sale);
 }
 Sale^ SalesController::Controller::QuerySaleById(int saleId)
 {
@@ -379,16 +380,18 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
 }
 Sale^ SalesController::Controller::QueryLastSale()
 {
-    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    /*saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
     for (int i = 0; i < saleList->Count; i++)
         if (saleList[i]->Id == saleList->Count-1)
             return saleList[i];
-    return nullptr;
+    return nullptr;*/
+    return Persistance::QueryLastSale();
 }
 List<Sale^>^ SalesController::Controller::QueryAllSales()
 {
-    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
-    return saleList;
+    /*saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    return saleList;*/
+    return Persistance::QueryAllSales();
 }
 int SalesController::Controller::UpdateSale(Sale^ sale)
 {
@@ -409,6 +412,28 @@ int SalesController::Controller::DeleteSale(int saleId)
             return saleId;
         }
     return 0;
+}
+
+// For Sale Details
+List<SaleDetail^>^ SalesController::Controller::QuerySalesDetailsBySaleId(int saleid)
+{
+    return Persistance::QuerySalesDetailsBySaleId(saleid);
+}
+SaleDetail^ SalesController::Controller::QuerySaleDetailBySaleIdAndProductId(int saleid, int productid)
+{
+    return Persistance::QuerySaleDetailBySaleIdAndProductId(saleid, productid);
+}
+int SalesController::Controller::UpdateSaleDetail(SaleDetail^ saleDetail, int saleid)
+{
+    return Persistance::UpdateSaleDetail(saleDetail, saleid);
+}
+int SalesController::Controller::DeleteSaleDetail(int saleid, int productid)
+{
+    return 0;
+}
+int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
+{
+    return Persistance::AddSaleDetail(saleDetail, saleId);
 }
 
 /*int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
