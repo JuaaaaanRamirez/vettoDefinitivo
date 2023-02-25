@@ -371,12 +371,15 @@ int SalesController::Controller::AddSale(Sale^ sale)
 }
 Sale^ SalesController::Controller::QuerySaleById(int saleId)
 {
-
+    /*
     saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
     for (int i = 0; i < saleList->Count; i++)
         if (saleList[i]->Id == saleId)
             return saleList[i];
-    return nullptr;
+    return nullptr;*/
+    Sale^ mySale = Persistance::QuerySaleById(saleId);
+    mySale->Customer = (Customer^ )QueryUserById(mySale->Customer->Id);
+    return mySale;
 }
 Sale^ SalesController::Controller::QueryLastSale()
 {
@@ -391,27 +394,17 @@ List<Sale^>^ SalesController::Controller::QueryAllSales()
 {
     /*saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
     return saleList;*/
-    return Persistance::QueryAllSales();
+    List<Sale^>^ listSales = Persistance::QueryAllSales();
+
+    return listSales;
 }
 int SalesController::Controller::UpdateSale(Sale^ sale)
 {
-    for (int i = 0; i < saleList->Count; i++)
-        if (saleList[i]->Id == sale->Id) {
-            saleList[i] = sale;
-            Persistance::PersistBinary("sales.bin", saleList);
-            return sale->Id;
-        }
-    return -1;
+    return Persistance::UpdateSale(sale);
 }
 int SalesController::Controller::DeleteSale(int saleId)
 {
-    for (int i = 0; i < saleList->Count; i++)
-        if (saleList[i]->Id == saleId) {
-            saleList->RemoveAt(i);
-            Persistance::PersistBinary("sales.bin", saleList);
-            return saleId;
-        }
-    return 0;
+    return Persistance::DeleteSale(saleId);
 }
 
 // For Sale Details
@@ -429,7 +422,7 @@ int SalesController::Controller::UpdateSaleDetail(SaleDetail^ saleDetail, int sa
 }
 int SalesController::Controller::DeleteSaleDetail(int saleid, int productid)
 {
-    return 0;
+    return Persistance::DeleteSaleDetail(saleid, productid);
 }
 int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
 {

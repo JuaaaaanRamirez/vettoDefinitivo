@@ -786,10 +786,14 @@ Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
             mySale->Reference   =   reader["reference"]->ToString();
             mySale->PaidMode    =   reader["paidmode"]->ToString();
             mySale->SaleDate    =   reader["saledate"]->ToString();
+            mySale->SaleDetails = QuerySalesDetailsBySaleId(mySale->Id);
 
             // Relation
-            mySale->Customer->Id     =      Convert::ToInt32(reader["customer_id"]->ToString());
-            mySale->StoreManager->Id =      Convert::ToInt32(reader["storemanager_id"]->ToString());
+            Customer^ myCustomer = gcnew Customer();   StoreManager^ mySM = gcnew StoreManager();
+            myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
+            mySale->Customer = myCustomer; mySale->StoreManager = mySM;
+
+           
 
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
@@ -868,6 +872,10 @@ List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
             myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id= Convert::ToInt32(reader["customer_id"]->ToString());
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
+
+            // GetSaleDetail
+            mySale->SaleDetails = QuerySalesDetailsBySaleId(mySale->Id);
+
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
             activeSaleList->Add(mySale);
@@ -902,6 +910,7 @@ int SalesPersistance::Persistance::UpdateSale(Sale^ sale)
         comm->Parameters->Add("@storemanager_id", System::Data::SqlDbType::Int);
 
         comm->Prepare();
+
         comm->Parameters["@id"]->Value = sale->Id;
         comm->Parameters["@status"]->Value = Char::ToString(sale->Status);
         comm->Parameters["@total"]->Value = sale->Total;
@@ -911,6 +920,8 @@ int SalesPersistance::Persistance::UpdateSale(Sale^ sale)
         comm->Parameters["@saledate"]->Value = sale->SaleDate;
         comm->Parameters["@customer_id"]->Value = sale->Customer->Id;
         comm->Parameters["@storemanager_id"]->Value = sale->StoreManager->Id;
+
+
 #pragma endregion
         result = comm->ExecuteNonQuery(); // Affedted rows       
     }
@@ -973,7 +984,7 @@ int SalesPersistance::Persistance::AddSaleDetail(SaleDetail^ saleDetail, int sal
 #pragma region PUT DATA
         comm->Parameters->Add("@quantity",      System::Data::SqlDbType::Int);
         comm->Parameters->Add("@subtotal",      System::Data::SqlDbType::Decimal,10); comm->Parameters["@subtotal"]->Precision = 10; comm->Parameters["@subtotal"]->Scale = 2;
-        comm->Parameters->Add("@unit_price",    System::Data::SqlDbType::Decimal,10); comm->Parameters["@unit_price"]->Precision = 10; comm->Parameters["@unit_0price"]->Scale = 2;
+        comm->Parameters->Add("@unit_price",    System::Data::SqlDbType::Decimal,10); comm->Parameters["@unit_price"]->Precision = 10; comm->Parameters["@unit_price"]->Scale = 2;
         comm->Parameters->Add("@sale_id",       System::Data::SqlDbType::Int);
         comm->Parameters->Add("@product_id",    System::Data::SqlDbType::Int);
         // ID
@@ -1004,9 +1015,9 @@ List<SaleDetail^>^ SalesPersistance::Persistance::QuerySalesDetailsBySaleId(int 
     SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
     List<SaleDetail^>^ mySaleDetailList = gcnew List<SaleDetail^>();
     try {
-        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QuerySlesDetailsBYSaleId", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QuerySalesDetailsBySaleId", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
         comm->Parameters->Add("@sale_id", System::Data::SqlDbType::Int); comm->Prepare();    comm->Parameters["@sale_id"]->Value = saleid;
-        comm->Prepare();    reader = comm->ExecuteReader();
+        reader = comm->ExecuteReader();
 
         // Read
         while (reader->Read()) {
@@ -1016,7 +1027,8 @@ List<SaleDetail^>^ SalesPersistance::Persistance::QuerySalesDetailsBySaleId(int 
             mySD->Quantity = Convert::ToInt32(reader["quantity"]->ToString());
             mySD->SubTotal = Convert::ToDouble(reader["subtotal"]->ToString());
             mySD->UnitPrice = Convert::ToDouble(reader["unit_price"]->ToString());
-
+            // Product
+            mySD->Product = QueryProductById(mySD->Id);
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
             mySaleDetailList->Add(mySD);
@@ -1049,6 +1061,7 @@ SaleDetail^ SalesPersistance::Persistance::QuerySaleDetailBySaleIdAndProductId(i
             mySD->Quantity = Convert::ToInt32(reader["quantity"]->ToString());
             mySD->SubTotal = Convert::ToDouble(reader["subtotal"]->ToString());
             mySD->UnitPrice = Convert::ToDouble(reader["unit_price"]->ToString());
+            mySD->Product = QueryProductById(mySD->Id);
             mySaleDetail = mySD;
         }
     }
@@ -1077,7 +1090,7 @@ int SalesPersistance::Persistance::UpdateSaleDetail(SaleDetail^ saleDetail, int 
         comm->Parameters["@quantity"]->Value = saleDetail->Quantity;
         comm->Parameters["@subtotal"]->Value = saleDetail->SubTotal;
         comm->Parameters["@unit_price"]->Value = saleDetail->UnitPrice;
-        comm->Parameters["@saleid"]->Value = saleId;
+        comm->Parameters["@sale_id"]->Value = saleId;
         comm->Parameters["@product_id"]->Value = saleDetail->Id;
 #pragma endregion
         result = comm->ExecuteNonQuery(); // Affedted rows       

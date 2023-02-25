@@ -141,8 +141,9 @@ private: System::Void CarryOnShoppingForm_Load(System::Object^ sender, System::E
 private: System::Void CarryOnShoppingForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	if (!btnPushed) {
 		Sale^ mySale = Controller::QuerySaleById(saleId);
-		mySale->SaleDetails->RemoveAt(mySale->SaleDetails->Count - 1);
-		Controller::UpdateSale(mySale);
+		/*mySale->SaleDetails->RemoveAt(mySale->SaleDetails->Count - 1);
+		Controller::UpdateSale(mySale);¨*/
+		Controller::DeleteSaleDetail(saleId, mySale->SaleDetails[mySale->SaleDetails->Count-1]->Id);
 	}
 }
 };

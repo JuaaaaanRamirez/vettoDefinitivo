@@ -226,7 +226,7 @@ namespace SalesView {
 				}
 
 				dgvProductList->Rows->Add(gcnew array<String^>{
-					"" + myProductList[i]->Id,
+					    "" + myProductList[i]->Id,
 						"" + myProductList[i]->Name,
 						"" + myProductList[i]->Stock,
 						"" + careersString,

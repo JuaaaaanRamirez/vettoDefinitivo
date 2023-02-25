@@ -45,9 +45,7 @@ namespace SalesController {
 		static int DeleteProduct(int productId);
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
 		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);  
-
 		static List<Product^>^ QueryProductsByStockLimit(int stock);
-
 		static List<Product^>^ GetTopProducts() {
 			List<Product^>^ myProductList = Controller::QueryAllProducts();
 			for (int i = 0; i < myProductList->Count; i++) // Look for!
@@ -59,7 +57,6 @@ namespace SalesController {
 					}
 			return myProductList;
 		}
-
 		static List<Product^>^ GetListProductOrderBySearches(List<Product^>^ ListProductByTime);//usualmente el argumento sera toda la lista de products
 		static List<Product^>^ GetListProductOrderBySells(List<Sale^>^ ListProductByTime);
 

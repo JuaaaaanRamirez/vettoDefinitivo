@@ -336,7 +336,7 @@ namespace SalesView {
 			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 15;
 			this->label4->Text = L"SubTotal (S/.):";
-			this->label4->Click += gcnew System::EventHandler(this, &SaleDetailForm::label4_Click);
+			//this->label4->Click += gcnew System::EventHandler(this, &SaleDetailForm::label4_Click);
 			// 
 			// txtSubTotal
 			// 
@@ -538,16 +538,9 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		if (dgvSaleDetail->SelectedCells[0]->Value->ToString()->Trim() != "") {
 			int selectedRowIndex = dgvSaleDetail->SelectedCells[0]->RowIndex;
 			int saleDetailId = Convert::ToInt32(dgvSaleDetail->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
-			Sale^ mySale = Controller::QuerySaleById(saleId);
-			for (int i = 0; i < mySale->SaleDetails->Count; i++) {
-				if (mySale->SaleDetails[i]->Id == saleDetailId) {
-					mySale->SaleDetails->RemoveAt(i); 
-					Controller::UpdateSale(mySale); break;
-				}
-			}
+			Controller::DeleteSaleDetail(saleId, saleDetailId);
 			ShowData(); ShowShoppingCart();
 		}
-			
 		else
 			MessageBox::Show("No se puede eliminar una fila vacía.");
 	}
@@ -568,7 +561,7 @@ private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, Sys
 			// Update Sale
 			currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
 			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
-			Controller::UpdateSale(currentSale);
+			Controller::UpdateSaleDetail(currentSale->SaleDetails[e->RowIndex], currentSale->Id);
 		}
 		ShowData();
 		ShowShoppingCart();
@@ -595,8 +588,6 @@ private: System::Void txtReference_TextChanged(System::Object^ sender, System::E
 		mySale->Reference = txtReference->Text;
 		Controller::UpdateSale(mySale);
 	}
-}
-private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void cbPaidMode_SelectedValueChanged(System::Object^ sender, System::EventArgs^ e) {
 		Sale^ mySale = Controller::QuerySaleById(saleId);

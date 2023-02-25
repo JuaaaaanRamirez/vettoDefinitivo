@@ -42,7 +42,7 @@ namespace SalesView {
 			this->userId = userId;
 			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
 			myThread->IsBackground = true;
-			myThread->Start();
+			//myThread->Start();
 		}
 		delegate void MyDelegate();
 
@@ -484,12 +484,14 @@ namespace SalesView {
 
 			//Is the product repeated?
 			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
-				if (mysaleList[saleId]->SaleDetails[i]->Product->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
+				if (mysaleList[saleId]->SaleDetails[i]->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
 
 			// Put On Data
 			/*SaleDetail^ newSaleDetail = CreateSaleDetail();
 			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail*/
 			Controller::AddSaleDetail(CreateSaleDetail(), saleId);
+			
+			Sale^ mySale = Controller::QuerySaleById(saleId);
 			
 			// Carry on?
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);
