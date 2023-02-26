@@ -260,7 +260,8 @@ List<StoreManager^>^ SalesController::Controller::QueryAllStoreManager()
 }
 
 List<Announcer^>^ SalesController::Controller::QueryAllAnnouncer(){
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    //personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    personList = Persistance::QueryAllActivePerson();
     List<Announcer^>^ activeAnnouncerList = gcnew List<Announcer^>();
 
     for (int i = 0; i < personList->Count; i++) {
