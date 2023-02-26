@@ -127,6 +127,7 @@ System::Void SalesView::NewCustomerForm::btnRegister_Click(System::Object^ sende
 			//p->CustomerPoints = ; "" + customer->CustomerPoints; ,<Company^>(customer)
 			//safe_cast<Customer^>(p)->CustomerPoints = Int32::Parse(txtCustomerPoints->Text);
 			safe_cast<Customer^>(p)->Address = txtAddress->Text;
+
 			
 			 System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			 

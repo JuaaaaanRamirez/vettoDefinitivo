@@ -42,5 +42,15 @@ namespace SalesPersistance {
 		static SaleDetail^ QuerySaleDetailBySaleIdAndProductId(int saleid, int productid);
 		static int UpdateSaleDetail(SaleDetail^ saleDetail, int saleId);
 		static int DeleteSaleDetail(int saleid, int productid);
+
+
+		//For Person
+		static List<Person^>^ QueryAllActivePerson();
+		static Person^ QueryPersonById(int personId);
+		static int AddPerson(Person^ user);
+		static int UpdatePerson(Person^ user);
+		static int DeletePerson(int iduser);
+		static Person^ Login(String^ username, String^ password);
+
 	};
 }

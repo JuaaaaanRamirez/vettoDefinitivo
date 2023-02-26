@@ -904,6 +904,19 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 						   "" + myPersonList[i]->PhoneNumber
 				   });
 			   }
+			   //PRUEBA DEL BUSCADOR DE PERSON POR ID
+			/*
+			   Person^ user = gcnew Person();
+			   user = Controller::QueryUserById(3);
+			   if (user != nullptr) {
+				   dgvCustomer->Rows->Add(gcnew array<String^>{
+					   "" + user->Id,
+						   "" + user->Name,
+						   "" + user->LastName,
+						   "" + user->Email,
+						   "" + user->PhoneNumber
+				   });
+			   }*/
 		   }
 		   int Verification() {
 			   if (txtCustomerId->Text->Trim() == "") {
@@ -1109,18 +1122,52 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 		List<Person^>^ myPersonList = Controller::QueryAllUsers();
 
 		int userId;
-		if (selectedRowIndex >= (myPersonList->Count)) { CleanControls(); return; }
+		if (selectedRowIndex >= (myPersonList->Count)) { 
+			CleanControls(); 
+			return; 
+		}
 		userId = Convert::ToInt32(dgvCustomer->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 
 		Person^ p;
 		// Profile
+		/*
 		if (rbtnStudent->Checked) p = gcnew Customer();
 		else if (rbtnStoreManager->Checked) p = gcnew StoreManager();
-		else  p = gcnew Announcer();
+		else  p = gcnew Announcer();*/
 		p = Controller::QueryUserById(userId);
+		/*
+		if (user->Profile== 'S') {
+			Customer^ p = Controller::QueryUserById(userId);
 
+			txtCPoints->Text = "" + p->CustomerPoints;
+			txtAdress->Text = "" + p->Address;
+		}else if (user->Profile == 'A') {
+			Announcer^ p = gcnew Announcer();
+		}
+		else {
+			StoreManager^ p = gcnew StoreManager();
+		}*/
 
 		// Put on data
+		if (p->GetType() == Customer::typeid) {
+			
+			txtCPoints->Text = "" + dynamic_cast<Customer^>(p)->CustomerPoints;
+			txtAdress->Text = "" + dynamic_cast<Customer^>(p)->Address;
+
+		}
+		else if (p->GetType() == Announcer::typeid) {
+			txtCompanyName->Text = "" + dynamic_cast<Announcer^>(p)->CompanyName;
+			txtWebSite->Text = "" + dynamic_cast<Announcer^>(p)->WebSiteLink;
+
+		}
+		else if (p->GetType() == StoreManager::typeid) {
+			
+			txtGoal->Text = "" + dynamic_cast<StoreManager^>(p)->Goals;
+			txtSalary->Text = "" + dynamic_cast<StoreManager^>(p)->Salary;
+			txtAStore->Text = "" + dynamic_cast<StoreManager^>(p)->Store;
+			txtStatus->Text = "" + dynamic_cast<StoreManager^>(p)->Status;
+		}
+
 		txtCustomerId->Text = "" + p->Id;
 		txtDocNumber->Text = "" + p->DocNumber;
 		txtCustomerName->Text = "" + p->Name;
@@ -1129,20 +1176,22 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 		txtUser->Text = "" + p->Username;
 		txtPassword->Text = "" + p->Password;
 		txtPhoneNumber->Text = "" + p->PhoneNumber;
+		/*
 		if (p->Profile == 'S') {
-			txtCPoints->Text = "" + safe_cast<Customer^>(p)->CustomerPoints;
-			txtAdress->Text = "" + safe_cast<Customer^>(p)->Address;
+			txtCPoints->Text = "" + dynamic_cast<Customer^>(p)->CustomerPoints;
+	
+			txtAdress->Text = "" + dynamic_cast<Customer^>(p)->Address;
 		}
 		else if (p->Profile == 'M') {
-			txtGoal->Text = "" + safe_cast<StoreManager^>(p)->Goals;
-			txtSalary->Text = "" + safe_cast<StoreManager^>(p)->Salary;
-			txtAStore->Text = "" + safe_cast<StoreManager^>(p)->Store;
-			txtStatus->Text = "" + safe_cast<StoreManager^>(p)->Status;
+			txtGoal->Text = "" + dynamic_cast<StoreManager^>(p)->Goals;
+			txtSalary->Text = "" + dynamic_cast<StoreManager^>(p)->Salary;
+			txtAStore->Text = "" + dynamic_cast<StoreManager^>(p)->Store;
+			txtStatus->Text = "" + dynamic_cast<StoreManager^>(p)->Status;
 		}
 		else if (p->Profile == 'A') {
-			txtCompanyName->Text = "" + safe_cast<Announcer^>(p)->CompanyName;
-			txtWebSite->Text = "" + safe_cast<Announcer^>(p)->WebSiteLink;
-		}
+			txtCompanyName->Text = "" + dynamic_cast<Announcer^>(p)->CompanyName;
+			txtWebSite->Text = "" + dynamic_cast<Announcer^>(p)->WebSiteLink;
+		}*/
 
 
 		// Gen
@@ -1157,6 +1206,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 		// Date
 		dtpBirthday->Value = Convert::ToDateTime(p->Birthday);
 		// Put Image
+
 		if (p->Photo != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 			pbCustomer->Image = Image::FromStream(ms);

@@ -123,7 +123,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(1000);
+					myThread->Sleep(10000);
 					Invoke(gcnew MyDelegate(this, &SalesMainForm::PutTopToThread));
 				}
 				catch (Exception^ ex) {
