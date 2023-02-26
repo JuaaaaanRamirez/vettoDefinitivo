@@ -1452,10 +1452,9 @@ public:
 		}
 		void GoSale() {
 			// Reload
-			List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
+			//List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
 			// New sale
-			Sale^ newSale = gcnew Sale();
-			int saleId = Controller::AddSale(newSale); mysaleList = Controller::QueryAllSales();
+			int saleId = Controller::AddSale(gcnew Sale()); List<Sale^>^ mysaleList = Controller::QueryAllSales();
 			// Add Customer
 			Customer^ myCustomer = gcnew Customer(); myCustomer->Name = "Cliente Presencial"; myCustomer->Username = ""; myCustomer->Address = ""; mysaleList[saleId]->Customer = myCustomer;
 			// Add Store manager
