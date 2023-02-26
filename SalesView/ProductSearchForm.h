@@ -51,6 +51,9 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProductName;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Price;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Stock;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
 
 
 
@@ -89,32 +92,39 @@ namespace SalesView {
 			this->ProductName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Price = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Stock = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(25, 20);
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(21, 32);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(21, 16);
+			this->label1->Size = System::Drawing::Size(24, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Id:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(25, 53);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(21, 75);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(135, 16);
+			this->label2->Size = System::Drawing::Size(154, 16);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Nombre/Descripción:";
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(177, 17);
+			this->txtId->Location = System::Drawing::Point(173, 32);
 			this->txtId->Margin = System::Windows::Forms::Padding(4);
 			this->txtId->Name = L"txtId";
 			this->txtId->Size = System::Drawing::Size(132, 22);
@@ -122,7 +132,7 @@ namespace SalesView {
 			// 
 			// txtNameDescription
 			// 
-			this->txtNameDescription->Location = System::Drawing::Point(177, 49);
+			this->txtNameDescription->Location = System::Drawing::Point(173, 71);
 			this->txtNameDescription->Margin = System::Windows::Forms::Padding(4);
 			this->txtNameDescription->Name = L"txtNameDescription";
 			this->txtNameDescription->Size = System::Drawing::Size(340, 22);
@@ -130,7 +140,7 @@ namespace SalesView {
 			// 
 			// btnSearch
 			// 
-			this->btnSearch->Location = System::Drawing::Point(109, 94);
+			this->btnSearch->Location = System::Drawing::Point(105, 116);
 			this->btnSearch->Margin = System::Windows::Forms::Padding(4);
 			this->btnSearch->Name = L"btnSearch";
 			this->btnSearch->Size = System::Drawing::Size(129, 28);
@@ -141,7 +151,7 @@ namespace SalesView {
 			// 
 			// btnCancel
 			// 
-			this->btnCancel->Location = System::Drawing::Point(328, 94);
+			this->btnCancel->Location = System::Drawing::Point(324, 116);
 			this->btnCancel->Margin = System::Windows::Forms::Padding(4);
 			this->btnCancel->Name = L"btnCancel";
 			this->btnCancel->Size = System::Drawing::Size(128, 28);
@@ -157,7 +167,7 @@ namespace SalesView {
 				this->Id, this->ProductName,
 					this->Price, this->Stock
 			});
-			this->dgvProducts->Location = System::Drawing::Point(21, 134);
+			this->dgvProducts->Location = System::Drawing::Point(34, 182);
 			this->dgvProducts->Margin = System::Windows::Forms::Padding(4);
 			this->dgvProducts->Name = L"dgvProducts";
 			this->dgvProducts->RowHeadersWidth = 51;
@@ -193,12 +203,43 @@ namespace SalesView {
 			this->Stock->Name = L"Stock";
 			this->Stock->Width = 40;
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(21, 9);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(75, 16);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Buscar por:";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(3, 53);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(15, 16);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"o";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(40, 157);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(79, 16);
+			this->label5->TabIndex = 9;
+			this->label5->Text = L"Resultados:";
+			// 
 			// ProductSearchForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::AntiqueWhite;
-			this->ClientSize = System::Drawing::Size(544, 332);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
+			this->ClientSize = System::Drawing::Size(544, 389);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->dgvProducts);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnSearch);

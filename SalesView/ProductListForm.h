@@ -64,6 +64,8 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CarrerasRelacionadas;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Calificación;
 	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 
 
 
@@ -114,6 +116,8 @@ namespace SalesView {
 			this->Calificación = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Searchbtn = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
@@ -121,9 +125,9 @@ namespace SalesView {
 			// txtSearchBox
 			// 
 			this->txtSearchBox->BackColor = System::Drawing::SystemColors::Control;
-			this->txtSearchBox->Location = System::Drawing::Point(40, 10);
+			this->txtSearchBox->Location = System::Drawing::Point(40, 47);
 			this->txtSearchBox->Name = L"txtSearchBox";
-			this->txtSearchBox->Size = System::Drawing::Size(873, 22);
+			this->txtSearchBox->Size = System::Drawing::Size(664, 22);
 			this->txtSearchBox->TabIndex = 39;
 			this->txtSearchBox->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ProductListForm::txtSearchBox_KeyDown);
 			// 
@@ -135,12 +139,12 @@ namespace SalesView {
 				this->Id, this->Nombre,
 					this->Stock, this->CarrerasRelacionadas, this->Calificación
 			});
-			this->dgvProductList->Location = System::Drawing::Point(12, 43);
+			this->dgvProductList->Location = System::Drawing::Point(13, 133);
 			this->dgvProductList->Name = L"dgvProductList";
 			this->dgvProductList->ReadOnly = true;
 			this->dgvProductList->RowHeadersWidth = 51;
 			this->dgvProductList->RowTemplate->Height = 24;
-			this->dgvProductList->Size = System::Drawing::Size(903, 506);
+			this->dgvProductList->Size = System::Drawing::Size(694, 388);
 			this->dgvProductList->TabIndex = 41;
 			this->dgvProductList->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellContentClick);
 			this->dgvProductList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellDoubleClick);
@@ -192,7 +196,7 @@ namespace SalesView {
 			this->Searchbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->Searchbtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Searchbtn->ForeColor = System::Drawing::Color::Transparent;
-			this->Searchbtn->Location = System::Drawing::Point(10, 10);
+			this->Searchbtn->Location = System::Drawing::Point(10, 47);
 			this->Searchbtn->Name = L"Searchbtn";
 			this->Searchbtn->Size = System::Drawing::Size(25, 25);
 			this->Searchbtn->TabIndex = 42;
@@ -201,20 +205,46 @@ namespace SalesView {
 			// 
 			// panel1
 			// 
-			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->Searchbtn);
 			this->panel1->Controls->Add(this->txtSearchBox);
 			this->panel1->Location = System::Drawing::Point(2, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(921, 41);
+			this->panel1->Size = System::Drawing::Size(729, 82);
 			this->panel1->TabIndex = 43;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"MS Reference Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(37, 19);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(315, 16);
+			this->label1->TabIndex = 43;
+			this->label1->Text = L"Busque su producto por nombre o descripcion:";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(12, 105);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(162, 16);
+			this->label2->TabIndex = 44;
+			this->label2->Text = L"Resultados de busqueda:";
 			// 
 			// ProductListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(927, 561);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
+			this->ClientSize = System::Drawing::Size(731, 572);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvProductList);
 			this->MaximizeBox = false;
@@ -226,6 +256,7 @@ namespace SalesView {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

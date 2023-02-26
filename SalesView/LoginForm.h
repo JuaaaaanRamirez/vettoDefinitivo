@@ -164,11 +164,14 @@ namespace SalesView {
 			// 
 			// pbLogin
 			// 
+			this->pbLogin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->pbLogin->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pbLogin->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbLogin.Image")));
-			this->pbLogin->Location = System::Drawing::Point(75, 36);
+			this->pbLogin->Location = System::Drawing::Point(1, 2);
 			this->pbLogin->Margin = System::Windows::Forms::Padding(4);
 			this->pbLogin->Name = L"pbLogin";
-			this->pbLogin->Size = System::Drawing::Size(333, 62);
+			this->pbLogin->Size = System::Drawing::Size(460, 94);
 			this->pbLogin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbLogin->TabIndex = 4;
 			this->pbLogin->TabStop = false;
@@ -177,8 +180,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(460, 321);
 			this->Controls->Add(this->pbLogin);
 			this->Controls->Add(this->label3);

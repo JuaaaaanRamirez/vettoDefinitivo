@@ -53,6 +53,7 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Panel^ panel1;
 
 	private:
 		/// <summary>
@@ -75,8 +76,10 @@ namespace SalesView {
 			this->PriceSale = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lbTitle = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMyShopping))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dgvMyShopping
@@ -126,20 +129,25 @@ namespace SalesView {
 			// lbTitle
 			// 
 			this->lbTitle->AutoSize = true;
-			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbTitle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Monospac821 BT", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbTitle->Location = System::Drawing::Point(148, 32);
+			this->lbTitle->ForeColor = System::Drawing::Color::Orange;
+			this->lbTitle->Location = System::Drawing::Point(154, 23);
 			this->lbTitle->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbTitle->Name = L"lbTitle";
-			this->lbTitle->Size = System::Drawing::Size(208, 25);
+			this->lbTitle->Size = System::Drawing::Size(460, 45);
 			this->lbTitle->TabIndex = 1;
 			this->lbTitle->Text = L"Historial de compras";
 			this->lbTitle->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(51, 16);
+			this->pictureBox1->Location = System::Drawing::Point(11, 12);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(119, 58);
@@ -147,25 +155,36 @@ namespace SalesView {
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
 			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->panel1->Controls->Add(this->lbTitle);
+			this->panel1->Controls->Add(this->pictureBox1);
+			this->panel1->Location = System::Drawing::Point(2, 1);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(724, 83);
+			this->panel1->TabIndex = 3;
+			// 
 			// MySaleHistory
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(721, 532);
-			this->Controls->Add(this->lbTitle);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvMyShopping);
-			this->Controls->Add(this->pictureBox1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MySaleHistory";
 			this->Text = L"Mis compras";
 			this->Load += gcnew System::EventHandler(this, &MySaleHistory::MySaleHistory_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMyShopping))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

@@ -51,6 +51,7 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PriceProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Description;
+	private: System::Windows::Forms::Panel^ panel1;
 
 	private:
 		/// <summary>
@@ -75,8 +76,10 @@ namespace SalesView {
 			this->Description = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbwishList))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWishList))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pbwishList
@@ -84,8 +87,8 @@ namespace SalesView {
 			this->pbwishList->BackColor = System::Drawing::Color::Transparent;
 			this->pbwishList->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbwishList.Image")));
 			this->pbwishList->InitialImage = nullptr;
-			this->pbwishList->Location = System::Drawing::Point(57, 33);
-			this->pbwishList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pbwishList->Location = System::Drawing::Point(73, 32);
+			this->pbwishList->Margin = System::Windows::Forms::Padding(4);
 			this->pbwishList->Name = L"pbwishList";
 			this->pbwishList->Size = System::Drawing::Size(79, 62);
 			this->pbwishList->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -96,12 +99,13 @@ namespace SalesView {
 			// 
 			this->lbwishList->AutoSize = true;
 			this->lbwishList->BackColor = System::Drawing::Color::Transparent;
-			this->lbwishList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbwishList->Font = (gcnew System::Drawing::Font(L"MV Boli", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbwishList->Location = System::Drawing::Point(156, 47);
+			this->lbwishList->ForeColor = System::Drawing::Color::Orange;
+			this->lbwishList->Location = System::Drawing::Point(160, 32);
 			this->lbwishList->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbwishList->Name = L"lbwishList";
-			this->lbwishList->Size = System::Drawing::Size(192, 25);
+			this->lbwishList->Size = System::Drawing::Size(371, 49);
 			this->lbwishList->TabIndex = 1;
 			this->lbwishList->Text = L"Mi lista de deseos ";
 			// 
@@ -114,7 +118,7 @@ namespace SalesView {
 					this->NameProduct, this->PriceProduct, this->Description
 			});
 			this->dgvWishList->Location = System::Drawing::Point(40, 118);
-			this->dgvWishList->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgvWishList->Margin = System::Windows::Forms::Padding(4);
 			this->dgvWishList->Name = L"dgvWishList";
 			this->dgvWishList->RowHeadersWidth = 51;
 			this->dgvWishList->Size = System::Drawing::Size(541, 302);
@@ -152,7 +156,7 @@ namespace SalesView {
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(129, 443);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(103, 43);
 			this->button2->TabIndex = 4;
@@ -163,7 +167,7 @@ namespace SalesView {
 			// button3
 			// 
 			this->button3->Location = System::Drawing::Point(352, 443);
-			this->button3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(117, 43);
 			this->button3->TabIndex = 5;
@@ -171,26 +175,38 @@ namespace SalesView {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyWishList::button3_Click);
 			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->panel1->Controls->Add(this->lbwishList);
+			this->panel1->Controls->Add(this->pbwishList);
+			this->panel1->Location = System::Drawing::Point(1, 1);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(620, 102);
+			this->panel1->TabIndex = 6;
+			// 
 			// MyWishList
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::Honeydew;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(620, 523);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->dgvWishList);
-			this->Controls->Add(this->lbwishList);
-			this->Controls->Add(this->pbwishList);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyWishList";
 			this->Text = L"MyWishList";
 			this->Load += gcnew System::EventHandler(this, &MyWishList::MyWishList_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbwishList))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWishList))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

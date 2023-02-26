@@ -129,6 +129,10 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10;
+private: System::Windows::Forms::TabControl^ tabControl2;
+private: System::Windows::Forms::TabPage^ tabPage1;
+private: System::Windows::Forms::TabPage^ tabPage4;
+private: System::Windows::Forms::TabPage^ tabPage5;
 
 
 
@@ -157,26 +161,26 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea5 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea21 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend21 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series21 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title21 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea22 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend22 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series22 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title22 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea23 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend23 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series23 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title23 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea24 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend24 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series24 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title24 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea25 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend25 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series25 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title25 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -211,6 +215,10 @@ namespace SalesView {
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->tabControl2 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSells))->BeginInit();
 			this->tabControl1->SuspendLayout();
 			this->tabReportToday->SuspendLayout();
@@ -222,12 +230,16 @@ namespace SalesView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartReportGoals))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartReportLastMonth))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStock))->BeginInit();
+			this->tabControl2->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			this->tabPage4->SuspendLayout();
+			this->tabPage5->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(48, 9);
+			this->label1->Location = System::Drawing::Point(54, 15);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(108, 16);
 			this->label1->TabIndex = 0;
@@ -236,7 +248,7 @@ namespace SalesView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(45, 47);
+			this->label2->Location = System::Drawing::Point(54, 40);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(45, 16);
 			this->label2->TabIndex = 1;
@@ -245,7 +257,7 @@ namespace SalesView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(45, 89);
+			this->label3->Location = System::Drawing::Point(54, 82);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(73, 16);
 			this->label3->TabIndex = 2;
@@ -253,14 +265,14 @@ namespace SalesView {
 			// 
 			// dtpSaleDate
 			// 
-			this->dtpSaleDate->Location = System::Drawing::Point(145, 41);
+			this->dtpSaleDate->Location = System::Drawing::Point(154, 34);
 			this->dtpSaleDate->Name = L"dtpSaleDate";
 			this->dtpSaleDate->Size = System::Drawing::Size(200, 22);
 			this->dtpSaleDate->TabIndex = 3;
 			// 
 			// txtSaleId
 			// 
-			this->txtSaleId->Location = System::Drawing::Point(145, 83);
+			this->txtSaleId->Location = System::Drawing::Point(154, 76);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->Size = System::Drawing::Size(100, 22);
 			this->txtSaleId->TabIndex = 4;
@@ -273,11 +285,11 @@ namespace SalesView {
 				this->Column1, this->Column2,
 					this->Column3, this->Column6, this->Column4, this->Column5, this->Column10
 			});
-			this->dgvSells->Location = System::Drawing::Point(12, 147);
+			this->dgvSells->Location = System::Drawing::Point(23, 122);
 			this->dgvSells->Name = L"dgvSells";
 			this->dgvSells->RowHeadersWidth = 51;
 			this->dgvSells->RowTemplate->Height = 24;
-			this->dgvSells->Size = System::Drawing::Size(972, 316);
+			this->dgvSells->Size = System::Drawing::Size(975, 257);
 			this->dgvSells->TabIndex = 5;
 			// 
 			// Column1
@@ -331,7 +343,7 @@ namespace SalesView {
 			// 
 			// btShowAllSales
 			// 
-			this->btShowAllSales->Location = System::Drawing::Point(719, 82);
+			this->btShowAllSales->Location = System::Drawing::Point(419, 75);
 			this->btShowAllSales->Name = L"btShowAllSales";
 			this->btShowAllSales->Size = System::Drawing::Size(124, 59);
 			this->btShowAllSales->TabIndex = 6;
@@ -342,7 +354,7 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(85, 1334);
+			this->label4->Location = System::Drawing::Point(71, 68);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(211, 16);
 			this->label4->TabIndex = 13;
@@ -350,7 +362,7 @@ namespace SalesView {
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(315, 1328);
+			this->txtStock->Location = System::Drawing::Point(301, 62);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(100, 22);
 			this->txtStock->TabIndex = 14;
@@ -358,7 +370,7 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(433, 1334);
+			this->label5->Location = System::Drawing::Point(419, 68);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(63, 16);
 			this->label5->TabIndex = 15;
@@ -366,7 +378,7 @@ namespace SalesView {
 			// 
 			// btToShow
 			// 
-			this->btToShow->Location = System::Drawing::Point(588, 1319);
+			this->btToShow->Location = System::Drawing::Point(574, 53);
 			this->btToShow->Name = L"btToShow";
 			this->btToShow->Size = System::Drawing::Size(88, 47);
 			this->btToShow->TabIndex = 16;
@@ -379,10 +391,10 @@ namespace SalesView {
 			this->tabControl1->Controls->Add(this->tabReportToday);
 			this->tabControl1->Controls->Add(this->tabPage2);
 			this->tabControl1->Controls->Add(this->tabPage3);
-			this->tabControl1->Location = System::Drawing::Point(22, 490);
+			this->tabControl1->Location = System::Drawing::Point(17, 18);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(842, 776);
+			this->tabControl1->Size = System::Drawing::Size(842, 829);
 			this->tabControl1->TabIndex = 17;
 			// 
 			// tabReportToday
@@ -392,29 +404,29 @@ namespace SalesView {
 			this->tabReportToday->Location = System::Drawing::Point(4, 25);
 			this->tabReportToday->Name = L"tabReportToday";
 			this->tabReportToday->Padding = System::Windows::Forms::Padding(3);
-			this->tabReportToday->Size = System::Drawing::Size(834, 747);
+			this->tabReportToday->Size = System::Drawing::Size(834, 800);
 			this->tabReportToday->TabIndex = 0;
 			this->tabReportToday->Text = L"Reporte del dia";
 			this->tabReportToday->UseVisualStyleBackColor = true;
 			// 
 			// chartReportToday
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chartReportToday->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chartReportToday->Legends->Add(legend1);
+			chartArea21->Name = L"ChartArea1";
+			this->chartReportToday->ChartAreas->Add(chartArea21);
+			legend21->Name = L"Legend1";
+			this->chartReportToday->Legends->Add(legend21);
 			this->chartReportToday->Location = System::Drawing::Point(6, 59);
 			this->chartReportToday->Name = L"chartReportToday";
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Unidades vendidas";
-			this->chartReportToday->Series->Add(series1);
+			series21->ChartArea = L"ChartArea1";
+			series21->Legend = L"Legend1";
+			series21->Name = L"Unidades vendidas";
+			this->chartReportToday->Series->Add(series21);
 			this->chartReportToday->Size = System::Drawing::Size(802, 473);
 			this->chartReportToday->TabIndex = 0;
 			this->chartReportToday->Text = L"chart1";
-			title1->Name = L"Productos vendidos hoy";
-			title1->Text = L"Productos vendidos hoy";
-			this->chartReportToday->Titles->Add(title1);
+			title21->Name = L"Productos vendidos hoy";
+			title21->Text = L"Productos vendidos hoy";
+			this->chartReportToday->Titles->Add(title21);
 			// 
 			// tabPage2
 			// 
@@ -423,50 +435,50 @@ namespace SalesView {
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(834, 747);
+			this->tabPage2->Size = System::Drawing::Size(834, 800);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Reporte de la semana";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// pieSellsLastWeek
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->pieSellsLastWeek->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->pieSellsLastWeek->Legends->Add(legend2);
+			chartArea22->Name = L"ChartArea1";
+			this->pieSellsLastWeek->ChartAreas->Add(chartArea22);
+			legend22->Name = L"Legend1";
+			this->pieSellsLastWeek->Legends->Add(legend22);
 			this->pieSellsLastWeek->Location = System::Drawing::Point(49, 412);
 			this->pieSellsLastWeek->Name = L"pieSellsLastWeek";
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Numero de ventas";
-			this->pieSellsLastWeek->Series->Add(series2);
+			series22->ChartArea = L"ChartArea1";
+			series22->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series22->Legend = L"Legend1";
+			series22->Name = L"Numero de ventas";
+			this->pieSellsLastWeek->Series->Add(series22);
 			this->pieSellsLastWeek->Size = System::Drawing::Size(738, 302);
 			this->pieSellsLastWeek->TabIndex = 1;
 			this->pieSellsLastWeek->Text = L"chart2";
-			title2->Name = L"Title1";
-			title2->Text = L"Numero de ventas durante la semana pasada";
-			this->pieSellsLastWeek->Titles->Add(title2);
+			title22->Name = L"Title1";
+			title22->Text = L"Numero de ventas durante la semana pasada";
+			this->pieSellsLastWeek->Titles->Add(title22);
 			this->pieSellsLastWeek->Click += gcnew System::EventHandler(this, &StadisticReportForm::chartSellsLastWeek_Click);
 			// 
 			// chartMoneyLastWeek
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chartMoneyLastWeek->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chartMoneyLastWeek->Legends->Add(legend3);
+			chartArea23->Name = L"ChartArea1";
+			this->chartMoneyLastWeek->ChartAreas->Add(chartArea23);
+			legend23->Name = L"Legend1";
+			this->chartMoneyLastWeek->Legends->Add(legend23);
 			this->chartMoneyLastWeek->Location = System::Drawing::Point(33, 33);
 			this->chartMoneyLastWeek->Name = L"chartMoneyLastWeek";
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Ingresos totales";
-			this->chartMoneyLastWeek->Series->Add(series3);
+			series23->ChartArea = L"ChartArea1";
+			series23->Legend = L"Legend1";
+			series23->Name = L"Ingresos totales";
+			this->chartMoneyLastWeek->Series->Add(series23);
 			this->chartMoneyLastWeek->Size = System::Drawing::Size(771, 348);
 			this->chartMoneyLastWeek->TabIndex = 0;
 			this->chartMoneyLastWeek->Text = L"chart1";
-			title3->Name = L"Title1";
-			title3->Text = L"Ingresos de la semana pasada en soles";
-			this->chartMoneyLastWeek->Titles->Add(title3);
+			title23->Name = L"Title1";
+			title23->Text = L"Ingresos de la semana pasada en soles";
+			this->chartMoneyLastWeek->Titles->Add(title23);
 			// 
 			// tabPage3
 			// 
@@ -474,52 +486,52 @@ namespace SalesView {
 			this->tabPage3->Controls->Add(this->chartReportLastMonth);
 			this->tabPage3->Location = System::Drawing::Point(4, 25);
 			this->tabPage3->Name = L"tabPage3";
-			this->tabPage3->Size = System::Drawing::Size(834, 747);
+			this->tabPage3->Size = System::Drawing::Size(834, 800);
 			this->tabPage3->TabIndex = 2;
 			this->tabPage3->Text = L"Reporte del mes";
 			this->tabPage3->UseVisualStyleBackColor = true;
 			// 
 			// chartReportGoals
 			// 
-			chartArea4->Name = L"ChartArea1";
-			this->chartReportGoals->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->chartReportGoals->Legends->Add(legend4);
+			chartArea24->Name = L"ChartArea1";
+			this->chartReportGoals->ChartAreas->Add(chartArea24);
+			legend24->Name = L"Legend1";
+			this->chartReportGoals->Legends->Add(legend24);
 			this->chartReportGoals->Location = System::Drawing::Point(41, 378);
 			this->chartReportGoals->Name = L"chartReportGoals";
-			series4->ChartArea = L"ChartArea1";
-			series4->Legend = L"Legend1";
-			series4->Name = L"Monto en soles";
-			this->chartReportGoals->Series->Add(series4);
+			series24->ChartArea = L"ChartArea1";
+			series24->Legend = L"Legend1";
+			series24->Name = L"Monto en soles";
+			this->chartReportGoals->Series->Add(series24);
 			this->chartReportGoals->Size = System::Drawing::Size(758, 342);
 			this->chartReportGoals->TabIndex = 1;
 			this->chartReportGoals->Text = L"chart2";
-			title4->Name = L"Title1";
-			title4->Text = L"Ingresos generados por cada vendedor el mes pasado";
-			this->chartReportGoals->Titles->Add(title4);
+			title24->Name = L"Title1";
+			title24->Text = L"Ingresos generados por cada vendedor el mes pasado";
+			this->chartReportGoals->Titles->Add(title24);
 			// 
 			// chartReportLastMonth
 			// 
-			chartArea5->Name = L"ChartArea1";
-			this->chartReportLastMonth->ChartAreas->Add(chartArea5);
-			legend5->Name = L"Legend1";
-			this->chartReportLastMonth->Legends->Add(legend5);
+			chartArea25->Name = L"ChartArea1";
+			this->chartReportLastMonth->ChartAreas->Add(chartArea25);
+			legend25->Name = L"Legend1";
+			this->chartReportLastMonth->Legends->Add(legend25);
 			this->chartReportLastMonth->Location = System::Drawing::Point(51, 69);
 			this->chartReportLastMonth->Name = L"chartReportLastMonth";
-			series5->ChartArea = L"ChartArea1";
-			series5->Legend = L"Legend1";
-			series5->Name = L"Unidades vendidas";
-			this->chartReportLastMonth->Series->Add(series5);
+			series25->ChartArea = L"ChartArea1";
+			series25->Legend = L"Legend1";
+			series25->Name = L"Unidades vendidas";
+			this->chartReportLastMonth->Series->Add(series25);
 			this->chartReportLastMonth->Size = System::Drawing::Size(748, 293);
 			this->chartReportLastMonth->TabIndex = 0;
 			this->chartReportLastMonth->Text = L"chart1";
-			title5->Name = L"Title1";
-			title5->Text = L"Productos mas vendidos el mes pasado";
-			this->chartReportLastMonth->Titles->Add(title5);
+			title25->Name = L"Title1";
+			title25->Text = L"Productos mas vendidos el mes pasado";
+			this->chartReportLastMonth->Titles->Add(title25);
 			// 
 			// btLookFor2
 			// 
-			this->btLookFor2->Location = System::Drawing::Point(270, 82);
+			this->btLookFor2->Location = System::Drawing::Point(279, 75);
 			this->btLookFor2->Name = L"btLookFor2";
 			this->btLookFor2->Size = System::Drawing::Size(75, 23);
 			this->btLookFor2->TabIndex = 18;
@@ -530,7 +542,7 @@ namespace SalesView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(45, 68);
+			this->label6->Location = System::Drawing::Point(54, 61);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(15, 16);
 			this->label6->TabIndex = 19;
@@ -538,7 +550,7 @@ namespace SalesView {
 			// 
 			// btLookFor1
 			// 
-			this->btLookFor1->Location = System::Drawing::Point(364, 41);
+			this->btLookFor1->Location = System::Drawing::Point(373, 34);
 			this->btLookFor1->Name = L"btLookFor1";
 			this->btLookFor1->Size = System::Drawing::Size(75, 23);
 			this->btLookFor1->TabIndex = 20;
@@ -554,11 +566,11 @@ namespace SalesView {
 				this->Column7, this->Column8,
 					this->Column9
 			});
-			this->dgvStock->Location = System::Drawing::Point(121, 1372);
+			this->dgvStock->Location = System::Drawing::Point(107, 106);
 			this->dgvStock->Name = L"dgvStock";
 			this->dgvStock->RowHeadersWidth = 51;
 			this->dgvStock->RowTemplate->Height = 24;
-			this->dgvStock->Size = System::Drawing::Size(577, 242);
+			this->dgvStock->Size = System::Drawing::Size(610, 242);
 			this->dgvStock->TabIndex = 21;
 			// 
 			// Column7
@@ -582,29 +594,71 @@ namespace SalesView {
 			this->Column9->Name = L"Column9";
 			this->Column9->Width = 125;
 			// 
+			// tabControl2
+			// 
+			this->tabControl2->Controls->Add(this->tabPage1);
+			this->tabControl2->Controls->Add(this->tabPage4);
+			this->tabControl2->Controls->Add(this->tabPage5);
+			this->tabControl2->Location = System::Drawing::Point(12, 12);
+			this->tabControl2->Name = L"tabControl2";
+			this->tabControl2->SelectedIndex = 0;
+			this->tabControl2->Size = System::Drawing::Size(1012, 882);
+			this->tabControl2->TabIndex = 22;
+			// 
+			// tabPage1
+			// 
+			this->tabPage1->Controls->Add(this->dgvSells);
+			this->tabPage1->Controls->Add(this->label1);
+			this->tabPage1->Controls->Add(this->btLookFor1);
+			this->tabPage1->Controls->Add(this->label2);
+			this->tabPage1->Controls->Add(this->label6);
+			this->tabPage1->Controls->Add(this->label3);
+			this->tabPage1->Controls->Add(this->btLookFor2);
+			this->tabPage1->Controls->Add(this->dtpSaleDate);
+			this->tabPage1->Controls->Add(this->txtSaleId);
+			this->tabPage1->Controls->Add(this->btShowAllSales);
+			this->tabPage1->Location = System::Drawing::Point(4, 25);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(1004, 853);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"Lista de ventas";
+			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// tabPage4
+			// 
+			this->tabPage4->Controls->Add(this->tabControl1);
+			this->tabPage4->Location = System::Drawing::Point(4, 25);
+			this->tabPage4->Name = L"tabPage4";
+			this->tabPage4->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage4->Size = System::Drawing::Size(1004, 853);
+			this->tabPage4->TabIndex = 1;
+			this->tabPage4->Text = L"Gráficos";
+			this->tabPage4->UseVisualStyleBackColor = true;
+			// 
+			// tabPage5
+			// 
+			this->tabPage5->Controls->Add(this->txtStock);
+			this->tabPage5->Controls->Add(this->dgvStock);
+			this->tabPage5->Controls->Add(this->label4);
+			this->tabPage5->Controls->Add(this->btToShow);
+			this->tabPage5->Controls->Add(this->label5);
+			this->tabPage5->Location = System::Drawing::Point(4, 25);
+			this->tabPage5->Name = L"tabPage5";
+			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage5->Size = System::Drawing::Size(1004, 853);
+			this->tabPage5->TabIndex = 2;
+			this->tabPage5->Text = L"Stock";
+			this->tabPage5->UseVisualStyleBackColor = true;
+			// 
 			// StadisticReportForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::Cornsilk;
-			this->ClientSize = System::Drawing::Size(1036, 919);
-			this->Controls->Add(this->dgvStock);
-			this->Controls->Add(this->btLookFor1);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->btLookFor2);
-			this->Controls->Add(this->tabControl1);
-			this->Controls->Add(this->btToShow);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->txtStock);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->btShowAllSales);
-			this->Controls->Add(this->dgvSells);
-			this->Controls->Add(this->txtSaleId);
-			this->Controls->Add(this->dtpSaleDate);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(1056, 919);
+			this->Controls->Add(this->tabControl2);
 			this->Name = L"StadisticReportForm";
 			this->Text = L"Reporte de ventas y estadisticas";
 			this->Load += gcnew System::EventHandler(this, &StadisticReportForm::StadisticReportForm_Load);
@@ -619,8 +673,13 @@ namespace SalesView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartReportGoals))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartReportLastMonth))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStock))->EndInit();
+			this->tabControl2->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage1->PerformLayout();
+			this->tabPage4->ResumeLayout(false);
+			this->tabPage5->ResumeLayout(false);
+			this->tabPage5->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

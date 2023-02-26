@@ -50,6 +50,9 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
 
 	private:
 		/// <summary>
@@ -75,24 +78,31 @@ namespace SalesView {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtProductId = (gcnew System::Windows::Forms::TextBox());
 			this->txtNameCareer = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(57, 66);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(18, 16);
+			this->label1->Size = System::Drawing::Size(20, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Id";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(60, 115);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(180, 16);
+			this->label2->Size = System::Drawing::Size(206, 16);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Nombre/Carrera relacionada";
 			// 
@@ -117,6 +127,7 @@ namespace SalesView {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column1,
@@ -161,24 +172,55 @@ namespace SalesView {
 			// 
 			// txtProductId
 			// 
-			this->txtProductId->Location = System::Drawing::Point(263, 66);
+			this->txtProductId->Location = System::Drawing::Point(272, 66);
 			this->txtProductId->Name = L"txtProductId";
 			this->txtProductId->Size = System::Drawing::Size(100, 22);
 			this->txtProductId->TabIndex = 5;
 			// 
 			// txtNameCareer
 			// 
-			this->txtNameCareer->Location = System::Drawing::Point(263, 112);
+			this->txtNameCareer->Location = System::Drawing::Point(272, 109);
 			this->txtNameCareer->Name = L"txtNameCareer";
 			this->txtNameCareer->Size = System::Drawing::Size(100, 22);
 			this->txtNameCareer->TabIndex = 6;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(35, 37);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(76, 16);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Busque por";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(35, 94);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(15, 16);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"o";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(43, 215);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(79, 16);
+			this->label5->TabIndex = 9;
+			this->label5->Text = L"Resultados:";
 			// 
 			// SearchProductForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::NavajoWhite;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(662, 403);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->txtNameCareer);
 			this->Controls->Add(this->txtProductId);
 			this->Controls->Add(this->dataGridView1);

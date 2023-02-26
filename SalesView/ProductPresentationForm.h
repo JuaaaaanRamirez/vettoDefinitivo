@@ -212,6 +212,8 @@ namespace SalesView {
 			// 
 			// txtId
 			// 
+			this->txtId->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->txtId->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtId->Location = System::Drawing::Point(100, 0);
 			this->txtId->Name = L"txtId";
@@ -221,8 +223,10 @@ namespace SalesView {
 			// 
 			// txtDescription
 			// 
+			this->txtDescription->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->txtDescription->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->txtDescription->Location = System::Drawing::Point(100, 60);
+			this->txtDescription->Location = System::Drawing::Point(111, 54);
 			this->txtDescription->Multiline = true;
 			this->txtDescription->Name = L"txtDescription";
 			this->txtDescription->ReadOnly = true;
@@ -243,6 +247,8 @@ namespace SalesView {
 			// 
 			// nudAmount
 			// 
+			this->nudAmount->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->nudAmount->Location = System::Drawing::Point(370, 180);
 			this->nudAmount->Name = L"nudAmount";
 			this->nudAmount->Size = System::Drawing::Size(345, 22);
@@ -329,6 +335,8 @@ namespace SalesView {
 			// 
 			// txtProductName
 			// 
+			this->txtProductName->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->txtProductName->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtProductName->Location = System::Drawing::Point(100, 30);
 			this->txtProductName->Name = L"txtProductName";
@@ -359,6 +367,8 @@ namespace SalesView {
 			// 
 			// txtStock
 			// 
+			this->txtStock->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->txtStock->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtStock->Location = System::Drawing::Point(370, 150);
 			this->txtStock->Name = L"txtStock";
@@ -397,7 +407,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::PowderBlue;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(740, 393);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);

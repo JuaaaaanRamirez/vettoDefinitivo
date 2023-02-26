@@ -115,6 +115,8 @@ namespace SalesView {
 			// 
 			// chlbCiencias
 			// 
+			this->chlbCiencias->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbCiencias->FormattingEnabled = true;
 			this->chlbCiencias->Items->AddRange(gcnew cli::array< System::Object^  >(15) {
 				L"Estadística", L"Física", L"Ingeniería Ambiental y Sostenible",
@@ -129,6 +131,8 @@ namespace SalesView {
 			// 
 			// chlbArteDisenio
 			// 
+			this->chlbArteDisenio->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbArteDisenio->FormattingEnabled = true;
 			this->chlbArteDisenio->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Educación Artística", L"Diseño Gráfico",
@@ -141,6 +145,8 @@ namespace SalesView {
 			// 
 			// chlbArtesEscenicas
 			// 
+			this->chlbArtesEscenicas->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
+				static_cast<System::Int32>(static_cast<System::Byte>(212)), static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbArtesEscenicas->FormattingEnabled = true;
 			this->chlbArtesEscenicas->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Danza", L"Teatro", L"Música", L"Creación y Producción Escénica" });
 			this->chlbArtesEscenicas->Location = System::Drawing::Point(280, 211);
@@ -150,6 +156,8 @@ namespace SalesView {
 			// 
 			// chlbArtesComunication
 			// 
+			this->chlbArtesComunication->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
+				static_cast<System::Int32>(static_cast<System::Byte>(212)), static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbArtesComunication->FormattingEnabled = true;
 			this->chlbArtesComunication->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"Comunicación Audiovisual", L"Comunicación para el desarrollo",
@@ -163,36 +171,44 @@ namespace SalesView {
 			// lbSciencEngineer
 			// 
 			this->lbSciencEngineer->AutoSize = true;
+			this->lbSciencEngineer->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lbSciencEngineer->Location = System::Drawing::Point(10, 10);
 			this->lbSciencEngineer->Name = L"lbSciencEngineer";
-			this->lbSciencEngineer->Size = System::Drawing::Size(132, 16);
+			this->lbSciencEngineer->Size = System::Drawing::Size(153, 16);
 			this->lbSciencEngineer->TabIndex = 11;
 			this->lbSciencEngineer->Text = L"Ciencias e Ingenieria";
 			// 
 			// lbArt
 			// 
 			this->lbArt->AutoSize = true;
+			this->lbArt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lbArt->Location = System::Drawing::Point(277, 10);
 			this->lbArt->Name = L"lbArt";
-			this->lbArt->Size = System::Drawing::Size(87, 16);
+			this->lbArt->Size = System::Drawing::Size(100, 16);
 			this->lbArt->TabIndex = 12;
 			this->lbArt->Text = L"Arte y Diseño";
 			// 
 			// lbDrama
 			// 
 			this->lbDrama->AutoSize = true;
+			this->lbDrama->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lbDrama->Location = System::Drawing::Point(277, 190);
 			this->lbDrama->Name = L"lbDrama";
-			this->lbDrama->Size = System::Drawing::Size(104, 16);
+			this->lbDrama->Size = System::Drawing::Size(119, 16);
 			this->lbDrama->TabIndex = 13;
 			this->lbDrama->Text = L"Artes Escénicas";
 			// 
 			// lbComunication
 			// 
 			this->lbComunication->AutoSize = true;
+			this->lbComunication->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lbComunication->Location = System::Drawing::Point(550, 10);
 			this->lbComunication->Name = L"lbComunication";
-			this->lbComunication->Size = System::Drawing::Size(224, 16);
+			this->lbComunication->Size = System::Drawing::Size(259, 16);
 			this->lbComunication->TabIndex = 14;
 			this->lbComunication->Text = L"Ciencias y Artes de la Comunicación";
 			// 
@@ -218,6 +234,8 @@ namespace SalesView {
 			// 
 			// chlbHumanity
 			// 
+			this->chlbHumanity->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbHumanity->FormattingEnabled = true;
 			this->chlbHumanity->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Arqueología", L"Ciencias de la Información",
@@ -231,23 +249,29 @@ namespace SalesView {
 			// lbHumanity
 			// 
 			this->lbHumanity->AutoSize = true;
+			this->lbHumanity->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lbHumanity->Location = System::Drawing::Point(820, 10);
 			this->lbHumanity->Name = L"lbHumanity";
-			this->lbHumanity->Size = System::Drawing::Size(170, 16);
+			this->lbHumanity->Size = System::Drawing::Size(195, 16);
 			this->lbHumanity->TabIndex = 18;
 			this->lbHumanity->Text = L"Letras y Ciencias Humanas";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(550, 127);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(115, 16);
+			this->label2->Size = System::Drawing::Size(132, 16);
 			this->label2->TabIndex = 20;
 			this->label2->Text = L"Ciencias Sociales";
 			// 
 			// chlbSocialScience
 			// 
+			this->chlbSocialScience->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)),
+				static_cast<System::Int32>(static_cast<System::Byte>(212)), static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbSocialScience->FormattingEnabled = true;
 			this->chlbSocialScience->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Antropología", L"Ciencia, Política y Gobierno",
@@ -260,6 +284,8 @@ namespace SalesView {
 			// 
 			// label3
 			// 
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(550, 258);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(115, 16);
@@ -268,6 +294,8 @@ namespace SalesView {
 			// 
 			// chlbEducation
 			// 
+			this->chlbEducation->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbEducation->FormattingEnabled = true;
 			this->chlbEducation->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
 				L"Educación Inicial", L"Educación Primaria",
@@ -281,14 +309,18 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(820, 179);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(104, 16);
+			this->label4->Size = System::Drawing::Size(120, 16);
 			this->label4->TabIndex = 24;
 			this->label4->Text = L"Otras facultades";
 			// 
 			// chlbOthers
 			// 
+			this->chlbOthers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->chlbOthers->FormattingEnabled = true;
 			this->chlbOthers->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Arquitectura", L"Contabilidad", L"Derecho",
@@ -303,7 +335,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::Info;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(1082, 383);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->chlbOthers);

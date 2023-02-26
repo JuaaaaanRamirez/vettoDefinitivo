@@ -794,14 +794,14 @@ Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
             myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
-           
+            
 
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
             activeSale = mySale;
         }
     }
-    catch (Exception^ ex) {}
+    catch (Exception^ ex) { throw ex; }
     finally {
         //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
         if (reader != nullptr) reader->Close();
@@ -882,7 +882,7 @@ List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
             activeSaleList->Add(mySale);
         }
     }
-    catch (Exception^ ex) {}
+    catch (Exception^ ex) { throw ex; }
     finally {
         //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
         if (reader != nullptr) reader->Close();

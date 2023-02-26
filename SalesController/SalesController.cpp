@@ -104,8 +104,8 @@ List<Product^>^ SalesController::Controller::GetListProductOrderBySearches(List<
 List<Product^>^ SalesController::Controller::GetListProductOrderBySells(List<Sale^>^ ListSellsByTime)//nuestro productList
 {
     List<Product^>^ productListAux = gcnew  List<Product^>();
-    productListAux = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
-    //productListAux=Persistance::QueryAllActiveProducts();                           //DESCOMENTAR CUNADO LAS VENTAS CON DB ESTE TERMINADA
+    //productListAux = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
+    productListAux=Persistance::QueryAllActiveProducts();                           //DESCOMENTAR CUNADO LAS VENTAS CON DB ESTE TERMINADA
     for (int i = 0; i < productListAux->Count; i++) {
         productListAux[i]->SalesByTime = 0;
     }
@@ -245,7 +245,8 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
 
 List<StoreManager^>^ SalesController::Controller::QueryAllStoreManager()
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    //personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    personList = Persistance::QueryAllActivePerson();                            //???????????????????
     List<StoreManager^>^ activeStoreManagerList = gcnew List<StoreManager^>();
     for (int i = 0; i < personList->Count; i++) {
         if (personList[i]->GetType() == StoreManager::typeid) {
@@ -386,7 +387,8 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
             return saleList[i];
     return nullptr;*/
     Sale^ mySale = Persistance::QuerySaleById(saleId);
-    mySale->Customer = (Customer^ )QueryUserById(mySale->Customer->Id);
+    mySale->Customer = (Customer^ )QueryUserById(mySale->Customer->Id);              //??????????????????
+    //mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
     return mySale;
 }
 Sale^ SalesController::Controller::QueryLastSale()
@@ -506,7 +508,8 @@ List<Sale^>^ SalesController::Controller::LastWeekSalesList()
     LastSunday.AddDays(1).Date;//domingo a media noche
     LastMonday = LastSunday.AddDays(-7);//lunes pasado a media noche
 
-    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    //saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    saleList = Persistance::QueryAllSales();
     List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
 
     for (int i = 0; i < saleList->Count; i++) {
@@ -534,7 +537,8 @@ List<Sale^>^ SalesController::Controller::LastMonthSalesList()
     DateTime LastFirstDayLastMonth = LastEndDayLastMonth.AddDays(-(LastEndDayLastMonth.Day - 1)).Date;//primer dia del mes pasado a media noche
     LastEndDayLastMonth = LastEndDayLastMonth.AddDays(1).Date; //1er dia del mes actual a media noche.
 
-    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    //saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    saleList = Persistance::QueryAllSales();
     List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
 
     for (int i = 0; i < saleList->Count; i++) {

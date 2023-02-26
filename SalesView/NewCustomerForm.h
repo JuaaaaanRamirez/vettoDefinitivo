@@ -143,7 +143,7 @@ namespace SalesView {
 			// label12
 			// 
 			this->label12->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label12->Font = (gcnew System::Drawing::Font(L"Rubik", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label12->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label12->Location = System::Drawing::Point(0, 0);
@@ -421,7 +421,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::Bisque;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(564, 608);
 			this->Controls->Add(this->pbCustomer);
 			this->Controls->Add(this->label12);

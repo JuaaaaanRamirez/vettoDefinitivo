@@ -370,6 +370,8 @@ public:
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->archivoToolStripMenuItem,
@@ -378,7 +380,7 @@ public:
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1361, 28);
+			this->menuStrip1->Size = System::Drawing::Size(1315, 28);
 			this->menuStrip1->TabIndex = 3;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->Visible = false;
@@ -392,8 +394,10 @@ public:
 			// 
 			// salirToolStripMenuItem
 			// 
+			this->salirToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -409,22 +413,28 @@ public:
 			// 
 			// productoToolStripMenuItem
 			// 
+			this->productoToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
 			// usuariosToolStripMenuItem
 			// 
+			this->usuariosToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::usuariosToolStripMenuItem_Click);
 			// 
 			// subirAnuncioToolStripMenuItem
 			// 
+			this->subirAnuncioToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
-			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
 			this->subirAnuncioToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::subirAnuncioToolStripMenuItem_Click);
 			// 
@@ -437,8 +447,10 @@ public:
 			// 
 			// realizarUnaVentaToolStripMenuItem
 			// 
+			this->realizarUnaVentaToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->realizarUnaVentaToolStripMenuItem->Name = L"realizarUnaVentaToolStripMenuItem";
-			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(213, 26);
+			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->realizarUnaVentaToolStripMenuItem->Text = L"Realizar una venta";
 			this->realizarUnaVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::realizarUnaVentaToolStripMenuItem_Click);
 			// 
@@ -451,6 +463,8 @@ public:
 			// 
 			// estadistidcasDeVentasToolStripMenuItem
 			// 
+			this->estadistidcasDeVentasToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->estadistidcasDeVentasToolStripMenuItem->Name = L"estadistidcasDeVentasToolStripMenuItem";
 			this->estadistidcasDeVentasToolStripMenuItem->Size = System::Drawing::Size(235, 26);
 			this->estadistidcasDeVentasToolStripMenuItem->Text = L"Estadísticas de ventas";
@@ -662,6 +676,7 @@ public:
 			// 
 			// pbFifthProduct
 			// 
+			this->pbFifthProduct->BackColor = System::Drawing::Color::White;
 			this->pbFifthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFifthProduct.BackgroundImage")));
 			this->pbFifthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pbFifthProduct->Location = System::Drawing::Point(740, 210);
@@ -673,6 +688,7 @@ public:
 			// 
 			// pbThirdProduct
 			// 
+			this->pbThirdProduct->BackColor = System::Drawing::Color::White;
 			this->pbThirdProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbThirdProduct.BackgroundImage")));
 			this->pbThirdProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pbThirdProduct->Location = System::Drawing::Point(420, 210);
@@ -684,6 +700,7 @@ public:
 			// 
 			// pbFourthProduct
 			// 
+			this->pbFourthProduct->BackColor = System::Drawing::Color::White;
 			this->pbFourthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFourthProduct.BackgroundImage")));
 			this->pbFourthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pbFourthProduct->Location = System::Drawing::Point(580, 210);
@@ -717,12 +734,12 @@ public:
 			// 
 			// btnLogin
 			// 
-			this->btnLogin->BackColor = System::Drawing::Color::Red;
+			this->btnLogin->BackColor = System::Drawing::Color::Linen;
 			this->btnLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnLogin.BackgroundImage")));
 			this->btnLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnLogin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnLogin->ForeColor = System::Drawing::Color::Transparent;
-			this->btnLogin->Location = System::Drawing::Point(10, 4);
+			this->btnLogin->Location = System::Drawing::Point(7, 13);
 			this->btnLogin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnLogin->Name = L"btnLogin";
 			this->btnLogin->Size = System::Drawing::Size(100, 100);
@@ -763,8 +780,8 @@ public:
 			// 
 			// gbMenuLogin
 			// 
-			this->gbMenuLogin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->gbMenuLogin->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->gbMenuLogin->Controls->Add(this->btnNewCustomer);
 			this->gbMenuLogin->Controls->Add(this->btnLoginCustomer);
 			this->gbMenuLogin->Location = System::Drawing::Point(964, 145);
@@ -801,8 +818,8 @@ public:
 			// 
 			// gbMenuCustomer
 			// 
-			this->gbMenuCustomer->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->gbMenuCustomer->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->gbMenuCustomer->Controls->Add(this->btnSignOut);
 			this->gbMenuCustomer->Controls->Add(this->btnShopping);
 			this->gbMenuCustomer->Controls->Add(this->btnWishList);
@@ -812,7 +829,7 @@ public:
 			this->gbMenuCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->gbMenuCustomer->Name = L"gbMenuCustomer";
 			this->gbMenuCustomer->Padding = System::Windows::Forms::Padding(4);
-			this->gbMenuCustomer->Size = System::Drawing::Size(320, 216);
+			this->gbMenuCustomer->Size = System::Drawing::Size(319, 216);
 			this->gbMenuCustomer->TabIndex = 74;
 			this->gbMenuCustomer->TabStop = false;
 			this->gbMenuCustomer->Text = L"Cliente";
@@ -875,8 +892,8 @@ public:
 			// 
 			// gbMenuAnnouncer
 			// 
-			this->gbMenuAnnouncer->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->gbMenuAnnouncer->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->gbMenuAnnouncer->Controls->Add(this->btnSingOutAnnouncer);
 			this->gbMenuAnnouncer->Controls->Add(this->btnMyAdd);
 			this->gbMenuAnnouncer->Location = System::Drawing::Point(964, 145);
@@ -1003,8 +1020,8 @@ public:
 			// 
 			// Ad4
 			// 
+			this->Ad4->BackColor = System::Drawing::Color::White;
 			this->Ad4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->Ad4->Location = System::Drawing::Point(976, 433);
 			this->Ad4->Margin = System::Windows::Forms::Padding(4);
 			this->Ad4->Name = L"Ad4";
@@ -1015,8 +1032,8 @@ public:
 			// 
 			// Ad3
 			// 
+			this->Ad3->BackColor = System::Drawing::Color::White;
 			this->Ad3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->Ad3->Location = System::Drawing::Point(656, 433);
 			this->Ad3->Margin = System::Windows::Forms::Padding(4);
 			this->Ad3->Name = L"Ad3";
@@ -1027,8 +1044,8 @@ public:
 			// 
 			// Ad2
 			// 
+			this->Ad2->BackColor = System::Drawing::Color::White;
 			this->Ad2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->Ad2->Location = System::Drawing::Point(336, 433);
 			this->Ad2->Margin = System::Windows::Forms::Padding(4);
 			this->Ad2->Name = L"Ad2";
@@ -1039,8 +1056,8 @@ public:
 			// 
 			// Ad1
 			// 
+			this->Ad1->BackColor = System::Drawing::Color::White;
 			this->Ad1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Ad1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->Ad1->Location = System::Drawing::Point(16, 433);
 			this->Ad1->Margin = System::Windows::Forms::Padding(4);
 			this->Ad1->Name = L"Ad1";
@@ -1063,8 +1080,8 @@ public:
 			// 
 			// gbMenuStoreManager
 			// 
-			this->gbMenuStoreManager->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->gbMenuStoreManager->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
+				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->gbMenuStoreManager->Controls->Add(this->btnReportSales);
 			this->gbMenuStoreManager->Controls->Add(this->btnAllProducts);
 			this->gbMenuStoreManager->Controls->Add(this->btnAllUsers);
@@ -1137,8 +1154,8 @@ public:
 			// 
 			// gbSellerCompany
 			// 
-			this->gbSellerCompany->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->gbSellerCompany->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->gbSellerCompany->Controls->Add(this->btnLoginOutSellerCompany);
 			this->gbSellerCompany->Controls->Add(this->btnAllPerson);
 			this->gbSellerCompany->Controls->Add(this->btnAllReports);
@@ -1146,7 +1163,7 @@ public:
 			this->gbSellerCompany->Margin = System::Windows::Forms::Padding(4);
 			this->gbSellerCompany->Name = L"gbSellerCompany";
 			this->gbSellerCompany->Padding = System::Windows::Forms::Padding(4);
-			this->gbSellerCompany->Size = System::Drawing::Size(319, 169);
+			this->gbSellerCompany->Size = System::Drawing::Size(320, 169);
 			this->gbSellerCompany->TabIndex = 93;
 			this->gbSellerCompany->TabStop = false;
 			this->gbSellerCompany->Text = L"Jefe de la tienda";
@@ -1188,7 +1205,7 @@ public:
 			// SearchBox
 			// 
 			this->SearchBox->BackColor = System::Drawing::SystemColors::Control;
-			this->SearchBox->Location = System::Drawing::Point(159, 72);
+			this->SearchBox->Location = System::Drawing::Point(159, 55);
 			this->SearchBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->SearchBox->Name = L"SearchBox";
 			this->SearchBox->Size = System::Drawing::Size(791, 22);
@@ -1197,7 +1214,6 @@ public:
 			// 
 			// AppPictureBox
 			// 
-			this->AppPictureBox->BackColor = System::Drawing::Color::Tomato;
 			this->AppPictureBox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AppPictureBox.BackgroundImage")));
 			this->AppPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->AppPictureBox->Location = System::Drawing::Point(5, 5);
@@ -1209,20 +1225,23 @@ public:
 			// 
 			// label8
 			// 
-			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(574, 13);
+			this->label8->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label8->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->label8->Location = System::Drawing::Point(0, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(158, 52);
+			this->label8->Size = System::Drawing::Size(969, 52);
 			this->label8->TabIndex = 64;
 			this->label8->Text = L"VETTO";
+			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Todos" });
-			this->comboBox1->Location = System::Drawing::Point(159, 101);
+			this->comboBox1->Location = System::Drawing::Point(159, 86);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(121, 24);
@@ -1235,7 +1254,7 @@ public:
 			this->btnSearch->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->btnSearch->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSearch->ForeColor = System::Drawing::Color::Transparent;
-			this->btnSearch->Location = System::Drawing::Point(130, 72);
+			this->btnSearch->Location = System::Drawing::Point(128, 54);
 			this->btnSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnSearch->Name = L"btnSearch";
 			this->btnSearch->Size = System::Drawing::Size(25, 25);
@@ -1245,29 +1264,29 @@ public:
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->panel1->Controls->Add(this->btnSearch);
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->panel1->Controls->Add(this->comboBox1);
-			this->panel1->Controls->Add(this->label8);
+			this->panel1->Controls->Add(this->btnSearch);
 			this->panel1->Controls->Add(this->AppPictureBox);
 			this->panel1->Controls->Add(this->SearchBox);
-			this->panel1->Location = System::Drawing::Point(6, 25);
+			this->panel1->Controls->Add(this->label8);
+			this->panel1->Location = System::Drawing::Point(-1, 27);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(957, 131);
+			this->panel1->Size = System::Drawing::Size(969, 130);
 			this->panel1->TabIndex = 94;
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->panel2->Controls->Add(this->lbCompany);
 			this->panel2->Controls->Add(this->lbJob);
 			this->panel2->Controls->Add(this->Userlb);
 			this->panel2->Controls->Add(this->btnLogin);
-			this->panel2->Location = System::Drawing::Point(964, 26);
+			this->panel2->Location = System::Drawing::Point(964, 27);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(319, 119);
+			this->panel2->Size = System::Drawing::Size(355, 130);
 			this->panel2->TabIndex = 95;
 			// 
 			// SalesMainForm
@@ -1275,10 +1294,10 @@ public:
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(1315, 633);
-			this->Controls->Add(this->panel2);
+			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->gbSellerCompany);
 			this->Controls->Add(this->gbMenuStoreManager);
@@ -1322,7 +1341,7 @@ public:
 			this->Controls->Add(this->pbFourthProduct);
 			this->Controls->Add(this->pbSecondProduct);
 			this->Controls->Add(this->pbFirstProduct);
-			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->panel2);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;

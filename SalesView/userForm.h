@@ -544,6 +544,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			// 
 			// dgvCustomer
 			// 
+			this->dgvCustomer->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvCustomer->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvCustomer->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Id, this->Nombre,
@@ -823,6 +824,8 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			// UserForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(662, 633);
 			this->Controls->Add(this->chBxPass);
 			this->Controls->Add(this->Announcerbx);
