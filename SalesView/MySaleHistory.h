@@ -81,6 +81,7 @@ namespace SalesView {
 			// 
 			// dgvMyShopping
 			// 
+			this->dgvMyShopping->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvMyShopping->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvMyShopping->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->IdSale,
@@ -150,6 +151,9 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(721, 532);
 			this->Controls->Add(this->lbTitle);
 			this->Controls->Add(this->dgvMyShopping);

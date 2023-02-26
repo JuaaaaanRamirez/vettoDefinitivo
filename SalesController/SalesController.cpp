@@ -446,7 +446,8 @@ int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleI
 //for sales
 List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
 {
-    saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    //saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    saleList = Persistance::QueryAllSales();
     List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
 
     for (int i = 0; i < saleList->Count; i++) {

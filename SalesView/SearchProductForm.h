@@ -177,6 +177,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::NavajoWhite;
 			this->ClientSize = System::Drawing::Size(662, 403);
 			this->Controls->Add(this->txtNameCareer);
 			this->Controls->Add(this->txtProductId);

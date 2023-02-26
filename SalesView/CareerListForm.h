@@ -303,6 +303,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::Info;
 			this->ClientSize = System::Drawing::Size(1082, 383);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->chlbOthers);

@@ -183,6 +183,13 @@ namespace SalesView {
 			this->dtpSaleDate = (gcnew System::Windows::Forms::DateTimePicker());
 			this->txtSaleId = (gcnew System::Windows::Forms::TextBox());
 			this->dgvSells = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btShowAllSales = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->txtStock = (gcnew System::Windows::Forms::TextBox());
@@ -204,13 +211,6 @@ namespace SalesView {
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSells))->BeginInit();
 			this->tabControl1->SuspendLayout();
 			this->tabReportToday->SuspendLayout();
@@ -267,6 +267,7 @@ namespace SalesView {
 			// 
 			// dgvSells
 			// 
+			this->dgvSells->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvSells->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvSells->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1, this->Column2,
@@ -278,6 +279,55 @@ namespace SalesView {
 			this->dgvSells->RowTemplate->Height = 24;
 			this->dgvSells->Size = System::Drawing::Size(972, 316);
 			this->dgvSells->TabIndex = 5;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"ID";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 90;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Fecha de venta";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Usuario";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Vendedor";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 125;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Importe total";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Tipo de venta";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
+			// 
+			// Column10
+			// 
+			this->Column10->HeaderText = L"Estado";
+			this->Column10->MinimumWidth = 6;
+			this->Column10->Name = L"Column10";
+			this->Column10->Width = 200;
 			// 
 			// btShowAllSales
 			// 
@@ -498,6 +548,7 @@ namespace SalesView {
 			// 
 			// dgvStock
 			// 
+			this->dgvStock->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvStock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvStock->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->Column7, this->Column8,
@@ -531,60 +582,12 @@ namespace SalesView {
 			this->Column9->Name = L"Column9";
 			this->Column9->Width = 125;
 			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 90;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Fecha de venta";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Usuario";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Vendedor";
-			this->Column6->MinimumWidth = 6;
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Importe total";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Tipo de venta";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
-			// 
-			// Column10
-			// 
-			this->Column10->HeaderText = L"Estado";
-			this->Column10->MinimumWidth = 6;
-			this->Column10->Name = L"Column10";
-			this->Column10->Width = 200;
-			// 
 			// StadisticReportForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
+			this->BackColor = System::Drawing::Color::Cornsilk;
 			this->ClientSize = System::Drawing::Size(1036, 919);
 			this->Controls->Add(this->dgvStock);
 			this->Controls->Add(this->btLookFor1);

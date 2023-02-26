@@ -63,6 +63,7 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Stock;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CarrerasRelacionadas;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Calificación;
+	private: System::Windows::Forms::Panel^ panel1;
 
 
 
@@ -112,13 +113,15 @@ namespace SalesView {
 			this->CarrerasRelacionadas = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Calificación = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Searchbtn = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// txtSearchBox
 			// 
 			this->txtSearchBox->BackColor = System::Drawing::SystemColors::Control;
-			this->txtSearchBox->Location = System::Drawing::Point(42, 12);
+			this->txtSearchBox->Location = System::Drawing::Point(40, 10);
 			this->txtSearchBox->Name = L"txtSearchBox";
 			this->txtSearchBox->Size = System::Drawing::Size(873, 22);
 			this->txtSearchBox->TabIndex = 39;
@@ -126,6 +129,7 @@ namespace SalesView {
 			// 
 			// dgvProductList
 			// 
+			this->dgvProductList->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvProductList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProductList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Id, this->Nombre,
@@ -182,33 +186,45 @@ namespace SalesView {
 			// 
 			// Searchbtn
 			// 
+			this->Searchbtn->BackColor = System::Drawing::Color::Transparent;
 			this->Searchbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Searchbtn.BackgroundImage")));
 			this->Searchbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->Searchbtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->Searchbtn->ForeColor = System::Drawing::Color::Transparent;
-			this->Searchbtn->Location = System::Drawing::Point(12, 12);
+			this->Searchbtn->Location = System::Drawing::Point(10, 10);
 			this->Searchbtn->Name = L"Searchbtn";
 			this->Searchbtn->Size = System::Drawing::Size(25, 25);
 			this->Searchbtn->TabIndex = 42;
 			this->Searchbtn->UseVisualStyleBackColor = false;
 			this->Searchbtn->Click += gcnew System::EventHandler(this, &ProductListForm::Searchbtn_Click);
 			// 
+			// panel1
+			// 
+			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel1->Controls->Add(this->Searchbtn);
+			this->panel1->Controls->Add(this->txtSearchBox);
+			this->panel1->Location = System::Drawing::Point(2, 2);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(921, 41);
+			this->panel1->TabIndex = 43;
+			// 
 			// ProductListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(927, 561);
-			this->Controls->Add(this->Searchbtn);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvProductList);
-			this->Controls->Add(this->txtSearchBox);
 			this->MaximizeBox = false;
 			this->Name = L"ProductListForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Lista de Productos";
 			this->Load += gcnew System::EventHandler(this, &ProductListForm::ProductListForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

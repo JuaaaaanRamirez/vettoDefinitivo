@@ -68,6 +68,7 @@ namespace SalesView {
 			// lbCont
 			// 
 			this->lbCont->AutoSize = true;
+			this->lbCont->BackColor = System::Drawing::Color::Transparent;
 			this->lbCont->Location = System::Drawing::Point(12, 9);
 			this->lbCont->Name = L"lbCont";
 			this->lbCont->Size = System::Drawing::Size(209, 16);
@@ -76,6 +77,7 @@ namespace SalesView {
 			// 
 			// pbCheck
 			// 
+			this->pbCheck->BackColor = System::Drawing::Color::Transparent;
 			this->pbCheck->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCheck.BackgroundImage")));
 			this->pbCheck->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pbCheck->Location = System::Drawing::Point(247, 4);
@@ -108,6 +110,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::LightCyan;
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(307, 103);
 			this->Controls->Add(this->btnWatchaShopping);
 			this->Controls->Add(this->btnCarryOn);

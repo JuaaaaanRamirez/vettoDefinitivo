@@ -28,7 +28,10 @@ namespace SalesView {
 		Form^ refForm;
 		int userId, saleId;
 	public: System::Windows::Forms::TextBox^ txtStock;
-	private: System::Windows::Forms::GroupBox^ gbSecret;
+	private: System::Windows::Forms::Label^ label1;
+	public:
+	private: System::Windows::Forms::Label^ label2;
+
 	public:
 	private: System::Windows::Forms::Label^ lbStock;
 	public:
@@ -110,8 +113,8 @@ namespace SalesView {
 
 
 
-	private: System::Windows::Forms::Label^ ComentLabel;
-	private: System::Windows::Forms::PictureBox^ pictureBox7;
+
+
 
 
 
@@ -160,22 +163,19 @@ namespace SalesView {
 			this->pbStars = (gcnew System::Windows::Forms::PictureBox());
 			this->txtStarts = (gcnew System::Windows::Forms::Label());
 			this->txtSales = (gcnew System::Windows::Forms::Label());
-			this->ComentLabel = (gcnew System::Windows::Forms::Label());
-			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
 			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
 			this->lbId = (gcnew System::Windows::Forms::Label());
 			this->Wishbtn = (gcnew System::Windows::Forms::Button());
 			this->txtStock = (gcnew System::Windows::Forms::TextBox());
 			this->lbStock = (gcnew System::Windows::Forms::Label());
-			this->gbSecret = (gcnew System::Windows::Forms::GroupBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
 			this->gbinformation->SuspendLayout();
-			this->gbSecret->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pbxProductImagen
@@ -289,7 +289,7 @@ namespace SalesView {
 			this->txtStarts->AutoSize = true;
 			this->txtStarts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtStarts->Location = System::Drawing::Point(395, 220);
+			this->txtStarts->Location = System::Drawing::Point(376, 224);
 			this->txtStarts->Name = L"txtStarts";
 			this->txtStarts->Size = System::Drawing::Size(48, 29);
 			this->txtStarts->TabIndex = 14;
@@ -307,28 +307,6 @@ namespace SalesView {
 			this->txtSales->TabIndex = 15;
 			this->txtSales->Text = L"5000";
 			this->txtSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// ComentLabel
-			// 
-			this->ComentLabel->AutoSize = true;
-			this->ComentLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->ComentLabel->Location = System::Drawing::Point(21, 26);
-			this->ComentLabel->Name = L"ComentLabel";
-			this->ComentLabel->Size = System::Drawing::Size(83, 16);
-			this->ComentLabel->TabIndex = 16;
-			this->ComentLabel->Text = L"Comentarios";
-			// 
-			// pictureBox7
-			// 
-			this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
-			this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox7->Location = System::Drawing::Point(111, 21);
-			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(40, 37);
-			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->pictureBox7->TabIndex = 17;
-			this->pictureBox7->TabStop = false;
 			// 
 			// gbinformation
 			// 
@@ -393,23 +371,32 @@ namespace SalesView {
 			this->lbStock->TabIndex = 22;
 			this->lbStock->Text = L"Stock:";
 			// 
-			// gbSecret
+			// label1
 			// 
-			this->gbSecret->Controls->Add(this->pictureBox7);
-			this->gbSecret->Controls->Add(this->ComentLabel);
-			this->gbSecret->Location = System::Drawing::Point(20, 314);
-			this->gbSecret->Name = L"gbSecret";
-			this->gbSecret->Size = System::Drawing::Size(200, 87);
-			this->gbSecret->TabIndex = 23;
-			this->gbSecret->TabStop = false;
-			this->gbSecret->Visible = false;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(397, 253);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(96, 16);
+			this->label1->TabIndex = 24;
+			this->label1->Text = L"veces vendido";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(545, 256);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(75, 16);
+			this->label2->TabIndex = 25;
+			this->label2->Text = L"busquedas";
 			// 
 			// ProductPresentationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::PowderBlue;
 			this->ClientSize = System::Drawing::Size(740, 393);
-			this->Controls->Add(this->gbSecret);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->lbStock);
 			this->Controls->Add(this->txtStock);
 			this->Controls->Add(this->Wishbtn);
@@ -432,11 +419,8 @@ namespace SalesView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbStars))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
 			this->gbinformation->ResumeLayout(false);
 			this->gbinformation->PerformLayout();
-			this->gbSecret->ResumeLayout(false);
-			this->gbSecret->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

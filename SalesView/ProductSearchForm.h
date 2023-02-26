@@ -151,6 +151,7 @@ namespace SalesView {
 			// 
 			// dgvProducts
 			// 
+			this->dgvProducts->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvProducts->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProducts->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Id, this->ProductName,
@@ -162,7 +163,6 @@ namespace SalesView {
 			this->dgvProducts->RowHeadersWidth = 51;
 			this->dgvProducts->Size = System::Drawing::Size(497, 185);
 			this->dgvProducts->TabIndex = 6;
-			//this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForm::dgvProducts_CellClick);
 			this->dgvProducts->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForm::dgvProducts_CellDoubleClick);
 			// 
 			// Id
@@ -197,6 +197,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::AntiqueWhite;
 			this->ClientSize = System::Drawing::Size(544, 332);
 			this->Controls->Add(this->dgvProducts);
 			this->Controls->Add(this->btnCancel);

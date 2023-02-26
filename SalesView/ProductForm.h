@@ -307,6 +307,7 @@ namespace SalesView {
 			// 
 			// dgvProducts
 			// 
+			this->dgvProducts->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvProducts->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProducts->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Column1,
@@ -410,6 +411,8 @@ namespace SalesView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
+			this->BackColor = System::Drawing::Color::Linen;
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->ClientSize = System::Drawing::Size(882, 753);
 			this->Controls->Add(this->btnClear);
 			this->Controls->Add(this->btnCarrer);
@@ -431,6 +434,7 @@ namespace SalesView {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->DoubleBuffered = true;
 			this->Name = L"ProductForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Mantenimiento de productos";

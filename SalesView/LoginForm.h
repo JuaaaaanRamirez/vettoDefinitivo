@@ -104,7 +104,7 @@ namespace SalesView {
 			// txtUsername
 			// 
 			this->txtUsername->Location = System::Drawing::Point(183, 127);
-			this->txtUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtUsername->Margin = System::Windows::Forms::Padding(4);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(224, 22);
 			this->txtUsername->TabIndex = 1;
@@ -112,7 +112,7 @@ namespace SalesView {
 			// txtPassword
 			// 
 			this->txtPassword->Location = System::Drawing::Point(183, 159);
-			this->txtPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtPassword->Margin = System::Windows::Forms::Padding(4);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(224, 22);
@@ -122,18 +122,18 @@ namespace SalesView {
 			// btnOk
 			// 
 			this->btnOk->Location = System::Drawing::Point(113, 197);
-			this->btnOk->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnOk->Margin = System::Windows::Forms::Padding(4);
 			this->btnOk->Name = L"btnOk";
 			this->btnOk->Size = System::Drawing::Size(100, 28);
 			this->btnOk->TabIndex = 3;
-			this->btnOk->Text = L"Ingresar";
+			this->btnOk->Text = L"Iniciar sesión";
 			this->btnOk->UseVisualStyleBackColor = true;
 			this->btnOk->Click += gcnew System::EventHandler(this, &LoginForm::btnOK_Click);
 			// 
 			// btnCancel
 			// 
 			this->btnCancel->Location = System::Drawing::Point(259, 197);
-			this->btnCancel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnCancel->Margin = System::Windows::Forms::Padding(4);
 			this->btnCancel->Name = L"btnCancel";
 			this->btnCancel->Size = System::Drawing::Size(100, 28);
 			this->btnCancel->TabIndex = 4;
@@ -144,7 +144,7 @@ namespace SalesView {
 			// btnNewCustomer
 			// 
 			this->btnNewCustomer->Location = System::Drawing::Point(259, 263);
-			this->btnNewCustomer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnNewCustomer->Margin = System::Windows::Forms::Padding(4);
 			this->btnNewCustomer->Name = L"btnNewCustomer";
 			this->btnNewCustomer->Size = System::Drawing::Size(127, 30);
 			this->btnNewCustomer->TabIndex = 5;
@@ -166,7 +166,7 @@ namespace SalesView {
 			// 
 			this->pbLogin->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbLogin.Image")));
 			this->pbLogin->Location = System::Drawing::Point(75, 36);
-			this->pbLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pbLogin->Margin = System::Windows::Forms::Padding(4);
 			this->pbLogin->Name = L"pbLogin";
 			this->pbLogin->Size = System::Drawing::Size(333, 62);
 			this->pbLogin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -177,6 +177,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->ClientSize = System::Drawing::Size(460, 321);
 			this->Controls->Add(this->pbLogin);
 			this->Controls->Add(this->label3);
@@ -187,7 +189,7 @@ namespace SalesView {
 			this->Controls->Add(this->txtUsername);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"LoginForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Autenticacion de usuarios";

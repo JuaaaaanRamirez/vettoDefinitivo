@@ -196,6 +196,7 @@ namespace SalesView {
 			// 
 			// dgvSaleDetail
 			// 
+			this->dgvSaleDetail->BackgroundColor = System::Drawing::SystemColors::HighlightText;
 			this->dgvSaleDetail->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvSaleDetail->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Id, this->Nombre,
@@ -419,6 +420,7 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::Khaki;
 			this->ClientSize = System::Drawing::Size(982, 503);
 			this->Controls->Add(this->txtPaidMode);
 			this->Controls->Add(this->lbStatus);

@@ -248,6 +248,7 @@ namespace SalesView {
 			// 
 			// dgvSaleDetail
 			// 
+			this->dgvSaleDetail->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvSaleDetail->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvSaleDetail->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Id, this->Nombre,
@@ -257,7 +258,7 @@ namespace SalesView {
 			this->dgvSaleDetail->Name = L"dgvSaleDetail";
 			this->dgvSaleDetail->RowHeadersWidth = 51;
 			this->dgvSaleDetail->RowTemplate->Height = 24;
-			this->dgvSaleDetail->Size = System::Drawing::Size(451, 150);
+			this->dgvSaleDetail->Size = System::Drawing::Size(699, 150);
 			this->dgvSaleDetail->TabIndex = 10;
 			this->dgvSaleDetail->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &SaleDetailForm::dgvSaleDetail_CellValueChanged);
 			// 
@@ -336,7 +337,6 @@ namespace SalesView {
 			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 15;
 			this->label4->Text = L"SubTotal (S/.):";
-			//this->label4->Click += gcnew System::EventHandler(this, &SaleDetailForm::label4_Click);
 			// 
 			// txtSubTotal
 			// 
@@ -412,7 +412,8 @@ namespace SalesView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(472, 533);
+			this->BackColor = System::Drawing::Color::SkyBlue;
+			this->ClientSize = System::Drawing::Size(716, 533);
 			this->Controls->Add(this->cbPaidMode);
 			this->Controls->Add(this->lbPaidMode);
 			this->Controls->Add(this->lbSaleID);
