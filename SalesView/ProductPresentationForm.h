@@ -45,7 +45,7 @@ namespace SalesView {
 			this->userId = userId;
 			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
 			myThread->IsBackground = true;
-			//myThread->Start();
+			myThread->Start();
 		}
 		delegate void MyDelegate();
 
@@ -99,8 +99,12 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ lbStarts;
 	private: System::Windows::Forms::PictureBox^ pbSellers;
 	private: System::Windows::Forms::PictureBox^ pbStars;
-	private: System::Windows::Forms::Label^ txtStarts;
 	private: System::Windows::Forms::Label^ txtSales;
+
+	private: System::Windows::Forms::Label^ txtQueries;
+
+
+
 
 
 
@@ -161,8 +165,8 @@ namespace SalesView {
 			this->lbStarts = (gcnew System::Windows::Forms::Label());
 			this->pbSellers = (gcnew System::Windows::Forms::PictureBox());
 			this->pbStars = (gcnew System::Windows::Forms::PictureBox());
-			this->txtStarts = (gcnew System::Windows::Forms::Label());
 			this->txtSales = (gcnew System::Windows::Forms::Label());
+			this->txtQueries = (gcnew System::Windows::Forms::Label());
 			this->gbinformation = (gcnew System::Windows::Forms::GroupBox());
 			this->txtProductName = (gcnew System::Windows::Forms::TextBox());
 			this->lbId = (gcnew System::Windows::Forms::Label());
@@ -284,29 +288,29 @@ namespace SalesView {
 			this->pbStars->TabIndex = 13;
 			this->pbStars->TabStop = false;
 			// 
-			// txtStarts
-			// 
-			this->txtStarts->AutoSize = true;
-			this->txtStarts->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtStarts->Location = System::Drawing::Point(376, 224);
-			this->txtStarts->Name = L"txtStarts";
-			this->txtStarts->Size = System::Drawing::Size(48, 29);
-			this->txtStarts->TabIndex = 14;
-			this->txtStarts->Text = L"4.7";
-			this->txtStarts->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
 			// txtSales
 			// 
 			this->txtSales->AutoSize = true;
 			this->txtSales->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtSales->Location = System::Drawing::Point(496, 220);
+			this->txtSales->Location = System::Drawing::Point(376, 224);
 			this->txtSales->Name = L"txtSales";
-			this->txtSales->Size = System::Drawing::Size(69, 29);
-			this->txtSales->TabIndex = 15;
-			this->txtSales->Text = L"5000";
+			this->txtSales->Size = System::Drawing::Size(48, 29);
+			this->txtSales->TabIndex = 14;
+			this->txtSales->Text = L"4.7";
 			this->txtSales->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// txtQueries
+			// 
+			this->txtQueries->AutoSize = true;
+			this->txtQueries->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtQueries->Location = System::Drawing::Point(496, 220);
+			this->txtQueries->Name = L"txtQueries";
+			this->txtQueries->Size = System::Drawing::Size(69, 29);
+			this->txtQueries->TabIndex = 15;
+			this->txtQueries->Text = L"5000";
+			this->txtQueries->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// gbinformation
 			// 
@@ -401,8 +405,8 @@ namespace SalesView {
 			this->Controls->Add(this->txtStock);
 			this->Controls->Add(this->Wishbtn);
 			this->Controls->Add(this->gbinformation);
+			this->Controls->Add(this->txtQueries);
 			this->Controls->Add(this->txtSales);
-			this->Controls->Add(this->txtStarts);
 			this->Controls->Add(this->pbStars);
 			this->Controls->Add(this->pbSellers);
 			this->Controls->Add(this->lbStarts);

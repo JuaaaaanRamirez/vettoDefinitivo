@@ -505,6 +505,7 @@ namespace SalesView {
 			// Update Products
 			Product^ myProduct = Controller::QueryProductById(mySale->SaleDetails[i]->Id);
 			myProduct->Stock= myProduct->Stock - mySale->SaleDetails[i]->Quantity;
+			//myProduct->Sales = 
 			Controller::UpdateProduct(myProduct);
 
 			// Cp

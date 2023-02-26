@@ -142,6 +142,7 @@ namespace SalesView {
 			this->dgvProductList->RowTemplate->Height = 24;
 			this->dgvProductList->Size = System::Drawing::Size(903, 506);
 			this->dgvProductList->TabIndex = 41;
+			this->dgvProductList->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellContentClick);
 			this->dgvProductList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellDoubleClick);
 			// 
 			// Id
@@ -263,7 +264,9 @@ namespace SalesView {
 		if (e->KeyData == Keys::Enter) Searchbtn->PerformClick();
 	}
 
-	};
+	private: System::Void dgvProductList_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+};
 }
 
 

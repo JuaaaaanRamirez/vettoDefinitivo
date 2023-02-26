@@ -18,7 +18,7 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	txtProductName->Text = "" + p->Name;
 	txtStock->Text = "" + p->Stock;
 	txtDescription->Text = "" + p->Description;
-	txtStarts->Text = "" + p->Starts;
+	txtQueries->Text = "" + p->Searches;
 	txtSales->Text = "" + p->Sales;
 	p->Searches++;  // Plus search
 
@@ -58,7 +58,7 @@ void SalesView::ProductPresentationForm::ShowProductToThread()
 	txtProductName->Text = "" + p->Name;
 	txtStock->Text = "" + p->Stock;  //lo importante
 	txtDescription->Text = "" + p->Description;
-	txtStarts->Text = "" + p->Starts;
+	txtQueries->Text = "" + p->Searches;
 	txtSales->Text = "" + p->Sales;  //lo importante
 }
 
