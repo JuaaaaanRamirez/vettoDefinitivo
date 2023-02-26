@@ -213,9 +213,6 @@ private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Window
 }
 private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
-	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm(this);
-	newCustomerForm->ShowDialog();
-}
+private: System::Void btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

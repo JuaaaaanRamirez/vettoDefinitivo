@@ -95,3 +95,10 @@ System::Void SalesView::LoginForm::btnCancel_Click(System::Object^ sender, Syste
 
 
 }
+
+System::Void SalesView::LoginForm::btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	//return System::Void();
+	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm(((SalesMainForm^)refForm));
+	newCustomerForm->ShowDialog();
+}

@@ -46,7 +46,7 @@ namespace SalesView {
 	private: System::Windows::Forms::Button^ btnWishList;
 	private: System::Windows::Forms::Button^ btnRecord;
 	private: System::Windows::Forms::Button^ btnEdit;
-	private: System::Windows::Forms::GroupBox^ gbMenuAnnouncer;
+	public: System::Windows::Forms::GroupBox^ gbMenuAnnouncer;
 	private: System::Windows::Forms::Button^ btnSingOutAnnouncer;
 	private: System::Windows::Forms::Button^ btnMyAdd;
 
