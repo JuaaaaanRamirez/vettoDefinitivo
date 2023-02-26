@@ -1112,9 +1112,11 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 		else if (rbtnStoreManager->Checked) user = gcnew StoreManager();
 		else user = gcnew Announcer();
 		user = PutOnData();
-		int ID = Convert::ToInt32(txtCustomerId->Text);
-		Person^ UserWithoutChange = Controller::QueryUserById(ID);
-		safe_cast<Customer^>(user)->WishList= safe_cast<Customer^>(UserWithoutChange)->WishList;
+		if (user->Profile =='S') {
+			int ID = Convert::ToInt32(txtCustomerId->Text);
+			Person^ UserWithoutChange = Controller::QueryUserById(ID);
+			safe_cast<Customer^>(user)->WishList= safe_cast<Customer^>(UserWithoutChange)->WishList;
+		}
 		Controller::UpdateUser(user);
 		CleanControls();
 		ShowUsers();
