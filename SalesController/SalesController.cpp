@@ -179,42 +179,50 @@ int SalesController::Controller::AddCustomer(Customer^ customer)
 int SalesController::Controller::AddUser(Person^ user)
 {
     //ver que no se repita el id d eproduct ingresante
-    personList->Add(user);
+    
+    /*personList->Add(user);
     Persistance::PersistBinary("users.bin", personList);
-    return Int32(user->Id);
+    return Int32(user->Id);*/
+
+    return Persistance::AddPerson(user);
 }
 Person^ SalesController::Controller::QueryUserById(int userId)
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    /*personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     for (int i = 0; i < personList->Count; i++)
         if (personList[i]->Id == userId)
             return personList[i];
-    return nullptr;
+    return nullptr;*/
+    return Persistance::QueryPersonById(userId);
 }
 List<Person^>^ SalesController::Controller::QueryAllUsers()
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
-    return personList;
+    //personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+//(List<Person^> ^ )Persistance::QueryAllActivePerson;
+    //personList = Persistance::QueryAllActivePerson();
+    return Persistance::QueryAllActivePerson();
 }
 int SalesController::Controller::UpdateUser(Person^ user)
 {
-    for (int i = 0; i < personList->Count; i++)
+    /*for (int i = 0; i < personList->Count; i++)
         if (personList[i]->Id == user->Id) {
             personList[i] = user;
             Persistance::PersistBinary("users.bin", personList);
             return user->Id;
         }
-    return 0;
+    return 0;*/
+    return Persistance::UpdatePerson(user);
 }
 int SalesController::Controller::DeleteUser(int userId)
 {
-    for (int i = 0; i < personList->Count; i++)
+    /*for (int i = 0; i < personList->Count; i++)
         if (personList[i]->Id == userId) {
             personList->RemoveAt(i);
             Persistance::PersistBinary("users.bin", personList);
             return userId;
         }
-    return 0;
+    return 0;*/
+    return Persistance::DeletePerson(userId);
 }
 
 List<Customer^>^ SalesController::Controller::QueryAllCustomer()
@@ -308,15 +316,15 @@ Customer^ SalesController::Controller::QueryCustomerByCredentials(String^ userna
 
 Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, String^ password)
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    /*personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     for (int i = 0; i < personList->Count; i++) {
         if (personList[i]->Username->Equals(username) &&
             personList[i]->Password->Equals(password)) {
             return personList[i];
         }
     }
-    return nullptr;
-    
+    return nullptr;*/
+    return Persistance::Login(username, password);
     
     //throw gcnew System::NotImplementedException();
     // TODO: Insertar una instrucción "return" aquí

@@ -522,6 +522,7 @@ namespace SalesView {
 				   p->LastName = txtLastName->Text;
 				   p->DocNumber = txtDocNumber->Text;
 				   p->Address = txtAddress->Text;
+				   p->CustomerPoints = 0;
 				   p->Email = txtEmail->Text;
 				   p->PhoneNumber = txtPhoneNumber->Text;
 				   p->Birthday = dtpBirthday->Value.ToString();

@@ -8,6 +8,7 @@ using namespace System::Xml::Serialization;
 using namespace SalesModel;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::Runtime::Serialization;
+using namespace System::Globalization;
 
 #pragma region FILES
 void SalesPersistance::Persistance::Persist(String^ fileName, Object^ persistObject)
@@ -1113,5 +1114,725 @@ int SalesPersistance::Persistance::DeleteSaleDetail(int saleid, int productid)
         if (conn != nullptr) conn->Close();
     }
     return saleid;
+}
+List<Person^>^ SalesPersistance::Persistance::QueryAllActivePerson()
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    List<Person^>^ activePersonsList = gcnew List<Person^>();
+    try {
+        //Paso 1: Se obtiene la conexión
+        conn = GetConnection();
+        //Paso 2: Se prepara la sentencia
+        comm = gcnew SqlCommand("SELECT * FROM PERSON", conn); //
+        //Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+        //Paso 4: Se procesan los resultados        
+        while (reader->Read()) {
+
+            if (reader["profile"]->ToString()->Equals("S")) {
+                Customer^ p = gcnew Customer();
+
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["customer_points"])) p->CustomerPoints = Convert::ToInt32(reader["customer_points"]->ToString());
+                if (!DBNull::Value->Equals(reader["address"])) p->Address = reader["address"]->ToString();
+
+                activePersonsList->Add(p);
+            }
+            else if (reader["profile"]->ToString()->Equals("A")) {
+                Announcer^ p = gcnew Announcer();
+                    
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["ad"])) p->Ad = (array<Byte>^)reader["ad"];
+                if (!DBNull::Value->Equals(reader["ad_in_sistem"]))p->AdInSistem = Convert::ToBoolean(reader["ad_in_sistem"]->ToString());
+                if (!DBNull::Value->Equals(reader["number_picture_box"]))p->NumberPictureBox = Convert::ToInt32(reader["number_picture_box"]->ToString());
+                if (!DBNull::Value->Equals(reader["web_site_link"])) p->WebSiteLink = reader["web_site_link"]->ToString();
+                if (!DBNull::Value->Equals(reader["company_name"])) p->CompanyName = reader["company_name"]->ToString();
+
+                activePersonsList->Add(p);
+            }
+            else
+            {
+                StoreManager^ p = gcnew StoreManager();
+
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["goal"])) p->Goals = Convert::ToDouble(reader["goal"]->ToString());
+                if (!DBNull::Value->Equals(reader["salary"])) p->Salary = reader["salary"]->ToString();
+                if (!DBNull::Value->Equals(reader["store"])) p->Store = reader["store"]->ToString();
+                if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString();
+
+
+                activePersonsList->Add(p);
+            }
+
+
+        }
+    }
+    catch (Exception^ ex) { throw 
+        ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activePersonsList;
+}
+Person^ SalesPersistance::Persistance::QueryPersonById(int personId)
+{
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    Person^ activePerson;
+    try {
+        //Paso 1: Se obtiene la conexión
+        conn = GetConnection();
+        //Paso 2: Se prepara la sentencia
+        comm = gcnew SqlCommand("SELECT * FROM PERSON WHERE id=" + personId, conn); //
+        //Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+        //Paso 4: Se procesan los resultados        
+        if (reader->Read()) {
+            if (!DBNull::Value->Equals(reader["profile"]) && reader["profile"]->ToString()->Equals("S")) {
+                Customer^ p = gcnew Customer();
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["customer_points"])) p->CustomerPoints = Convert::ToInt32(reader["customer_points"]->ToString());
+                if (!DBNull::Value->Equals(reader["address"])) p->Address = reader["address"]->ToString();
+                activePerson = p;
+            }
+            else  if (!DBNull::Value->Equals(reader["profile"]) && reader["profile"]->ToString()->Equals("A")) {
+                Announcer^ p = gcnew Announcer();
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+
+                if (!DBNull::Value->Equals(reader["ad"])) p->Ad = (array<Byte>^)reader["ad"];
+                if (!DBNull::Value->Equals(reader["ad_in_sistem"]))p->AdInSistem = Convert::ToBoolean(reader["ad_in_sistem"]->ToString());
+                if (!DBNull::Value->Equals(reader["number_picture_box"]))p->NumberPictureBox = Convert::ToInt32(reader["number_picture_box"]->ToString());
+                if (!DBNull::Value->Equals(reader["web_site_link"])) p->WebSiteLink = reader["web_site_link"]->ToString();
+                if (!DBNull::Value->Equals(reader["company_name"])) p->CompanyName = reader["company_name"]->ToString();
+                activePerson = p;
+            }
+            else  {
+                StoreManager^ p = gcnew StoreManager();
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+
+                if (!DBNull::Value->Equals(reader["goal"])) p->Goals = Convert::ToDouble(reader["goal"]->ToString());
+                if (!DBNull::Value->Equals(reader["salary"])) p->Salary = reader["salary"]->ToString();
+                if (!DBNull::Value->Equals(reader["store"])) p->Store = reader["store"]->ToString();
+                if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString();
+                activePerson = p;
+            }
+
+            if (reader != nullptr) reader->Close();
+            if (conn != nullptr) conn->Close();
+        }
+    }
+    catch (Exception^ ex) { 
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activePerson;
+}
+int SalesPersistance::Persistance::AddPerson(Person^ user)
+{
+   // return 0;
+   
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    int output_id;
+    try {
+        /* 1er paso: Se obtiene la conexión */
+        conn = GetConnection();
+
+        /* 2do paso: Se prepara la sentencia */
+        comm = gcnew SqlCommand();
+        comm->Connection = conn;
+        String^ strCmd;
+        if (user->GetType() == Customer::typeid) {
+            strCmd = "dbo.usp_Add_Person_Customer";
+            comm = gcnew SqlCommand(strCmd, conn);
+
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+            comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+            comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar,20);
+            comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+            comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@customer_points", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@address", System::Data::SqlDbType::VarChar, 150);
+
+            SqlParameter^ outputIdParam = gcnew SqlParameter("@id", System::Data::SqlDbType::Int);
+            
+            outputIdParam->Direction = System::Data::ParameterDirection::Output;
+            comm->Parameters->Add(outputIdParam);
+
+            comm->Prepare();
+            comm->Parameters["@doc_number"]->Value = user->DocNumber;
+            comm->Parameters["@name"]->Value = user->Name;
+            comm->Parameters["@last_name"]->Value = user->LastName;
+            comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+            comm->Parameters["@email"]->Value = user->Email;
+            comm->Parameters["@username"]->Value = user->Username;
+            comm->Parameters["@password"]->Value = user->Password;
+            comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+            comm->Parameters["@birthday"]->Value = user->Birthday;
+            comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+            if (user->Photo == nullptr)
+                comm->Parameters["@photo"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@photo"]->Value = user->Photo;
+            comm->Parameters["@customer_points"]->Value = ((Customer^)user)->CustomerPoints;
+            comm->Parameters["@address"]->Value = ((Customer^)user)->Address;
+
+
+            /* Paso 3: Se ejecuta la sentencia */
+            comm->ExecuteNonQuery();
+
+            /* Paso 4: Si se quiere procesar la salida. */
+            output_id = Convert::ToInt32(comm->Parameters["@id"]->Value);
+        }
+        else if (user->GetType() == Announcer::typeid) {
+            strCmd = "dbo.usp_Add_Person_Announcer";
+            comm = gcnew SqlCommand(strCmd, conn);
+
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+            comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+            comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+            comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@ad", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@ad_in_sistem", System::Data::SqlDbType::Bit);
+            comm->Parameters->Add("@number_picture_box", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@web_site_link", System::Data::SqlDbType::VarChar, 200);
+            comm->Parameters->Add("@company_name", System::Data::SqlDbType::VarChar, 50);
+
+
+            SqlParameter^ outputIdParam = gcnew SqlParameter("@id", System::Data::SqlDbType::Int);
+
+            outputIdParam->Direction = System::Data::ParameterDirection::Output;
+            comm->Parameters->Add(outputIdParam);
+
+            comm->Prepare();
+            comm->Parameters["@doc_number"]->Value = user->DocNumber;
+            comm->Parameters["@name"]->Value = user->Name;
+            comm->Parameters["@last_name"]->Value = user->LastName;
+            comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+            comm->Parameters["@email"]->Value = user->Email;
+            comm->Parameters["@username"]->Value = user->Username;
+            comm->Parameters["@password"]->Value = user->Password;
+            comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+            comm->Parameters["@birthday"]->Value = user->Birthday;
+            comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+            if (user->Photo == nullptr)
+                comm->Parameters["@photo"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@photo"]->Value = user->Photo;
+
+            if (((Announcer^)user)->Ad== nullptr)
+                comm->Parameters["@ad"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@ad"]->Value = ((Announcer^)user)->Ad;
+
+            comm->Parameters["@ad_in_sistem"]->Value = Convert::ToBoolean(((Announcer^)user)->AdInSistem);
+            comm->Parameters["@number_picture_box"]->Value = Convert::ToInt32(((Announcer^)user)->NumberPictureBox);
+            comm->Parameters["@web_site_link"]->Value = ((Announcer^)user)->WebSiteLink;
+            comm->Parameters["@company_name"]->Value = ((Announcer^)user)->CompanyName;
+
+
+            /* Paso 3: Se ejecuta la sentencia */
+            comm->ExecuteNonQuery();
+
+            /* Paso 4: Si se quiere procesar la salida. */
+            output_id = Convert::ToInt32(comm->Parameters["@id"]->Value);
+        }
+        else {
+        strCmd = "dbo.usp_Add_Person_Store_Manager";
+        comm = gcnew SqlCommand(strCmd, conn);
+
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+        comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+        comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+        comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+        comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+        comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+        comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+        comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+        comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+        comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+
+        comm->Parameters->Add("@goal", System::Data::SqlDbType::Decimal);
+        comm->Parameters["@goal"]->Precision = 10;
+        comm->Parameters["@goal"]->Scale = 2;
+        comm->Parameters->Add("@salary", System::Data::SqlDbType::VarChar,15);
+        comm->Parameters->Add("@store", System::Data::SqlDbType::VarChar, 50);
+        comm->Parameters->Add("@status", System::Data::SqlDbType::VarChar, 15);
+
+
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@id", System::Data::SqlDbType::Int);
+
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        comm->Parameters->Add(outputIdParam);
+
+        comm->Prepare();
+        comm->Parameters["@doc_number"]->Value = user->DocNumber;
+        comm->Parameters["@name"]->Value = user->Name;
+        comm->Parameters["@last_name"]->Value = user->LastName;
+        comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+        comm->Parameters["@email"]->Value = user->Email;
+        comm->Parameters["@username"]->Value = user->Username;
+        comm->Parameters["@password"]->Value = user->Password;
+        comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+        comm->Parameters["@birthday"]->Value = user->Birthday;
+        comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+        if (user->Photo == nullptr)
+            comm->Parameters["@photo"]->Value = DBNull::Value;
+        else
+            comm->Parameters["@photo"]->Value = user->Photo;
+
+        
+
+        comm->Parameters["@goal"]->Value = ((StoreManager^)user)->Goals;
+        comm->Parameters["@salary"]->Value = ((StoreManager^)user)->Salary;
+        comm->Parameters["@store"]->Value = ((StoreManager^)user)->Store;
+        comm->Parameters["@status"]->Value = ((StoreManager^)user)->Status;
+
+
+        /* Paso 3: Se ejecuta la sentencia */
+        comm->ExecuteNonQuery();
+
+        /* Paso 4: Si se quiere procesar la salida. */
+        output_id = Convert::ToInt32(comm->Parameters["@id"]->Value);
+         }
+
+        
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (conn != nullptr) conn->Close();
+    }
+    return output_id;
+}
+int SalesPersistance::Persistance::UpdatePerson(Person^ user)
+{
+
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    int output_id;
+    try {
+        /* 1er paso: Se obtiene la conexión */
+        conn = GetConnection();
+        /* 2do paso: Se prepara la sentencia */
+        comm = gcnew SqlCommand();
+        comm->Connection = conn;
+        String^ strCmd;
+        if (user->GetType() == Customer::typeid) {
+            strCmd = "dbo.usp_UpdatePerson_Customer";
+            comm = gcnew SqlCommand(strCmd, conn);
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+
+            comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+            comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+            comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@customer_points", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@address", System::Data::SqlDbType::VarChar, 150);
+            comm->Prepare();
+
+            comm->Parameters["@doc_number"]->Value = user->DocNumber;
+            comm->Parameters["@name"]->Value = user->Name;
+            comm->Parameters["@last_name"]->Value = user->LastName;
+            comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+            comm->Parameters["@email"]->Value = user->Email;
+            comm->Parameters["@username"]->Value = user->Username;
+            comm->Parameters["@password"]->Value = user->Password;
+            comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+            comm->Parameters["@birthday"]->Value = user->Birthday;
+            comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+            if (user->Photo == nullptr)
+                comm->Parameters["@photo"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@photo"]->Value = user->Photo;
+            comm->Parameters["@customer_points"]->Value = ((Customer^)user)->CustomerPoints;
+            comm->Parameters["@address"]->Value = ((Customer^)user)->Address;
+
+            comm->Parameters["@id"]->Value = user->Id;
+            /* Paso 3: Se ejecuta la sentencia */
+            output_id = comm->ExecuteNonQuery();
+        }
+        else if (user->GetType() == Announcer::typeid) {
+            strCmd = "dbo.usp_UpdatePerson_Announcer";
+            comm = gcnew SqlCommand(strCmd, conn);
+            comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+            comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+            comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@ad", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@ad_in_sistem", System::Data::SqlDbType::Bit);
+            comm->Parameters->Add("@number_picture_box", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@web_site_link", System::Data::SqlDbType::VarChar, 200);
+            comm->Parameters->Add("@company_name", System::Data::SqlDbType::VarChar, 50);
+
+            comm->Prepare();
+
+            comm->Parameters["@doc_number"]->Value = user->DocNumber;
+            comm->Parameters["@name"]->Value = user->Name;
+            comm->Parameters["@last_name"]->Value = user->LastName;
+            comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+            comm->Parameters["@email"]->Value = user->Email;
+            comm->Parameters["@username"]->Value = user->Username;
+            comm->Parameters["@password"]->Value = user->Password;
+            comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+            comm->Parameters["@birthday"]->Value = user->Birthday;
+            comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+            if (user->Photo == nullptr)
+                comm->Parameters["@photo"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@photo"]->Value = user->Photo;
+            if (((Announcer^)user)->Ad == nullptr)
+                comm->Parameters["@ad"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@ad"]->Value = ((Announcer^)user)->Ad;
+
+            comm->Parameters["@ad_in_sistem"]->Value = Convert::ToBoolean(((Announcer^)user)->AdInSistem);
+            comm->Parameters["@number_picture_box"]->Value = Convert::ToInt32(((Announcer^)user)->NumberPictureBox);
+            comm->Parameters["@web_site_link"]->Value = ((Announcer^)user)->WebSiteLink;
+            comm->Parameters["@company_name"]->Value = ((Announcer^)user)->CompanyName;
+            comm->Parameters["@id"]->Value = user->Id;
+            /* Paso 3: Se ejecuta la sentencia */
+            output_id = comm->ExecuteNonQuery();
+        }
+        else
+        {
+            strCmd = "dbo.[usp_UpdatePerson_Store_Manager]";
+            comm = gcnew SqlCommand(strCmd, conn);
+            comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
+            comm->Parameters->Add("@phone_number", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@email", System::Data::SqlDbType::VarChar, 150);
+            comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+            comm->Parameters->Add("@gender", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@birthday", System::Data::SqlDbType::Date);
+            comm->Parameters->Add("@profile", System::Data::SqlDbType::Char, 1);
+            comm->Parameters->Add("@photo", System::Data::SqlDbType::Image);
+            comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@goal", System::Data::SqlDbType::Decimal);
+            comm->Parameters["@goal"]->Precision = 10;
+            comm->Parameters["@goal"]->Scale = 2;
+            comm->Parameters->Add("@salary", System::Data::SqlDbType::VarChar, 15);
+            comm->Parameters->Add("@store", System::Data::SqlDbType::VarChar, 50);
+            comm->Parameters->Add("@status", System::Data::SqlDbType::VarChar, 15);
+
+            comm->Prepare();
+
+            comm->Parameters["@doc_number"]->Value = user->DocNumber;
+            comm->Parameters["@name"]->Value = user->Name;
+            comm->Parameters["@last_name"]->Value = user->LastName;
+            comm->Parameters["@phone_number"]->Value = user->PhoneNumber;
+            comm->Parameters["@email"]->Value = user->Email;
+            comm->Parameters["@username"]->Value = user->Username;
+            comm->Parameters["@password"]->Value = user->Password;
+            comm->Parameters["@gender"]->Value = Char::ToString(user->Gender);
+            comm->Parameters["@birthday"]->Value = user->Birthday;
+            comm->Parameters["@profile"]->Value = Char::ToString(user->Profile);
+            if (user->Photo == nullptr)
+                comm->Parameters["@photo"]->Value = DBNull::Value;
+            else
+                comm->Parameters["@photo"]->Value = user->Photo;
+
+            comm->Parameters["@goal"]->Value = ((StoreManager^)user)->Goals;
+            comm->Parameters["@salary"]->Value = ((StoreManager^)user)->Salary;
+            comm->Parameters["@store"]->Value = ((StoreManager^)user)->Store;
+            comm->Parameters["@status"]->Value = ((StoreManager^)user)->Status;
+
+            comm->Parameters["@id"]->Value = user->Id;
+            /* Paso 3: Se ejecuta la sentencia */
+            output_id = comm->ExecuteNonQuery();
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (conn != nullptr) conn->Close();
+    }
+
+    return output_id;
+
+
+}
+int SalesPersistance::Persistance::DeletePerson(int iduser)
+{
+    //return 0;
+
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    int output_id;
+    try {
+        /* 1er paso: Se obtiene la conexión */
+        SqlConnection^ conn = GetConnection();
+
+        /* 2do paso: Se prepara la sentencia */
+        SqlCommand^ comm = gcnew SqlCommand();
+        comm->Connection = conn;
+        String^ strCmd;
+        strCmd = "dbo.usp_Delete_Person";
+        comm = gcnew SqlCommand(strCmd, conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+
+        comm->Prepare();
+
+        comm->Parameters["@id"]->Value = iduser;
+        /* Paso 3: Se ejecuta la sentencia */
+        output_id = comm->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (conn != nullptr) conn->Close();
+    }
+    return output_id;
+}
+Person^ SalesPersistance::Persistance::Login(String^ username, String^ password)
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+
+    Person^ person;
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Se obtiene la conexión
+        conn = GetConnection();
+        //Paso 2: Se prepara la sentencia
+        comm = gcnew SqlCommand("dbo.usp_ValidateUser", conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@username", System::Data::SqlDbType::VarChar, 20);
+        comm->Parameters->Add("@password", System::Data::SqlDbType::VarChar, 20);
+        comm->Prepare();
+        comm->Parameters["@username"]->Value = username;
+        comm->Parameters["@password"]->Value = password;
+        //Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+        //Paso 4: Se procesan los resultados        
+        if (reader->Read()) {
+            if (reader["profile"]->ToString()->Equals("S")) {
+                Customer^ p = gcnew Customer();
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["customer_points"])) p->CustomerPoints = Convert::ToInt32(reader["customer_points"]->ToString());
+                if (!DBNull::Value->Equals(reader["address"])) p->Address = reader["address"]->ToString();
+                person = p; // Se puede asignar a una variable genérica cualquier objeto derivado.
+            }
+            else if (reader["profile"]->ToString()->Equals("A")) {
+                Announcer^ p = gcnew Announcer();
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["ad"])) p->Ad = (array<Byte>^)reader["ad"];
+                if (!DBNull::Value->Equals(reader["ad_in_sistem"]))p->AdInSistem = Convert::ToBoolean(reader["ad_in_sistem"]->ToString());
+                if (!DBNull::Value->Equals(reader["number_picture_box"]))p->NumberPictureBox = Convert::ToInt32(reader["number_picture_box"]->ToString());
+                if (!DBNull::Value->Equals(reader["web_site_link"])) p->WebSiteLink = reader["web_site_link"]->ToString();
+                if (!DBNull::Value->Equals(reader["company_name"])) p->CompanyName = reader["company_name"]->ToString();
+
+                person = p; // Se puede asignar a una variable genérica cualquier objeto derivado.
+            }
+            else if (reader["profile"]->ToString()->Equals("M")) {
+                StoreManager^ p = gcnew StoreManager();
+                // Completar la carga de datos del StoreManager
+                p->Id = Convert::ToInt32(reader["id"]->ToString());
+                p->Name = reader["name"]->ToString();
+                p->LastName = reader["last_name"]->ToString();
+                if (!DBNull::Value->Equals(reader["doc_number"]))p->DocNumber = reader["doc_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["phone_number"]))p->PhoneNumber = reader["phone_number"]->ToString();
+                if (!DBNull::Value->Equals(reader["email"]))p->Email = reader["email"]->ToString();
+                if (!DBNull::Value->Equals(reader["username"]))p->Username = reader["username"]->ToString();
+                if (!DBNull::Value->Equals(reader["password"]))p->Password = reader["password"]->ToString();
+                if (!DBNull::Value->Equals(reader["birthday"])) {
+                    DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+                    p->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+                }
+                if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
+                if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
+
+                if (!DBNull::Value->Equals(reader["goal"])) p->Goals = Convert::ToDouble(reader["goal"]->ToString());
+                if (!DBNull::Value->Equals(reader["salary"])) p->Salary = reader["salary"]->ToString();
+                if (!DBNull::Value->Equals(reader["store"])) p->Store = reader["store"]->ToString();
+                if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString();
+
+                person = p; // Se puede asignar a una variable genérica cualquier objeto derivado.
+            }
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return person;
 }
 #pragma endregion
