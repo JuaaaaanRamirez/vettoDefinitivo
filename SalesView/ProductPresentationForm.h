@@ -25,7 +25,7 @@ namespace SalesView {
 		Thread^ myThread;
 	public:	
 	public:
-		Form^ refForm;
+		//Form^ refForm;
 		int userId, saleId;
 	public: System::Windows::Forms::TextBox^ txtStock;
 	private: System::Windows::Forms::Label^ label1;
@@ -35,13 +35,13 @@ namespace SalesView {
 	public:
 	private: System::Windows::Forms::Label^ lbStock;
 	public:
-		ProductPresentationForm(Form^ form1, int userId)
+		ProductPresentationForm(int userId)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
-			refForm = form1;
+			//refForm = form1;
 			this->userId = userId;
 			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
 			myThread->IsBackground = true;

@@ -181,7 +181,7 @@ namespace SalesView {
 			this->txtUserName->Location = System::Drawing::Point(105, 80);
 			this->txtUserName->Name = L"txtUserName";
 			this->txtUserName->ReadOnly = true;
-			this->txtUserName->Size = System::Drawing::Size(351, 22);
+			this->txtUserName->Size = System::Drawing::Size(599, 22);
 			this->txtUserName->TabIndex = 2;
 			this->txtUserName->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtUserName_TextChanged);
 			// 
@@ -189,7 +189,7 @@ namespace SalesView {
 			// 
 			this->txtAddress->Location = System::Drawing::Point(105, 110);
 			this->txtAddress->Name = L"txtAddress";
-			this->txtAddress->Size = System::Drawing::Size(350, 22);
+			this->txtAddress->Size = System::Drawing::Size(599, 22);
 			this->txtAddress->TabIndex = 3;
 			this->txtAddress->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtAddress_TextChanged);
 			// 
@@ -197,13 +197,13 @@ namespace SalesView {
 			// 
 			this->txtReference->Location = System::Drawing::Point(105, 140);
 			this->txtReference->Name = L"txtReference";
-			this->txtReference->Size = System::Drawing::Size(350, 22);
+			this->txtReference->Size = System::Drawing::Size(599, 22);
 			this->txtReference->TabIndex = 4;
 			this->txtReference->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtReference_TextChanged);
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->Location = System::Drawing::Point(40, 210);
+			this->btnAdd->Location = System::Drawing::Point(150, 210);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(180, 30);
 			this->btnAdd->TabIndex = 5;
@@ -213,7 +213,7 @@ namespace SalesView {
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(250, 210);
+			this->btnDelete->Location = System::Drawing::Point(400, 210);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(180, 30);
 			this->btnDelete->TabIndex = 6;
@@ -305,7 +305,7 @@ namespace SalesView {
 			// 
 			// btnPaid
 			// 
-			this->btnPaid->Location = System::Drawing::Point(65, 500);
+			this->btnPaid->Location = System::Drawing::Point(300, 500);
 			this->btnPaid->Name = L"btnPaid";
 			this->btnPaid->Size = System::Drawing::Size(120, 30);
 			this->btnPaid->TabIndex = 11;
@@ -316,7 +316,7 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(260, 455);
+			this->label5->Location = System::Drawing::Point(505, 450);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(75, 16);
 			this->label5->TabIndex = 13;
@@ -325,7 +325,7 @@ namespace SalesView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(260, 480);
+			this->label6->Location = System::Drawing::Point(505, 475);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 14;
@@ -334,7 +334,7 @@ namespace SalesView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(260, 430);
+			this->label4->Location = System::Drawing::Point(505, 425);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 15;
@@ -342,7 +342,7 @@ namespace SalesView {
 			// 
 			// txtSubTotal
 			// 
-			this->txtSubTotal->Location = System::Drawing::Point(355, 430);
+			this->txtSubTotal->Location = System::Drawing::Point(605, 420);
 			this->txtSubTotal->Name = L"txtSubTotal";
 			this->txtSubTotal->ReadOnly = true;
 			this->txtSubTotal->Size = System::Drawing::Size(100, 22);
@@ -350,7 +350,7 @@ namespace SalesView {
 			// 
 			// txtIGV
 			// 
-			this->txtIGV->Location = System::Drawing::Point(355, 455);
+			this->txtIGV->Location = System::Drawing::Point(605, 445);
 			this->txtIGV->Name = L"txtIGV";
 			this->txtIGV->ReadOnly = true;
 			this->txtIGV->Size = System::Drawing::Size(100, 22);
@@ -358,7 +358,7 @@ namespace SalesView {
 			// 
 			// txtTotal
 			// 
-			this->txtTotal->Location = System::Drawing::Point(355, 480);
+			this->txtTotal->Location = System::Drawing::Point(605, 470);
 			this->txtTotal->Name = L"txtTotal";
 			this->txtTotal->ReadOnly = true;
 			this->txtTotal->Size = System::Drawing::Size(100, 22);
@@ -370,7 +370,7 @@ namespace SalesView {
 			this->txtDate->Location = System::Drawing::Point(105, 50);
 			this->txtDate->Name = L"txtDate";
 			this->txtDate->ReadOnly = true;
-			this->txtDate->Size = System::Drawing::Size(351, 22);
+			this->txtDate->Size = System::Drawing::Size(599, 22);
 			this->txtDate->TabIndex = 19;
 			// 
 			// txtSaleId
@@ -379,7 +379,7 @@ namespace SalesView {
 			this->txtSaleId->Location = System::Drawing::Point(105, 20);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->ReadOnly = true;
-			this->txtSaleId->Size = System::Drawing::Size(350, 22);
+			this->txtSaleId->Size = System::Drawing::Size(599, 22);
 			this->txtSaleId->TabIndex = 20;
 			// 
 			// lbSaleID
@@ -406,18 +406,21 @@ namespace SalesView {
 			this->cbPaidMode->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Efectivo", L"Paypal", L"PagoEfectivo", L"Tarjeta de débito/crédito" });
 			this->cbPaidMode->Location = System::Drawing::Point(105, 170);
 			this->cbPaidMode->Name = L"cbPaidMode";
-			this->cbPaidMode->Size = System::Drawing::Size(350, 24);
+			this->cbPaidMode->Size = System::Drawing::Size(599, 24);
 			this->cbPaidMode->TabIndex = 23;
 			this->cbPaidMode->SelectedValueChanged += gcnew System::EventHandler(this, &SaleDetailForm::cbPaidMode_SelectedValueChanged);
 			// 
 			// btnLookForCustomer
 			// 
-			this->btnLookForCustomer->Location = System::Drawing::Point(490, 80);
+			this->btnLookForCustomer->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnLookForCustomer->Location = System::Drawing::Point(665, 80);
 			this->btnLookForCustomer->Name = L"btnLookForCustomer";
-			this->btnLookForCustomer->Size = System::Drawing::Size(75, 23);
+			this->btnLookForCustomer->Size = System::Drawing::Size(40, 25);
 			this->btnLookForCustomer->TabIndex = 24;
-			this->btnLookForCustomer->Text = L"Buscar";
+			this->btnLookForCustomer->Text = L"...";
 			this->btnLookForCustomer->UseVisualStyleBackColor = true;
+			this->btnLookForCustomer->Click += gcnew System::EventHandler(this, &SaleDetailForm::btnLookForCustomer_Click);
 			// 
 			// SaleDetailForm
 			// 
@@ -449,6 +452,8 @@ namespace SalesView {
 			this->Controls->Add(this->txtAddress);
 			this->Controls->Add(this->txtUserName);
 			this->Controls->Add(this->lbDate);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"SaleDetailForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Detalle de la venta";
@@ -464,6 +469,7 @@ namespace SalesView {
 
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
+			if (mySale->StoreManager->Id == 0) btnLookForCustomer->Visible = false;
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			txtUserName->Text = "" + mySale->Customer->Username;
@@ -609,5 +615,6 @@ private: System::Void cbPaidMode_SelectedValueChanged(System::Object^ sender, Sy
 		mySale->PaidMode = cbPaidMode->Text;
 		Controller::UpdateSale(mySale);
 }
+private: System::Void btnLookForCustomer_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

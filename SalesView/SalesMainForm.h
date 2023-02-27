@@ -94,6 +94,7 @@ namespace SalesView {
 	private: System::Windows::Forms::Button^ btnSearch;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel2;
+	private: System::Windows::Forms::Label^ FakeIdTop;
 
 
 
@@ -337,6 +338,7 @@ public:
 			this->btnSearch = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->FakeIdTop = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->BeginInit();
@@ -397,7 +399,7 @@ public:
 			this->salirToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -416,7 +418,7 @@ public:
 			this->productoToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(163, 26);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
@@ -425,7 +427,7 @@ public:
 			this->usuariosToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(163, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::usuariosToolStripMenuItem_Click);
 			// 
@@ -434,7 +436,7 @@ public:
 			this->subirAnuncioToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
-			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(163, 26);
 			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
 			this->subirAnuncioToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::subirAnuncioToolStripMenuItem_Click);
 			// 
@@ -450,7 +452,7 @@ public:
 			this->realizarUnaVentaToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->realizarUnaVentaToolStripMenuItem->Name = L"realizarUnaVentaToolStripMenuItem";
-			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->realizarUnaVentaToolStripMenuItem->Size = System::Drawing::Size(213, 26);
 			this->realizarUnaVentaToolStripMenuItem->Text = L"Realizar una venta";
 			this->realizarUnaVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::realizarUnaVentaToolStripMenuItem_Click);
 			// 
@@ -662,6 +664,7 @@ public:
 			this->pbSeventhProduct->Size = System::Drawing::Size(149, 150);
 			this->pbSeventhProduct->TabIndex = 41;
 			this->pbSeventhProduct->TabStop = false;
+			this->pbSeventhProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbSeventhProduct_DoubleClick);
 			// 
 			// pbSixthProduct
 			// 
@@ -673,6 +676,7 @@ public:
 			this->pbSixthProduct->Size = System::Drawing::Size(149, 150);
 			this->pbSixthProduct->TabIndex = 40;
 			this->pbSixthProduct->TabStop = false;
+			this->pbSixthProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbSixthProduct_DoubleClick);
 			// 
 			// pbFifthProduct
 			// 
@@ -685,6 +689,7 @@ public:
 			this->pbFifthProduct->Size = System::Drawing::Size(149, 150);
 			this->pbFifthProduct->TabIndex = 39;
 			this->pbFifthProduct->TabStop = false;
+			this->pbFifthProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbFifthProduct_DoubleClick);
 			// 
 			// pbThirdProduct
 			// 
@@ -697,6 +702,7 @@ public:
 			this->pbThirdProduct->Size = System::Drawing::Size(149, 150);
 			this->pbThirdProduct->TabIndex = 35;
 			this->pbThirdProduct->TabStop = false;
+			this->pbThirdProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbThirdProduct_DoubleClick);
 			// 
 			// pbFourthProduct
 			// 
@@ -709,6 +715,7 @@ public:
 			this->pbFourthProduct->Size = System::Drawing::Size(149, 150);
 			this->pbFourthProduct->TabIndex = 34;
 			this->pbFourthProduct->TabStop = false;
+			this->pbFourthProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbFourthProduct_DoubleClick);
 			// 
 			// pbSecondProduct
 			// 
@@ -720,6 +727,7 @@ public:
 			this->pbSecondProduct->Size = System::Drawing::Size(149, 150);
 			this->pbSecondProduct->TabIndex = 33;
 			this->pbSecondProduct->TabStop = false;
+			this->pbSecondProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbSecondProduct_DoubleClick);
 			// 
 			// pbFirstProduct
 			// 
@@ -731,6 +739,7 @@ public:
 			this->pbFirstProduct->Size = System::Drawing::Size(149, 150);
 			this->pbFirstProduct->TabIndex = 32;
 			this->pbFirstProduct->TabStop = false;
+			this->pbFirstProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbFirstProduct_DoubleClick);
 			// 
 			// btnLogin
 			// 
@@ -1289,6 +1298,16 @@ public:
 			this->panel2->Size = System::Drawing::Size(355, 130);
 			this->panel2->TabIndex = 95;
 			// 
+			// FakeIdTop
+			// 
+			this->FakeIdTop->AutoSize = true;
+			this->FakeIdTop->Location = System::Drawing::Point(1285, 606);
+			this->FakeIdTop->Name = L"FakeIdTop";
+			this->FakeIdTop->Size = System::Drawing::Size(18, 16);
+			this->FakeIdTop->TabIndex = 96;
+			this->FakeIdTop->Text = L"-1";
+			this->FakeIdTop->Visible = false;
+			// 
 			// SalesMainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1297,6 +1316,7 @@ public:
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(1315, 633);
+			this->Controls->Add(this->FakeIdTop);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->gbSellerCompany);
@@ -1431,7 +1451,13 @@ public:
 			}
 		}
 public:	
-		
+		void ShowMeATop() {
+			if (person == nullptr) return;
+			List<Product^>^ myTopiList = Controller::GetTopProducts();
+			product = myTopiList[Convert::ToInt32(FakeIdTop->Text)];
+			ProductPresentationForm^ myPre = gcnew ProductPresentationForm(person->Id);
+			myPre->ShowDialog();
+		}
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
 			System::IO::MemoryStream^ ms;
@@ -1478,7 +1504,7 @@ public:
 			mysale->Customer = (Customer^)Controller::QueryPersonByCredentials("ClientePresencial", "----");
 			mysale->Address = mysale->Customer->Address; mysale->Reference = "";
 			// Add Store manager
-			StoreManager^ storeManager = gcnew StoreManager(); storeManager->Name = person->Name; mysale->StoreManager = storeManager;
+			mysale->StoreManager = (StoreManager^)(Controller::QueryUserById(person->Id));
 			mysale->PaidMode = "Efectivo";
 			mysale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
 			
@@ -1515,7 +1541,7 @@ public:
 	// Load
 	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Ad();
-		//PutTop(Controller::GetTopProducts());
+		PutTop(Controller::GetTopProducts());
 		lbCompany->Text = "";
 		lbJob->Text = "";
 	}
@@ -1666,6 +1692,30 @@ private: System::Void linkLabel3_LinkClicked(System::Object^ sender, System::Win
 private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel4->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel4->Text));
+}
+private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "0"; ShowMeATop();
+}
+/*private: System::Void pbSecondProduct_Click(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "1";	ShowMeATop();
+}*/
+private: System::Void pbSecondProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "1";	ShowMeATop();
+}
+private: System::Void pbThirdProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "2";	ShowMeATop();
+}
+private: System::Void pbFourthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "3";	ShowMeATop();
+}
+private: System::Void pbFifthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "4";	ShowMeATop();
+}
+private: System::Void pbSixthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "5";	ShowMeATop();
+}
+private: System::Void pbSeventhProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+	FakeIdTop->Text = "6";	ShowMeATop();
 }
 };
 }

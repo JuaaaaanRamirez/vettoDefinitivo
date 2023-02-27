@@ -16,7 +16,7 @@ System::Void SalesView::ProductListForm::dgvProductList_CellDoubleClick(System::
 	}
 
 	int myUserId = Convert::ToInt32(((SalesMainForm^)refForm)->SalesMainForm::Idlb->Text);
-	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this, myUserId);
+	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(myUserId);
 	ProductPresentation->ShowDialog();
 
 

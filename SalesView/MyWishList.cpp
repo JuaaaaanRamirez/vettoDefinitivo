@@ -84,7 +84,7 @@ System::Void SalesView::MyWishList::dgvWishList_CellDoubleClick(System::Object^ 
 		SalesMainForm::product = Controller::QueryProductById(Int32::Parse(productId));
 		
 		
-		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(this, SalesMainForm::person->Id);
+		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(SalesMainForm::person->Id);
 				ProductPresentation->ShowDialog();
 				
 		// Verificar queno se repita el producto
