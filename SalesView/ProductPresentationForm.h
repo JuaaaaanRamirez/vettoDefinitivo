@@ -45,7 +45,7 @@ namespace SalesView {
 			this->userId = userId;
 			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
 			myThread->IsBackground = true;
-			myThread->Start();
+			//myThread->Start();
 		}
 		delegate void MyDelegate();
 
@@ -455,15 +455,17 @@ namespace SalesView {
 		void GetSale() {
 
 			// New Sale?
+			Sale^ newSale;
 			if (SaleDetailForm::mySaleDetail->paid) {
 				SaleDetailForm::mySaleDetail->paid = false;
-				Sale^ newSale = gcnew Sale();
+				newSale = gcnew Sale();
 
 				// Put Customer
 				Customer^ customer = (Customer^)Controller::QueryUserById(userId); newSale->Customer = customer; // Customer
 
 				// Is it Online?
 				StoreManager^ storeManager = gcnew StoreManager();
+				//storeManager->Id = -2;
 				storeManager->Name = "Asistente virtual";
 				newSale->StoreManager = storeManager;
 				newSale->PaidMode = "Efectivo";
@@ -474,23 +476,23 @@ namespace SalesView {
 				saleId = Controller::AddSale(newSale);
 			}
 			else {
-				Sale^ mysale = Controller::QueryLastSale();
-				saleId = mysale->Id;
+				newSale = Controller::QueryLastSale();
+				saleId = newSale->Id;
 			}
 			
 			// New SaleDeatil?
-			List<Sale^>^ mysaleList = Controller::QueryAllSales();
-
+			//List<Sale^>^ mysaleList = Controller::QueryAllSales();
+			
 			//Is the product repeated?
-			for (int i = 0; i < mysaleList[saleId]->SaleDetails->Count; i++)
-				if (mysaleList[saleId]->SaleDetails[i]->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
+			for (int i = 0; i < newSale->SaleDetails->Count; i++)
+				if (newSale->SaleDetails[i]->Id == Convert::ToInt32(txtId->Text)) {MessageBox::Show("Este producto ya ha sido añadido al carrito"); return;}
 
 			// Put On Data
 			/*SaleDetail^ newSaleDetail = CreateSaleDetail();
 			mysaleList[saleId]->SaleDetails->Add(newSaleDetail); Controller::UpdateSale(mysaleList[saleId]); //SaleDetail*/
 			Controller::AddSaleDetail(CreateSaleDetail(), saleId);
 			
-			Sale^ mySale = Controller::QuerySaleById(saleId);
+			newSale = Controller::QuerySaleById(saleId);
 			
 			// Carry on?
 			CarryOnShoppingForm^ carryOn = gcnew CarryOnShoppingForm(saleId);

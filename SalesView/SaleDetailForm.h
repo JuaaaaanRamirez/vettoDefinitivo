@@ -32,6 +32,7 @@ namespace SalesView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubTotal;
 	private: System::Windows::Forms::Label^ lbPaidMode;
 	private: System::Windows::Forms::ComboBox^ cbPaidMode;
+	private: System::Windows::Forms::Button^ btnLookForCustomer;
 
 
 	public:
@@ -161,6 +162,7 @@ namespace SalesView {
 			this->lbSaleID = (gcnew System::Windows::Forms::Label());
 			this->lbPaidMode = (gcnew System::Windows::Forms::Label());
 			this->cbPaidMode = (gcnew System::Windows::Forms::ComboBox());
+			this->btnLookForCustomer = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSaleDetail))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -408,6 +410,15 @@ namespace SalesView {
 			this->cbPaidMode->TabIndex = 23;
 			this->cbPaidMode->SelectedValueChanged += gcnew System::EventHandler(this, &SaleDetailForm::cbPaidMode_SelectedValueChanged);
 			// 
+			// btnLookForCustomer
+			// 
+			this->btnLookForCustomer->Location = System::Drawing::Point(490, 80);
+			this->btnLookForCustomer->Name = L"btnLookForCustomer";
+			this->btnLookForCustomer->Size = System::Drawing::Size(75, 23);
+			this->btnLookForCustomer->TabIndex = 24;
+			this->btnLookForCustomer->Text = L"Buscar";
+			this->btnLookForCustomer->UseVisualStyleBackColor = true;
+			// 
 			// SaleDetailForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -415,6 +426,7 @@ namespace SalesView {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(716, 533);
+			this->Controls->Add(this->btnLookForCustomer);
 			this->Controls->Add(this->cbPaidMode);
 			this->Controls->Add(this->lbPaidMode);
 			this->Controls->Add(this->lbSaleID);
