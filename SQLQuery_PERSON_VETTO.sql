@@ -11,7 +11,7 @@ GO
 SELECT * FROM PERSON
 SELECT * FROM PERSON WHERE id=1
 DELETE FROM PERSON WHERE id=3
-SELECT * FROM WHISH_LIST
+SELECT * FROM WHISH_LIST WHERE customer_id=10
 GO
 
 CREATE TABLE PERSON (
@@ -61,6 +61,65 @@ ALTER TABLE WHISH_LIST
 ADD CONSTRAINT FK_WHISH_LIST_PRODUCT_ID FOREIGN KEY (product_id)
 REFERENCES PRODUCT(id)
 GO
+
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_Add_Whist_List]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_Add_Whist_List]
+END
+GO
+CREATE PROCEDURE usp_Add_Whist_List(
+	@customer_id INT  ,
+	@product_id INT  ,
+	@id INT OUT
+) AS
+	BEGIN
+		INSERT INTO WHISH_LIST(customer_id , product_id)
+		SELECT @customer_id,@product_id
+		SET @id = SCOPE_IDENTITY()
+	END
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_Update_Whist_List]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_Update_Whist_List]
+END
+GO
+CREATE PROCEDURE usp_Update_Whist_List(
+	@id INT,
+	@customer_id INT  ,
+	@product_id INT  
+) AS
+	BEGIN
+		UPDATE WHISH_LIST 
+		SET customer_id=@customer_id,product_id=@product_id
+		WHERE id=@id
+	END
+GO
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_Delete_Whist_List]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_Delete_Whist_List]
+END
+GO
+CREATE PROCEDURE dbo.usp_Delete_Whist_List(
+	@customer_id INT  ,
+	@product_id INT 
+) AS
+	BEGIN
+		DELETE FROM WHISH_LIST WHERE (customer_id=@customer_id AND product_id=@product_id)
+	END
+
+GO
+
+
+
 
 INSERT INTO PERSON (doc_number,name,last_name, username, password,profile,status)
 VALUES ('77777777','Vetto','App','Vetto','password','C','A')
@@ -116,25 +175,25 @@ GO
 
 
 
---Add whist List
+--Query
 IF EXISTS ( SELECT * 
             FROM   sysobjects 
-            WHERE  id = object_id(N'[dbo].[usp_AddWhistList]') 
+            WHERE  id = object_id(N'[dbo].[usp_QueryAllWhistListByIsUser]') 
                    and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
 BEGIN
-    DROP PROCEDURE [dbo].usp_AddWhistList
+    DROP PROCEDURE [dbo].[usp_QueryAllWhistListByIsUser]
 END
 GO
-CREATE PROCEDURE usp_AddWhistList(
-
-	@product_id INT,
-	@customer_id INT,	
-	@id INT OUT
+CREATE PROCEDURE usp_QueryAllWhistListByIsUser(
+	@customer_id INT
 ) AS
 	BEGIN
-		INSERT INTO WHISH_LIST (product_id, customer_id)
-		SELECT @product_id, @customer_id
-		SET @id = SCOPE_IDENTITY()
+
+		SELECT P.id as id, P.name as name, P.priceMin as price, P.description as description
+		FROM  WHISH_LIST W
+		INNER JOIN PRODUCT P ON P.id = W.product_id
+		WHERE W.customer_id = @customer_id
+		
 	END
 GO
 IF EXISTS ( SELECT * 
@@ -323,3 +382,23 @@ CREATE PROCEDURE dbo.usp_Delete_Person(
 	END
 
 GO
+
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_ValidateUser]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_ValidateUser]
+END
+GO
+CREATE PROCEDURE dbo.usp_ValidateUser (
+	@username VARCHAR(20),
+	@password VARCHAR(20)
+)
+AS
+	SELECT * FROM PERSON P 
+	WHERE P.username = @username
+	AND	P.password = @password 
+GO
+
+
