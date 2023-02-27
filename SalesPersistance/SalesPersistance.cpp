@@ -870,7 +870,7 @@ List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
 
             // Relation
             Customer^ myCustomer = gcnew Customer(); StoreManager^ mySM = gcnew StoreManager();
-            myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id= Convert::ToInt32(reader["customer_id"]->ToString());
+            myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id= Convert::ToInt32(reader["storemanager_id"]->ToString());
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
 
