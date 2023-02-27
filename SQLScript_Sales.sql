@@ -115,6 +115,15 @@ CREATE PROCEDURE usp_QueryAllSales AS
 	SELECT * FROM SALE
 GO
 
+-- QUERYSALEBYCUSTOMERID
+GO
+CREATE PROCEDURE usp_QuerySaleByCustomerId (
+	@customer_id INT
+)AS
+	SELECT * FROM SALE
+	WHERE	customer_id=@customer_id
+GO
+
 
 -- UPDATE SALE
 GO
