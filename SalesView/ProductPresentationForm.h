@@ -15,6 +15,7 @@ namespace SalesView {
 	using namespace SalesModel;				// Classes and Instances
 	using namespace System::Collections::Generic;	 // List^
 	using namespace Threading;
+	
 
 	/// <summary>
 	/// Resumen de ProductPresentationForm

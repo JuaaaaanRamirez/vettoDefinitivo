@@ -87,10 +87,9 @@ namespace SalesView {
 			this->pbwishList->BackColor = System::Drawing::Color::Transparent;
 			this->pbwishList->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbwishList.Image")));
 			this->pbwishList->InitialImage = nullptr;
-			this->pbwishList->Location = System::Drawing::Point(73, 32);
-			this->pbwishList->Margin = System::Windows::Forms::Padding(4);
+			this->pbwishList->Location = System::Drawing::Point(55, 26);
 			this->pbwishList->Name = L"pbwishList";
-			this->pbwishList->Size = System::Drawing::Size(79, 62);
+			this->pbwishList->Size = System::Drawing::Size(59, 50);
 			this->pbwishList->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbwishList->TabIndex = 0;
 			this->pbwishList->TabStop = false;
@@ -102,10 +101,9 @@ namespace SalesView {
 			this->lbwishList->Font = (gcnew System::Drawing::Font(L"MV Boli", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbwishList->ForeColor = System::Drawing::Color::Orange;
-			this->lbwishList->Location = System::Drawing::Point(160, 32);
-			this->lbwishList->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbwishList->Location = System::Drawing::Point(120, 26);
 			this->lbwishList->Name = L"lbwishList";
-			this->lbwishList->Size = System::Drawing::Size(371, 49);
+			this->lbwishList->Size = System::Drawing::Size(308, 40);
 			this->lbwishList->TabIndex = 1;
 			this->lbwishList->Text = L"Mi lista de deseos ";
 			// 
@@ -117,11 +115,10 @@ namespace SalesView {
 				this->IdProduct,
 					this->NameProduct, this->PriceProduct, this->Description
 			});
-			this->dgvWishList->Location = System::Drawing::Point(40, 118);
-			this->dgvWishList->Margin = System::Windows::Forms::Padding(4);
+			this->dgvWishList->Location = System::Drawing::Point(30, 96);
 			this->dgvWishList->Name = L"dgvWishList";
 			this->dgvWishList->RowHeadersWidth = 51;
-			this->dgvWishList->Size = System::Drawing::Size(541, 302);
+			this->dgvWishList->Size = System::Drawing::Size(406, 245);
 			this->dgvWishList->TabIndex = 2;
 			this->dgvWishList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyWishList::dgvWishList_CellDoubleClick);
 			// 
@@ -155,10 +152,9 @@ namespace SalesView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(129, 443);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
+			this->button2->Location = System::Drawing::Point(97, 360);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 43);
+			this->button2->Size = System::Drawing::Size(77, 35);
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Eliminar producto";
 			this->button2->UseVisualStyleBackColor = true;
@@ -166,10 +162,9 @@ namespace SalesView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(352, 443);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Location = System::Drawing::Point(264, 360);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(117, 43);
+			this->button3->Size = System::Drawing::Size(88, 35);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Volver";
 			this->button3->UseVisualStyleBackColor = true;
@@ -182,23 +177,23 @@ namespace SalesView {
 			this->panel1->Controls->Add(this->lbwishList);
 			this->panel1->Controls->Add(this->pbwishList);
 			this->panel1->Location = System::Drawing::Point(1, 1);
+			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(620, 102);
+			this->panel1->Size = System::Drawing::Size(465, 83);
 			this->panel1->TabIndex = 6;
 			// 
 			// MyWishList
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(620, 523);
+			this->ClientSize = System::Drawing::Size(465, 425);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->dgvWishList);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyWishList";
 			this->Text = L"MyWishList";
 			this->Load += gcnew System::EventHandler(this, &MyWishList::MyWishList_Load);

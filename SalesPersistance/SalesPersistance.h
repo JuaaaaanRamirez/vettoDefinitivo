@@ -51,11 +51,10 @@ namespace SalesPersistance {
 		static int UpdatePerson(Person^ user);
 		static int DeletePerson(int iduser);
 		static Person^ Login(String^ username, String^ password);
-		/*
+		
 		static int AddWishList(int productID,int customerId);
-		static int UpdateWishList(int productID, int customerId);
-		static int UpdateWishList(int productID, int customerId);
-		static List<Product.^>^ QueryAllWishListBy(userId);*/
+		static int DeleteWishList(int productID, int customerId);
+		static List<Product^>^ QueryAllWishListByIdUser(int userId);
 
 	};
 }

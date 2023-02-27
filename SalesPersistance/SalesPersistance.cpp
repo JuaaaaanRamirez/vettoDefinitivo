@@ -1854,4 +1854,143 @@ Person^ SalesPersistance::Persistance::Login(String^ username, String^ password)
     }
     return person;
 }
+
+int SalesPersistance::Persistance::AddWishList(int productID, int customerId)
+{
+    
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    int output_id;
+    try {
+        /* 1er paso: Se obtiene la conexión */
+        conn = GetConnection();
+
+        /* 2do paso: Se prepara la sentencia */
+        comm = gcnew SqlCommand();
+        comm->Connection = conn;
+        String^ strCmd;
+        
+            strCmd = "dbo.usp_Add_Whist_List";
+            comm = gcnew SqlCommand(strCmd, conn);
+
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+            comm->Parameters->Add("@customer_id", System::Data::SqlDbType::Int);
+            comm->Parameters->Add("@product_id", System::Data::SqlDbType::Int);
+   
+
+            SqlParameter^ outputIdParam = gcnew SqlParameter("@id", System::Data::SqlDbType::Int);
+
+            outputIdParam->Direction = System::Data::ParameterDirection::Output;
+            comm->Parameters->Add(outputIdParam);
+
+            comm->Prepare();
+            comm->Parameters["@customer_id"]->Value = customerId;
+            comm->Parameters["@product_id"]->Value = productID;
+
+            /* Paso 3: Se ejecuta la sentencia */
+            comm->ExecuteNonQuery();
+
+            /* Paso 4: Si se quiere procesar la salida. */
+            output_id = Convert::ToInt32(comm->Parameters["@id"]->Value);
+        
+        }
+        catch (Exception^ ex) {
+            throw ex;
+        }
+        finally {
+            /* Paso 5: Cerramos la conexión con la BD */
+            if (conn != nullptr) conn->Close();
+        }        
+            return output_id;
+}
+
+int SalesPersistance::Persistance::DeleteWishList(int productID, int customerId)
+{
+    //return 0;
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    int output_id;
+    try {
+        /* 1er paso: Se obtiene la conexión */
+        SqlConnection^ conn = GetConnection();
+
+        /* 2do paso: Se prepara la sentencia */
+        SqlCommand^ comm = gcnew SqlCommand();
+        comm->Connection = conn;
+        String^ strCmd;
+        strCmd = "dbo.usp_Delete_Whist_List";
+        comm = gcnew SqlCommand(strCmd, conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@customer_id", System::Data::SqlDbType::Int);
+        comm->Parameters->Add("@product_id", System::Data::SqlDbType::Int);
+
+
+        comm->Prepare();
+
+        comm->Parameters["@customer_id"]->Value = customerId;
+        comm->Parameters["@product_id"]->Value = productID;
+
+
+        /* Paso 3: Se ejecuta la sentencia */
+        output_id = comm->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (conn != nullptr) conn->Close();
+    }
+    return output_id;
+}
+
+List<Product^>^ SalesPersistance::Persistance::QueryAllWishListByIdUser(int userId)
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    List<Product^>^ WishList = gcnew List<Product^>();
+
+    try {
+        /* Paso 1: Obtener la conexión */
+        conn = GetConnection();
+
+        /* Paso 2: Preparar la sentencia */
+
+        comm = gcnew SqlCommand("usp_QueryAllWhistListByIsUser", conn);
+
+
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@customer_id", System::Data::SqlDbType::Int);
+
+        comm->Prepare();
+        comm->Parameters["@customer_id"]->Value = userId;
+
+        //Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+
+
+        /* Paso 4: Se procesan los resultados */
+        while (reader->Read()) {
+            Product^ c = gcnew Product();
+            c->Id = Int32::Parse(reader["id"]->ToString());
+            c->Name = reader["name"]->ToString();
+            c->PriceMin = Convert::ToDouble(reader["price"]->ToString());
+            c->Description = reader["description"]->ToString();
+
+            WishList->Add(c);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return WishList;
+}
 #pragma endregion

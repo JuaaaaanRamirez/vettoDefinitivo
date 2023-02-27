@@ -435,6 +435,22 @@ int SalesController::Controller::DeleteSaleDetail(int saleid, int productid)
 {
     return Persistance::DeleteSaleDetail(saleid, productid);
 }
+int SalesController::Controller::AddWishList(int productID, int customerId)
+{
+    return Persistance::AddWishList(productID,customerId);
+}
+int SalesController::Controller::DeleteWishList(int productID, int customerId)
+{
+    return Persistance::DeleteWishList(productID,customerId);
+}
+List<Product^>^ SalesController::Controller::QueryAllWishListByIdUser(int userId)
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+    return Persistance::QueryAllWishListByIdUser(userId);
+
+
+}
 int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleId)
 {
     return Persistance::AddSaleDetail(saleDetail, saleId);

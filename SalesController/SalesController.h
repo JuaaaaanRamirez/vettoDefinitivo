@@ -109,6 +109,9 @@ namespace SalesController {
 		static int UpdateSaleDetail(SaleDetail^ saleDetail, int saleId);
 		static int DeleteSaleDetail(int saleid, int productid);
 
+		static int AddWishList(int productID, int customerId);
+		static int DeleteWishList(int productID, int customerId);
+		static List<Product^>^ QueryAllWishListByIdUser(int userId);
 
 		//static int AddSaleDetail(SaleDetail^ saleDetail, int saleId);
 

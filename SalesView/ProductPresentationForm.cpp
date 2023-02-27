@@ -71,20 +71,27 @@ System::Void SalesView::ProductPresentationForm::Wishbtn_Click(System::Object^ s
 
 	if(userId!=0){
 		Person^ user = Controller::QueryUserById(SalesMainForm::person->Id);
-		List<Product^>^ mywishList = safe_cast<Customer^>(user)->WishList;
+		//leer la lista de deseos segun el id de user
+		List<Product^>^ mywishList =Controller::QueryAllWishListByIdUser(user->Id);
+		//List<Product^>^ mywishList = safe_cast<Customer^>(user)->WishList;
 		Product^ p = Controller::QueryProductById(SalesMainForm::product->Id);
 
 		//verificar que no se repita el producto
 
 		if (mywishList ==nullptr) {
-			
+			//Agregar a la LISTA DE DESEOS
+
+			//safe_cast<Customer^>(user)->WishList->Add(p);
+			//Controller::UpdateUser(user);
+			Controller::AddWishList(p->Id, user->Id);
+			MessageBox::Show("Agregado a la lista de deseos :3");
 			MessageBox::Show("A ocurrido un error, comuniquese con admiVetto@vetto.com  ");
 		}
 		else {
 
 	
-			for (int i = 0; i < safe_cast<Customer^>(user)->WishList->Count; i++)
-				if (safe_cast<Customer^>(user)->WishList[i]->Id == p->Id) {
+			for (int i = 0; i < mywishList->Count; i++)
+				if (mywishList[i]->Id == p->Id) {
 
 					MessageBox::Show("Este producto ya ha sido añadido a la lista de deseo");
 					return;
@@ -92,8 +99,9 @@ System::Void SalesView::ProductPresentationForm::Wishbtn_Click(System::Object^ s
 	
 				//Agregar a la LISTA DE DESEOS
 
-					safe_cast<Customer^>(user)->WishList->Add(p);
-					Controller::UpdateUser(user);
+					//safe_cast<Customer^>(user)->WishList->Add(p);
+					//Controller::UpdateUser(user);
+					Controller::AddWishList(p->Id, user->Id);
 
 					MessageBox::Show("Agregado a la lista de deseos :3");
 			
