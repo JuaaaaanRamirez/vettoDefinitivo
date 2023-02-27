@@ -1473,16 +1473,16 @@ public:
 			// Reload
 			//List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
 			// New sale
-			int saleId = Controller::AddSale(gcnew Sale()); List<Sale^>^ mysaleList = Controller::QueryAllSales();
+			Sale^ mysale = gcnew Sale();
 			// Add Customer
-			Customer^ myCustomer = gcnew Customer(); myCustomer->Name = "Cliente Presencial"; myCustomer->Username = ""; myCustomer->Address = ""; mysaleList[saleId]->Customer = myCustomer;
+			mysale->Customer = (Customer^)Controller::QueryPersonByCredentials("ClientePresencial", "----");
+			mysale->Address = mysale->Customer->Address; mysale->Reference = "";
 			// Add Store manager
-			StoreManager^ storeManager = gcnew StoreManager(); storeManager->Name = person->Name; mysaleList[saleId]->StoreManager = storeManager;
-			mysaleList[saleId]->PaidMode = "Presencial";
-			mysaleList[saleId]->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
-
-			// Update
-			Controller::UpdateSale(mysaleList[saleId]);
+			StoreManager^ storeManager = gcnew StoreManager(); storeManager->Name = person->Name; mysale->StoreManager = storeManager;
+			mysale->PaidMode = "Efectivo";
+			mysale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
+			
+			int saleId = Controller::AddSale(mysale); 
 			SaleDetailForm^ mySaleDetail = gcnew SaleDetailForm(saleId); mySaleDetail->ShowDialog();
 		}
 		
