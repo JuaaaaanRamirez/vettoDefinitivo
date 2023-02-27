@@ -1293,6 +1293,7 @@ Person^ SalesPersistance::Persistance::QueryPersonById(int personId)
                 }
                 if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
                 if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
 
                 if (!DBNull::Value->Equals(reader["ad"])) p->Ad = (array<Byte>^)reader["ad"];
                 if (!DBNull::Value->Equals(reader["ad_in_sistem"]))p->AdInSistem = Convert::ToBoolean(reader["ad_in_sistem"]->ToString());
@@ -1317,6 +1318,7 @@ Person^ SalesPersistance::Persistance::QueryPersonById(int personId)
                 }
                 if (!DBNull::Value->Equals(reader["gender"])) p->Gender = reader["gender"]->ToString()[0];
                 if (!DBNull::Value->Equals(reader["photo"]))p->Photo = (array<Byte>^)reader["photo"];
+                if (!DBNull::Value->Equals(reader["profile"])) p->Profile = reader["profile"]->ToString()[0];
 
                 if (!DBNull::Value->Equals(reader["goal"])) p->Goals = Convert::ToDouble(reader["goal"]->ToString());
                 if (!DBNull::Value->Equals(reader["salary"])) p->Salary = reader["salary"]->ToString();
@@ -1594,6 +1596,8 @@ int SalesPersistance::Persistance::UpdatePerson(Person^ user)
         else if (user->GetType() == Announcer::typeid) {
             strCmd = "dbo.usp_UpdatePerson_Announcer";
             comm = gcnew SqlCommand(strCmd, conn);
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+
             comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
             comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
             comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);
@@ -1645,6 +1649,8 @@ int SalesPersistance::Persistance::UpdatePerson(Person^ user)
         {
             strCmd = "dbo.[usp_UpdatePerson_Store_Manager]";
             comm = gcnew SqlCommand(strCmd, conn);
+            comm->CommandType = System::Data::CommandType::StoredProcedure;
+
             comm->Parameters->Add("@doc_number", System::Data::SqlDbType::VarChar, 15);
             comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar, 100);
             comm->Parameters->Add("@last_name", System::Data::SqlDbType::VarChar, 100);

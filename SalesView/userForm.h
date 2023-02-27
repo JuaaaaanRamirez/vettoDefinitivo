@@ -22,15 +22,16 @@ namespace SalesView {
 	public:
 		UserForm(void)
 		{
+			
 			InitializeComponent();
-			myThread = gcnew Thread(gcnew ThreadStart(this, &UserForm::MyRun));
+			/*myThread = gcnew Thread(gcnew ThreadStart(this, &UserForm::MyRun));
 			myThread->IsBackground = true;
-			myThread->Start();
+			myThread->Start();*/
 			//
 			//TODO: agregar código de constructor aquí
 			//
 		}
-
+		/*
 		delegate void MyDelegate();
 
 		void MyRun() {
@@ -43,7 +44,7 @@ namespace SalesView {
 					return;
 				}
 			}
-		}
+		}*/
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -1112,10 +1113,18 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 		else if (rbtnStoreManager->Checked) user = gcnew StoreManager();
 		else user = gcnew Announcer();
 		user = PutOnData();
+		int ID = Convert::ToInt32(txtCustomerId->Text);
+		Person^ UserWithoutChange = Controller::QueryUserById(ID);
 		if (user->Profile =='S') {
-			int ID = Convert::ToInt32(txtCustomerId->Text);
-			Person^ UserWithoutChange = Controller::QueryUserById(ID);
+			
 			safe_cast<Customer^>(user)->WishList= safe_cast<Customer^>(UserWithoutChange)->WishList;
+		}
+		if (user->Profile == 'A') {
+			if(safe_cast<Announcer^>(UserWithoutChange)->Ad!=nullptr) safe_cast<Announcer^>(user)->Ad = safe_cast<Announcer^>(UserWithoutChange)->Ad;
+			if (safe_cast<Announcer^>(UserWithoutChange)->AdInSistem != false)safe_cast<Announcer^>(user)->AdInSistem = safe_cast<Announcer^>(UserWithoutChange)->AdInSistem;
+			if (safe_cast<Announcer^>(UserWithoutChange)->NumberPictureBox <5)safe_cast<Announcer^>(user)->NumberPictureBox = safe_cast<Announcer^>(UserWithoutChange)->NumberPictureBox;
+
+
 		}
 		Controller::UpdateUser(user);
 		CleanControls();
