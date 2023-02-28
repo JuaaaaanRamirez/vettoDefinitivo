@@ -58,14 +58,23 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::Button^ Searchbtn;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Stock;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CarrerasRelacionadas;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Calificación;
+
+
+
+
+
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nombre;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Stock;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CarrerasRelacionadas;
+
+
+
+
 
 
 
@@ -109,15 +118,15 @@ namespace SalesView {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductListForm::typeid));
 			this->txtSearchBox = (gcnew System::Windows::Forms::TextBox());
 			this->dgvProductList = (gcnew System::Windows::Forms::DataGridView());
-			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Stock = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->CarrerasRelacionadas = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Calificación = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Searchbtn = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Stock = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CarrerasRelacionadas = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProductList))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
@@ -137,57 +146,17 @@ namespace SalesView {
 			this->dgvProductList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProductList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Id, this->Nombre,
-					this->Stock, this->CarrerasRelacionadas, this->Calificación
+					this->Column1, this->Stock, this->CarrerasRelacionadas
 			});
 			this->dgvProductList->Location = System::Drawing::Point(13, 133);
 			this->dgvProductList->Name = L"dgvProductList";
 			this->dgvProductList->ReadOnly = true;
 			this->dgvProductList->RowHeadersWidth = 51;
 			this->dgvProductList->RowTemplate->Height = 24;
-			this->dgvProductList->Size = System::Drawing::Size(694, 388);
+			this->dgvProductList->Size = System::Drawing::Size(857, 388);
 			this->dgvProductList->TabIndex = 41;
 			this->dgvProductList->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellContentClick);
 			this->dgvProductList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductListForm::dgvProductList_CellDoubleClick);
-			// 
-			// Id
-			// 
-			this->Id->HeaderText = L"Id";
-			this->Id->MinimumWidth = 6;
-			this->Id->Name = L"Id";
-			this->Id->ReadOnly = true;
-			this->Id->Width = 125;
-			// 
-			// Nombre
-			// 
-			this->Nombre->HeaderText = L"Nombre";
-			this->Nombre->MinimumWidth = 6;
-			this->Nombre->Name = L"Nombre";
-			this->Nombre->ReadOnly = true;
-			this->Nombre->Width = 125;
-			// 
-			// Stock
-			// 
-			this->Stock->HeaderText = L"Stock";
-			this->Stock->MinimumWidth = 6;
-			this->Stock->Name = L"Stock";
-			this->Stock->ReadOnly = true;
-			this->Stock->Width = 125;
-			// 
-			// CarrerasRelacionadas
-			// 
-			this->CarrerasRelacionadas->HeaderText = L"Carreras Relacionadas";
-			this->CarrerasRelacionadas->MinimumWidth = 6;
-			this->CarrerasRelacionadas->Name = L"CarrerasRelacionadas";
-			this->CarrerasRelacionadas->ReadOnly = true;
-			this->CarrerasRelacionadas->Width = 125;
-			// 
-			// Calificación
-			// 
-			this->Calificación->HeaderText = L"Calificación";
-			this->Calificación->MinimumWidth = 6;
-			this->Calificación->Name = L"Calificación";
-			this->Calificación->ReadOnly = true;
-			this->Calificación->Width = 125;
 			// 
 			// Searchbtn
 			// 
@@ -214,7 +183,7 @@ namespace SalesView {
 			this->panel1->Controls->Add(this->txtSearchBox);
 			this->panel1->Location = System::Drawing::Point(2, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(729, 82);
+			this->panel1->Size = System::Drawing::Size(898, 82);
 			this->panel1->TabIndex = 43;
 			// 
 			// label1
@@ -237,13 +206,53 @@ namespace SalesView {
 			this->label2->TabIndex = 44;
 			this->label2->Text = L"Resultados de busqueda:";
 			// 
+			// Id
+			// 
+			this->Id->HeaderText = L"Id";
+			this->Id->MinimumWidth = 6;
+			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
+			this->Id->Width = 125;
+			// 
+			// Nombre
+			// 
+			this->Nombre->HeaderText = L"Nombre";
+			this->Nombre->MinimumWidth = 6;
+			this->Nombre->Name = L"Nombre";
+			this->Nombre->ReadOnly = true;
+			this->Nombre->Width = 125;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Descripción";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 125;
+			// 
+			// Stock
+			// 
+			this->Stock->HeaderText = L"Stock";
+			this->Stock->MinimumWidth = 6;
+			this->Stock->Name = L"Stock";
+			this->Stock->ReadOnly = true;
+			this->Stock->Width = 125;
+			// 
+			// CarrerasRelacionadas
+			// 
+			this->CarrerasRelacionadas->HeaderText = L"Carreras Relacionadas";
+			this->CarrerasRelacionadas->MinimumWidth = 6;
+			this->CarrerasRelacionadas->Name = L"CarrerasRelacionadas";
+			this->CarrerasRelacionadas->ReadOnly = true;
+			this->CarrerasRelacionadas->Width = 300;
+			// 
 			// ProductListForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->ClientSize = System::Drawing::Size(731, 572);
+			this->ClientSize = System::Drawing::Size(902, 572);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvProductList);
@@ -276,9 +285,9 @@ namespace SalesView {
 				dgvProductList->Rows->Add(gcnew array<String^>{
 					    "" + myProductList[i]->Id,
 						"" + myProductList[i]->Name,
+						"" + myProductList[i]->Description,
 						"" + myProductList[i]->Stock,
-						"" + careersString,
-						"" + myProductList[i]->Starts
+						"" + careersString
 				});
 			}
 		}

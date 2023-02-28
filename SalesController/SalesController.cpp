@@ -389,7 +389,7 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
     return nullptr;*/
     Sale^ mySale = Persistance::QuerySaleById(saleId);
     mySale->Customer = (Customer^ )QueryUserById(mySale->Customer->Id);              //??????????????????
-    //mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
+    mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
     return mySale;
 }
 Sale^ SalesController::Controller::QueryLastSale()
