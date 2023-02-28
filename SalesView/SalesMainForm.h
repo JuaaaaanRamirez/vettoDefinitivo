@@ -739,6 +739,7 @@ public:
 			this->pbFirstProduct->Size = System::Drawing::Size(149, 150);
 			this->pbFirstProduct->TabIndex = 32;
 			this->pbFirstProduct->TabStop = false;
+			this->pbFirstProduct->Click += gcnew System::EventHandler(this, &SalesMainForm::pbFirstProduct_Click);
 			this->pbFirstProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbFirstProduct_DoubleClick);
 			// 
 			// btnLogin
@@ -1716,6 +1717,8 @@ private: System::Void pbSixthProduct_DoubleClick(System::Object^ sender, System:
 }
 private: System::Void pbSeventhProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "6";	ShowMeATop();
+}
+private: System::Void pbFirstProduct_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
