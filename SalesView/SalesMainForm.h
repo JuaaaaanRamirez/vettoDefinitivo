@@ -1643,8 +1643,9 @@ private: System::Void btnReportSales_Click(System::Object^ sender, System::Event
 	Stadistics->ShowDialog();
 }
 private: System::Void btnAllProducts_Click(System::Object^ sender, System::EventArgs^ e) {
-	ProductListForm^ productListForm = gcnew ProductListForm(this);
-	productListForm->ShowDialog();
+	ProductForm^ productForm = gcnew ProductForm();
+	//productForm->MdiParent = this;
+	productForm->ShowDialog();
 }
 private: System::Void btnAllUsers_Click(System::Object^ sender, System::EventArgs^ e) {
 	UserForm^ userForm = gcnew UserForm();
