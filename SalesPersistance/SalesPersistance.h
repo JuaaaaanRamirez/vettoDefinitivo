@@ -56,6 +56,13 @@ namespace SalesPersistance {
 		static int AddWishList(int productID,int customerId);
 		static int DeleteWishList(int productID, int customerId);
 		static List<Product^>^ QueryAllWishListByIdUser(int userId);
+		static List<Customer^>^ QueryCustomerByNameOrByLastName(String^ name);
+		static List<Customer^>^ QueryAllCustomer();
+		static Customer^ QueryCustomerById(int customerId);
+
+		
+
+
 
 	};
 }

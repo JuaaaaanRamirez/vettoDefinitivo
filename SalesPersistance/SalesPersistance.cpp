@@ -2044,4 +2044,146 @@ List<Product^>^ SalesPersistance::Persistance::QueryAllWishListByIdUser(int user
     }
     return WishList;
 }
+List<Customer^>^ SalesPersistance::Persistance::QueryCustomerByNameOrByLastName(String^ name)
+{
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    List<Customer^>^ custoemerList = gcnew List<Customer^>();
+    try {
+        /* Paso 1: Obtener la conexión */
+        conn = GetConnection();
+
+        /* Paso 2: Preparar la sentencia */
+        comm = gcnew SqlCommand("usp_QueryCustomerByNameOrByLastName", conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar,100);
+
+        comm->Prepare();
+        comm->Parameters["@name"]->Value = name;
+        // Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+
+        /* Paso 4: Se procesan los resultados */
+        while (reader->Read()) {
+            Customer^ s = gcnew Customer();
+            s->Id = Int32::Parse(reader["id"]->ToString());
+            s->Username = reader["username"]->ToString();
+            s->DocNumber = reader["doc_number"]->ToString();
+            s->Name = reader["name"]->ToString();
+            s->LastName = reader["last_name"]->ToString();
+            s->Address = reader["address"]->ToString();
+            s->PhoneNumber = reader["phone_number"]->ToString();
+            s->Email = reader["email"]->ToString();
+            s->Gender = reader["gender"]->ToString()[0];
+            DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+            s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            custoemerList->Add(s);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return custoemerList;
+}
+List<Customer^>^ SalesPersistance::Persistance::QueryAllCustomer()
+{
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    List<Customer^>^ custoemerList = gcnew List<Customer^>();
+    try {
+        /* Paso 1: Obtener la conexión */
+        conn = GetConnection();
+
+        /* Paso 2: Preparar la sentencia */
+        comm = gcnew SqlCommand("usp_QueryAllCustomer", conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+
+        // Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+
+        /* Paso 4: Se procesan los resultados */
+        while (reader->Read()) {
+            Customer^ s = gcnew Customer();
+            s->Id = Int32::Parse(reader["id"]->ToString());
+            s->Username = reader["username"]->ToString();
+            s->DocNumber = reader["doc_number"]->ToString();
+            s->Name = reader["name"]->ToString();
+            s->LastName = reader["last_name"]->ToString();
+            s->Address = reader["address"]->ToString();
+            s->PhoneNumber = reader["phone_number"]->ToString();
+            s->Email = reader["email"]->ToString();
+            s->Gender = reader["gender"]->ToString()[0];
+            DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+            s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            custoemerList->Add(s);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return custoemerList;
+}
+Customer^ SalesPersistance::Persistance::QueryCustomerById(int customerId)
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    SqlDataReader^ reader;
+    //List<Customer^>^ custoemerList = gcnew List<Customer^>();
+    Customer^ customer;
+    try {
+        /* Paso 1: Obtener la conexión */
+        conn = GetConnection();
+
+        /* Paso 2: Preparar la sentencia */
+        comm = gcnew SqlCommand("usp_QueryCustomerById", conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@id", System::Data::SqlDbType::Int);
+
+        comm->Prepare();
+        comm->Parameters["@id"]->Value = customerId;
+        // Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+
+        /* Paso 4: Se procesan los resultados */
+        while (reader->Read()) {
+            Customer^ s = gcnew Customer();
+            s->Id = Int32::Parse(reader["id"]->ToString());
+            s->Username = reader["username"]->ToString();
+            s->DocNumber = reader["doc_number"]->ToString();
+            s->Name = reader["name"]->ToString();
+            s->LastName = reader["last_name"]->ToString();
+            s->Address = reader["address"]->ToString();
+            s->PhoneNumber = reader["phone_number"]->ToString();
+            s->Email = reader["email"]->ToString();
+            s->Gender = reader["gender"]->ToString()[0];
+            DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
+            s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            customer=(s);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        /* Paso 5: Cerramos la conexión con la BD */
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return customer;
+}
 #pragma endregion
