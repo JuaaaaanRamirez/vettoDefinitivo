@@ -1500,8 +1500,9 @@ public:
 			// New sale
 			Sale^ mysale = gcnew Sale();
 			// Add Customer
-			mysale->Customer = (Customer^)Controller::QueryPersonByCredentials("ClientePresencial", "----");
-			mysale->Address = mysale->Customer->Address; mysale->Reference = "";
+			mysale->Customer = (Customer^)Controller::QueryUserById(0);
+			mysale->Address = ""; mysale->Reference = "";
+			mysale->Status = 'A';
 			// Add Store manager
 			mysale->StoreManager = (StoreManager^)(Controller::QueryUserById(person->Id));
 			mysale->PaidMode = "Efectivo";
@@ -1650,8 +1651,7 @@ private: System::Void btnAllUsers_Click(System::Object^ sender, System::EventArg
 	userForm->ShowDialog();
 }
 private: System::Void btnSale_Click(System::Object^ sender, System::EventArgs^ e) {
-	SaleDetailForm^ saleDetailForm = gcnew SaleDetailForm(0);
-	saleDetailForm->ShowDialog();
+	GoSale();
 }
 private: System::Void btnSignOutStoreMager_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
@@ -1689,11 +1689,11 @@ private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Win
 	linkLabel4->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel4->Text));
 }
+
+#pragma region SHOW_TOP_PRODUCT
 private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "0"; ShowMeATop();
 }
-
-#pragma region SHOW_TOP_PRODUCT
 private: System::Void pbSecondProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "1";	ShowMeATop();
 }

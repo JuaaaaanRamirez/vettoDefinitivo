@@ -753,7 +753,8 @@ int SalesPersistance::Persistance::AddSale(Sale^ sale)
         comm->Parameters["@reference"]->Value       = sale->Reference;
         comm->Parameters["@paidmode"]->Value        = sale->PaidMode;
         comm->Parameters["@saledate"]->Value        = sale->SaleDate;
-        comm->Parameters["@customer_id"]->Value     = sale->Customer->Id;
+        if (sale->Customer != nullptr) comm->Parameters["@customer_id"]->Value = sale->Customer->Id;
+        else comm->Parameters["@customer_id"]->Value = DBNull::Value;
         comm->Parameters["@storemanager_id"]->Value = sale->StoreManager->Id;
         comm->Parameters["@id"]->Value              = sale->Id;
 #pragma endregion
@@ -790,13 +791,13 @@ Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
             mySale->SaleDetails = QuerySalesDetailsBySaleId(mySale->Id);
 
             // Relation
-            Customer^ myCustomer = gcnew Customer();   StoreManager^ mySM = gcnew StoreManager();
-            myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
-            mySale->Customer = myCustomer; mySale->StoreManager = mySM;
-
-
-            
-
+            if (!DBNull::Value->Equals(reader["customer_id"])) {
+                Customer^ myCustomer = gcnew Customer();   
+                myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); 
+                mySale->Customer = myCustomer; 
+            }
+            StoreManager^ mySM = gcnew StoreManager(); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
+            mySale->StoreManager = mySM;
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
             activeSale = mySale;

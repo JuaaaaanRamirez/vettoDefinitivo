@@ -193,6 +193,7 @@ Person^ SalesController::Controller::QueryUserById(int userId)
         if (personList[i]->Id == userId)
             return personList[i];
     return nullptr;*/
+    if (userId == 0) return nullptr;
     return Persistance::QueryPersonById(userId);
 }
 List<Person^>^ SalesController::Controller::QueryAllUsers()
@@ -388,8 +389,8 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
             return saleList[i];
     return nullptr;*/
     Sale^ mySale = Persistance::QuerySaleById(saleId);
-    //mySale->Customer = (Customer^ )QueryUserById(mySale->Customer->Id);              //??????????????????
-    //mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
+    if(mySale->Customer!=nullptr)mySale->Customer = (Customer^)QueryUserById(mySale->Customer->Id);
+    mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
     return mySale;
 }
 Sale^ SalesController::Controller::QueryLastSale()
