@@ -1493,6 +1493,7 @@ public:
 			// Have you paid?
 			if (!SaleDetailForm::mySaleDetail->paid) {
 				Controller::DeleteSale(ProductPresentationForm::saleId);
+				SaleDetailForm::mySaleDetail->paid = true;
 			}
 		}
 		void GoSale() {

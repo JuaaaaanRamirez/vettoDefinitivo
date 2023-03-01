@@ -14,4 +14,5 @@ System::Void SalesView::SalesMainForm::SalesMainForm_FormClosing(System::Object^
 {
 	Sale^ mySale = Controller::QuerySaleById(ProductPresentationForm::saleId);
 	if (mySale->SaleDetails->Count == 0 || mySale->Total == 0) Controller::DeleteSale(mySale->Id);
+	if (!SaleDetailForm::paid) Controller::DeleteSale(mySale->Id);
 }

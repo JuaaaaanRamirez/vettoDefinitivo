@@ -18,7 +18,7 @@ namespace SalesView {
 	/// </summary>
 	public ref class SaleDetailForm : public System::Windows::Forms::Form
 	{
-		int saleId;
+	public:	static int saleId;
 
 	public:
 
