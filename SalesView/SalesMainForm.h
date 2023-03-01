@@ -1496,9 +1496,6 @@ public:
 			}
 		}
 		void GoSale() {
-			// Reload
-			//List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
-			// New sale
 			Sale^ mysale = gcnew Sale();
 			// Add Customer
 			mysale->Customer = (Customer^)Controller::QueryUserById(15);

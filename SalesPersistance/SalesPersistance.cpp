@@ -762,7 +762,9 @@ int SalesPersistance::Persistance::AddSale(Sale^ sale)
         // Run + GetId
         comm->ExecuteNonQuery(); output_id = Convert::ToInt32(comm->Parameters["@id"]->Value); 
     }
-    catch (Exception^ ex) {}
+    catch (Exception^ ex) {
+        throw ex;
+    }
     finally {
         if (conn != nullptr) conn->Close();
     }
