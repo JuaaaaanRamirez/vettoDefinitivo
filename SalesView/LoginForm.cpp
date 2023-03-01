@@ -78,6 +78,14 @@ System::Void SalesView::LoginForm::btnOK_Click(System::Object^ sender, System::E
 		SalesMainForm::MenuVisibility = false;
 		SalesMainForm::person = emp;
 		((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
+
+		// Put Imagen
+		//System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pbFake->BackgroundImage);
+		//((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
+		SalesMainForm::instance->userPhoto->BackgroundImage = pbFake->BackgroundImage;
+
+
+
 		this->Close();
 	}
 	else {

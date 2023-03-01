@@ -52,6 +52,7 @@ namespace SalesView {
 
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::PictureBox^ pbLogin;
+	private: System::Windows::Forms::PictureBox^ pbFake;
 
 	protected:
 
@@ -78,7 +79,9 @@ namespace SalesView {
 			this->btnNewCustomer = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->pbLogin = (gcnew System::Windows::Forms::PictureBox());
+			this->pbFake = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbLogin))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFake))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -176,6 +179,17 @@ namespace SalesView {
 			this->pbLogin->TabIndex = 4;
 			this->pbLogin->TabStop = false;
 			// 
+			// pbFake
+			// 
+			this->pbFake->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFake.BackgroundImage")));
+			this->pbFake->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFake->Location = System::Drawing::Point(429, 281);
+			this->pbFake->Name = L"pbFake";
+			this->pbFake->Size = System::Drawing::Size(10, 10);
+			this->pbFake->TabIndex = 6;
+			this->pbFake->TabStop = false;
+			this->pbFake->Visible = false;
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -183,6 +197,7 @@ namespace SalesView {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(460, 321);
+			this->Controls->Add(this->pbFake);
 			this->Controls->Add(this->pbLogin);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->btnNewCustomer);
@@ -198,6 +213,7 @@ namespace SalesView {
 			this->Text = L"Autenticacion de usuarios";
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbLogin))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbFake))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
