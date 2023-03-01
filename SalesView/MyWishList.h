@@ -116,7 +116,9 @@ namespace SalesView {
 					this->NameProduct, this->PriceProduct, this->Description
 			});
 			this->dgvWishList->Location = System::Drawing::Point(30, 96);
+			this->dgvWishList->MultiSelect = false;
 			this->dgvWishList->Name = L"dgvWishList";
+			this->dgvWishList->ReadOnly = true;
 			this->dgvWishList->RowHeadersWidth = 51;
 			this->dgvWishList->Size = System::Drawing::Size(406, 245);
 			this->dgvWishList->TabIndex = 2;
@@ -127,6 +129,7 @@ namespace SalesView {
 			this->IdProduct->HeaderText = L"Id";
 			this->IdProduct->MinimumWidth = 6;
 			this->IdProduct->Name = L"IdProduct";
+			this->IdProduct->ReadOnly = true;
 			this->IdProduct->Width = 80;
 			// 
 			// NameProduct
@@ -134,6 +137,7 @@ namespace SalesView {
 			this->NameProduct->HeaderText = L"Nombre";
 			this->NameProduct->MinimumWidth = 6;
 			this->NameProduct->Name = L"NameProduct";
+			this->NameProduct->ReadOnly = true;
 			this->NameProduct->Width = 125;
 			// 
 			// PriceProduct
@@ -141,6 +145,7 @@ namespace SalesView {
 			this->PriceProduct->HeaderText = L"Precio";
 			this->PriceProduct->MinimumWidth = 6;
 			this->PriceProduct->Name = L"PriceProduct";
+			this->PriceProduct->ReadOnly = true;
 			this->PriceProduct->Width = 80;
 			// 
 			// Description
@@ -148,6 +153,7 @@ namespace SalesView {
 			this->Description->HeaderText = L"Descripción";
 			this->Description->MinimumWidth = 6;
 			this->Description->Name = L"Description";
+			this->Description->ReadOnly = true;
 			this->Description->Width = 125;
 			// 
 			// button2
@@ -177,7 +183,7 @@ namespace SalesView {
 			this->panel1->Controls->Add(this->lbwishList);
 			this->panel1->Controls->Add(this->pbwishList);
 			this->panel1->Location = System::Drawing::Point(1, 1);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Margin = System::Windows::Forms::Padding(2);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(465, 83);
 			this->panel1->TabIndex = 6;

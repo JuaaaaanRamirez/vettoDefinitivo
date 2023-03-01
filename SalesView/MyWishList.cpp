@@ -13,6 +13,8 @@ System::Void SalesView::MyWishList::MyWishList_Load(System::Object^ sender, Syst
 	//safe_cast<Customer^>(p)->CustomerPoints;
 	List <Product^>^ myWishList = Controller::QueryAllWishListByIdUser(SalesMainForm::person->Id);
 	
+
+
 	if(myWishList ==nullptr){
 		dgvWishList->Rows->Clear();
 	}
@@ -76,16 +78,31 @@ System::Void SalesView::MyWishList::button2_Click(System::Object^ sender, System
 
 System::Void SalesView::MyWishList::dgvWishList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
+
+	
+	/*
+	if (e->RowIndex < 0) return;
+	if (e->RowIndex >= 0) {
+		if (dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value==nullptr) return;
+		Sale^ mySale = Controller::QueryLastSale();
+		String^ customerId = dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value->ToString(); 
+		Customer^ p = (Customer^)Controller::QueryUserById(Int32::Parse(customerId));
+		mySale->Customer = p;
+		Controller::UpdateSale(mySale);
+	}
+	this->Close();
+	*/
+
 	//return System::Void();
-	if (e->RowIndex <= 0) return;
-	if (e->RowIndex > 0) {
+	if (e->RowIndex < 0) return;
+	if (e->RowIndex >= 0) {
 		String^ productId = dgvWishList->Rows[e->RowIndex]->Cells[0]->Value->ToString();
 		SalesMainForm::product = Controller::QueryProductById(Int32::Parse(productId));
 		
 		
 		ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(SalesMainForm::person->Id);
 				ProductPresentation->ShowDialog();
-				
+		
 		/*
 		// Verificar queno se repita el producto
 		Person^ user = Controller::QueryUserById(SalesMainForm::person->Id);
