@@ -48,6 +48,10 @@ namespace SalesView {
 
 	private: System::Windows::Forms::PictureBox^ pbPhoto;
 	private: System::Windows::Forms::Label^ AdLb;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ txtCompany;
+	private: System::Windows::Forms::TextBox^ txtWebSite;
 
 
 
@@ -75,12 +79,16 @@ namespace SalesView {
 			this->btDelete = (gcnew System::Windows::Forms::Button());
 			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->AdLb = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->txtCompany = (gcnew System::Windows::Forms::TextBox());
+			this->txtWebSite = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btUpImage
 			// 
-			this->btUpImage->Location = System::Drawing::Point(40, 246);
+			this->btUpImage->Location = System::Drawing::Point(37, 336);
 			this->btUpImage->Name = L"btUpImage";
 			this->btUpImage->Size = System::Drawing::Size(320, 40);
 			this->btUpImage->TabIndex = 1;
@@ -90,7 +98,7 @@ namespace SalesView {
 			// 
 			// btClose
 			// 
-			this->btClose->Location = System::Drawing::Point(160, 340);
+			this->btClose->Location = System::Drawing::Point(157, 430);
 			this->btClose->Name = L"btClose";
 			this->btClose->Size = System::Drawing::Size(80, 30);
 			this->btClose->TabIndex = 2;
@@ -100,7 +108,7 @@ namespace SalesView {
 			// 
 			// btDelete
 			// 
-			this->btDelete->Location = System::Drawing::Point(40, 292);
+			this->btDelete->Location = System::Drawing::Point(37, 382);
 			this->btDelete->Name = L"btDelete";
 			this->btDelete->Size = System::Drawing::Size(320, 40);
 			this->btDelete->TabIndex = 3;
@@ -111,7 +119,7 @@ namespace SalesView {
 			// pbPhoto
 			// 
 			this->pbPhoto->BackColor = System::Drawing::Color::White;
-			this->pbPhoto->Location = System::Drawing::Point(40, 40);
+			this->pbPhoto->Location = System::Drawing::Point(37, 130);
 			this->pbPhoto->Name = L"pbPhoto";
 			this->pbPhoto->Size = System::Drawing::Size(320, 200);
 			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -122,11 +130,51 @@ namespace SalesView {
 			// 
 			this->AdLb->AutoSize = true;
 			this->AdLb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold));
-			this->AdLb->Location = System::Drawing::Point(123, 15);
+			this->AdLb->Location = System::Drawing::Point(120, 105);
 			this->AdLb->Name = L"AdLb";
 			this->AdLb->Size = System::Drawing::Size(133, 20);
 			this->AdLb->TabIndex = 5;
 			this->AdLb->Text = L"Anuncio actual";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(32, 27);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(69, 16);
+			this->label1->TabIndex = 6;
+			this->label1->Text = L"Compañia";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(34, 69);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(78, 16);
+			this->label2->TabIndex = 7;
+			this->label2->Text = L"Pagina web";
+			// 
+			// txtCompany
+			// 
+			this->txtCompany->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
+			this->txtCompany->Location = System::Drawing::Point(123, 29);
+			this->txtCompany->Name = L"txtCompany";
+			this->txtCompany->ReadOnly = true;
+			this->txtCompany->Size = System::Drawing::Size(220, 22);
+			this->txtCompany->TabIndex = 8;
+			this->txtCompany->Text = L"-";
+			// 
+			// txtWebSite
+			// 
+			this->txtWebSite->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
+			this->txtWebSite->Location = System::Drawing::Point(123, 69);
+			this->txtWebSite->Name = L"txtWebSite";
+			this->txtWebSite->ReadOnly = true;
+			this->txtWebSite->Size = System::Drawing::Size(220, 22);
+			this->txtWebSite->TabIndex = 9;
+			this->txtWebSite->Text = L"-";
 			// 
 			// UploadAdForm
 			// 
@@ -134,7 +182,11 @@ namespace SalesView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->ClientSize = System::Drawing::Size(402, 373);
+			this->ClientSize = System::Drawing::Size(402, 466);
+			this->Controls->Add(this->txtWebSite);
+			this->Controls->Add(this->txtCompany);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->AdLb);
 			this->Controls->Add(this->pbPhoto);
 			this->Controls->Add(this->btDelete);

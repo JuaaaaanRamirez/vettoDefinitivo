@@ -28,7 +28,7 @@ namespace SalesView {
 			InitializeComponent();
 			myThread = gcnew Thread(gcnew ThreadStart(this, &StadisticReportForm::MyRun));
 			myThread->IsBackground = true;
-			myThread->Start();
+			//myThread->Start();
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -239,43 +239,48 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(54, 15);
+			this->label1->Location = System::Drawing::Point(37, 19);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(108, 16);
+			this->label1->Size = System::Drawing::Size(99, 16);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Buscar venta por";
+			this->label1->Text = L"Filtrar venta por";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(54, 40);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(41, 48);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(45, 16);
+			this->label2->Size = System::Drawing::Size(50, 16);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Fecha";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(54, 82);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(41, 80);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(73, 16);
+			this->label3->Size = System::Drawing::Size(84, 16);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Id de venta";
 			// 
 			// dtpSaleDate
 			// 
-			this->dtpSaleDate->Location = System::Drawing::Point(154, 34);
+			this->dtpSaleDate->Location = System::Drawing::Point(135, 43);
 			this->dtpSaleDate->Name = L"dtpSaleDate";
 			this->dtpSaleDate->Size = System::Drawing::Size(200, 22);
 			this->dtpSaleDate->TabIndex = 3;
 			// 
 			// txtSaleId
 			// 
-			this->txtSaleId->Location = System::Drawing::Point(154, 76);
+			this->txtSaleId->Location = System::Drawing::Point(135, 74);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->Size = System::Drawing::Size(100, 22);
 			this->txtSaleId->TabIndex = 4;
+			this->txtSaleId->TextChanged += gcnew System::EventHandler(this, &StadisticReportForm::txtSaleId_TextChanged);
 			// 
 			// dgvSells
 			// 
@@ -285,11 +290,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 				this->Column1, this->Column2,
 					this->Column3, this->Column6, this->Column4, this->Column5, this->Column10
 			});
-			this->dgvSells->Location = System::Drawing::Point(23, 122);
+			this->dgvSells->Location = System::Drawing::Point(40, 129);
 			this->dgvSells->Name = L"dgvSells";
 			this->dgvSells->RowHeadersWidth = 51;
 			this->dgvSells->RowTemplate->Height = 24;
-			this->dgvSells->Size = System::Drawing::Size(975, 257);
+			this->dgvSells->Size = System::Drawing::Size(771, 566);
 			this->dgvSells->TabIndex = 5;
 			// 
 			// Column1
@@ -343,7 +348,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// btShowAllSales
 			// 
-			this->btShowAllSales->Location = System::Drawing::Point(498, 57);
+			this->btShowAllSales->Location = System::Drawing::Point(687, 37);
 			this->btShowAllSales->Name = L"btShowAllSales";
 			this->btShowAllSales->Size = System::Drawing::Size(124, 59);
 			this->btShowAllSales->TabIndex = 6;
@@ -354,23 +359,23 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(71, 68);
+			this->label4->Location = System::Drawing::Point(29, 59);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(211, 16);
+			this->label4->Size = System::Drawing::Size(205, 16);
 			this->label4->TabIndex = 13;
-			this->label4->Text = L"Productos cuyo stock es menor a: ";
+			this->label4->Text = L"Productos cuyo stock es menor a";
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(301, 62);
+			this->txtStock->Location = System::Drawing::Point(235, 53);
 			this->txtStock->Name = L"txtStock";
-			this->txtStock->Size = System::Drawing::Size(100, 22);
+			this->txtStock->Size = System::Drawing::Size(88, 22);
 			this->txtStock->TabIndex = 14;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(419, 68);
+			this->label5->Location = System::Drawing::Point(329, 59);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(63, 16);
 			this->label5->TabIndex = 15;
@@ -378,7 +383,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// btToShow
 			// 
-			this->btToShow->Location = System::Drawing::Point(574, 53);
+			this->btToShow->Location = System::Drawing::Point(492, 28);
 			this->btToShow->Name = L"btToShow";
 			this->btToShow->Size = System::Drawing::Size(88, 47);
 			this->btToShow->TabIndex = 16;
@@ -424,8 +429,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->chartReportToday->Size = System::Drawing::Size(802, 473);
 			this->chartReportToday->TabIndex = 0;
 			this->chartReportToday->Text = L"chart1";
+			title1->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title1->Name = L"Productos vendidos hoy";
 			title1->Text = L"Productos vendidos hoy";
+			title1->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
 			this->chartReportToday->Titles->Add(title1);
 			// 
 			// tabPage2
@@ -437,7 +445,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
 			this->tabPage2->Size = System::Drawing::Size(834, 800);
 			this->tabPage2->TabIndex = 1;
-			this->tabPage2->Text = L"Reporte de la semana";
+			this->tabPage2->Text = L"Reporte de la ultima semana";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// pieSellsLastWeek
@@ -456,8 +464,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->pieSellsLastWeek->Size = System::Drawing::Size(738, 302);
 			this->pieSellsLastWeek->TabIndex = 1;
 			this->pieSellsLastWeek->Text = L"chart2";
+			title2->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title2->Name = L"Title1";
 			title2->Text = L"Numero de ventas durante la semana pasada";
+			title2->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
 			this->pieSellsLastWeek->Titles->Add(title2);
 			this->pieSellsLastWeek->Click += gcnew System::EventHandler(this, &StadisticReportForm::chartSellsLastWeek_Click);
 			// 
@@ -476,8 +487,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->chartMoneyLastWeek->Size = System::Drawing::Size(771, 348);
 			this->chartMoneyLastWeek->TabIndex = 0;
 			this->chartMoneyLastWeek->Text = L"chart1";
+			title3->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title3->Name = L"Title1";
 			title3->Text = L"Ingresos de la semana pasada en soles";
+			title3->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
 			this->chartMoneyLastWeek->Titles->Add(title3);
 			// 
 			// tabPage3
@@ -488,7 +502,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Size = System::Drawing::Size(834, 800);
 			this->tabPage3->TabIndex = 2;
-			this->tabPage3->Text = L"Reporte del mes";
+			this->tabPage3->Text = L"Reporte del mes pasado";
 			this->tabPage3->UseVisualStyleBackColor = true;
 			// 
 			// chartReportGoals
@@ -506,8 +520,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->chartReportGoals->Size = System::Drawing::Size(758, 342);
 			this->chartReportGoals->TabIndex = 1;
 			this->chartReportGoals->Text = L"chart2";
+			title4->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title4->Name = L"Title1";
 			title4->Text = L"Ingresos generados por cada vendedor el mes pasado";
+			title4->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
 			this->chartReportGoals->Titles->Add(title4);
 			// 
 			// chartReportLastMonth
@@ -525,13 +542,16 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->chartReportLastMonth->Size = System::Drawing::Size(748, 293);
 			this->chartReportLastMonth->TabIndex = 0;
 			this->chartReportLastMonth->Text = L"chart1";
+			title5->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title5->Name = L"Title1";
 			title5->Text = L"Productos mas vendidos el mes pasado";
+			title5->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
 			this->chartReportLastMonth->Titles->Add(title5);
 			// 
 			// btLookFor2
 			// 
-			this->btLookFor2->Location = System::Drawing::Point(279, 75);
+			this->btLookFor2->Location = System::Drawing::Point(356, 73);
 			this->btLookFor2->Name = L"btLookFor2";
 			this->btLookFor2->Size = System::Drawing::Size(75, 23);
 			this->btLookFor2->TabIndex = 18;
@@ -542,7 +562,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(54, 61);
+			this->label6->Location = System::Drawing::Point(41, 64);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(15, 16);
 			this->label6->TabIndex = 19;
@@ -550,7 +570,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// btLookFor1
 			// 
-			this->btLookFor1->Location = System::Drawing::Point(373, 34);
+			this->btLookFor1->Location = System::Drawing::Point(356, 41);
 			this->btLookFor1->Name = L"btLookFor1";
 			this->btLookFor1->Size = System::Drawing::Size(75, 23);
 			this->btLookFor1->TabIndex = 20;
@@ -566,11 +586,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 				this->Column7, this->Column8,
 					this->Column9
 			});
-			this->dgvStock->Location = System::Drawing::Point(107, 106);
+			this->dgvStock->Location = System::Drawing::Point(25, 99);
 			this->dgvStock->Name = L"dgvStock";
 			this->dgvStock->RowHeadersWidth = 51;
 			this->dgvStock->RowTemplate->Height = 24;
-			this->dgvStock->Size = System::Drawing::Size(610, 242);
+			this->dgvStock->Size = System::Drawing::Size(555, 242);
 			this->dgvStock->TabIndex = 21;
 			// 
 			// Column7
@@ -602,11 +622,13 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabControl2->Location = System::Drawing::Point(12, 12);
 			this->tabControl2->Name = L"tabControl2";
 			this->tabControl2->SelectedIndex = 0;
-			this->tabControl2->Size = System::Drawing::Size(1012, 882);
+			this->tabControl2->Size = System::Drawing::Size(880, 882);
 			this->tabControl2->TabIndex = 22;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->tabPage1->Controls->Add(this->dgvSells);
 			this->tabPage1->Controls->Add(this->label1);
 			this->tabPage1->Controls->Add(this->btLookFor1);
@@ -620,24 +642,26 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1004, 853);
+			this->tabPage1->Size = System::Drawing::Size(872, 853);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Lista de ventas";
-			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
 			// tabPage4
 			// 
+			this->tabPage4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->tabPage4->Controls->Add(this->tabControl1);
 			this->tabPage4->Location = System::Drawing::Point(4, 25);
 			this->tabPage4->Name = L"tabPage4";
 			this->tabPage4->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage4->Size = System::Drawing::Size(1004, 853);
+			this->tabPage4->Size = System::Drawing::Size(872, 853);
 			this->tabPage4->TabIndex = 1;
 			this->tabPage4->Text = L"Gráficos";
-			this->tabPage4->UseVisualStyleBackColor = true;
 			// 
 			// tabPage5
 			// 
+			this->tabPage5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
+				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->tabPage5->Controls->Add(this->txtStock);
 			this->tabPage5->Controls->Add(this->dgvStock);
 			this->tabPage5->Controls->Add(this->label4);
@@ -646,18 +670,18 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage5->Location = System::Drawing::Point(4, 25);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(1004, 853);
+			this->tabPage5->Size = System::Drawing::Size(872, 853);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"Stock";
-			this->tabPage5->UseVisualStyleBackColor = true;
 			// 
 			// StadisticReportForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->BackColor = System::Drawing::Color::Cornsilk;
-			this->ClientSize = System::Drawing::Size(1056, 919);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->ClientSize = System::Drawing::Size(915, 919);
 			this->Controls->Add(this->tabControl2);
 			this->Name = L"StadisticReportForm";
 			this->Text = L"Reporte de ventas y estadisticas";
@@ -1044,5 +1068,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 
 		}
 	}
-	};
+	private: System::Void txtSaleId_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

@@ -157,7 +157,8 @@ System::Void SalesView::UploadAdForm::UploadAdForm_Load(System::Object^ sender, 
 {
 	Announcer^ Announ_aux = gcnew Announcer();
 	Announ_aux = (Announcer^)(SalesMainForm::person);
-
+	txtCompany->Text = Announ_aux->CompanyName;
+	txtWebSite->Text = Announ_aux->WebSiteLink;
 	if (Announ_aux->Ad != nullptr) {
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(Announ_aux->Ad);
 		pbPhoto->Image = Image::FromStream(ms);

@@ -418,7 +418,7 @@ public:
 			this->productoToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->productoToolStripMenuItem->Name = L"productoToolStripMenuItem";
-			this->productoToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->productoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->productoToolStripMenuItem->Text = L"Producto";
 			this->productoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::productoToolStripMenuItem_Click);
 			// 
@@ -427,7 +427,7 @@ public:
 			this->usuariosToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::usuariosToolStripMenuItem_Click);
 			// 
@@ -436,7 +436,7 @@ public:
 			this->subirAnuncioToolStripMenuItem->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)),
 				static_cast<System::Int32>(static_cast<System::Byte>(151)), static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->subirAnuncioToolStripMenuItem->Name = L"subirAnuncioToolStripMenuItem";
-			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(163, 26);
+			this->subirAnuncioToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->subirAnuncioToolStripMenuItem->Text = L"MiAnuncio";
 			this->subirAnuncioToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesMainForm::subirAnuncioToolStripMenuItem_Click);
 			// 
@@ -1527,7 +1527,7 @@ public:
 		A->ShowDialog();
 	}
 	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sendePutTopr, System::EventArgs^ e) {
-		UserForm^ userForm = gcnew UserForm();
+		UserForm^ userForm = gcnew UserForm(false);
 		//productForm->MdiParent = this;
 		userForm->ShowDialog();
 	}
@@ -1649,7 +1649,7 @@ private: System::Void btnAllProducts_Click(System::Object^ sender, System::Event
 	productForm->ShowDialog();
 }
 private: System::Void btnAllUsers_Click(System::Object^ sender, System::EventArgs^ e) {
-	UserForm^ userForm = gcnew UserForm();
+	UserForm^ userForm = gcnew UserForm(false);
 	userForm->ShowDialog();
 }
 private: System::Void btnSale_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1666,7 +1666,7 @@ private: System::Void btnLoginOutSellerCompany_Click(System::Object^ sender, Sys
 	SignOff();
 }
 private: System::Void btnAllPerson_Click(System::Object^ sender, System::EventArgs^ e) {
-	UserForm^ userForm = gcnew UserForm();
+	UserForm^ userForm = gcnew UserForm(true);
 	userForm->ShowDialog();
 }
 private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -20,7 +20,7 @@ namespace SalesView {
 	private:
 		Thread^ myThread;
 	public:
-		UserForm(void)
+		UserForm(bool isSellerCompany)
 		{
 			
 			InitializeComponent();
@@ -30,6 +30,9 @@ namespace SalesView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			if (isSellerCompany) rbtnStoreManager->Enabled = true;
+			else rbtnStoreManager->Enabled = false;
+			
 		}
 		/*
 		delegate void MyDelegate();
@@ -793,16 +796,17 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Announcerbx->Controls->Add(this->Companylb);
 			this->Announcerbx->Location = System::Drawing::Point(21, 300);
 			this->Announcerbx->Name = L"Announcerbx";
-			this->Announcerbx->Size = System::Drawing::Size(401, 155);
+			this->Announcerbx->Size = System::Drawing::Size(401, 187);
 			this->Announcerbx->TabIndex = 27;
 			this->Announcerbx->TabStop = false;
 			this->Announcerbx->Visible = false;
 			// 
 			// AdsImage
 			// 
+			this->AdsImage->BackColor = System::Drawing::Color::White;
 			this->AdsImage->Location = System::Drawing::Point(75, 71);
 			this->AdsImage->Name = L"AdsImage";
-			this->AdsImage->Size = System::Drawing::Size(150, 78);
+			this->AdsImage->Size = System::Drawing::Size(211, 110);
 			this->AdsImage->TabIndex = 5;
 			this->AdsImage->TabStop = false;
 			// 
@@ -1091,6 +1095,7 @@ private: System::Windows::Forms::Button^ btnClean;
 		Controller::DeleteUser(ID);
 		CleanControls();
 		ShowUsers();
+		txtCustomerId->ReadOnly = false;
 	}
 	private: System::Void AddCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification
@@ -1113,6 +1118,7 @@ private: System::Windows::Forms::Button^ btnClean;
 		Controller::AddUser(user);
 		CleanControls();
 		ShowUsers();
+		txtCustomerId->ReadOnly = false;
 	}
 	private: System::Void UpdateCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -1142,6 +1148,7 @@ private: System::Windows::Forms::Button^ btnClean;
 		Controller::UpdateUser(user);
 		CleanControls();
 		ShowUsers();
+		txtCustomerId->ReadOnly = false;
 	}
 	private: System::Void dgvCustomer_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		// Build tools
@@ -1185,6 +1192,10 @@ private: System::Windows::Forms::Button^ btnClean;
 		else if (p->GetType() == Announcer::typeid) {
 			txtCompanyName->Text = "" + dynamic_cast<Announcer^>(p)->CompanyName;
 			txtWebSite->Text = "" + dynamic_cast<Announcer^>(p)->WebSiteLink;
+			if (dynamic_cast<Announcer^>(p)->Ad != nullptr) {
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(dynamic_cast<Announcer^>(p)->Ad);
+				AdsImage->Image = Image::FromStream(ms);
+			}
 
 		}
 		else if (p->GetType() == StoreManager::typeid) {
@@ -1238,6 +1249,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 			pbCustomer->Image = Image::FromStream(ms);
 		}
+
+		txtCustomerId->ReadOnly = true;
 		/*else {
 			pbCustomer->Image = gcnew Bitmap("resources/UserPictures/Default.png");
 		}*/
@@ -1249,7 +1262,9 @@ private: System::Windows::Forms::Button^ btnClean;
 		/*else pbCustomer->Image = gcnew Bitmap("resources/UserPictures/Default.png");*/
 	}
 	private: System::Void UserForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		txtCustomerId->ReadOnly = false;
 		ShowUsers();
+
 	}
 
 		   //Rbtn Profile
@@ -1379,6 +1394,7 @@ private: System::Windows::Forms::Button^ btnClean;
 }
 private: System::Void btnClean_Click(System::Object^ sender, System::EventArgs^ e) {
 	CleanControls();
+	txtCustomerId->ReadOnly = false;
 }
 };
 }
