@@ -411,7 +411,7 @@ END
 GO
 CREATE PROCEDURE dbo.usp_QueryAllCustomer
 AS
-	SELECT * FROM PERSON WHERE profile='S'
+	SELECT * FROM PERSON WHERE profile='S' AND id !=15
 	ORDER BY id
 GO
 
