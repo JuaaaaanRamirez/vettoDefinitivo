@@ -228,7 +228,7 @@ int SalesController::Controller::DeleteUser(int userId)
 
 List<Customer^>^ SalesController::Controller::QueryAllCustomer()
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    /*personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
     List<Customer^>^ activeCustomerList = gcnew List<Customer^>();
     for (int i = 0; i < personList->Count; i++) {
         if ( personList[i]->GetType() == Customer::typeid) {
@@ -238,10 +238,9 @@ List<Customer^>^ SalesController::Controller::QueryAllCustomer()
     }
    
     
-    return activeCustomerList;
+    return activeCustomerList;*/
     
-    //throw gcnew System::NotImplementedException();
-    // TODO: Insertar una instrucción "return" aquí
+    return Persistance::QueryAllCustomer();
 }
 
 List<StoreManager^>^ SalesController::Controller::QueryAllStoreManager()
@@ -345,6 +344,18 @@ int SalesController::Controller::FindNewId(Person^ user)
         }
     }
     return numMayor + 1;
+}
+
+List<Customer^>^ SalesController::Controller::QueryCustomerByNameOrByLastName(String^ name)
+{
+    return Persistance::QueryCustomerByNameOrByLastName(name);
+}
+
+Customer^ SalesController::Controller::QueryCustomerById(int customerId)
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+    return Persistance::QueryCustomerById(customerId);
 }
 
 bool SalesController::Controller::ExistUsername(String^ username)

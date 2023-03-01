@@ -401,4 +401,48 @@ AS
 	AND	P.password = @password 
 GO
 
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_QueryAllCustomer]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_QueryAllCustomer]
+END
+GO
+CREATE PROCEDURE dbo.usp_QueryAllCustomer
+AS
+	SELECT * FROM PERSON WHERE profile='S'
+	ORDER BY id
+GO
 
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_QueryCustomerByNameOrByLastName]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_QueryCustomerByNameOrByLastName]
+END
+GO
+CREATE PROCEDURE dbo.usp_QueryCustomerByNameOrByLastName
+	@name VARCHAR(100)
+
+AS
+	SELECT * FROM PERSON WHERE profile='S' AND (name LIKE @name OR last_name LIKE @name)
+	ORDER BY id
+GO
+
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_QueryCustomerById]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_QueryCustomerById]
+END
+GO
+CREATE PROCEDURE dbo.usp_QueryCustomerById
+	@id INT
+
+AS
+	SELECT * FROM PERSON WHERE profile='S' AND (id LIKE @id )
+	ORDER BY id
+GO

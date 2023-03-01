@@ -243,10 +243,15 @@ namespace SalesView {
 		List<Customer^>^ myList = gcnew List<Customer^>();
 		if (txtId->Text->Trim() != "") {
 			//Búsqueda de producto por el código ingresado por el usuario
-			Customer^ p = (Customer^)Controller::QueryUserById(Convert::ToInt32(txtId->Text->Trim())); 
+			//Customer^ p = (Customer^)Controller::QueryUserById(Convert::ToInt32(txtId->Text->Trim())); 
+			Customer^ p = Controller::QueryCustomerById(Convert::ToInt32(txtId->Text->Trim()));
+
 			myList->Add(p);
 		}
-		/*else {
+		 else if(txtName->Text->Trim() != "") {
+			myList = Controller::QueryCustomerByNameOrByLastName(txtName->Text->Trim());
+			
+			/*
 			//Búsqueda de productos por el nombre o descripción ingresado por el usuario
 			myList = Controller::Query(txtNameDescription->Text->Trim());
 			//Se borran los datos del grid.
@@ -258,8 +263,11 @@ namespace SalesView {
 						Convert::ToString(productList[i]->PriceMin),
 						Convert::ToString(productList[i]->Stock)
 				});
-			}
-		}*/
+			}*/
+		}
+		 else {
+			myList = Controller::QueryAllCustomer();
+		}
 		PutData(myList);
 }
 private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
