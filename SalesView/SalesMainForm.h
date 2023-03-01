@@ -1501,7 +1501,7 @@ public:
 			// New sale
 			Sale^ mysale = gcnew Sale();
 			// Add Customer
-			mysale->Customer = (Customer^)Controller::QueryUserById(0);
+			mysale->Customer = (Customer^)Controller::QueryUserById(15);
 			mysale->Address = ""; mysale->Reference = "";
 			mysale->Status = 'A';
 			// Add Store manager
