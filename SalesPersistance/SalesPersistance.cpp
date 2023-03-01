@@ -2057,12 +2057,16 @@ List<Customer^>^ SalesPersistance::Persistance::QueryCustomerByNameOrByLastName(
         conn = GetConnection();
 
         /* Paso 2: Preparar la sentencia */
-        comm = gcnew SqlCommand("usp_QueryCustomerByNameOrByLastName", conn);
+        /*comm = gcnew SqlCommand("usp_QueryCustomerByNameOrByLastName", conn);
         comm->CommandType = System::Data::CommandType::StoredProcedure;
         comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar,50);
 
         comm->Prepare();
-        comm->Parameters["@name"]->Value = name;
+        comm->Parameters["@name"]->Value = name;*/
+        comm = gcnew SqlCommand("SELECT * FROM PERSON WHERE " +
+            "(name LIKE '%" + name + "%' OR " +
+            "last_name LIKE '%" + name + "%') AND " +
+            "profile = 'S'", conn);
         // Paso 3: Se ejecuta la sentencia
         reader = comm->ExecuteReader();
 
@@ -2080,6 +2084,7 @@ List<Customer^>^ SalesPersistance::Persistance::QueryCustomerByNameOrByLastName(
             s->Gender = reader["gender"]->ToString()[0];
             DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
             s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            s->CustomerPoints =Int32::Parse( reader["customer_points"]->ToString());
             custoemerList->Add(s);
         }
     }
@@ -2124,6 +2129,7 @@ List<Customer^>^ SalesPersistance::Persistance::QueryAllCustomer()
             s->Gender = reader["gender"]->ToString()[0];
             DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
             s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            s->CustomerPoints = Int32::Parse(reader["customer_points"]->ToString());
             custoemerList->Add(s);
         }
     }
@@ -2175,6 +2181,7 @@ Customer^ SalesPersistance::Persistance::QueryCustomerById(int customerId)
             s->Gender = reader["gender"]->ToString()[0];
             DateTime^ sdate = safe_cast<DateTime^>(reader["birthday"]);
             s->Birthday = sdate->ToString("dd/MM/yyyy", CultureInfo::InvariantCulture);
+            s->CustomerPoints = Int32::Parse(reader["customer_points"]->ToString());
             customer=(s);
         }
     }
