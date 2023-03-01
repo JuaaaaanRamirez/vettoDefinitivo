@@ -335,7 +335,7 @@ Person^ SalesController::Controller::QueryPersonByCredentials(String^ username, 
 int SalesController::Controller::FindNewId(Person^ user)
 {
     int i = 0, numMayor;
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    personList = (List<Person^>^)Persistance::QueryAllActivePerson();
     numMayor = personList[i]->Id;
     for (i = 0; i < personList->Count; i++) {
 
@@ -348,7 +348,7 @@ int SalesController::Controller::FindNewId(Person^ user)
 
 bool SalesController::Controller::ExistUsername(String^ username)
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    personList = (List<Person^>^)Persistance::QueryAllActivePerson();
     for (int i = 0; i < personList->Count; i++) {
         if (personList[i]->Username->Equals(username))
             return true;
@@ -359,7 +359,7 @@ bool SalesController::Controller::ExistUsername(String^ username)
 
 bool SalesController::Controller::ExistDocNumber(String^ docnumber)
 {
-    personList = (List<Person^>^)Persistance::LoadBinaryData("users.bin");
+    personList = (List<Person^>^)Persistance::QueryAllActivePerson();
     for (int i = 0; i < personList->Count; i++) {
         if (personList[i]->DocNumber->Equals(docnumber))
             return true;

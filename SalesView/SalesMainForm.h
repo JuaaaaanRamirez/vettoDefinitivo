@@ -657,7 +657,7 @@ public:
 			// pbSeventhProduct
 			// 
 			this->pbSeventhProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSeventhProduct.BackgroundImage")));
-			this->pbSeventhProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbSeventhProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbSeventhProduct->Location = System::Drawing::Point(1060, 210);
 			this->pbSeventhProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbSeventhProduct->Name = L"pbSeventhProduct";
@@ -669,7 +669,7 @@ public:
 			// pbSixthProduct
 			// 
 			this->pbSixthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSixthProduct.BackgroundImage")));
-			this->pbSixthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbSixthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbSixthProduct->Location = System::Drawing::Point(900, 210);
 			this->pbSixthProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbSixthProduct->Name = L"pbSixthProduct";
@@ -682,7 +682,7 @@ public:
 			// 
 			this->pbFifthProduct->BackColor = System::Drawing::Color::White;
 			this->pbFifthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFifthProduct.BackgroundImage")));
-			this->pbFifthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFifthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbFifthProduct->Location = System::Drawing::Point(740, 210);
 			this->pbFifthProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbFifthProduct->Name = L"pbFifthProduct";
@@ -695,7 +695,7 @@ public:
 			// 
 			this->pbThirdProduct->BackColor = System::Drawing::Color::White;
 			this->pbThirdProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbThirdProduct.BackgroundImage")));
-			this->pbThirdProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbThirdProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbThirdProduct->Location = System::Drawing::Point(420, 210);
 			this->pbThirdProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbThirdProduct->Name = L"pbThirdProduct";
@@ -708,7 +708,7 @@ public:
 			// 
 			this->pbFourthProduct->BackColor = System::Drawing::Color::White;
 			this->pbFourthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFourthProduct.BackgroundImage")));
-			this->pbFourthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pbFourthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbFourthProduct->Location = System::Drawing::Point(580, 210);
 			this->pbFourthProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbFourthProduct->Name = L"pbFourthProduct";
@@ -739,7 +739,6 @@ public:
 			this->pbFirstProduct->Size = System::Drawing::Size(149, 150);
 			this->pbFirstProduct->TabIndex = 32;
 			this->pbFirstProduct->TabStop = false;
-			this->pbFirstProduct->Click += gcnew System::EventHandler(this, &SalesMainForm::pbFirstProduct_Click);
 			this->pbFirstProduct->DoubleClick += gcnew System::EventHandler(this, &SalesMainForm::pbFirstProduct_DoubleClick);
 			// 
 			// btnLogin
@@ -1262,7 +1261,7 @@ public:
 			// 
 			this->btnSearch->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnSearch.BackgroundImage")));
 			this->btnSearch->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->btnSearch->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnSearch->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->btnSearch->ForeColor = System::Drawing::Color::Transparent;
 			this->btnSearch->Location = System::Drawing::Point(128, 54);
 			this->btnSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -1453,11 +1452,10 @@ public:
 		}
 public:	
 		void ShowMeATop() {
-			if (person == nullptr) return;
 			List<Product^>^ myTopiList = Controller::GetTopProducts();
 			product = myTopiList[Convert::ToInt32(FakeIdTop->Text)];
-			ProductPresentationForm^ myPre = gcnew ProductPresentationForm(person->Id);
-			myPre->ShowDialog();
+			ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(Convert::ToInt32(Idlb->Text));
+			ProductPresentation->ShowDialog();
 		}
 		void PutTop(List<Product^>^ myTopList) {
 			// Stream
@@ -1674,10 +1672,7 @@ private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ se
 	GoSale();
 }
 	   // Closinf
-private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	Sale^ mySale = Controller::QueryLastSale();
-	if (mySale->SaleDetails->Count == 0|| mySale->Total==0) Controller::DeleteSale(mySale->Id);
-}
+private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel1->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel1->Text));
@@ -1697,9 +1692,8 @@ private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Win
 private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "0"; ShowMeATop();
 }
-/*private: System::Void pbSecondProduct_Click(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "1";	ShowMeATop();
-}*/
+
+#pragma region SHOW_TOP_PRODUCT
 private: System::Void pbSecondProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "1";	ShowMeATop();
 }
@@ -1718,7 +1712,6 @@ private: System::Void pbSixthProduct_DoubleClick(System::Object^ sender, System:
 private: System::Void pbSeventhProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "6";	ShowMeATop();
 }
-private: System::Void pbFirstProduct_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+#pragma endregion
 };
 }

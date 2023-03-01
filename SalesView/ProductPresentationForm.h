@@ -27,7 +27,7 @@ namespace SalesView {
 	public:	
 	public:
 		//Form^ refForm;
-		int userId, saleId;
+		static int userId, saleId;
 	public: System::Windows::Forms::TextBox^ txtStock;
 	private: System::Windows::Forms::Label^ label1;
 	public:
@@ -477,8 +477,7 @@ namespace SalesView {
 				saleId = Controller::AddSale(newSale);
 			}
 			else {
-				newSale = Controller::QueryLastSale();
-				saleId = newSale->Id;
+				newSale = Controller::QuerySaleById(saleId);
 			}
 			
 			// New SaleDeatil?

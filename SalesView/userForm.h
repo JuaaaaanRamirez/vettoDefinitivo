@@ -152,6 +152,7 @@ namespace SalesView {
 	private: System::Windows::Forms::TextBox^ txtWebSite;
 	private: System::Windows::Forms::PictureBox^ AdsImage;
 private: System::Windows::Forms::CheckBox^ chBxPass;
+private: System::Windows::Forms::Button^ btnClean;
 
 
 
@@ -236,6 +237,7 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->AdsImage = (gcnew System::Windows::Forms::PictureBox());
 			this->txtWebSite = (gcnew System::Windows::Forms::TextBox());
 			this->chBxPass = (gcnew System::Windows::Forms::CheckBox());
+			this->btnClean = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomer))->BeginInit();
 			this->GenBox->SuspendLayout();
@@ -822,12 +824,23 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
 			this->chBxPass->UseVisualStyleBackColor = true;
 			this->chBxPass->CheckedChanged += gcnew System::EventHandler(this, &UserForm::chBxPass_CheckedChanged);
 			// 
+			// btnClean
+			// 
+			this->btnClean->Location = System::Drawing::Point(492, 231);
+			this->btnClean->Name = L"btnClean";
+			this->btnClean->Size = System::Drawing::Size(80, 23);
+			this->btnClean->TabIndex = 29;
+			this->btnClean->Text = L"Limpiar";
+			this->btnClean->UseVisualStyleBackColor = true;
+			this->btnClean->Click += gcnew System::EventHandler(this, &UserForm::btnClean_Click);
+			// 
 			// UserForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(662, 633);
+			this->Controls->Add(this->btnClean);
 			this->Controls->Add(this->chBxPass);
 			this->Controls->Add(this->Announcerbx);
 			this->Controls->Add(this->StoreManagerbx);
@@ -1363,6 +1376,9 @@ private: System::Windows::Forms::CheckBox^ chBxPass;
     private: System::Void chBxPass_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (chBxPass->Checked) txtPassword->PasswordChar = false;
 	else txtPassword->PasswordChar = '*';
+}
+private: System::Void btnClean_Click(System::Object^ sender, System::EventArgs^ e) {
+	CleanControls();
 }
 };
 }
