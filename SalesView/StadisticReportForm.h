@@ -930,9 +930,38 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 	}
 	private: System::Void btLookFor1_Click(System::Object^ sender, System::EventArgs^ e) {
 		List<Sale^>^ mySells = Controller::DaySalesList(dtpSaleDate->Value);
+		String^ Estado = "-";
+
 		if (mySells != nullptr) {
 			dgvSells->Rows->Clear();
 			for (int i = 0; i < mySells->Count; i++) {
+				mySells[i]->Customer = (Customer^)Controller::QueryUserById(mySells[i]->Customer->Id);              //??????????????????
+
+				if (mySells[i]->StoreManager->Id != 0) mySells[i]->StoreManager = (StoreManager^)Controller::QueryUserById(mySells[i]->StoreManager->Id);
+				else mySells[i]->StoreManager->Name = "Asistente Virtual";
+
+				switch (mySells[i]->Status)
+				{
+				case 'A': Estado = "REGISTRADO";
+					break;
+				case 'B': Estado = "ENVIADO";
+					break;
+				case 'C': Estado = "ENTREGADO";
+					break;
+				case 'D': Estado = "PRESENTA RECLAMO";
+					break;
+				case 'E': Estado = "REEMBOLSADO";
+					break;
+				case 'F': Estado = "NO PROCEDE RECLAMO";
+					break;
+				case 'G': Estado = "CANCELADO";
+					break;
+				case 'H': Estado = "ELIMINADO";
+					break;
+				default:
+					break;
+				}
+				
 				dgvSells->Rows->Add(gcnew array<String^>{
 
 					"" + mySells[i]->Id,
@@ -940,7 +969,8 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 						mySells[i]->Customer->Name,
 						mySells[i]->StoreManager->Name,
 						"" + mySells[i]->Total,
-						mySells[i]->PaidMode
+						mySells[i]->PaidMode,
+						Estado
 				});
 
 			}
@@ -954,20 +984,45 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 	private: System::Void btLookFor2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Sale^ sale = gcnew Sale();
 		sale = Controller::QuerySaleById(Convert::ToInt32(txtSaleId->Text));  ////??????????? (int)
+		String^ Estado;
 		if (sale != nullptr) {
+			dgvSells->Rows->Clear();
 			sale->Customer = (Customer^)Controller::QueryUserById(sale->Customer->Id);              //??????????????????
 
 			if (sale->StoreManager->Id != 0) sale->StoreManager = (StoreManager^)Controller::QueryUserById(sale->StoreManager->Id);
 			else sale->StoreManager->Name = "Asistente Virtual";
 
-			dgvSells->Rows->Clear();
+			switch (sale->Status)
+			{
+			case 'A': Estado = "REGISTRADO";
+				break;
+			case 'B': Estado = "ENVIADO";
+				break;
+			case 'C': Estado = "ENTREGADO";
+				break;
+			case 'D': Estado = "PRESENTA RECLAMO";
+				break;
+			case 'E': Estado = "REEMBOLSADO";
+				break;
+			case 'F': Estado = "NO PROCEDE RECLAMO";
+				break;
+			case 'G': Estado = "CANCELADO";
+				break;
+			case 'H': Estado = "ELIMINADO";
+				break;
+			default:
+				break;
+			}
+
+			
 			dgvSells->Rows->Add(gcnew array<String^>{
 				"" + sale->Id,
 					sale->SaleDate,
 					sale->Customer->Name,
 					sale->StoreManager->Name,
 					"" + sale->Total,
-					sale->PaidMode
+					sale->PaidMode,
+					Estado
 			});
 		}
 		else {
