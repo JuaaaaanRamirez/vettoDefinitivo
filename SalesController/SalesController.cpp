@@ -571,6 +571,7 @@ List<Sale^>^ SalesController::Controller::LastMonthSalesList()
 
     //saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
     saleList = Persistance::QueryAllSales();
+
     List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
 
     for (int i = 0; i < saleList->Count; i++) {
