@@ -245,7 +245,7 @@ namespace SalesView {
 			//Búsqueda de producto por el código ingresado por el usuario
 			//Customer^ p = (Customer^)Controller::QueryUserById(Convert::ToInt32(txtId->Text->Trim())); 
 			Customer^ p = Controller::QueryCustomerById(Convert::ToInt32(txtId->Text->Trim()));
-
+			if (p->Id == 0) { MessageBox::Show("No existe cliente con ese Id."); return; }
 			myList->Add(p);
 		}
 		 else if(txtName->Text->Trim() != "") {
