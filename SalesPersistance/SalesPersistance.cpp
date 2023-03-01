@@ -2057,7 +2057,7 @@ List<Customer^>^ SalesPersistance::Persistance::QueryCustomerByNameOrByLastName(
         /* Paso 2: Preparar la sentencia */
         comm = gcnew SqlCommand("usp_QueryCustomerByNameOrByLastName", conn);
         comm->CommandType = System::Data::CommandType::StoredProcedure;
-        comm->Parameters->Add("@name", System::Data::SqlDbType::Int);
+        comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar,100);
 
         comm->Prepare();
         comm->Parameters["@name"]->Value = name;
@@ -2144,7 +2144,7 @@ Customer^ SalesPersistance::Persistance::QueryCustomerById(int customerId)
     SqlCommand^ comm;
     SqlDataReader^ reader;
     //List<Customer^>^ custoemerList = gcnew List<Customer^>();
-    Customer^ customer = gcnew Customer();
+    Customer^ customer;
     try {
         /* Paso 1: Obtener la conexión */
         conn = GetConnection();

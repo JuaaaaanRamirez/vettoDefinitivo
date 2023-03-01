@@ -268,6 +268,7 @@ namespace SalesView {
 		 else {
 			myList = Controller::QueryAllCustomer();
 		}
+		
 		PutData(myList);
 }
 private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
