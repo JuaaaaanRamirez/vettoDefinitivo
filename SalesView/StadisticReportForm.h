@@ -892,11 +892,12 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 					break;
 				case 'G': Estado = "CANCELADO";
 					break;
-
+				case 'H': Estado = "ELIMINADO";
+					break;
 				default:
 					break;
 				}
-				mySells[i]->Customer = (Customer^) Controller::QueryUserById(mySells[i]->Customer->Id);              //??????????????????
+				mySells[i]->Customer = (Customer^) Controller::QueryUserById(mySells[i]->Customer->Id);     
 				if (mySells[i]->StoreManager->Id != 0) mySells[i]->StoreManager = (StoreManager^)Controller::QueryUserById(mySells[i]->StoreManager->Id);
 				else mySells[i]->StoreManager->Name = "Asistente Virtual";
 
@@ -954,6 +955,11 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 		Sale^ sale = gcnew Sale();
 		sale = Controller::QuerySaleById(Convert::ToInt32(txtSaleId->Text));  ////??????????? (int)
 		if (sale != nullptr) {
+			sale->Customer = (Customer^)Controller::QueryUserById(sale->Customer->Id);              //??????????????????
+
+			if (sale->StoreManager->Id != 0) sale->StoreManager = (StoreManager^)Controller::QueryUserById(sale->StoreManager->Id);
+			else sale->StoreManager->Name = "Asistente Virtual";
+
 			dgvSells->Rows->Clear();
 			dgvSells->Rows->Add(gcnew array<String^>{
 				"" + sale->Id,

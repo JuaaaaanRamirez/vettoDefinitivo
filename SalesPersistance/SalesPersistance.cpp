@@ -794,6 +794,7 @@ Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
             myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
+
             
 
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
