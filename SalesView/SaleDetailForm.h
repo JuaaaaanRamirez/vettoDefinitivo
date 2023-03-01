@@ -550,10 +550,7 @@ namespace SalesView {
 			ShowData(); ShowShoppingCart();
 		}
 	}
-private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	/*Sale^ mySale = Controller::QuerySaleById(saleId);
-	if (txtUserName->Text == ""|| mySale->SaleDetails->Count == 0) Controller::DeleteSale(saleId);*/
-}
+private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (dgvSaleDetail->SelectedCells->Count == 1) {
 		if (dgvSaleDetail->SelectedCells[0]->Value->ToString()->Trim() != "") {
