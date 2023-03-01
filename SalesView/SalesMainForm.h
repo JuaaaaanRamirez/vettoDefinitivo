@@ -1497,6 +1497,7 @@ public:
 			}
 		}
 		void GoSale() {
+			SaleDetailForm::paid = false;
 			Sale^ mysale = gcnew Sale();
 			// Add Customer
 			mysale->Customer = (Customer^)Controller::QueryUserById(15);

@@ -307,7 +307,7 @@ namespace SalesView {
 	}
 	//private: System::Void dgvProducts_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 	private: System::Void ProductSearchForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowProducts();
+		//ShowProducts();
 	}
 	private: System::Void dgvProducts_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
