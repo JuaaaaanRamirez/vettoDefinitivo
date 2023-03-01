@@ -469,7 +469,7 @@ namespace SalesView {
 
 			// Sale
 			Sale^ mySale = Controller::QuerySaleById(saleId);
-			if (mySale->StoreManager->Id == 0) btnLookForCustomer->Visible = false;
+			if (mySale->StoreManager->Id==0) btnLookForCustomer->Visible = false;
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
 			if (mySale->Customer != nullptr) txtUserName->Text = "" + mySale->Customer->Username;
