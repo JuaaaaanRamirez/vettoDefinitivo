@@ -917,7 +917,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 		//mySells[i]->Customer->Name,
 			//mySells[i]->StoreManager->Name,
 	private: System::Void StadisticReportForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowSells();
+		//ShowSells();
 		RefreshReportToday();
 		RefreshReportLastWeek();
 		RefreshReportLastMonth();
