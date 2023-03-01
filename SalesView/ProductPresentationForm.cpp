@@ -14,6 +14,8 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	//Product^ p = Controller::QueryProductById(productId);
 	Product^ p = Controller::QueryProductById(SalesMainForm::product->Id);
 	// Put on Data
+	txtPriceMin->Text = "" + p->PriceMin;
+	txtPriceMaj->Text = "" + p->PriceMaj;
 	txtId->Text = "" + p->Id;
 	txtProductName->Text = "" + p->Name;
 	txtStock->Text = "" + p->Stock;

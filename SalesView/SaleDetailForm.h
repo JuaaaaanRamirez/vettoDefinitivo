@@ -576,12 +576,16 @@ private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, Sys
 		Sale^ currentSale = Controller::QuerySaleById(saleId);
 		if (Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) > currentSale->SaleDetails[e->RowIndex]->Product->Stock) MessageBox::Show("Stock superado");
 		else {
+			if (Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) >= 6) {
+				currentSale->SaleDetails[e->RowIndex]->UnitPrice = currentSale->SaleDetails[e->RowIndex]->Product->PriceMaj;
+			}
+			else currentSale->SaleDetails[e->RowIndex]->UnitPrice = currentSale->SaleDetails[e->RowIndex]->Product->PriceMin;
 			dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
 				Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
-				Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+				currentSale->SaleDetails[e->RowIndex]->UnitPrice;
 			// Update Sale
 			currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
-			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *currentSale->SaleDetails[e->RowIndex]->UnitPrice;;
 			Controller::UpdateSaleDetail(currentSale->SaleDetails[e->RowIndex], currentSale->Id);
 		}
 		ShowData();
