@@ -6,6 +6,7 @@
 System::Void SalesView::NewCustomerForm::NewCustomerForm_Load(System::Object^ sender, System::EventArgs^ e)
 {
 	SalesMainForm::MenuVisibility = false;
+	pbCustomer->Image = nullptr;
 	if (SalesMainForm::person==nullptr) {
 		((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
 		
@@ -18,10 +19,12 @@ System::Void SalesView::NewCustomerForm::NewCustomerForm_Load(System::Object^ se
 		dtpBirthday->Enabled = true;
 		txtUsername->ReadOnly = false;
 		btnRegister->Text = "Registrar";
+		btnPhoto->Text = "Seleccionar imagen";
 	}
 	else {
 		((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
 		label12->Text = L"Actualidar datos de usuarios";
+		//btnPhoto->Text = "Modificar imagen";
 		
 		Person^ person = Controller::QueryUserById(SalesMainForm::person->Id);
 
@@ -151,4 +154,15 @@ System::Void SalesView::NewCustomerForm::btnBack_Click(System::Object^ sender, S
 	SalesMainForm::MenuVisibility = false;
 	((SalesMainForm^)refForm)->SalesMainForm::gbMenuLogin->Visible = false;
 	((SalesMainForm^)refForm)->SalesMainForm::gbMenuCustomer->Visible = false;
+}
+
+System::Void SalesView::NewCustomerForm::btnPhoto_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	OpenFileDialog^ opnfd = gcnew OpenFileDialog();
+	opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+	if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
+
+	System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(SalesMainForm::person->Photo);
+	((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
+	//SalesMainForm::instance->gbMenuLogin->BackgroundImage = Image::FromStream(ms);
 }
