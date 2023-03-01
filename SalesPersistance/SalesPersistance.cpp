@@ -872,7 +872,8 @@ List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
 
             // Relation
             Customer^ myCustomer = gcnew Customer(); StoreManager^ mySM = gcnew StoreManager();
-            myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); mySM->Id= Convert::ToInt32(reader["storemanager_id"]->ToString());
+            if (!DBNull::Value->Equals(reader["customer_id"])) myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); 
+            mySM->Id= Convert::ToInt32(reader["storemanager_id"]->ToString());
             
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
@@ -922,7 +923,8 @@ int SalesPersistance::Persistance::UpdateSale(Sale^ sale)
         comm->Parameters["@reference"]->Value = sale->Reference;
         comm->Parameters["@paidmode"]->Value = sale->PaidMode;
         comm->Parameters["@saledate"]->Value = sale->SaleDate;
-        comm->Parameters["@customer_id"]->Value = sale->Customer->Id;
+        if (sale->Customer != nullptr) comm->Parameters["@customer_id"]->Value = sale->Customer->Id;
+        else comm->Parameters["@customer_id"]->Value = DBNull::Value;
         comm->Parameters["@storemanager_id"]->Value = sale->StoreManager->Id;
 
 
