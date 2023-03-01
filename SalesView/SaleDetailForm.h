@@ -543,7 +543,7 @@ namespace SalesView {
 	}
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 		Sale^ thisSale = Controller::QuerySaleById(saleId);
-		if (thisSale->StoreManager->Profile=='S') Close();
+		if (thisSale->StoreManager->Id==0) Close();
 		else {
 			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
 			mySearch->ShowDialog();
