@@ -103,6 +103,7 @@ namespace SalesView {
 			});
 			this->dgvCustomers->Location = System::Drawing::Point(12, 98);
 			this->dgvCustomers->Name = L"dgvCustomers";
+			this->dgvCustomers->ReadOnly = true;
 			this->dgvCustomers->RowHeadersWidth = 51;
 			this->dgvCustomers->Size = System::Drawing::Size(423, 220);
 			this->dgvCustomers->TabIndex = 13;
@@ -113,6 +114,7 @@ namespace SalesView {
 			this->Id->HeaderText = L"Id";
 			this->Id->MinimumWidth = 6;
 			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
 			this->Id->Width = 30;
 			// 
 			// User
@@ -120,6 +122,7 @@ namespace SalesView {
 			this->User->HeaderText = L"Usuario";
 			this->User->MinimumWidth = 6;
 			this->User->Name = L"User";
+			this->User->ReadOnly = true;
 			this->User->Width = 200;
 			// 
 			// Points
@@ -127,6 +130,7 @@ namespace SalesView {
 			this->Points->HeaderText = L"Puntos";
 			this->Points->MinimumWidth = 6;
 			this->Points->Name = L"Points";
+			this->Points->ReadOnly = true;
 			this->Points->Width = 40;
 			// 
 			// PhoneNumber
@@ -134,6 +138,7 @@ namespace SalesView {
 			this->PhoneNumber->HeaderText = L"Teléfono";
 			this->PhoneNumber->MinimumWidth = 6;
 			this->PhoneNumber->Name = L"PhoneNumber";
+			this->PhoneNumber->ReadOnly = true;
 			this->PhoneNumber->Width = 40;
 			// 
 			// btnCancel
