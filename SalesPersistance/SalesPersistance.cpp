@@ -2057,7 +2057,7 @@ List<Customer^>^ SalesPersistance::Persistance::QueryCustomerByNameOrByLastName(
         /* Paso 2: Preparar la sentencia */
         comm = gcnew SqlCommand("usp_QueryCustomerByNameOrByLastName", conn);
         comm->CommandType = System::Data::CommandType::StoredProcedure;
-        comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar,100);
+        comm->Parameters->Add("@name", System::Data::SqlDbType::VarChar,50);
 
         comm->Prepare();
         comm->Parameters["@name"]->Value = name;
