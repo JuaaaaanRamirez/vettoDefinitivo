@@ -383,9 +383,9 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// btToShow
 			// 
-			this->btToShow->Location = System::Drawing::Point(600, 26);
+			this->btToShow->Location = System::Drawing::Point(407, 59);
 			this->btToShow->Name = L"btToShow";
-			this->btToShow->Size = System::Drawing::Size(88, 47);
+			this->btToShow->Size = System::Drawing::Size(88, 22);
 			this->btToShow->TabIndex = 16;
 			this->btToShow->Text = L"Mostrar";
 			this->btToShow->UseVisualStyleBackColor = true;

@@ -32,6 +32,13 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ label1;
 	public:
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ lbPriceMin;
+	private: System::Windows::Forms::Label^ txtPriceMin;
+	private: System::Windows::Forms::Label^ lbPriceMaj;
+	private: System::Windows::Forms::Label^ txtPriceMaj;
+
+
+
 
 	public:
 	private: System::Windows::Forms::Label^ lbStock;
@@ -176,6 +183,10 @@ namespace SalesView {
 			this->lbStock = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->lbPriceMin = (gcnew System::Windows::Forms::Label());
+			this->txtPriceMin = (gcnew System::Windows::Forms::Label());
+			this->lbPriceMaj = (gcnew System::Windows::Forms::Label());
+			this->txtPriceMaj = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbSellers))->BeginInit();
@@ -404,6 +415,49 @@ namespace SalesView {
 			this->label2->TabIndex = 25;
 			this->label2->Text = L"busquedas";
 			// 
+			// lbPriceMin
+			// 
+			this->lbPriceMin->AutoSize = true;
+			this->lbPriceMin->Location = System::Drawing::Point(20, 310);
+			this->lbPriceMin->Name = L"lbPriceMin";
+			this->lbPriceMin->Size = System::Drawing::Size(76, 16);
+			this->lbPriceMin->TabIndex = 26;
+			this->lbPriceMin->Text = L"Precio Min.:";
+			this->lbPriceMin->Click += gcnew System::EventHandler(this, &ProductPresentationForm::label3_Click);
+			// 
+			// txtPriceMin
+			// 
+			this->txtPriceMin->AutoSize = true;
+			this->txtPriceMin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtPriceMin->Location = System::Drawing::Point(20, 335);
+			this->txtPriceMin->Name = L"txtPriceMin";
+			this->txtPriceMin->Size = System::Drawing::Size(27, 29);
+			this->txtPriceMin->TabIndex = 27;
+			this->txtPriceMin->Text = L"0";
+			this->txtPriceMin->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// lbPriceMaj
+			// 
+			this->lbPriceMaj->AutoSize = true;
+			this->lbPriceMaj->Location = System::Drawing::Point(140, 310);
+			this->lbPriceMaj->Name = L"lbPriceMaj";
+			this->lbPriceMaj->Size = System::Drawing::Size(81, 16);
+			this->lbPriceMaj->TabIndex = 28;
+			this->lbPriceMaj->Text = L"Precio May.:";
+			// 
+			// txtPriceMaj
+			// 
+			this->txtPriceMaj->AutoSize = true;
+			this->txtPriceMaj->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtPriceMaj->Location = System::Drawing::Point(140, 335);
+			this->txtPriceMaj->Name = L"txtPriceMaj";
+			this->txtPriceMaj->Size = System::Drawing::Size(27, 29);
+			this->txtPriceMaj->TabIndex = 29;
+			this->txtPriceMaj->Text = L"0";
+			this->txtPriceMaj->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// ProductPresentationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -411,6 +465,10 @@ namespace SalesView {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->ClientSize = System::Drawing::Size(740, 393);
+			this->Controls->Add(this->txtPriceMaj);
+			this->Controls->Add(this->lbPriceMaj);
+			this->Controls->Add(this->txtPriceMin);
+			this->Controls->Add(this->lbPriceMin);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->lbStock);
@@ -528,6 +586,8 @@ namespace SalesView {
 	}
 	private: System::Void Wishbtn_Click(System::Object^ sender, System::EventArgs^ e);
 
-	};
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
 

@@ -18,7 +18,7 @@ namespace SalesView {
 	/// </summary>
 	public ref class SaleDetailForm : public System::Windows::Forms::Form
 	{
-		int saleId;
+	public:	static int saleId;
 
 	public:
 
@@ -550,10 +550,7 @@ namespace SalesView {
 			ShowData(); ShowShoppingCart();
 		}
 	}
-private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	/*Sale^ mySale = Controller::QuerySaleById(saleId);
-	if (txtUserName->Text == ""|| mySale->SaleDetails->Count == 0) Controller::DeleteSale(saleId);*/
-}
+private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (dgvSaleDetail->SelectedCells->Count == 1) {
 		if (dgvSaleDetail->SelectedCells[0]->Value->ToString()->Trim() != "") {
@@ -576,12 +573,16 @@ private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, Sys
 		Sale^ currentSale = Controller::QuerySaleById(saleId);
 		if (Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) > currentSale->SaleDetails[e->RowIndex]->Product->Stock) MessageBox::Show("Stock superado");
 		else {
+			if (Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) >= 6) {
+				currentSale->SaleDetails[e->RowIndex]->UnitPrice = currentSale->SaleDetails[e->RowIndex]->Product->PriceMaj;
+			}
+			else currentSale->SaleDetails[e->RowIndex]->UnitPrice = currentSale->SaleDetails[e->RowIndex]->Product->PriceMin;
 			dgvSaleDetail->Rows[e->RowIndex]->Cells[4]->Value =
 				Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *
-				Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+				currentSale->SaleDetails[e->RowIndex]->UnitPrice;
 			// Update Sale
 			currentSale->SaleDetails[e->RowIndex]->Quantity = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString());
-			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) * Double::Parse(dgvSaleDetail->Rows[e->RowIndex]->Cells[2]->Value->ToString());
+			currentSale->SaleDetails[e->RowIndex]->SubTotal = Int32::Parse(dgvSaleDetail->CurrentCell->Value->ToString()) *currentSale->SaleDetails[e->RowIndex]->UnitPrice;;
 			Controller::UpdateSaleDetail(currentSale->SaleDetails[e->RowIndex], currentSale->Id);
 		}
 		ShowData();

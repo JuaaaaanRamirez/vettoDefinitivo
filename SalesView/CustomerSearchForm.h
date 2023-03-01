@@ -103,6 +103,7 @@ namespace SalesView {
 			});
 			this->dgvCustomers->Location = System::Drawing::Point(12, 98);
 			this->dgvCustomers->Name = L"dgvCustomers";
+			this->dgvCustomers->ReadOnly = true;
 			this->dgvCustomers->RowHeadersWidth = 51;
 			this->dgvCustomers->Size = System::Drawing::Size(423, 220);
 			this->dgvCustomers->TabIndex = 13;
@@ -113,6 +114,7 @@ namespace SalesView {
 			this->Id->HeaderText = L"Id";
 			this->Id->MinimumWidth = 6;
 			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
 			this->Id->Width = 30;
 			// 
 			// User
@@ -120,6 +122,7 @@ namespace SalesView {
 			this->User->HeaderText = L"Usuario";
 			this->User->MinimumWidth = 6;
 			this->User->Name = L"User";
+			this->User->ReadOnly = true;
 			this->User->Width = 200;
 			// 
 			// Points
@@ -127,6 +130,7 @@ namespace SalesView {
 			this->Points->HeaderText = L"Puntos";
 			this->Points->MinimumWidth = 6;
 			this->Points->Name = L"Points";
+			this->Points->ReadOnly = true;
 			this->Points->Width = 40;
 			// 
 			// PhoneNumber
@@ -134,6 +138,7 @@ namespace SalesView {
 			this->PhoneNumber->HeaderText = L"Teléfono";
 			this->PhoneNumber->MinimumWidth = 6;
 			this->PhoneNumber->Name = L"PhoneNumber";
+			this->PhoneNumber->ReadOnly = true;
 			this->PhoneNumber->Width = 40;
 			// 
 			// btnCancel
@@ -245,7 +250,7 @@ namespace SalesView {
 			//Búsqueda de producto por el código ingresado por el usuario
 			//Customer^ p = (Customer^)Controller::QueryUserById(Convert::ToInt32(txtId->Text->Trim())); 
 			Customer^ p = Controller::QueryCustomerById(Convert::ToInt32(txtId->Text->Trim()));
-			if (p->Id == 0) { MessageBox::Show("No existe cliente con ese Id."); return; }
+			if (p==nullptr) { MessageBox::Show("No existe cliente con ese Id."); return; }
 			myList->Add(p);
 		}
 		 else if(txtName->Text->Trim() != "") {
@@ -277,6 +282,7 @@ private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^
 private: System::Void dgvCustomers_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	if (e->RowIndex < 0) return;
 	if (e->RowIndex >= 0) {
+		if (dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value==nullptr) return;
 		Sale^ mySale = Controller::QueryLastSale();
 		String^ customerId = dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value->ToString(); Customer^ p = (Customer^)Controller::QueryUserById(Int32::Parse(customerId));
 		mySale->Customer = p;

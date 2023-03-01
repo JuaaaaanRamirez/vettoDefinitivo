@@ -1493,12 +1493,11 @@ public:
 			// Have you paid?
 			if (!SaleDetailForm::mySaleDetail->paid) {
 				Controller::DeleteSale(ProductPresentationForm::saleId);
+				SaleDetailForm::mySaleDetail->paid = true;
 			}
 		}
 		void GoSale() {
-			// Reload
-			//List<Sale^>^ mysaleList = Controller::QueryAllSales(); // Really necesary
-			// New sale
+			SaleDetailForm::paid = false;
 			Sale^ mysale = gcnew Sale();
 			// Add Customer
 			mysale->Customer = (Customer^)Controller::QueryUserById(15);
