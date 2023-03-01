@@ -162,7 +162,7 @@ CREATE PROCEDURE dbo.usp_DeleteSale(
 ) AS
 	BEGIN
 		UPDATE SALE
-		SET status='H'
+		SET status='G'
 		WHERE id=@id
 	END
 GO

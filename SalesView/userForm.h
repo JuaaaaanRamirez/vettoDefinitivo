@@ -796,7 +796,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Announcerbx->Controls->Add(this->Companylb);
 			this->Announcerbx->Location = System::Drawing::Point(21, 300);
 			this->Announcerbx->Name = L"Announcerbx";
-			this->Announcerbx->Size = System::Drawing::Size(401, 187);
+			this->Announcerbx->Size = System::Drawing::Size(401, 177);
 			this->Announcerbx->TabIndex = 27;
 			this->Announcerbx->TabStop = false;
 			this->Announcerbx->Visible = false;
@@ -804,9 +804,11 @@ private: System::Windows::Forms::Button^ btnClean;
 			// AdsImage
 			// 
 			this->AdsImage->BackColor = System::Drawing::Color::White;
+			this->AdsImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->AdsImage->Location = System::Drawing::Point(75, 71);
 			this->AdsImage->Name = L"AdsImage";
-			this->AdsImage->Size = System::Drawing::Size(211, 110);
+			this->AdsImage->Size = System::Drawing::Size(210, 100);
+			this->AdsImage->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->AdsImage->TabIndex = 5;
 			this->AdsImage->TabStop = false;
 			// 
@@ -1361,12 +1363,12 @@ private: System::Windows::Forms::Button^ btnClean;
 		// Profile Announcer +110+27=+137
 		if (rbtnAnnouncer->Checked) {
 			// Change Size (X,Y+137)
-			this->ClientSize = System::Drawing::Size(680 - 18, 680 - 47 + 137);
+			this->ClientSize = System::Drawing::Size(680 - 18, 702 - 47 + 137);
 			// Move Elemets
-			this->AddUser->Location = System::Drawing::Point(86, 324 + 137);
-			this->UpdateUser->Location = System::Drawing::Point(234, 324 + 137);
-			this->DeleteUser->Location = System::Drawing::Point(390, 324 + 137);
-			this->dgvCustomer->Location = System::Drawing::Point(24, 370 + 137);
+			this->AddUser->Location = System::Drawing::Point(86, 346 + 137);
+			this->UpdateUser->Location = System::Drawing::Point(234, 346 + 137);
+			this->DeleteUser->Location = System::Drawing::Point(390, 346 + 137);
+			this->dgvCustomer->Location = System::Drawing::Point(24, 392 + 137);
 
 			// Add Direction
 			Announcerbx->Visible = true;
