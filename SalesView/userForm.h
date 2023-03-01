@@ -20,6 +20,8 @@ namespace SalesView {
 	private:
 		Thread^ myThread;
 	public:
+		bool isSC;
+	public:
 		UserForm(bool isSellerCompany)
 		{
 			
@@ -32,6 +34,7 @@ namespace SalesView {
 			//
 			if (isSellerCompany) rbtnStoreManager->Enabled = true;
 			else rbtnStoreManager->Enabled = false;
+			isSC = isSellerCompany;
 			
 		}
 		/*
@@ -804,6 +807,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			// AdsImage
 			// 
 			this->AdsImage->BackColor = System::Drawing::Color::White;
+			this->AdsImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->AdsImage->Location = System::Drawing::Point(75, 71);
 			this->AdsImage->Name = L"AdsImage";
 			this->AdsImage->Size = System::Drawing::Size(211, 110);
@@ -915,16 +919,33 @@ private: System::Windows::Forms::Button^ btnClean;
 		   void ShowUsers() {
 			   List<Person^>^ myPersonList = Controller::QueryAllUsers();		// Make List
 			   dgvCustomer->Rows->Clear();										// Clear Dgv
-
-			   for (int i = 0; i < myPersonList->Count; i++) {					// Look for!
-				   dgvCustomer->Rows->Add(gcnew array<String^>{
-					   "" + myPersonList[i]->Id,
-						   "" + myPersonList[i]->Name,
-						   "" + myPersonList[i]->LastName,
-						   "" + myPersonList[i]->Email,
-						   "" + myPersonList[i]->PhoneNumber
-				   });
+			   if (isSC) {
+				   for (int i = 0; i < myPersonList->Count; i++) {					// Look for!
+					   if (myPersonList[i]->Id != 15) {
+						   dgvCustomer->Rows->Add(gcnew array<String^>{
+							   "" + myPersonList[i]->Id,
+								   "" + myPersonList[i]->Name,
+								   "" + myPersonList[i]->LastName,
+								   "" + myPersonList[i]->Email,
+								   "" + myPersonList[i]->PhoneNumber
+						   });
+					   }
+				   }
 			   }
+			   else {
+				   for (int i = 0; i < myPersonList->Count; i++) {					// Look for!
+					   if (myPersonList[i]->Id != 15 && (myPersonList[i]->GetType()!=StoreManager::typeid)) {
+						   dgvCustomer->Rows->Add(gcnew array<String^>{
+							   "" + myPersonList[i]->Id,
+								   "" + myPersonList[i]->Name,
+								   "" + myPersonList[i]->LastName,
+								   "" + myPersonList[i]->Email,
+								   "" + myPersonList[i]->PhoneNumber
+						   });
+					   }
+				   }
+			   }
+			   
 			   //PRUEBA DEL BUSCADOR DE PERSON POR ID
 			/*
 			   Person^ user = gcnew Person();
