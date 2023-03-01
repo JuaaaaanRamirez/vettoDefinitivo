@@ -797,6 +797,7 @@ Sale^ SalesPersistance::Persistance::QuerySaleById(int saleId)
                 mySale->Customer = myCustomer; 
             }
             StoreManager^ mySM = gcnew StoreManager(); mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString());
+            if (mySM->Id == 0) { mySM->Name = "Asistente Virtual"; mySM->Username = "Asistente Virtual"; }
             mySale->StoreManager = mySM;
             //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
             //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
@@ -817,7 +818,7 @@ Sale^ SalesPersistance::Persistance::QueryLastSale()
     Sale^ activeSale;
     try {
         conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QueryLastSale", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
-        comm->Prepare();
+        comm->Prepare(); 
 
         // Read!
         reader = comm->ExecuteReader();
@@ -850,6 +851,51 @@ Sale^ SalesPersistance::Persistance::QueryLastSale()
     }
     return activeSale;
 }
+List<Sale^>^ SalesPersistance::Persistance::QuerySaleByCustomerId(int customerId)
+{
+    SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
+    List<Sale^>^ activeSaleList = gcnew List<Sale^>();
+    try {
+        conn = GetConnection(); comm = gcnew SqlCommand("dbo.usp_QuerySaleByCustomerId", conn); comm->CommandType = System::Data::CommandType::StoredProcedure;
+        comm->Parameters->Add("@customer_id", System::Data::SqlDbType::Int); comm->Prepare();   
+        comm->Parameters["@customer_id"]->Value = customerId; reader = comm->ExecuteReader();
+
+        // Read
+        while (reader->Read()) {
+            Sale^ mySale = gcnew Sale();
+
+            mySale->Id = Convert::ToInt32(reader["id"]->ToString());
+            mySale->Status = reader["status"]->ToString()[0];
+            mySale->Total = Convert::ToDouble(reader["total"]->ToString());
+            mySale->Address = reader["address"]->ToString();
+            mySale->Reference = reader["reference"]->ToString();
+            mySale->PaidMode = reader["paidmode"]->ToString();
+            mySale->SaleDate = reader["saledate"]->ToString();
+
+            // Relation
+            Customer^ myCustomer = gcnew Customer(); StoreManager^ mySM = gcnew StoreManager();
+            if (!DBNull::Value->Equals(reader["customer_id"])) myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString());
+            mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString()); if (mySM->Id == 0) { mySM->Name = "Asistente Virtual"; mySM->Username = "Asistente Virtual"; }
+
+            mySale->Customer = myCustomer; mySale->StoreManager = mySM;
+
+
+            // GetSaleDetail
+            mySale->SaleDetails = QuerySalesDetailsBySaleId(mySale->Id);
+
+            //if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];
+            //if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
+            activeSaleList->Add(mySale);
+        }
+    }
+    catch (Exception^ ex) { throw ex; }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activeSaleList;
+}
 List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
 {
     SqlConnection^ conn;    SqlCommand^ comm;   SqlDataReader^ reader;
@@ -873,7 +919,7 @@ List<Sale^>^ SalesPersistance::Persistance::QueryAllSales()
             // Relation
             Customer^ myCustomer = gcnew Customer(); StoreManager^ mySM = gcnew StoreManager();
             if (!DBNull::Value->Equals(reader["customer_id"])) myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString()); 
-            mySM->Id= Convert::ToInt32(reader["storemanager_id"]->ToString());
+            mySM->Id= Convert::ToInt32(reader["storemanager_id"]->ToString()); if (mySM->Id == 0) { mySM->Name = "Asistente Virtual"; mySM->Username = "Asistente Virtual"; }
             
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 

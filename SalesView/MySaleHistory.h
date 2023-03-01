@@ -188,6 +188,7 @@ namespace SalesView {
 
 		}
 #pragma endregion
+		void ShowData();
 	private: System::Void MySaleHistory_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void dgvMyShopping_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };

@@ -204,6 +204,7 @@ namespace SalesView {
 			});
 			this->dgvSaleDetail->Location = System::Drawing::Point(10, 220);
 			this->dgvSaleDetail->Name = L"dgvSaleDetail";
+			this->dgvSaleDetail->ReadOnly = true;
 			this->dgvSaleDetail->RowHeadersWidth = 51;
 			this->dgvSaleDetail->RowTemplate->Height = 24;
 			this->dgvSaleDetail->Size = System::Drawing::Size(939, 150);
@@ -238,6 +239,7 @@ namespace SalesView {
 			this->Cantidad->HeaderText = L"Cantidad";
 			this->Cantidad->MinimumWidth = 6;
 			this->Cantidad->Name = L"Cantidad";
+			this->Cantidad->ReadOnly = true;
 			this->Cantidad->Width = 125;
 			// 
 			// SubTotal

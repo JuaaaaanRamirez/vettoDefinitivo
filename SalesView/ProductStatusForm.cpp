@@ -27,7 +27,7 @@ System::Void SalesView::ProductStatusForm::btnCancel_Click(System::Object^ sende
 	Sale^ newSale = Controller::QuerySaleById(saleId);
 	if (SalesMainForm::person->Profile == 'S') {
 		newSale->Status = 'G'; Controller::UpdateSale(newSale);
-		MessageBox::Show("Lamentamos los incidentes que tuviese");
+		MessageBox::Show("Lamentamos los problemas que haya tenido");
 		ShowData();
 		ShowShoppingCart();
 	}

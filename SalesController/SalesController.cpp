@@ -393,6 +393,10 @@ Sale^ SalesController::Controller::QuerySaleById(int saleId)
     if (mySale->StoreManager->Id!=0) mySale->StoreManager = (StoreManager^)QueryUserById(mySale->StoreManager->Id);   //??????????????????
     return mySale;
 }
+List<Sale^>^ SalesController::Controller::QuerySaleByCustomerId(int customerId)
+{
+    return Persistance::QuerySaleByCustomerId(customerId);
+}
 Sale^ SalesController::Controller::QueryLastSale()
 {
     /*saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
@@ -407,7 +411,6 @@ List<Sale^>^ SalesController::Controller::QueryAllSales()
     /*saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
     return saleList;*/
     List<Sale^>^ listSales = Persistance::QueryAllSales();
-
     return listSales;
 }
 int SalesController::Controller::UpdateSale(Sale^ sale)

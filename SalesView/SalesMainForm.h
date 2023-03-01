@@ -72,6 +72,7 @@ namespace SalesView {
 		static SalesMainForm^ instance;		// Easy data
 		static Person^ person; //Variable de clase
 		static Product^ product;
+		static int saleId;
 	public: System::Windows::Forms::GroupBox^ gbMenuStoreManager;
 	private: System::Windows::Forms::Button^ btnReportSales;
 	public:
@@ -1491,8 +1492,7 @@ public:
 
 			// Have you paid?
 			if (!SaleDetailForm::mySaleDetail->paid) {
-				Sale^ mySale = Controller::QueryLastSale();
-				Controller::DeleteSale(mySale->Id);
+				Controller::DeleteSale(ProductPresentationForm::saleId);
 			}
 		}
 		void GoSale() {
@@ -1509,7 +1509,7 @@ public:
 			mysale->PaidMode = "Efectivo";
 			mysale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
 			
-			int saleId = Controller::AddSale(mysale); 
+			saleId = Controller::AddSale(mysale); 
 			SaleDetailForm^ mySaleDetail = gcnew SaleDetailForm(saleId); mySaleDetail->ShowDialog();
 		}
 		
@@ -1621,10 +1621,7 @@ public:
 	myWishList->ShowDialog();
 
 }
-    private: System::Void btnShopping_Click(System::Object^ sender, System::EventArgs^ e) {
-	//SaleDetailForm^ saleDetailForm = gcnew SaleDetailForm();
-	//saleDetailForm->ShowDialog();
-}
+	private: System::Void btnShopping_Click(System::Object^ sender, System::EventArgs^ e);
     private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }

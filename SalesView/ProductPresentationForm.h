@@ -447,7 +447,8 @@ namespace SalesView {
 			newSaleDetail->Id = Convert::ToInt32(txtId->Text);
 			newSaleDetail->Product = Controller::QueryProductById(Convert::ToInt32(txtId->Text));
 			newSaleDetail->Quantity = Convert::ToInt32(nudAmount->Text);
-			newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
+			if (Convert::ToInt32(nudAmount->Text->ToString())>=6) newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMaj;
+			else newSaleDetail->UnitPrice = newSaleDetail->Product->PriceMin;
 			newSaleDetail->SubTotal = (newSaleDetail->UnitPrice) * (newSaleDetail->Quantity);
 			return newSaleDetail;
 		}
