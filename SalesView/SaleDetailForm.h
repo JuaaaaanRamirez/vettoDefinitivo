@@ -472,11 +472,11 @@ namespace SalesView {
 			if (mySale->StoreManager->Id == 0) btnLookForCustomer->Visible = false;
 			txtSaleId->Text = "" + mySale->Id;
 			txtDate->Text = "" + mySale->SaleDate; // Today
-			txtUserName->Text = "" + mySale->Customer->Username;
+			if (mySale->Customer != nullptr) txtUserName->Text = "" + mySale->Customer->Username;
 			txtAddress->Text = "" + mySale->Address;
 			cbPaidMode->Text = "" + mySale->PaidMode;
-			// Edit Customer
-			if (mySale->Customer->Username == "") txtUserName->ReadOnly = false;
+			
+			
 
 			//	Reference empty
 		}
