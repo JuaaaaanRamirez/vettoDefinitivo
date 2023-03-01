@@ -245,7 +245,7 @@ namespace SalesView {
 			//Búsqueda de producto por el código ingresado por el usuario
 			//Customer^ p = (Customer^)Controller::QueryUserById(Convert::ToInt32(txtId->Text->Trim())); 
 			Customer^ p = Controller::QueryCustomerById(Convert::ToInt32(txtId->Text->Trim()));
-			if (p->Id == 0) { MessageBox::Show("No existe cliente con ese Id."); return; }
+			if (p==nullptr) { MessageBox::Show("No existe cliente con ese Id."); return; }
 			myList->Add(p);
 		}
 		 else if(txtName->Text->Trim() != "") {
@@ -277,6 +277,7 @@ private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^
 private: System::Void dgvCustomers_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	if (e->RowIndex < 0) return;
 	if (e->RowIndex >= 0) {
+		if (dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value==nullptr) return;
 		Sale^ mySale = Controller::QueryLastSale();
 		String^ customerId = dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value->ToString(); Customer^ p = (Customer^)Controller::QueryUserById(Int32::Parse(customerId));
 		mySale->Customer = p;
