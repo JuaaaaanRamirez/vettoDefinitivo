@@ -236,8 +236,8 @@ namespace SalesView {
 			}
 		}
 	private: System::Void CustomerSearchForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		List<Customer^>^ myList = Controller::QueryAllCustomer();
-		PutData(myList);
+		//List<Customer^>^ myList = Controller::QueryAllCustomer();
+		//PutData(myList);
 	}
 	private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^ e) {
 		List<Customer^>^ myList = gcnew List<Customer^>();
