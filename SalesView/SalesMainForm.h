@@ -1674,10 +1674,7 @@ private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ se
 	GoSale();
 }
 	   // Closinf
-private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	Sale^ mySale = Controller::QueryLastSale();
-	if (mySale->SaleDetails->Count == 0|| mySale->Total==0) Controller::DeleteSale(mySale->Id);
-}
+private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel1->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel1->Text));
