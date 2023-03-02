@@ -136,6 +136,7 @@ System::Void SalesView::NewCustomerForm::btnRegister_Click(System::Object^ sende
 			 
 			pbCustomer->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 			p->Photo = ms->ToArray();
+			((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
 
 		}
 		catch (Exception^ ex) {
@@ -163,6 +164,6 @@ System::Void SalesView::NewCustomerForm::btnPhoto_Click(System::Object^ sender, 
 	if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
 
 	System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(SalesMainForm::person->Photo);
-	((SalesMainForm^)refForm)->SalesMainForm::btnLogin->BackgroundImage = Image::FromStream(ms);
+	//
 	//SalesMainForm::instance->gbMenuLogin->BackgroundImage = Image::FromStream(ms);
 }
