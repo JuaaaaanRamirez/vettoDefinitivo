@@ -617,6 +617,7 @@ namespace SalesView {
 		ShowProducts();
 	}
 	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (txtProductId->Text->Equals("")) { MessageBox::Show("No ha seleccionado algún producto."); return; }
 		int ID = Convert::ToInt32(txtProductId->Text);
 		Controller::DeleteProduct(ID);
 		CleanControls();
