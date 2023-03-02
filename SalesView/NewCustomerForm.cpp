@@ -163,7 +163,7 @@ System::Void SalesView::NewCustomerForm::btnPhoto_Click(System::Object^ sender, 
 	opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
 	if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK) pbCustomer->Image = gcnew Bitmap(opnfd->FileName);
 
-	System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(SalesMainForm::person->Photo);
+	//System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(SalesMainForm::person->Photo);
 	//
 	//SalesMainForm::instance->gbMenuLogin->BackgroundImage = Image::FromStream(ms);
 }
