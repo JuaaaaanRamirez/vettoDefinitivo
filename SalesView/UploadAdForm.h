@@ -130,7 +130,7 @@ namespace SalesView {
 			// 
 			this->AdLb->AutoSize = true;
 			this->AdLb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold));
-			this->AdLb->Location = System::Drawing::Point(120, 105);
+			this->AdLb->Location = System::Drawing::Point(120, 100);
 			this->AdLb->Name = L"AdLb";
 			this->AdLb->Size = System::Drawing::Size(133, 20);
 			this->AdLb->TabIndex = 5;
@@ -139,7 +139,7 @@ namespace SalesView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(32, 27);
+			this->label1->Location = System::Drawing::Point(32, 30);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(69, 16);
 			this->label1->TabIndex = 6;
@@ -148,7 +148,7 @@ namespace SalesView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(34, 69);
+			this->label2->Location = System::Drawing::Point(34, 60);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(78, 16);
 			this->label2->TabIndex = 7;
@@ -158,7 +158,7 @@ namespace SalesView {
 			// 
 			this->txtCompany->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->txtCompany->Location = System::Drawing::Point(123, 29);
+			this->txtCompany->Location = System::Drawing::Point(123, 30);
 			this->txtCompany->Name = L"txtCompany";
 			this->txtCompany->ReadOnly = true;
 			this->txtCompany->Size = System::Drawing::Size(220, 22);
@@ -169,7 +169,7 @@ namespace SalesView {
 			// 
 			this->txtWebSite->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->txtWebSite->Location = System::Drawing::Point(123, 69);
+			this->txtWebSite->Location = System::Drawing::Point(123, 60);
 			this->txtWebSite->Name = L"txtWebSite";
 			this->txtWebSite->ReadOnly = true;
 			this->txtWebSite->Size = System::Drawing::Size(220, 22);
