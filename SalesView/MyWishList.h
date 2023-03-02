@@ -201,7 +201,7 @@ namespace SalesView {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->dgvWishList);
 			this->Name = L"MyWishList";
-			this->Text = L"MyWishList";
+			this->Text = L"Mi lista de deseos";
 			this->Load += gcnew System::EventHandler(this, &MyWishList::MyWishList_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbwishList))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWishList))->EndInit();
