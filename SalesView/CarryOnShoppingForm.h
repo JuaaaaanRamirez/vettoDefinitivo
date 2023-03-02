@@ -69,9 +69,10 @@ namespace SalesView {
 			// 
 			this->lbCont->AutoSize = true;
 			this->lbCont->BackColor = System::Drawing::Color::Transparent;
-			this->lbCont->Location = System::Drawing::Point(12, 9);
+			this->lbCont->Location = System::Drawing::Point(9, 7);
+			this->lbCont->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lbCont->Name = L"lbCont";
-			this->lbCont->Size = System::Drawing::Size(209, 16);
+			this->lbCont->Size = System::Drawing::Size(169, 13);
 			this->lbCont->TabIndex = 0;
 			this->lbCont->Text = L"Se ha añadido el artículo al carrito";
 			// 
@@ -80,17 +81,19 @@ namespace SalesView {
 			this->pbCheck->BackColor = System::Drawing::Color::Transparent;
 			this->pbCheck->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbCheck.BackgroundImage")));
 			this->pbCheck->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pbCheck->Location = System::Drawing::Point(247, 4);
+			this->pbCheck->Location = System::Drawing::Point(185, 3);
+			this->pbCheck->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pbCheck->Name = L"pbCheck";
-			this->pbCheck->Size = System::Drawing::Size(25, 25);
+			this->pbCheck->Size = System::Drawing::Size(19, 20);
 			this->pbCheck->TabIndex = 1;
 			this->pbCheck->TabStop = false;
 			// 
 			// btnCarryOn
 			// 
-			this->btnCarryOn->Location = System::Drawing::Point(50, 35);
+			this->btnCarryOn->Location = System::Drawing::Point(38, 28);
+			this->btnCarryOn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnCarryOn->Name = L"btnCarryOn";
-			this->btnCarryOn->Size = System::Drawing::Size(180, 30);
+			this->btnCarryOn->Size = System::Drawing::Size(135, 24);
 			this->btnCarryOn->TabIndex = 2;
 			this->btnCarryOn->Text = L"Continuar comprando";
 			this->btnCarryOn->UseVisualStyleBackColor = true;
@@ -98,9 +101,10 @@ namespace SalesView {
 			// 
 			// btnWatchaShopping
 			// 
-			this->btnWatchaShopping->Location = System::Drawing::Point(35, 65);
+			this->btnWatchaShopping->Location = System::Drawing::Point(26, 53);
+			this->btnWatchaShopping->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnWatchaShopping->Name = L"btnWatchaShopping";
-			this->btnWatchaShopping->Size = System::Drawing::Size(210, 30);
+			this->btnWatchaShopping->Size = System::Drawing::Size(158, 24);
 			this->btnWatchaShopping->TabIndex = 3;
 			this->btnWatchaShopping->Text = L"Ir al carrito/Pagar";
 			this->btnWatchaShopping->UseVisualStyleBackColor = true;
@@ -108,16 +112,17 @@ namespace SalesView {
 			// 
 			// CarryOnShoppingForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(307, 103);
+			this->ClientSize = System::Drawing::Size(246, 84);
 			this->Controls->Add(this->btnWatchaShopping);
 			this->Controls->Add(this->btnCarryOn);
 			this->Controls->Add(this->pbCheck);
 			this->Controls->Add(this->lbCont);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->MaximizeBox = false;
 			this->Name = L"CarryOnShoppingForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
