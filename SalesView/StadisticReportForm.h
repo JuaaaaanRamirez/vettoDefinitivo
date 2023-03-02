@@ -1015,49 +1015,66 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 	private: System::Void btLookFor2_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (txtSaleId->Text->Equals("")) return;
 		Sale^ sale = gcnew Sale();
-		sale = Controller::QuerySaleById(Convert::ToInt32(txtSaleId->Text));  ////??????????? (int)
-		String^ Estado;
-		if (sale != nullptr) {
-			dgvSells->Rows->Clear();
-			sale->Customer = (Customer^)Controller::QueryUserById(sale->Customer->Id);              //??????????????????
-
-			if (sale->StoreManager->Id != 0) sale->StoreManager = (StoreManager^)Controller::QueryUserById(sale->StoreManager->Id);
-			else sale->StoreManager->Name = "Asistente Virtual";
-
-			switch (sale->Status)
-			{
-			case 'A': Estado = "REGISTRADO";
-				break;
-			case 'B': Estado = "ENVIADO";
-				break;
-			case 'C': Estado = "ENTREGADO";
-				break;
-			case 'D': Estado = "PRESENTA RECLAMO";
-				break;
-			case 'E': Estado = "REEMBOLSADO";
-				break;
-			case 'F': Estado = "NO PROCEDE RECLAMO";
-				break;
-			case 'G': Estado = "CANCELADO";
-				break;
-			default:
-				break;
+		Sale^ saleLast = Controller::QueryLastSale();
+		
+		if (Convert::ToInt32(txtSaleId->Text) <= saleLast->Id) {
+			sale = Controller::QuerySaleById(Convert::ToInt32(txtSaleId->Text));
+			if (sale->Total == 0) {
+				dgvSells->Rows->Clear();
+			MessageBox::Show("No existe venta con el Id ingresado");
+				return;
 			}
-
 			
-			dgvSells->Rows->Add(gcnew array<String^>{
-				"" + sale->Id,
-					sale->SaleDate,
-					sale->Customer->Name,
-					sale->StoreManager->Name,
-					"" + sale->Total,
-					sale->PaidMode,
-					Estado
-			});
+			////??????????? (int)
+			String^ Estado;
+			if (sale != nullptr) {
+				dgvSells->Rows->Clear();
+				sale->Customer = (Customer^)Controller::QueryUserById(sale->Customer->Id);              //??????????????????
+
+				if (sale->StoreManager->Id != 0) sale->StoreManager = (StoreManager^)Controller::QueryUserById(sale->StoreManager->Id);
+				else sale->StoreManager->Name = "Asistente Virtual";
+
+				switch (sale->Status)
+				{
+				case 'A': Estado = "REGISTRADO";
+					break;
+				case 'B': Estado = "ENVIADO";
+					break;
+				case 'C': Estado = "ENTREGADO";
+					break;
+				case 'D': Estado = "PRESENTA RECLAMO";
+					break;
+				case 'E': Estado = "REEMBOLSADO";
+					break;
+				case 'F': Estado = "NO PROCEDE RECLAMO";
+					break;
+				case 'G': Estado = "CANCELADO";
+					break;
+				default:
+					break;
+				}
+
+
+				dgvSells->Rows->Add(gcnew array<String^>{
+					"" + sale->Id,
+						sale->SaleDate,
+						sale->Customer->Name,
+						sale->StoreManager->Name,
+						"" + sale->Total,
+						sale->PaidMode,
+						Estado
+				});
+			}
+			else {
+				MessageBox::Show("No existe venta con el Id ingresado");
+			}
 		}
 		else {
+			dgvSells->Rows->Clear();
 			MessageBox::Show("No existe venta con el Id ingresado");
+			return;
 		}
+		
 
 	}
 	private: System::Void btToShow_Click(System::Object^ sender, System::EventArgs^ e) {
