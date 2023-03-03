@@ -11,6 +11,7 @@ void SalesView::MySaleHistory::ShowData()
 	List<Sale^>^ mySells = Controller::QuerySaleByCustomerId(SalesMainForm::person->Id);
 	dgvMyShopping->Rows->Clear();
 	for (int i = 0; i < mySells->Count; i++) {
+		if (mySells[i]->Total == 0) continue;
 		dgvMyShopping->Rows->Add(gcnew array<String^>{
 			"" + mySells[i]->Id,
 				mySells[i]->SaleDate,

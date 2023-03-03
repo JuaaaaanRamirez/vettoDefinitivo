@@ -911,6 +911,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 
 			dgvSells->Rows->Clear();
 			for (int i = 0; i < mySells->Count; i++) {
+				if (mySells[i]->Total == 0) continue;
 				switch (mySells[i]->Status)
 				{
 				case 'A': Estado = "REGISTRADO";
