@@ -247,7 +247,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(37, 19);
+			this->label1->Location = System::Drawing::Point(40, 20);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(99, 16);
 			this->label1->TabIndex = 0;
@@ -258,7 +258,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(41, 48);
+			this->label2->Location = System::Drawing::Point(40, 50);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(50, 16);
 			this->label2->TabIndex = 1;
@@ -269,7 +269,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(41, 80);
+			this->label3->Location = System::Drawing::Point(40, 90);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(84, 16);
 			this->label3->TabIndex = 2;
@@ -277,14 +277,14 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// dtpSaleDate
 			// 
-			this->dtpSaleDate->Location = System::Drawing::Point(135, 43);
+			this->dtpSaleDate->Location = System::Drawing::Point(135, 50);
 			this->dtpSaleDate->Name = L"dtpSaleDate";
 			this->dtpSaleDate->Size = System::Drawing::Size(200, 22);
 			this->dtpSaleDate->TabIndex = 3;
 			// 
 			// txtSaleId
 			// 
-			this->txtSaleId->Location = System::Drawing::Point(135, 74);
+			this->txtSaleId->Location = System::Drawing::Point(135, 90);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->Size = System::Drawing::Size(100, 22);
 			this->txtSaleId->TabIndex = 4;
@@ -298,7 +298,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 				this->Column1, this->Column2,
 					this->Column3, this->Column6, this->Column4, this->Column5, this->Column10
 			});
-			this->dgvSells->Location = System::Drawing::Point(40, 129);
+			this->dgvSells->Location = System::Drawing::Point(40, 130);
 			this->dgvSells->Name = L"dgvSells";
 			this->dgvSells->RowHeadersWidth = 51;
 			this->dgvSells->RowTemplate->Height = 24;
@@ -356,9 +356,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// btShowAllSales
 			// 
-			this->btShowAllSales->Location = System::Drawing::Point(687, 37);
+			this->btShowAllSales->Location = System::Drawing::Point(660, 37);
 			this->btShowAllSales->Name = L"btShowAllSales";
-			this->btShowAllSales->Size = System::Drawing::Size(124, 59);
+			this->btShowAllSales->Size = System::Drawing::Size(151, 59);
 			this->btShowAllSales->TabIndex = 6;
 			this->btShowAllSales->Text = L"Mostrar reporte general";
 			this->btShowAllSales->UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(261, 18);
+			this->txtStock->Location = System::Drawing::Point(270, 20);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(88, 22);
 			this->txtStock->TabIndex = 14;
@@ -383,7 +383,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(372, 21);
+			this->label5->Location = System::Drawing::Point(380, 20);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(63, 16);
 			this->label5->TabIndex = 15;
@@ -391,7 +391,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// btToShow
 			// 
-			this->btToShow->Location = System::Drawing::Point(479, 15);
+			this->btToShow->Location = System::Drawing::Point(485, 17);
 			this->btToShow->Name = L"btToShow";
 			this->btToShow->Size = System::Drawing::Size(88, 25);
 			this->btToShow->TabIndex = 16;
@@ -559,9 +559,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// btLookFor2
 			// 
-			this->btLookFor2->Location = System::Drawing::Point(356, 73);
+			this->btLookFor2->Location = System::Drawing::Point(356, 90);
 			this->btLookFor2->Name = L"btLookFor2";
-			this->btLookFor2->Size = System::Drawing::Size(75, 23);
+			this->btLookFor2->Size = System::Drawing::Size(75, 25);
 			this->btLookFor2->TabIndex = 18;
 			this->btLookFor2->Text = L"Buscar";
 			this->btLookFor2->UseVisualStyleBackColor = true;
@@ -570,7 +570,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(41, 64);
+			this->label6->Location = System::Drawing::Point(40, 70);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(15, 16);
 			this->label6->TabIndex = 19;
@@ -578,9 +578,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			// 
 			// btLookFor1
 			// 
-			this->btLookFor1->Location = System::Drawing::Point(356, 41);
+			this->btLookFor1->Location = System::Drawing::Point(356, 48);
 			this->btLookFor1->Name = L"btLookFor1";
-			this->btLookFor1->Size = System::Drawing::Size(75, 23);
+			this->btLookFor1->Size = System::Drawing::Size(75, 25);
 			this->btLookFor1->TabIndex = 20;
 			this->btLookFor1->Text = L"Buscar";
 			this->btLookFor1->UseVisualStyleBackColor = true;
@@ -646,8 +646,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->tabControl2->SelectedIndex = 0;
 			this->tabControl2->Size = System::Drawing::Size(881, 814);
 			this->tabControl2->TabIndex = 22;
-			this->tabControl2->SelectedIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_SelectedIndexChanged_1);
-			this->tabControl2->TabIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_TabIndexChanged);
+			//this->tabControl2->SelectedIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_SelectedIndexChanged_1);
+			//this->tabControl2->TabIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_TabIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -681,7 +681,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->tabPage4->Size = System::Drawing::Size(873, 785);
 			this->tabPage4->TabIndex = 1;
 			this->tabPage4->Text = L"Gráficos";
-			this->tabPage4->Click += gcnew System::EventHandler(this, &StadisticReportForm::tabPage4_Click);
+			//this->tabPage4->Click += gcnew System::EventHandler(this, &StadisticReportForm::tabPage4_Click);
 			// 
 			// tabPage5
 			// 
@@ -1389,33 +1389,6 @@ private: System::Void tabControl2_SelectedIndexChanged(System::Object^ sender, S
 		Announcerbx->Visible = false;
 	}
 	*/
-}
-private: System::Void tabControl2_TabIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (TabIndex==tabPage1->TabIndex) {
-		// Change Size (X,Y+137)
-		//tabControl2->Size = System::Drawing::Size(880+10, 882-10);
-		this->tabControl2->Size = System::Drawing::Size(880, 100);
-	}
-	else if (TabIndex == tabPage2->TabIndex) {
-		// Change Size (X,Y+137)
-		tabControl2->Size = System::Drawing::Size(880 + 20, 882 - 5);
-
-	}
-}
-private: System::Void tabControl2_SelectedIndexChanged_1(System::Object^ sender, System::EventArgs^ e) {
-	if (TabIndex == tabPage1->TabIndex) {
-		// Change Size (X,Y+137)
-		tabControl2->Size = System::Drawing::Size(880 + 10, 882 - 10);
-
-	}
-	else if (TabIndex == tabPage2->TabIndex) {
-		// Change Size (X,Y+137)
-		tabControl2->Size = System::Drawing::Size(880 + 20, 882 - 5);
-
-	}
-}
-
-private: System::Void tabPage4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
