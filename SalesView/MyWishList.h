@@ -43,15 +43,23 @@ namespace SalesView {
 	protected:
 	private: System::Windows::Forms::Label^ lbwishList;
 	private: System::Windows::Forms::DataGridView^ dgvWishList;
+	private: System::Windows::Forms::Button^ btnDelete;
+	private: System::Windows::Forms::Button^ btnExit;
 
 
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+
+
+
+
+
+
+	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ IdProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PriceProduct;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Searches;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Sells;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Description;
-	private: System::Windows::Forms::Panel^ panel1;
 
 	private:
 		/// <summary>
@@ -70,13 +78,15 @@ namespace SalesView {
 			this->pbwishList = (gcnew System::Windows::Forms::PictureBox());
 			this->lbwishList = (gcnew System::Windows::Forms::Label());
 			this->dgvWishList = (gcnew System::Windows::Forms::DataGridView());
+			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			this->btnExit = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->IdProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->NameProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PriceProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Searches = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Sells = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Description = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbwishList))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWishList))->BeginInit();
 			this->panel1->SuspendLayout();
@@ -113,9 +123,9 @@ namespace SalesView {
 			// 
 			this->dgvWishList->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvWishList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvWishList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+			this->dgvWishList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->IdProduct,
-					this->NameProduct, this->PriceProduct, this->Description
+					this->NameProduct, this->PriceProduct, this->Searches, this->Sells, this->Description
 			});
 			this->dgvWishList->Location = System::Drawing::Point(40, 118);
 			this->dgvWishList->Margin = System::Windows::Forms::Padding(4);
@@ -126,6 +136,40 @@ namespace SalesView {
 			this->dgvWishList->Size = System::Drawing::Size(541, 302);
 			this->dgvWishList->TabIndex = 2;
 			this->dgvWishList->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyWishList::dgvWishList_CellDoubleClick);
+			// 
+			// btnDelete
+			// 
+			this->btnDelete->Location = System::Drawing::Point(129, 443);
+			this->btnDelete->Margin = System::Windows::Forms::Padding(4);
+			this->btnDelete->Name = L"btnDelete";
+			this->btnDelete->Size = System::Drawing::Size(136, 30);
+			this->btnDelete->TabIndex = 4;
+			this->btnDelete->Text = L"Eliminar producto";
+			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &MyWishList::btnDelete_Click);
+			// 
+			// btnExit
+			// 
+			this->btnExit->Location = System::Drawing::Point(352, 443);
+			this->btnExit->Margin = System::Windows::Forms::Padding(4);
+			this->btnExit->Name = L"btnExit";
+			this->btnExit->Size = System::Drawing::Size(117, 30);
+			this->btnExit->TabIndex = 5;
+			this->btnExit->Text = L"Volver";
+			this->btnExit->UseVisualStyleBackColor = true;
+			this->btnExit->Click += gcnew System::EventHandler(this, &MyWishList::btnExit_Click);
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
+				static_cast<System::Int32>(static_cast<System::Byte>(133)));
+			this->panel1->Controls->Add(this->lbwishList);
+			this->panel1->Controls->Add(this->pbwishList);
+			this->panel1->Location = System::Drawing::Point(1, 1);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(620, 102);
+			this->panel1->TabIndex = 6;
 			// 
 			// IdProduct
 			// 
@@ -151,6 +195,22 @@ namespace SalesView {
 			this->PriceProduct->ReadOnly = true;
 			this->PriceProduct->Width = 80;
 			// 
+			// Searches
+			// 
+			this->Searches->HeaderText = L"Búsquedas";
+			this->Searches->MinimumWidth = 6;
+			this->Searches->Name = L"Searches";
+			this->Searches->ReadOnly = true;
+			this->Searches->Width = 125;
+			// 
+			// Sells
+			// 
+			this->Sells->HeaderText = L"Ventas";
+			this->Sells->MinimumWidth = 6;
+			this->Sells->Name = L"Sells";
+			this->Sells->ReadOnly = true;
+			this->Sells->Width = 125;
+			// 
 			// Description
 			// 
 			this->Description->HeaderText = L"Descripción";
@@ -158,40 +218,6 @@ namespace SalesView {
 			this->Description->Name = L"Description";
 			this->Description->ReadOnly = true;
 			this->Description->Width = 125;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(129, 443);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 43);
-			this->button2->TabIndex = 4;
-			this->button2->Text = L"Eliminar producto";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyWishList::button2_Click);
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(352, 443);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(117, 43);
-			this->button3->TabIndex = 5;
-			this->button3->Text = L"Volver";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyWishList::button3_Click);
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
-				static_cast<System::Int32>(static_cast<System::Byte>(133)));
-			this->panel1->Controls->Add(this->lbwishList);
-			this->panel1->Controls->Add(this->pbwishList);
-			this->panel1->Location = System::Drawing::Point(1, 1);
-			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(620, 102);
-			this->panel1->TabIndex = 6;
 			// 
 			// MyWishList
 			// 
@@ -202,8 +228,8 @@ namespace SalesView {
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(620, 523);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->btnExit);
+			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->dgvWishList);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4);
@@ -223,7 +249,7 @@ namespace SalesView {
 
 
 	private: System::Void MyWishList_Load(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnExit_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
 /*
@@ -236,7 +262,7 @@ namespace SalesView {
 		});
 	}*/
 
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void dgvWishList_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }

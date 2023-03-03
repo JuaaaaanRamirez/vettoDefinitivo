@@ -193,7 +193,7 @@ CREATE PROCEDURE usp_QueryAllWhistListByIsUser(
 ) AS
 	BEGIN
 
-		SELECT P.id as id, P.name as name, P.priceMin as price, P.description as description
+		SELECT P.id as id, P.name as name, P.priceMin as price, P.description as description, P.searches as searches,  P.sales as sales
 		FROM  WHISH_LIST W
 		INNER JOIN PRODUCT P ON P.id = W.product_id
 		WHERE W.customer_id = @customer_id

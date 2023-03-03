@@ -500,6 +500,7 @@ namespace SalesView {
 			if (mySale->Status == 'G') { txtStatus->Text = "CANCELADO"; btnCancel->Visible = false;
 			}
 			// ShoppingCart
+			dgvSaleDetail->Rows->Clear();
 			for (int j = 0; j < mySale->SaleDetails->Count; j++) {
 				dgvSaleDetail->Rows->Add(gcnew array<String^>{
 					"" + mySale->SaleDetails[j]->Id,

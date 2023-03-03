@@ -2084,6 +2084,8 @@ List<Product^>^ SalesPersistance::Persistance::QueryAllWishListByIdUser(int user
             c->Id = Int32::Parse(reader["id"]->ToString());
             c->Name = reader["name"]->ToString();
             c->PriceMin = Convert::ToDouble(reader["price"]->ToString());
+            c->Searches = Int32::Parse(reader["searches"]->ToString());
+            c->Sales = Int32::Parse(reader["sales"]->ToString());
             c->Description = reader["description"]->ToString();
 
             WishList->Add(c);
