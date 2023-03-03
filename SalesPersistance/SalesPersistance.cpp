@@ -1,5 +1,4 @@
 #include "pch.h"
-
 #include "SalesPersistance.h"
 
 using namespace System::IO;

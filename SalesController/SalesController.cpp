@@ -29,8 +29,7 @@ Product^ SalesController::Controller::QueryProductById(int productId)
 List<Product^>^ SalesController::Controller::QueryAllProducts()
 {
     //productList = (List<Product^>^)Persistance::LoadBinaryData("products.bin");
-    productList = Persistance::QueryAllActiveProducts();
-    return productList;
+    return  Persistance::QueryAllActiveProducts();;
 }
 int SalesController::Controller::UpdateProduct(Product^ product)
 {
@@ -128,9 +127,6 @@ List<Product^>^ SalesController::Controller::GetListProductOrderBySells(List<Sal
     return productListAux; //Ya ordenado por numero de ventas
 }
 
-
-
-
 List<String^>^ SalesController::Controller::QueryAllCareers()
 {
     //careerList = (List<String^>^)Persistance::LoadXMLData("career.xml");
@@ -138,6 +134,9 @@ List<String^>^ SalesController::Controller::QueryAllCareers()
 }
 
 
+
+
+// For Person
 Person^ SalesController::Controller::Login(String^ username, String^ password)
 {
     /*
