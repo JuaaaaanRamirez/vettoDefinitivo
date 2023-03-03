@@ -931,6 +931,9 @@ List<Sale^>^ SalesPersistance::Persistance::QuerySaleByCustomerId(int customerId
             Customer^ myCustomer = gcnew Customer(); StoreManager^ mySM = gcnew StoreManager();
             if (!DBNull::Value->Equals(reader["customer_id"])) myCustomer->Id = Convert::ToInt32(reader["customer_id"]->ToString());
             mySM->Id = Convert::ToInt32(reader["storemanager_id"]->ToString()); if (mySM->Id == 0) { mySM->Name = "Asistente Virtual"; mySM->Username = "Asistente Virtual"; }
+            else {
+                mySM = (StoreManager^)QueryPersonById(mySM->Id);
+            }
 
             mySale->Customer = myCustomer; mySale->StoreManager = mySM;
 
