@@ -103,10 +103,9 @@ namespace SalesView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(21, 32);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(32, 29);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(24, 16);
+			this->label1->Size = System::Drawing::Size(22, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Id:";
 			// 
@@ -115,35 +114,31 @@ namespace SalesView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(21, 75);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(32, 53);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(154, 16);
+			this->label2->Size = System::Drawing::Size(76, 26);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Nombre/Descripción:";
+			this->label2->Text = L"Nombre o\r\ndescripción:";
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(173, 32);
-			this->txtId->Margin = System::Windows::Forms::Padding(4);
+			this->txtId->Location = System::Drawing::Point(114, 26);
 			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(132, 22);
+			this->txtId->Size = System::Drawing::Size(100, 20);
 			this->txtId->TabIndex = 2;
 			// 
 			// txtNameDescription
 			// 
-			this->txtNameDescription->Location = System::Drawing::Point(173, 71);
-			this->txtNameDescription->Margin = System::Windows::Forms::Padding(4);
+			this->txtNameDescription->Location = System::Drawing::Point(114, 59);
 			this->txtNameDescription->Name = L"txtNameDescription";
-			this->txtNameDescription->Size = System::Drawing::Size(340, 22);
+			this->txtNameDescription->Size = System::Drawing::Size(256, 20);
 			this->txtNameDescription->TabIndex = 3;
 			// 
 			// btnSearch
 			// 
-			this->btnSearch->Location = System::Drawing::Point(105, 116);
-			this->btnSearch->Margin = System::Windows::Forms::Padding(4);
+			this->btnSearch->Location = System::Drawing::Point(79, 94);
 			this->btnSearch->Name = L"btnSearch";
-			this->btnSearch->Size = System::Drawing::Size(129, 28);
+			this->btnSearch->Size = System::Drawing::Size(97, 23);
 			this->btnSearch->TabIndex = 4;
 			this->btnSearch->Text = L"Buscar";
 			this->btnSearch->UseVisualStyleBackColor = true;
@@ -151,10 +146,9 @@ namespace SalesView {
 			// 
 			// btnCancel
 			// 
-			this->btnCancel->Location = System::Drawing::Point(324, 116);
-			this->btnCancel->Margin = System::Windows::Forms::Padding(4);
+			this->btnCancel->Location = System::Drawing::Point(243, 94);
 			this->btnCancel->Name = L"btnCancel";
-			this->btnCancel->Size = System::Drawing::Size(128, 28);
+			this->btnCancel->Size = System::Drawing::Size(96, 23);
 			this->btnCancel->TabIndex = 5;
 			this->btnCancel->Text = L"Cancelar";
 			this->btnCancel->UseVisualStyleBackColor = true;
@@ -167,11 +161,10 @@ namespace SalesView {
 				this->Id, this->ProductName,
 					this->Price, this->Stock
 			});
-			this->dgvProducts->Location = System::Drawing::Point(34, 182);
-			this->dgvProducts->Margin = System::Windows::Forms::Padding(4);
+			this->dgvProducts->Location = System::Drawing::Point(26, 148);
 			this->dgvProducts->Name = L"dgvProducts";
 			this->dgvProducts->RowHeadersWidth = 51;
-			this->dgvProducts->Size = System::Drawing::Size(497, 185);
+			this->dgvProducts->Size = System::Drawing::Size(373, 150);
 			this->dgvProducts->TabIndex = 6;
 			this->dgvProducts->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForm::dgvProducts_CellDoubleClick);
 			// 
@@ -206,37 +199,40 @@ namespace SalesView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(21, 9);
+			this->label3->Location = System::Drawing::Point(16, 7);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(75, 16);
+			this->label3->Size = System::Drawing::Size(61, 13);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Buscar por:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(3, 53);
+			this->label4->Location = System::Drawing::Point(2, 43);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(15, 16);
+			this->label4->Size = System::Drawing::Size(13, 13);
 			this->label4->TabIndex = 8;
 			this->label4->Text = L"o";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(40, 157);
+			this->label5->Location = System::Drawing::Point(30, 128);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(79, 16);
+			this->label5->Size = System::Drawing::Size(63, 13);
 			this->label5->TabIndex = 9;
 			this->label5->Text = L"Resultados:";
 			// 
 			// ProductSearchForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->ClientSize = System::Drawing::Size(544, 389);
+			this->ClientSize = System::Drawing::Size(408, 316);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
@@ -247,7 +243,6 @@ namespace SalesView {
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductSearchForm";
 			this->Text = L"Búsqueda de Productos";
 			this->Load += gcnew System::EventHandler(this, &ProductSearchForm::ProductSearchForm_Load);

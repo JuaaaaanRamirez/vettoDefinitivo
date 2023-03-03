@@ -10,7 +10,11 @@ GO
 
 SELECT * FROM PERSON
 SELECT * FROM PERSON WHERE id=1
-DELETE FROM PERSON WHERE id=3
+DELETE FROM PERSON WHERE id=3000
+
+
+
+
 SELECT * FROM WHISH_LIST WHERE customer_id=10
 GO
 
@@ -424,10 +428,12 @@ BEGIN
 END
 GO
 CREATE PROCEDURE dbo.usp_QueryCustomerByNameOrByLastName
-	@name VARCHAR(100)
+	@name VARCHAR(50)
 
 AS
-	SELECT * FROM PERSON WHERE profile='S' AND (name LIKE @name OR last_name LIKE @name)
+	SELECT * FROM PERSON WHERE profile='S' AND (name LIKE '%@name%' OR last_name LIKE '%@name%') AND id!=15
+
+
 	ORDER BY id
 GO
 

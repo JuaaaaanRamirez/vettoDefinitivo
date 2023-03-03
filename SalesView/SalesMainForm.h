@@ -568,7 +568,7 @@ public:
 			this->pictureBox16->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox16.BackgroundImage")));
 			this->pictureBox16->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox16->Location = System::Drawing::Point(870, 309);
-			this->pictureBox16->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox16->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox16->Name = L"pictureBox16";
 			this->pictureBox16->Size = System::Drawing::Size(19, 20);
 			this->pictureBox16->TabIndex = 54;
@@ -579,7 +579,7 @@ public:
 			this->pictureBox15->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox15.BackgroundImage")));
 			this->pictureBox15->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox15->Location = System::Drawing::Point(135, 309);
-			this->pictureBox15->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox15->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox15->Name = L"pictureBox15";
 			this->pictureBox15->Size = System::Drawing::Size(19, 20);
 			this->pictureBox15->TabIndex = 53;
@@ -590,7 +590,7 @@ public:
 			this->pictureBox14->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox14.BackgroundImage")));
 			this->pictureBox14->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox14->Location = System::Drawing::Point(267, 309);
-			this->pictureBox14->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox14->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox14->Name = L"pictureBox14";
 			this->pictureBox14->Size = System::Drawing::Size(19, 20);
 			this->pictureBox14->TabIndex = 52;
@@ -601,7 +601,7 @@ public:
 			this->pictureBox13->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox13.BackgroundImage")));
 			this->pictureBox13->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox13->Location = System::Drawing::Point(381, 309);
-			this->pictureBox13->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox13->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox13->Name = L"pictureBox13";
 			this->pictureBox13->Size = System::Drawing::Size(19, 20);
 			this->pictureBox13->TabIndex = 51;
@@ -612,7 +612,7 @@ public:
 			this->pictureBox12->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.BackgroundImage")));
 			this->pictureBox12->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox12->Location = System::Drawing::Point(502, 309);
-			this->pictureBox12->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox12->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox12->Name = L"pictureBox12";
 			this->pictureBox12->Size = System::Drawing::Size(19, 20);
 			this->pictureBox12->TabIndex = 50;
@@ -623,7 +623,7 @@ public:
 			this->pictureBox11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.BackgroundImage")));
 			this->pictureBox11->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox11->Location = System::Drawing::Point(628, 309);
-			this->pictureBox11->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox11->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox11->Name = L"pictureBox11";
 			this->pictureBox11->Size = System::Drawing::Size(19, 20);
 			this->pictureBox11->TabIndex = 49;
@@ -634,7 +634,7 @@ public:
 			this->pictureBox10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.BackgroundImage")));
 			this->pictureBox10->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox10->Location = System::Drawing::Point(750, 309);
-			this->pictureBox10->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox10->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox10->Name = L"pictureBox10";
 			this->pictureBox10->Size = System::Drawing::Size(19, 20);
 			this->pictureBox10->TabIndex = 48;
@@ -645,7 +645,7 @@ public:
 			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox5->Location = System::Drawing::Point(135, 134);
-			this->pictureBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox5->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(22, 24);
 			this->pictureBox5->TabIndex = 44;
@@ -668,7 +668,7 @@ public:
 			this->pbSeventhProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSeventhProduct.BackgroundImage")));
 			this->pbSeventhProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbSeventhProduct->Location = System::Drawing::Point(795, 171);
-			this->pbSeventhProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbSeventhProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbSeventhProduct->Name = L"pbSeventhProduct";
 			this->pbSeventhProduct->Size = System::Drawing::Size(112, 122);
 			this->pbSeventhProduct->TabIndex = 41;
@@ -680,7 +680,7 @@ public:
 			this->pbSixthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSixthProduct.BackgroundImage")));
 			this->pbSixthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbSixthProduct->Location = System::Drawing::Point(675, 171);
-			this->pbSixthProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbSixthProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbSixthProduct->Name = L"pbSixthProduct";
 			this->pbSixthProduct->Size = System::Drawing::Size(112, 122);
 			this->pbSixthProduct->TabIndex = 40;
@@ -693,7 +693,7 @@ public:
 			this->pbFifthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFifthProduct.BackgroundImage")));
 			this->pbFifthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbFifthProduct->Location = System::Drawing::Point(555, 171);
-			this->pbFifthProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbFifthProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbFifthProduct->Name = L"pbFifthProduct";
 			this->pbFifthProduct->Size = System::Drawing::Size(112, 122);
 			this->pbFifthProduct->TabIndex = 39;
@@ -706,7 +706,7 @@ public:
 			this->pbThirdProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbThirdProduct.BackgroundImage")));
 			this->pbThirdProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbThirdProduct->Location = System::Drawing::Point(315, 171);
-			this->pbThirdProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbThirdProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbThirdProduct->Name = L"pbThirdProduct";
 			this->pbThirdProduct->Size = System::Drawing::Size(112, 122);
 			this->pbThirdProduct->TabIndex = 35;
@@ -719,7 +719,7 @@ public:
 			this->pbFourthProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFourthProduct.BackgroundImage")));
 			this->pbFourthProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbFourthProduct->Location = System::Drawing::Point(435, 171);
-			this->pbFourthProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbFourthProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbFourthProduct->Name = L"pbFourthProduct";
 			this->pbFourthProduct->Size = System::Drawing::Size(112, 122);
 			this->pbFourthProduct->TabIndex = 34;
@@ -731,7 +731,7 @@ public:
 			this->pbSecondProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbSecondProduct.BackgroundImage")));
 			this->pbSecondProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbSecondProduct->Location = System::Drawing::Point(195, 171);
-			this->pbSecondProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbSecondProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbSecondProduct->Name = L"pbSecondProduct";
 			this->pbSecondProduct->Size = System::Drawing::Size(112, 122);
 			this->pbSecondProduct->TabIndex = 33;
@@ -743,7 +743,7 @@ public:
 			this->pbFirstProduct->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFirstProduct.BackgroundImage")));
 			this->pbFirstProduct->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pbFirstProduct->Location = System::Drawing::Point(75, 171);
-			this->pbFirstProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbFirstProduct->Margin = System::Windows::Forms::Padding(2);
 			this->pbFirstProduct->Name = L"pbFirstProduct";
 			this->pbFirstProduct->Size = System::Drawing::Size(112, 122);
 			this->pbFirstProduct->TabIndex = 32;
@@ -758,7 +758,7 @@ public:
 			this->btnLogin->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnLogin->ForeColor = System::Drawing::Color::Transparent;
 			this->btnLogin->Location = System::Drawing::Point(5, 11);
-			this->btnLogin->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnLogin->Margin = System::Windows::Forms::Padding(2);
 			this->btnLogin->Name = L"btnLogin";
 			this->btnLogin->Size = System::Drawing::Size(75, 81);
 			this->btnLogin->TabIndex = 67;
@@ -1078,7 +1078,7 @@ public:
 			this->pbFake->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbFake.BackgroundImage")));
 			this->pbFake->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pbFake->Location = System::Drawing::Point(974, 492);
-			this->pbFake->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbFake->Margin = System::Windows::Forms::Padding(2);
 			this->pbFake->Name = L"pbFake";
 			this->pbFake->Size = System::Drawing::Size(8, 8);
 			this->pbFake->TabIndex = 91;
@@ -1201,7 +1201,7 @@ public:
 			// 
 			this->SearchBox->BackColor = System::Drawing::SystemColors::Control;
 			this->SearchBox->Location = System::Drawing::Point(119, 45);
-			this->SearchBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->SearchBox->Margin = System::Windows::Forms::Padding(2);
 			this->SearchBox->Name = L"SearchBox";
 			this->SearchBox->Size = System::Drawing::Size(594, 20);
 			this->SearchBox->TabIndex = 37;
@@ -1212,7 +1212,7 @@ public:
 			this->AppPictureBox->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AppPictureBox.BackgroundImage")));
 			this->AppPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->AppPictureBox->Location = System::Drawing::Point(4, 4);
-			this->AppPictureBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->AppPictureBox->Margin = System::Windows::Forms::Padding(2);
 			this->AppPictureBox->Name = L"AppPictureBox";
 			this->AppPictureBox->Size = System::Drawing::Size(90, 98);
 			this->AppPictureBox->TabIndex = 62;
@@ -1238,7 +1238,7 @@ public:
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Todos" });
 			this->comboBox1->Location = System::Drawing::Point(119, 70);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(92, 21);
 			this->comboBox1->TabIndex = 69;
@@ -1251,7 +1251,7 @@ public:
 			this->btnSearch->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->btnSearch->ForeColor = System::Drawing::Color::Transparent;
 			this->btnSearch->Location = System::Drawing::Point(96, 44);
-			this->btnSearch->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnSearch->Margin = System::Windows::Forms::Padding(2);
 			this->btnSearch->Name = L"btnSearch";
 			this->btnSearch->Size = System::Drawing::Size(19, 20);
 			this->btnSearch->TabIndex = 70;
@@ -1268,7 +1268,7 @@ public:
 			this->panel1->Controls->Add(this->SearchBox);
 			this->panel1->Controls->Add(this->label8);
 			this->panel1->Location = System::Drawing::Point(-1, 22);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Margin = System::Windows::Forms::Padding(2);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(727, 106);
 			this->panel1->TabIndex = 94;
@@ -1282,7 +1282,7 @@ public:
 			this->panel2->Controls->Add(this->Userlb);
 			this->panel2->Controls->Add(this->btnLogin);
 			this->panel2->Location = System::Drawing::Point(723, 22);
-			this->panel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel2->Margin = System::Windows::Forms::Padding(2);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(266, 106);
 			this->panel2->TabIndex = 95;
@@ -1352,8 +1352,9 @@ public:
 			this->Controls->Add(this->pbSecondProduct);
 			this->Controls->Add(this->pbFirstProduct);
 			this->Controls->Add(this->panel2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->Name = L"SalesMainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
