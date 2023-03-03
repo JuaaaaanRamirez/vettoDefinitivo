@@ -1582,6 +1582,7 @@ public:
 		if (e->KeyData == Keys::Enter) btnSearch->PerformClick();
 }
 	private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (SearchBox->Text->Trim()->Equals("")) { MessageBox::Show("Ingrese una busqueda primero"); return; }
 	ProductListForm^ productListForm = gcnew ProductListForm(this);
 	//productListForm->MdiParent = this;
 	productListForm->ShowDialog();

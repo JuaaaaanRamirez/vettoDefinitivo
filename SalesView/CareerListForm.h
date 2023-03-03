@@ -93,6 +93,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CareerListForm::typeid));
 			this->chlbCiencias = (gcnew System::Windows::Forms::CheckedListBox());
 			this->chlbArteDisenio = (gcnew System::Windows::Forms::CheckedListBox());
 			this->chlbArtesEscenicas = (gcnew System::Windows::Forms::CheckedListBox());
@@ -356,6 +357,7 @@ namespace SalesView {
 			this->Controls->Add(this->chlbArtesEscenicas);
 			this->Controls->Add(this->chlbArteDisenio);
 			this->Controls->Add(this->chlbCiencias);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"CareerListForm";
 			this->Text = L"Lista de carreras";
 			this->Load += gcnew System::EventHandler(this, &CareerListForm::CareerListForm_Load);
