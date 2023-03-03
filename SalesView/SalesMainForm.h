@@ -35,10 +35,14 @@ namespace SalesView {
 	private:
 		Thread^ myThread;
 	public:
+		static SalesMainForm^ instance;		// Easy data
+		static Person^ person;				//Variable de clase
+		static Product^ product;
+		static int saleId;
+		static bool MenuVisibility = false;
+		static Button^ userPhoto;
 
-		//static Person^ person; //Variable de clase
-		
-
+#pragma region COMPONENTS
 	public: System::Windows::Forms::GroupBox^ gbMenuCustomer;
 	private: System::Windows::Forms::Button^ btnSignOut;
 
@@ -67,12 +71,7 @@ namespace SalesView {
 	private: System::Windows::Forms::PictureBox^ pbFake;
 	public:
 		//static Object^ person; //Variable de clase o miembro u atributo estático (global).
-	public:	static bool MenuVisibility = false;
-	public:
-		static SalesMainForm^ instance;		// Easy data
-		static Person^ person; //Variable de clase
-		static Product^ product;
-		static int saleId;
+	public:	
 	public: System::Windows::Forms::GroupBox^ gbMenuStoreManager;
 	private: System::Windows::Forms::Button^ btnReportSales;
 	public:
@@ -96,32 +95,25 @@ namespace SalesView {
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Label^ FakeIdTop;
+#pragma endregion
 
-
-
-
-
-
-
-
-
-
-	public:	   static Button^ userPhoto;
+	public:
 
 		SalesMainForm(void)
 		{
 			InitializeComponent();
-			instance = this; // Easy Data
+
+			instance = this;
 			userPhoto = btnLogin;
 
 			myThread = gcnew Thread(gcnew ThreadStart(this, &SalesMainForm::MyRun));
 			myThread->IsBackground = true;
-			//myThread->Start();
+			myThread->Start();
+
 			//TODO: agregar código de constructor aquí
 			//
 		}
 		delegate void MyDelegate();
-
 		void MyRun() {
 			while (true) {
 				try {
@@ -145,6 +137,7 @@ namespace SalesView {
 			}
 		}
 
+#pragma region COMPONENTS
 	protected:
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
@@ -153,17 +146,10 @@ namespace SalesView {
 	private: System::Windows::Forms::ToolStripMenuItem^ mantenimientoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ productoToolStripMenuItem;
 
-
 	private: System::Windows::Forms::ToolStripMenuItem^ operacionesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ realizarUnaVentaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ reportesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ayudaToolStripMenuItem;
-
-
-
-
-
-
 
 	private: System::Windows::Forms::ToolStripMenuItem^ estadistidcasDeVentasToolStripMenuItem;
 	public: System::Windows::Forms::ToolStripMenuItem^ subirAnuncioToolStripMenuItem;
@@ -171,19 +157,11 @@ namespace SalesView {
 
 
 	private: System::Windows::Forms::Label^ lbSeventhProduct;
-	public:
-
-
 	private: System::Windows::Forms::Label^ lbSixthProduct;
-
 	private: System::Windows::Forms::Label^ lbFifthProduct;
-
 	private: System::Windows::Forms::Label^ lbFourthProduct;
-
 	private: System::Windows::Forms::Label^ lbThirdProduct;
-
 	private: System::Windows::Forms::Label^ lbSecondProduct;
-
 	private: System::Windows::Forms::Label^ lbFirstProduct;
 
 	private: System::Windows::Forms::PictureBox^ pictureBox16;
@@ -193,34 +171,16 @@ namespace SalesView {
 	private: System::Windows::Forms::PictureBox^ pictureBox12;
 	private: System::Windows::Forms::PictureBox^ pictureBox11;
 	private: System::Windows::Forms::PictureBox^ pictureBox10;
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::Label^ BestLabel;
+
 	private: System::Windows::Forms::PictureBox^ pbSeventhProduct;
-
-
 	private: System::Windows::Forms::PictureBox^ pbSixthProduct;
-
 	private: System::Windows::Forms::PictureBox^ pbFifthProduct;
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ pbThirdProduct;
 	private: System::Windows::Forms::PictureBox^ pbFourthProduct;
-	public:
-
-
-
 	private: System::Windows::Forms::PictureBox^ pbSecondProduct;
-
 	private: System::Windows::Forms::PictureBox^ pbFirstProduct;
-
-
-
 
 public: System::Windows::Forms::Button^ btnLogin;
 public:
@@ -231,23 +191,14 @@ public: System::Windows::Forms::Label^ lbJob;
 public: System::Windows::Forms::Label^ lbCompany;
 public: System::Windows::Forms::GroupBox^ gbMenuLogin;
 private: System::Windows::Forms::Button^ btnNewCustomer;
-public:
 private: System::Windows::Forms::Button^ btnLoginCustomer;
-	public:
-	public:
-
-public:
-
-
-
-
-
-
-	private:
+private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container^ components;
+
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -1398,144 +1349,10 @@ public:
 
 		}
 #pragma endregion
-		// Functions
-		void Ad() {
-			subirAnuncioToolStripMenuItem->Visible = false;
-			List<Announcer^>^ AnounList = gcnew List<Announcer^>();
-			AnounList = Controller::QueryAllAnnouncer();
 
-			company1->Text = " ";
-			linkLabel1->Text = " ";
-			company2->Text = " ";
-			linkLabel2->Text = " ";
-			company3->Text = " ";
-			linkLabel3->Text = " ";
-			company4->Text = " ";
-			linkLabel4->Text = " ";
+public:
 
-			for (int i = 0; i < AnounList->Count; i++) {
-				if (AnounList[i]->AdInSistem) {
-
-					System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
-					switch (AnounList[i]->NumberPictureBox) {
-					case 1: Ad1->Image = Image::FromStream(ms);
-						company1->Text = AnounList[i]->CompanyName;
-						linkLabel1->Text = AnounList[i]->WebSiteLink;
-						break;
-					case 2: Ad2->Image = Image::FromStream(ms);
-						company2->Text = AnounList[i]->CompanyName;
-						linkLabel2->Text = AnounList[i]->WebSiteLink;
-						break;
-					case 3: Ad3->Image = Image::FromStream(ms);
-						company3->Text = AnounList[i]->CompanyName;
-						linkLabel3->Text = AnounList[i]->WebSiteLink;
-						break;
-					case 4: Ad4->Image = Image::FromStream(ms);
-						company4->Text = AnounList[i]->CompanyName;
-						linkLabel4->Text = AnounList[i]->WebSiteLink;
-						break;
-					default:
-						break;
-					}
-
-				}
-			}
-		}
-public:	
-		void ShowMeATop() {
-			List<Product^>^ myTopiList = Controller::GetTopProducts();
-			product = myTopiList[Convert::ToInt32(FakeIdTop->Text)];
-			ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(Convert::ToInt32(Idlb->Text));
-			ProductPresentation->ShowDialog();
-		}
-		void PutTop(List<Product^>^ myTopList) {
-			// Stream
-			System::IO::MemoryStream^ ms;
-
-			ms = gcnew System::IO::MemoryStream(myTopList[0]->Photo); pbFirstProduct->BackgroundImage = Image::FromStream(ms); lbFirstProduct->Text = "" + myTopList[0]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[1]->Photo); pbSecondProduct->BackgroundImage = Image::FromStream(ms); lbSecondProduct->Text = "" + myTopList[1]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[2]->Photo); pbThirdProduct->BackgroundImage = Image::FromStream(ms); lbThirdProduct->Text = "" + myTopList[2]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[3]->Photo); pbFourthProduct->BackgroundImage = Image::FromStream(ms); lbFourthProduct->Text = "" + myTopList[3]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[4]->Photo); pbFifthProduct->BackgroundImage = Image::FromStream(ms); lbFifthProduct->Text = "" + myTopList[4]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[5]->Photo); pbSixthProduct->BackgroundImage = Image::FromStream(ms); lbSixthProduct->Text = "" + myTopList[5]->Searches;
-			ms = gcnew System::IO::MemoryStream(myTopList[6]->Photo); pbSeventhProduct->BackgroundImage = Image::FromStream(ms); lbSeventhProduct->Text = "" + myTopList[6]->Searches;
-		}
-		void PutTopToThread() {
-			PutTop(Controller::GetTopProducts());
-		}
-		void SignOff() {
-			person = nullptr;
-			Idlb->Text = "0";
-			lbJob->Text = "";
-			Userlb->Text = "Invitado";
-			lbCompany->Text = "";
-			// btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main/Anonymous.png");
-			 //btnLogin->BackgroundImage = gcnew Bitmap("resources/UserPictures/Default.png");
-			btnLogin->BackgroundImage = pbFake->BackgroundImage; // Bv 
-			gbMenuLogin->Visible = false;
-			gbMenuCustomer->Visible = false;
-			gbMenuAnnouncer->Visible = false;
-			gbMenuStoreManager->Visible = false;
-			gbSellerCompany->Visible = false;
-			MenuVisibility = false;
-			menuStrip1->Visible = false;
-
-			// Have you paid?
-			if (!SaleDetailForm::mySaleDetail->paid) {
-				Controller::DeleteSale(ProductPresentationForm::saleId);
-				SaleDetailForm::mySaleDetail->paid = true;
-			}
-		}
-		void GoSale() {
-			SaleDetailForm::paid = false;
-			Sale^ mysale = gcnew Sale();
-			// Add Customer
-			mysale->Customer = (Customer^)Controller::QueryUserById(15);
-			mysale->Address = ""; mysale->Reference = "";
-			mysale->Status = 'A';
-			// Add Store manager
-			mysale->StoreManager = (StoreManager^)(Controller::QueryUserById(person->Id));
-			mysale->PaidMode = "Efectivo";
-			mysale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
-			
-			saleId = Controller::AddSale(mysale); 
-			SaleDetailForm^ mySaleDetail = gcnew SaleDetailForm(saleId); mySaleDetail->ShowDialog();
-		}
-		
-	// Stripmenu
-	private: System::Void productoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		ProductForm^ productForm = gcnew ProductForm();
-		//productForm->MdiParent = this;
-		productForm->ShowDialog();
-	}
-	private: System::Void subirAnuncioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		UploadAdForm^ A = gcnew UploadAdForm(this);
-		//UploadAdForm->MdiParent = this;
-		A->ShowDialog();
-	}
-	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sendePutTopr, System::EventArgs^ e) {
-		UserForm^ userForm = gcnew UserForm(false);
-		//productForm->MdiParent = this;
-		userForm->ShowDialog();
-	}
-	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-	private: System::Void estadistidcasDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-			   StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
-			   Stadistics->ShowDialog();
-		   }
-
-	// Load
-	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		Ad();
-		PutTop(Controller::GetTopProducts());
-		lbCompany->Text = "";
-		lbJob->Text = "";
-	}
-	// Login
+#pragma region LOGIN
 	private: System::Void btnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 		//LoginForm^ loginForm = gcnew LoginForm(this);
 		//loginForm->ShowDialog();
@@ -1576,8 +1393,44 @@ public:
 			gbMenuStoreManager->Visible = false;
 		}
 		MenuVisibility = !(MenuVisibility);
+	}
+	private: System::Void btnLoginCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
+		LoginForm^ loginForm = gcnew LoginForm(this);
+		loginForm->ShowDialog();
+	}
+#pragma endregion
+
+#pragma region STRIP_MENU
+	private: System::Void productoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		ProductForm^ productForm = gcnew ProductForm();
+		//productForm->MdiParent = this;
+		productForm->ShowDialog();
+	}
+	private: System::Void subirAnuncioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		UploadAdForm^ A = gcnew UploadAdForm(this);
+		//UploadAdForm->MdiParent = this;
+		A->ShowDialog();
+	}
+	private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sendePutTopr, System::EventArgs^ e) {
+		UserForm^ userForm = gcnew UserForm(false);
+		//productForm->MdiParent = this;
+		userForm->ShowDialog();
+	}
+	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	Application::Exit();
 }
-	// SearchProducts
+	private: System::Void estadistidcasDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			   StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
+			   Stadistics->ShowDialog();
+		   }
+	private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		GoSale();
+	}
+#pragma endregion
+
+#pragma region SEARCH
 	private: System::Void SearchBox_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyData == Keys::Enter) btnSearch->PerformClick();
 }
@@ -1588,10 +1441,32 @@ public:
 	productListForm->ShowDialog();
 	this->Refresh();
 }
-    private: System::Void btnLoginCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
-	LoginForm^ loginForm = gcnew LoginForm(this);
-	loginForm->ShowDialog();
-}
+
+	void ShowMeATop() {
+			   List<Product^>^ myTopiList = Controller::GetTopProducts();
+			   product = myTopiList[Convert::ToInt32(FakeIdTop->Text)];
+			   ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(Convert::ToInt32(Idlb->Text));
+			   ProductPresentation->ShowDialog();
+		   }
+	void PutTop(List<Product^>^ myTopList) {
+			   // Stream
+			   System::IO::MemoryStream^ ms;
+
+			   ms = gcnew System::IO::MemoryStream(myTopList[0]->Photo); pbFirstProduct->BackgroundImage = Image::FromStream(ms); lbFirstProduct->Text = "" + myTopList[0]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[1]->Photo); pbSecondProduct->BackgroundImage = Image::FromStream(ms); lbSecondProduct->Text = "" + myTopList[1]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[2]->Photo); pbThirdProduct->BackgroundImage = Image::FromStream(ms); lbThirdProduct->Text = "" + myTopList[2]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[3]->Photo); pbFourthProduct->BackgroundImage = Image::FromStream(ms); lbFourthProduct->Text = "" + myTopList[3]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[4]->Photo); pbFifthProduct->BackgroundImage = Image::FromStream(ms); lbFifthProduct->Text = "" + myTopList[4]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[5]->Photo); pbSixthProduct->BackgroundImage = Image::FromStream(ms); lbSixthProduct->Text = "" + myTopList[5]->Searches;
+			   ms = gcnew System::IO::MemoryStream(myTopList[6]->Photo); pbSeventhProduct->BackgroundImage = Image::FromStream(ms); lbSeventhProduct->Text = "" + myTopList[6]->Searches;
+		   }
+	void PutTopToThread() {
+			   PutTop(Controller::GetTopProducts());
+		   }
+#pragma endregion
+
+	// Users
+#pragma region CUSTOMER
     private: System::Void btnNewCustomer_Click(System::Object^ sender, System::EventArgs^ e) {
 	NewCustomerForm^ newCustomerForm = gcnew NewCustomerForm(this);
 	newCustomerForm->ShowDialog();
@@ -1615,95 +1490,193 @@ public:
     private: System::Void btnSignOut_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }
+#pragma endregion
 
-private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+#pragma region ANNOUNCER
+	private: System::Void btnMyAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	UploadAdForm^ A = gcnew UploadAdForm(this);
 	A->ShowDialog();
-}
-private: System::Void btnSingOutAnnouncer_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnSingOutAnnouncer_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
 }
-private: System::Void btnSignOutStoreMager_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		   void Ad() {
+			   subirAnuncioToolStripMenuItem->Visible = false;
+			   List<Announcer^>^ AnounList = gcnew List<Announcer^>();
+			   AnounList = Controller::QueryAllAnnouncer();
+
+			   company1->Text = " ";
+			   linkLabel1->Text = " ";
+			   company2->Text = " ";
+			   linkLabel2->Text = " ";
+			   company3->Text = " ";
+			   linkLabel3->Text = " ";
+			   company4->Text = " ";
+			   linkLabel4->Text = " ";
+
+			   for (int i = 0; i < AnounList->Count; i++) {
+				   if (AnounList[i]->AdInSistem) {
+
+					   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(AnounList[i]->Ad);
+					   switch (AnounList[i]->NumberPictureBox) {
+					   case 1: Ad1->Image = Image::FromStream(ms);
+						   company1->Text = AnounList[i]->CompanyName;
+						   linkLabel1->Text = AnounList[i]->WebSiteLink;
+						   break;
+					   case 2: Ad2->Image = Image::FromStream(ms);
+						   company2->Text = AnounList[i]->CompanyName;
+						   linkLabel2->Text = AnounList[i]->WebSiteLink;
+						   break;
+					   case 3: Ad3->Image = Image::FromStream(ms);
+						   company3->Text = AnounList[i]->CompanyName;
+						   linkLabel3->Text = AnounList[i]->WebSiteLink;
+						   break;
+					   case 4: Ad4->Image = Image::FromStream(ms);
+						   company4->Text = AnounList[i]->CompanyName;
+						   linkLabel4->Text = AnounList[i]->WebSiteLink;
+						   break;
+					   default:
+						   break;
+					   }
+
+				   }
+			   }
+		   }
+
+#pragma endregion
+
+#pragma region STORE_MANAGER
+	private: System::Void btnSignOutStoreMager_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
-}
-private: System::Void btnReportSales_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnReportSales_Click(System::Object^ sender, System::EventArgs^ e) {
 	StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
 	Stadistics->ShowDialog();
-}
-private: System::Void btnAllProducts_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnAllProducts_Click(System::Object^ sender, System::EventArgs^ e) {
 	ProductForm^ productForm = gcnew ProductForm();
 	//productForm->MdiParent = this;
 	productForm->ShowDialog();
-}
-private: System::Void btnAllUsers_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnAllUsers_Click(System::Object^ sender, System::EventArgs^ e) {
 	UserForm^ userForm = gcnew UserForm(false);
 	userForm->ShowDialog();
-}
-private: System::Void btnSale_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnSale_Click(System::Object^ sender, System::EventArgs^ e) {
 	GoSale();
-}
-private: System::Void btnSignOutStoreMager_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnSignOutStoreMager_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
-}
-private: System::Void btnAllReports_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnAllReports_Click(System::Object^ sender, System::EventArgs^ e) {
 	StadisticReportForm^ Stadistics = gcnew StadisticReportForm();
 	Stadistics->ShowDialog();
-}
-private: System::Void btnLoginOutSellerCompany_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+		   void GoSale() {
+			   SaleDetailForm::paid = false;
+			   Sale^ mysale = gcnew Sale();
+			   // Add Customer
+			   mysale->Customer = (Customer^)Controller::QueryUserById(15);
+			   mysale->Address = ""; mysale->Reference = "";
+			   mysale->Status = 'A';
+			   // Add Store manager
+			   mysale->StoreManager = (StoreManager^)(Controller::QueryUserById(person->Id));
+			   mysale->PaidMode = "Efectivo";
+			   mysale->SaleDate = Convert::ToString(DateTime::Now.AddDays(0)); //para registras ventas pasadas
+
+			   saleId = Controller::AddSale(mysale);
+			   SaleDetailForm^ mySaleDetail = gcnew SaleDetailForm(saleId); mySaleDetail->ShowDialog();
+		   }
+
+#pragma endregion
+
+#pragma region SELLERCOMPANY
+	private: System::Void btnLoginOutSellerCompany_Click(System::Object^ sender, System::EventArgs^ e) {
 	SignOff();
-}
-private: System::Void btnAllPerson_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void btnAllPerson_Click(System::Object^ sender, System::EventArgs^ e) {
 	UserForm^ userForm = gcnew UserForm(true);
 	userForm->ShowDialog();
-}
-private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	// New sale
-	GoSale();
-}
-	   // Closinf
-private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	}
+#pragma endregion
+
+	void SignOff() {
+			   person = nullptr;
+			   Idlb->Text = "0";
+			   lbJob->Text = "";
+			   Userlb->Text = "Invitado";
+			   lbCompany->Text = "";
+			   // btnLogin->BackgroundImage = gcnew Bitmap("resources/SalesMain/Main/Anonymous.png");
+				//btnLogin->BackgroundImage = gcnew Bitmap("resources/UserPictures/Default.png");
+			   btnLogin->BackgroundImage = pbFake->BackgroundImage; // Bv 
+			   gbMenuLogin->Visible = false;
+			   gbMenuCustomer->Visible = false;
+			   gbMenuAnnouncer->Visible = false;
+			   gbMenuStoreManager->Visible = false;
+			   gbSellerCompany->Visible = false;
+			   MenuVisibility = false;
+			   menuStrip1->Visible = false;
+
+			   // Have you paid?
+			   if (!SaleDetailForm::mySaleDetail->paid) {
+				   Controller::DeleteSale(ProductPresentationForm::saleId);
+				   SaleDetailForm::mySaleDetail->paid = true;
+			   }
+		   }
 
 #pragma region AD_LINKS
-private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel1->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel1->Text));
-}
-private: System::Void linkLabel2_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	}
+	private: System::Void linkLabel2_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel2->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel2->Text));
-}
-private: System::Void linkLabel3_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	}
+	private: System::Void linkLabel3_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel3->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel3->Text));
-}
-private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	}
+	private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel4->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel4->Text));
-}
+	}
 #pragma endregion
 
 #pragma region LOOKFORTOP
-private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "0"; ShowMeATop();
-}
-private: System::Void pbSecondProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "1";	ShowMeATop();
-}
-private: System::Void pbThirdProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "2";	ShowMeATop();
-}
-private: System::Void pbFourthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "3";	ShowMeATop();
-}
-private: System::Void pbFifthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "4";	ShowMeATop();
-}
-private: System::Void pbSixthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "5";	ShowMeATop();
-}
-private: System::Void pbSeventhProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
-	FakeIdTop->Text = "6";	ShowMeATop();
-}
+	private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "0"; ShowMeATop();
+	}
+	private: System::Void pbSecondProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "1";	ShowMeATop();
+	}
+	private: System::Void pbThirdProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "2";	ShowMeATop();
+	}	
+	private: System::Void pbFourthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "3";	ShowMeATop();
+	}
+	private: System::Void pbFifthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "4";	ShowMeATop();
+	}
+	private: System::Void pbSixthProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "5";	ShowMeATop();
+	}
+	private: System::Void pbSeventhProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
+		FakeIdTop->Text = "6";	ShowMeATop();
+	}
 #pragma endregion
+
+
+	// Form
+	private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	private: System::Void SalesMainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+				Ad();
+				PutTop(Controller::GetTopProducts());
+				lbCompany->Text = "";
+				lbJob->Text = "";
+	}
 };
 }

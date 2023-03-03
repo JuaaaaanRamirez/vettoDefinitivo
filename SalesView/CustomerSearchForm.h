@@ -37,16 +37,11 @@ namespace SalesView {
 				delete components;
 			}
 		}
+#pragma region COMPONENTS
 	private: System::Windows::Forms::DataGridView^ dgvCustomers;
 	protected:
-
 	protected:
-
 	protected:
-
-
-
-
 	private: System::Windows::Forms::Button^ btnCancel;
 	private: System::Windows::Forms::Button^ btnSearch;
 	private: System::Windows::Forms::TextBox^ txtName;
@@ -69,6 +64,7 @@ namespace SalesView {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -224,7 +220,6 @@ namespace SalesView {
 			this->Name = L"CustomerSearchForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Busqueda de cliente";
-			this->Load += gcnew System::EventHandler(this, &CustomerSearchForm::CustomerSearchForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomers))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCustomer))->EndInit();
 			this->ResumeLayout(false);
@@ -232,21 +227,9 @@ namespace SalesView {
 
 		}
 #pragma endregion
-		void PutData(List<Customer^>^ myList) {
-			dgvCustomers->Rows->Clear();
-			for (int i = 0; i < myList->Count; i++) {
-				dgvCustomers->Rows->Add(gcnew array<String^> {
-					"" + myList[i]->Id,
-						myList[i]->Username,
-						Convert::ToString(myList[i]->CustomerPoints),
-						Convert::ToString(myList[i]->PhoneNumber)
-				});
-			}
-		}
-	private: System::Void CustomerSearchForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		//List<Customer^>^ myList = Controller::QueryAllCustomer();
-		//PutData(myList);
-	}
+
+		
+		// Buttons
 	private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^ e) {
 		List<Customer^>^ myList = gcnew List<Customer^>();
 		if (txtId->Text->Trim() != "") {
@@ -279,10 +262,12 @@ namespace SalesView {
 		
 		PutData(myList);
 }
-private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
-private: System::Void dgvCustomers_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	
+		// Dgv
+	private: System::Void dgvCustomers_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	if (e->RowIndex < 0) return;
 	if (e->RowIndex >= 0) {
 		if (dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value==nullptr) return;
@@ -293,5 +278,19 @@ private: System::Void dgvCustomers_CellDoubleClick(System::Object^ sender, Syste
 	}
 	this->Close();
 }
+
+
+		// Others
+	void PutData(List<Customer^>^ myList) {
+			   dgvCustomers->Rows->Clear();
+			   for (int i = 0; i < myList->Count; i++) {
+				   dgvCustomers->Rows->Add(gcnew array<String^> {
+					   "" + myList[i]->Id,
+						   myList[i]->Username,
+						   Convert::ToString(myList[i]->CustomerPoints),
+						   Convert::ToString(myList[i]->PhoneNumber)
+				   });
+			   }
+	}
 };
 }

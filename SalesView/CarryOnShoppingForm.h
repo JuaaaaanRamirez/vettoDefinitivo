@@ -38,6 +38,7 @@ namespace SalesView {
 				delete components;
 			}
 		}
+#pragma region COMPONENTS
 	private: System::Windows::Forms::Label^ lbCont;
 	protected:
 	private: System::Windows::Forms::PictureBox^ pbCheck;
@@ -49,6 +50,7 @@ namespace SalesView {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -129,33 +131,17 @@ namespace SalesView {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¡Carrito actualizado!";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_FormClosing);
-			this->Load += gcnew System::EventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_Load);
+			//this->Load += gcnew System::EventHandler(this, &CarryOnShoppingForm::CarryOnShoppingForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbCheck))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void btnWatchaShopping_Click(System::Object^ sender, System::EventArgs^ e) {
-		btnPushed = true;
-		SaleDetailForm^ saleDetail = gcnew SaleDetailForm(saleId);
-		saleDetail->ShowDialog();
-		this->Close();
-	}
-private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e) {
-	btnPushed = true;
-	SaleDetailForm::mySaleDetail->paid = false;
-	Close();
-}
-private: System::Void CarryOnShoppingForm_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void CarryOnShoppingForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	if (!btnPushed) {
-		Sale^ mySale = Controller::QuerySaleById(saleId);
-		/*mySale->SaleDetails->RemoveAt(mySale->SaleDetails->Count - 1);
-		Controller::UpdateSale(mySale);¨*/
-		Controller::DeleteSaleDetail(saleId, mySale->SaleDetails[mySale->SaleDetails->Count-1]->Id);
-	}
-}
+
+
+	private: System::Void btnWatchaShopping_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void btnCarryOn_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void CarryOnShoppingForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 };
 }

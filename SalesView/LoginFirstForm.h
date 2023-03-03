@@ -33,6 +33,7 @@ namespace SalesView {
 				delete components;
 			}
 		}
+#pragma region COMPONENTS
 	private: System::Windows::Forms::PictureBox^ pbWait;
 	private: System::Windows::Forms::Label^ lbCart;
 
@@ -44,6 +45,8 @@ namespace SalesView {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -70,7 +73,7 @@ namespace SalesView {
 			this->pbWait->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbWait->TabIndex = 0;
 			this->pbWait->TabStop = false;
-			this->pbWait->Click += gcnew System::EventHandler(this, &LoginFirstForm::pbWait_Click);
+			//this->pbWait->Click += gcnew System::EventHandler(this, &LoginFirstForm::pbWait_Click);
 			// 
 			// lbCart
 			// 
@@ -113,18 +116,14 @@ namespace SalesView {
 			this->Name = L"LoginFirstForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¡Loguearse!";
-			this->Load += gcnew System::EventHandler(this, &LoginFirstForm::LoginFirstForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbWait))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void LoginFirstForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 	private: System::Void btnLoguin_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void pbWait_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 };
 }
 
