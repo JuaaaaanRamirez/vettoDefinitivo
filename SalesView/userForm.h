@@ -260,7 +260,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label1->Location = System::Drawing::Point(21, 11);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(18, 16);
+			this->label1->Size = System::Drawing::Size(16, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Id";
 			// 
@@ -270,7 +270,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label2->Location = System::Drawing::Point(21, 41);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(56, 16);
+			this->label2->Size = System::Drawing::Size(44, 13);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nombre";
 			// 
@@ -280,7 +280,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label3->Location = System::Drawing::Point(21, 101);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(41, 16);
+			this->label3->Size = System::Drawing::Size(32, 13);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Email";
 			// 
@@ -290,7 +290,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label4->Location = System::Drawing::Point(21, 71);
 			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(64, 16);
+			this->label4->Size = System::Drawing::Size(49, 13);
 			this->label4->TabIndex = 0;
 			this->label4->Text = L"Apellidos";
 			// 
@@ -300,7 +300,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label6->Location = System::Drawing::Point(21, 161);
 			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(61, 16);
+			this->label6->Size = System::Drawing::Size(49, 13);
 			this->label6->TabIndex = 1;
 			this->label6->Text = L"Teléfono";
 			// 
@@ -310,7 +310,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label7->Location = System::Drawing::Point(21, 231);
 			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(64, 16);
+			this->label7->Size = System::Drawing::Size(54, 13);
 			this->label7->TabIndex = 1;
 			this->label7->Text = L"Fec. Nac.";
 			// 
@@ -320,7 +320,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label9->Location = System::Drawing::Point(196, 11);
 			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(30, 16);
+			this->label9->Size = System::Drawing::Size(26, 13);
 			this->label9->TabIndex = 0;
 			this->label9->Text = L"DNI";
 			// 
@@ -330,7 +330,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label10->Location = System::Drawing::Point(21, 201);
 			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(52, 16);
+			this->label10->Size = System::Drawing::Size(42, 13);
 			this->label10->TabIndex = 1;
 			this->label10->Text = L"Género";
 			// 
@@ -339,15 +339,15 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->txtCustomerName->Location = System::Drawing::Point(86, 41);
 			this->txtCustomerName->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerName->Name = L"txtCustomerName";
-			this->txtCustomerName->Size = System::Drawing::Size(339, 22);
-			this->txtCustomerName->TabIndex = 2;
+			this->txtCustomerName->Size = System::Drawing::Size(339, 20);
+			this->txtCustomerName->TabIndex = 3;
 			// 
 			// txtDocNumber
 			// 
 			this->txtDocNumber->Location = System::Drawing::Point(234, 11);
 			this->txtDocNumber->Margin = System::Windows::Forms::Padding(4);
 			this->txtDocNumber->Name = L"txtDocNumber";
-			this->txtDocNumber->Size = System::Drawing::Size(191, 22);
+			this->txtDocNumber->Size = System::Drawing::Size(191, 20);
 			this->txtDocNumber->TabIndex = 2;
 			this->txtDocNumber->TextChanged += gcnew System::EventHandler(this, &UserForm::txtDocNumber_TextChanged);
 			// 
@@ -356,32 +356,32 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->txtCustomerId->Location = System::Drawing::Point(86, 11);
 			this->txtCustomerId->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerId->Name = L"txtCustomerId";
-			this->txtCustomerId->Size = System::Drawing::Size(85, 22);
-			this->txtCustomerId->TabIndex = 2;
+			this->txtCustomerId->Size = System::Drawing::Size(85, 20);
+			this->txtCustomerId->TabIndex = 1;
 			// 
 			// txtCustomerLastName
 			// 
 			this->txtCustomerLastName->Location = System::Drawing::Point(86, 71);
 			this->txtCustomerLastName->Margin = System::Windows::Forms::Padding(4);
 			this->txtCustomerLastName->Name = L"txtCustomerLastName";
-			this->txtCustomerLastName->Size = System::Drawing::Size(339, 22);
-			this->txtCustomerLastName->TabIndex = 2;
+			this->txtCustomerLastName->Size = System::Drawing::Size(339, 20);
+			this->txtCustomerLastName->TabIndex = 4;
 			// 
 			// txtEmail
 			// 
 			this->txtEmail->Location = System::Drawing::Point(86, 101);
 			this->txtEmail->Margin = System::Windows::Forms::Padding(4);
 			this->txtEmail->Name = L"txtEmail";
-			this->txtEmail->Size = System::Drawing::Size(339, 22);
-			this->txtEmail->TabIndex = 2;
+			this->txtEmail->Size = System::Drawing::Size(339, 20);
+			this->txtEmail->TabIndex = 5;
 			// 
 			// txtPhoneNumber
 			// 
 			this->txtPhoneNumber->Location = System::Drawing::Point(86, 161);
 			this->txtPhoneNumber->Margin = System::Windows::Forms::Padding(4);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
-			this->txtPhoneNumber->Size = System::Drawing::Size(339, 22);
-			this->txtPhoneNumber->TabIndex = 2;
+			this->txtPhoneNumber->Size = System::Drawing::Size(339, 20);
+			this->txtPhoneNumber->TabIndex = 8;
 			// 
 			// dtpBirthday
 			// 
@@ -389,8 +389,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->dtpBirthday->Margin = System::Windows::Forms::Padding(4);
 			this->dtpBirthday->MaxDate = System::DateTime(3042, 12, 31, 0, 0, 0, 0);
 			this->dtpBirthday->Name = L"dtpBirthday";
-			this->dtpBirthday->Size = System::Drawing::Size(265, 22);
-			this->dtpBirthday->TabIndex = 3;
+			this->dtpBirthday->Size = System::Drawing::Size(265, 20);
+			this->dtpBirthday->TabIndex = 11;
 			this->dtpBirthday->Value = System::DateTime(2023, 2, 7, 0, 0, 0, 0);
 			// 
 			// rbtnMasc
@@ -399,8 +399,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->rbtnMasc->Location = System::Drawing::Point(0, 11);
 			this->rbtnMasc->Margin = System::Windows::Forms::Padding(4);
 			this->rbtnMasc->Name = L"rbtnMasc";
-			this->rbtnMasc->Size = System::Drawing::Size(64, 20);
-			this->rbtnMasc->TabIndex = 4;
+			this->rbtnMasc->Size = System::Drawing::Size(54, 17);
+			this->rbtnMasc->TabIndex = 9;
 			this->rbtnMasc->TabStop = true;
 			this->rbtnMasc->Text = L"Masc.";
 			this->rbtnMasc->UseVisualStyleBackColor = true;
@@ -411,8 +411,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->rbtnFem->Location = System::Drawing::Point(127, 11);
 			this->rbtnFem->Margin = System::Windows::Forms::Padding(4);
 			this->rbtnFem->Name = L"rbtnFem";
-			this->rbtnFem->Size = System::Drawing::Size(58, 20);
-			this->rbtnFem->TabIndex = 5;
+			this->rbtnFem->Size = System::Drawing::Size(48, 17);
+			this->rbtnFem->TabIndex = 10;
 			this->rbtnFem->TabStop = true;
 			this->rbtnFem->Text = L"Fem.";
 			this->rbtnFem->UseVisualStyleBackColor = true;
@@ -435,7 +435,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->btnUpdatePhoto->Margin = System::Windows::Forms::Padding(4);
 			this->btnUpdatePhoto->Name = L"btnUpdatePhoto";
 			this->btnUpdatePhoto->Size = System::Drawing::Size(100, 28);
-			this->btnUpdatePhoto->TabIndex = 7;
+			this->btnUpdatePhoto->TabIndex = 15;
 			this->btnUpdatePhoto->Text = L"Editar foto";
 			this->btnUpdatePhoto->UseVisualStyleBackColor = true;
 			this->btnUpdatePhoto->Click += gcnew System::EventHandler(this, &UserForm::btnUpdatePhoto_Click);
@@ -478,7 +478,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(21, 131);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(54, 16);
+			this->label11->Size = System::Drawing::Size(43, 13);
 			this->label11->TabIndex = 12;
 			this->label11->Text = L"Usuario";
 			// 
@@ -486,15 +486,15 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtUser->Location = System::Drawing::Point(86, 131);
 			this->txtUser->Name = L"txtUser";
-			this->txtUser->Size = System::Drawing::Size(100, 22);
-			this->txtUser->TabIndex = 13;
+			this->txtUser->Size = System::Drawing::Size(100, 20);
+			this->txtUser->TabIndex = 6;
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
 			this->label12->Location = System::Drawing::Point(196, 131);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(76, 16);
+			this->label12->Size = System::Drawing::Size(61, 13);
 			this->label12->TabIndex = 14;
 			this->label12->Text = L"Contraseña";
 			// 
@@ -503,16 +503,16 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->txtPassword->Location = System::Drawing::Point(278, 131);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->PasswordChar = '*';
-			this->txtPassword->Size = System::Drawing::Size(147, 22);
-			this->txtPassword->TabIndex = 15;
+			this->txtPassword->Size = System::Drawing::Size(147, 20);
+			this->txtPassword->TabIndex = 7;
 			// 
 			// rbtnStudent
 			// 
 			this->rbtnStudent->AutoSize = true;
 			this->rbtnStudent->Location = System::Drawing::Point(6, 16);
 			this->rbtnStudent->Name = L"rbtnStudent";
-			this->rbtnStudent->Size = System::Drawing::Size(91, 20);
-			this->rbtnStudent->TabIndex = 16;
+			this->rbtnStudent->Size = System::Drawing::Size(75, 17);
+			this->rbtnStudent->TabIndex = 12;
 			this->rbtnStudent->TabStop = true;
 			this->rbtnStudent->Text = L"Estudiante";
 			this->rbtnStudent->UseVisualStyleBackColor = true;
@@ -523,8 +523,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->rbtnAnnouncer->AutoSize = true;
 			this->rbtnAnnouncer->Location = System::Drawing::Point(127, 16);
 			this->rbtnAnnouncer->Name = L"rbtnAnnouncer";
-			this->rbtnAnnouncer->Size = System::Drawing::Size(94, 20);
-			this->rbtnAnnouncer->TabIndex = 17;
+			this->rbtnAnnouncer->Size = System::Drawing::Size(79, 17);
+			this->rbtnAnnouncer->TabIndex = 13;
 			this->rbtnAnnouncer->TabStop = true;
 			this->rbtnAnnouncer->Text = L"Anunciante";
 			this->rbtnAnnouncer->UseVisualStyleBackColor = true;
@@ -535,8 +535,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->rbtnStoreManager->AutoSize = true;
 			this->rbtnStoreManager->Location = System::Drawing::Point(237, 15);
 			this->rbtnStoreManager->Name = L"rbtnStoreManager";
-			this->rbtnStoreManager->Size = System::Drawing::Size(135, 20);
-			this->rbtnStoreManager->TabIndex = 18;
+			this->rbtnStoreManager->Size = System::Drawing::Size(110, 17);
+			this->rbtnStoreManager->TabIndex = 14;
 			this->rbtnStoreManager->TabStop = true;
 			this->rbtnStoreManager->Text = L"Gerente de tienda";
 			this->rbtnStoreManager->UseVisualStyleBackColor = true;
@@ -547,7 +547,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(21, 271);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(37, 16);
+			this->label5->Size = System::Drawing::Size(30, 13);
 			this->label5->TabIndex = 19;
 			this->label5->Text = L"Perfil";
 			// 
@@ -634,7 +634,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Addresslb->AutoSize = true;
 			this->Addresslb->Location = System::Drawing::Point(0, 11);
 			this->Addresslb->Name = L"Addresslb";
-			this->Addresslb->Size = System::Drawing::Size(64, 16);
+			this->Addresslb->Size = System::Drawing::Size(52, 13);
 			this->Addresslb->TabIndex = 23;
 			this->Addresslb->Text = L"Dirección";
 			// 
@@ -642,7 +642,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtAdress->Location = System::Drawing::Point(71, 11);
 			this->txtAdress->Name = L"txtAdress";
-			this->txtAdress->Size = System::Drawing::Size(333, 22);
+			this->txtAdress->Size = System::Drawing::Size(333, 20);
 			this->txtAdress->TabIndex = 24;
 			// 
 			// Studentbx
@@ -662,7 +662,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtCPoints->Location = System::Drawing::Point(71, 41);
 			this->txtCPoints->Name = L"txtCPoints";
-			this->txtCPoints->Size = System::Drawing::Size(333, 22);
+			this->txtCPoints->Size = System::Drawing::Size(333, 20);
 			this->txtCPoints->TabIndex = 26;
 			// 
 			// Pointslb
@@ -670,7 +670,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Pointslb->AutoSize = true;
 			this->Pointslb->Location = System::Drawing::Point(0, 41);
 			this->Pointslb->Name = L"Pointslb";
-			this->Pointslb->Size = System::Drawing::Size(67, 32);
+			this->Pointslb->Size = System::Drawing::Size(55, 26);
 			this->Pointslb->TabIndex = 25;
 			this->Pointslb->Text = L"Puntos de\r\nCliente";
 			// 
@@ -695,21 +695,21 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtStatus->Location = System::Drawing::Point(87, 101);
 			this->txtStatus->Name = L"txtStatus";
-			this->txtStatus->Size = System::Drawing::Size(317, 22);
+			this->txtStatus->Size = System::Drawing::Size(317, 20);
 			this->txtStatus->TabIndex = 7;
 			// 
 			// txtAStore
 			// 
 			this->txtAStore->Location = System::Drawing::Point(87, 71);
 			this->txtAStore->Name = L"txtAStore";
-			this->txtAStore->Size = System::Drawing::Size(317, 22);
+			this->txtAStore->Size = System::Drawing::Size(317, 20);
 			this->txtAStore->TabIndex = 6;
 			// 
 			// txtSalary
 			// 
 			this->txtSalary->Location = System::Drawing::Point(87, 41);
 			this->txtSalary->Name = L"txtSalary";
-			this->txtSalary->Size = System::Drawing::Size(317, 22);
+			this->txtSalary->Size = System::Drawing::Size(317, 20);
 			this->txtSalary->TabIndex = 5;
 			// 
 			// Statuslb
@@ -717,7 +717,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Statuslb->AutoSize = true;
 			this->Statuslb->Location = System::Drawing::Point(0, 101);
 			this->Statuslb->Name = L"Statuslb";
-			this->Statuslb->Size = System::Drawing::Size(50, 16);
+			this->Statuslb->Size = System::Drawing::Size(40, 13);
 			this->Statuslb->TabIndex = 4;
 			this->Statuslb->Text = L"Estado";
 			// 
@@ -726,7 +726,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Storelb->AutoSize = true;
 			this->Storelb->Location = System::Drawing::Point(0, 71);
 			this->Storelb->Name = L"Storelb";
-			this->Storelb->Size = System::Drawing::Size(90, 16);
+			this->Storelb->Size = System::Drawing::Size(73, 13);
 			this->Storelb->TabIndex = 3;
 			this->Storelb->Text = L"Tienda Actual";
 			// 
@@ -735,7 +735,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Salarylb->AutoSize = true;
 			this->Salarylb->Location = System::Drawing::Point(0, 41);
 			this->Salarylb->Name = L"Salarylb";
-			this->Salarylb->Size = System::Drawing::Size(50, 16);
+			this->Salarylb->Size = System::Drawing::Size(39, 13);
 			this->Salarylb->TabIndex = 2;
 			this->Salarylb->Text = L"Salario";
 			// 
@@ -743,7 +743,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtGoal->Location = System::Drawing::Point(87, 11);
 			this->txtGoal->Name = L"txtGoal";
-			this->txtGoal->Size = System::Drawing::Size(317, 22);
+			this->txtGoal->Size = System::Drawing::Size(317, 20);
 			this->txtGoal->TabIndex = 1;
 			// 
 			// label8
@@ -751,7 +751,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(0, 11);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(77, 16);
+			this->label8->Size = System::Drawing::Size(64, 13);
 			this->label8->TabIndex = 0;
 			this->label8->Text = L"Meta Actual";
 			// 
@@ -760,7 +760,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Companylb->AutoSize = true;
 			this->Companylb->Location = System::Drawing::Point(0, 11);
 			this->Companylb->Name = L"Companylb";
-			this->Companylb->Size = System::Drawing::Size(69, 16);
+			this->Companylb->Size = System::Drawing::Size(56, 13);
 			this->Companylb->TabIndex = 0;
 			this->Companylb->Text = L"Compañía";
 			// 
@@ -769,7 +769,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->WebSitelb->AutoSize = true;
 			this->WebSitelb->Location = System::Drawing::Point(0, 41);
 			this->WebSitelb->Name = L"WebSitelb";
-			this->WebSitelb->Size = System::Drawing::Size(65, 16);
+			this->WebSitelb->Size = System::Drawing::Size(53, 13);
 			this->WebSitelb->TabIndex = 1;
 			this->WebSitelb->Text = L"Sitio Web";
 			// 
@@ -778,7 +778,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Adslb->AutoSize = true;
 			this->Adslb->Location = System::Drawing::Point(0, 71);
 			this->Adslb->Name = L"Adslb";
-			this->Adslb->Size = System::Drawing::Size(55, 16);
+			this->Adslb->Size = System::Drawing::Size(46, 13);
 			this->Adslb->TabIndex = 2;
 			this->Adslb->Text = L"Anuncio";
 			// 
@@ -786,8 +786,8 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtCompanyName->Location = System::Drawing::Point(75, 11);
 			this->txtCompanyName->Name = L"txtCompanyName";
-			this->txtCompanyName->Size = System::Drawing::Size(323, 22);
-			this->txtCompanyName->TabIndex = 3;
+			this->txtCompanyName->Size = System::Drawing::Size(323, 20);
+			this->txtCompanyName->TabIndex = 18;
 			// 
 			// Announcerbx
 			// 
@@ -819,16 +819,16 @@ private: System::Windows::Forms::Button^ btnClean;
 			// 
 			this->txtWebSite->Location = System::Drawing::Point(75, 41);
 			this->txtWebSite->Name = L"txtWebSite";
-			this->txtWebSite->Size = System::Drawing::Size(323, 22);
-			this->txtWebSite->TabIndex = 4;
+			this->txtWebSite->Size = System::Drawing::Size(323, 20);
+			this->txtWebSite->TabIndex = 18;
 			// 
 			// chBxPass
 			// 
 			this->chBxPass->AutoSize = true;
 			this->chBxPass->Location = System::Drawing::Point(460, 191);
 			this->chBxPass->Name = L"chBxPass";
-			this->chBxPass->Size = System::Drawing::Size(144, 20);
-			this->chBxPass->TabIndex = 28;
+			this->chBxPass->Size = System::Drawing::Size(117, 17);
+			this->chBxPass->TabIndex = 16;
 			this->chBxPass->Text = L"Mostrar contraseña";
 			this->chBxPass->UseVisualStyleBackColor = true;
 			this->chBxPass->CheckedChanged += gcnew System::EventHandler(this, &UserForm::chBxPass_CheckedChanged);
@@ -838,7 +838,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->btnClean->Location = System::Drawing::Point(492, 231);
 			this->btnClean->Name = L"btnClean";
 			this->btnClean->Size = System::Drawing::Size(80, 23);
-			this->btnClean->TabIndex = 29;
+			this->btnClean->TabIndex = 17;
 			this->btnClean->Text = L"Limpiar";
 			this->btnClean->UseVisualStyleBackColor = true;
 			this->btnClean->Click += gcnew System::EventHandler(this, &UserForm::btnClean_Click);
