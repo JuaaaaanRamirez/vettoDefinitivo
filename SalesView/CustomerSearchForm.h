@@ -274,6 +274,7 @@ namespace SalesView {
 		Sale^ mySale = Controller::QueryLastSale();
 		String^ customerId = dgvCustomers->Rows[e->RowIndex]->Cells[0]->Value->ToString(); Customer^ p = (Customer^)Controller::QueryUserById(Int32::Parse(customerId));
 		mySale->Customer = p;
+		mySale->Address = p->Address;
 		Controller::UpdateSale(mySale);
 	}
 	this->Close();

@@ -373,6 +373,7 @@ namespace SalesView {
 			this->txtDate->ReadOnly = true;
 			this->txtDate->Size = System::Drawing::Size(599, 22);
 			this->txtDate->TabIndex = 19;
+			this->txtDate->TextChanged += gcnew System::EventHandler(this, &SaleDetailForm::txtDate_TextChanged);
 			// 
 			// txtSaleId
 			// 
@@ -636,5 +637,10 @@ private: System::Void cbPaidMode_SelectedValueChanged(System::Object^ sender, Sy
 		Controller::UpdateSale(mySale);
 }
 private: System::Void btnLookForCustomer_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void txtDate_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	Sale^ mySale = Controller::QuerySaleById(saleId);
+	mySale->SaleDate = txtDate->Text;
+	Controller::UpdateSale(mySale);
+}
 };
 }
