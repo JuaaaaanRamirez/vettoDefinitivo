@@ -976,9 +976,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 	private: System::Void StadisticReportForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		//ShowSells();
 		RefreshReportToday();
-		RefreshReportLastWeek();
-		RefreshReportLastMonth();
-		RefreshReportGoalsLastMonth();
+		//RefreshReportLastWeek();
+		//RefreshReportLastMonth();
+		//RefreshReportGoalsLastMonth();
 	}
 	private: System::Void chartSellsLastWeek_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -1016,18 +1016,18 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 				default:
 					break;
 				}
-				
-				dgvSells->Rows->Add(gcnew array<String^>{
+				if (mySells[i]->Total != 0) {
+					dgvSells->Rows->Add(gcnew array<String^>{
 
-					"" + mySells[i]->Id,
-						mySells[i]->SaleDate,
-						mySells[i]->Customer->Name,
-						mySells[i]->StoreManager->Name,
-						"" + mySells[i]->Total,
-						mySells[i]->PaidMode,
-						Estado
-				});
-
+						"" + mySells[i]->Id,
+							mySells[i]->SaleDate,
+							mySells[i]->Customer->Name,
+							mySells[i]->StoreManager->Name,
+							"" + mySells[i]->Total,
+							mySells[i]->PaidMode,
+							Estado
+					});
+				}
 			}
 		}
 		else {
@@ -1078,16 +1078,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 					break;
 				}
 
-
-				dgvSells->Rows->Add(gcnew array<String^>{
-					"" + sale->Id,
-						sale->SaleDate,
-						sale->Customer->Name,
-						sale->StoreManager->Name,
-						"" + sale->Total,
-						sale->PaidMode,
-						Estado
-				});
+				if (sale->Total != 0) {
+					dgvSells->Rows->Add(gcnew array<String^>{
+						"" + sale->Id,
+							sale->SaleDate,
+							sale->Customer->Name,
+							sale->StoreManager->Name,
+							"" + sale->Total,
+							sale->PaidMode,
+							Estado
+					});
+				}
 			}
 			else {
 				MessageBox::Show("No existe venta con el Id ingresado");
