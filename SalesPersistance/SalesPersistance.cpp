@@ -715,6 +715,60 @@ int SalesPersistance::Persistance::DeleteProduct(int id)
     }
     return output_id;
 }
+List<Product^>^ SalesPersistance::Persistance::GetTopProducts()
+{
+    //throw gcnew System::NotImplementedException();
+    // TODO: Insertar una instrucción "return" aquí
+
+    SqlConnection^ conn;
+    SqlCommand^ comm;
+    //SqlCommand^ comm2;
+    SqlDataReader^ reader;
+    List<Product^>^ activeProductsList = gcnew List<Product^>();
+    try {
+        //Paso 1: Se obtiene la conexión
+        conn = GetConnection();
+        //Paso 2: Se prepara la sentencia
+        comm = gcnew SqlCommand("dbo.usp_GetTopProducts", conn);
+        comm->CommandType = System::Data::CommandType::StoredProcedure;
+
+
+        comm->Prepare();
+    
+        //comm = gcnew SqlCommand("SELECT * FROM PRODUCT WHERE status='A'", conn); //WHERE status='A
+        //Paso 3: Se ejecuta la sentencia
+        reader = comm->ExecuteReader();
+        //Paso 4: Se procesan los resultados
+        int i = 0;
+        while (reader->Read() && i<7) {
+            Product^ p = gcnew Product();
+            p->Id = Convert::ToInt32(reader["id"]->ToString());
+            p->Name = reader["name"]->ToString();
+            p->Description = reader["description"]->ToString();
+            p->PriceMin = Convert::ToDouble(reader["priceMin"]->ToString());
+            p->PriceMaj = Convert::ToDouble(reader["priceMaj"]->ToString());
+            p->Stock = Convert::ToInt32(reader["stock"]->ToString());
+            if (!DBNull::Value->Equals(reader["status"])) p->Status = reader["status"]->ToString()[0];//SOLUCIONA PROBLEMAS CON CHAR
+            if (!DBNull::Value->Equals(reader["photo"])) p->Photo = (array<Byte>^)reader["photo"];
+            if (!DBNull::Value->Equals(reader["starts"])) p->Starts = Convert::ToDouble(reader["starts"]->ToString());
+            if (!DBNull::Value->Equals(reader["searches"])) p->Searches = Convert::ToInt32(reader["searches"]->ToString());
+            if (!DBNull::Value->Equals(reader["sales"])) p->Sales = Convert::ToInt32(reader["sales"]->ToString());
+            if (!DBNull::Value->Equals(reader["salesByTime"])) p->SalesByTime = Convert::ToInt32(reader["salesByTime"]->ToString());
+            activeProductsList->Add(p);
+            i++;
+        }
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    catch (Exception^ ex) {}
+    finally {
+        //Paso 5: Se cierran los objetos de conexión. Nunca se olviden del paso 5.
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return activeProductsList;
+}
 #pragma endregion
 
 #pragma region SALE

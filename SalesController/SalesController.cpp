@@ -89,6 +89,20 @@ List<Product^>^ SalesController::Controller::QueryProductsByStockLimit(int stock
     return newProductList;*/
     return Persistance::QueryProductsByStockLimit(stock);
 }
+List<Product^>^ SalesController::Controller::GetTopProducts()
+{
+    /*
+            List<Product^>^ myProductList = Controller::QueryAllProducts();
+            for (int i = 0; i < myProductList->Count; i++) // Look for!
+                for (int j = i; j < myProductList->Count; j++)
+                    if (myProductList[j]->Searches > myProductList[i]->Searches) {
+                        Product^ temp = myProductList[i];
+                        myProductList[i] = myProductList[j];
+                        myProductList[j] = temp;
+                    }
+            return myProductList;*/
+    return Persistance::GetTopProducts();
+}
 //...for products to order
 List<Product^>^ SalesController::Controller::GetListProductOrderBySearches(List<Product^>^ ListProductByTime)
 {

@@ -24,6 +24,9 @@ namespace SalesPersistance {
 		static int AddProduct(Product^ p); 
 		static int UpdateProduct(Product^ p);
 		static int DeleteProduct(int id);
+		static List<Product^>^ GetTopProducts();
+
+		
 
 
 		// For Sale

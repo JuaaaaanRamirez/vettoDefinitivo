@@ -46,17 +46,7 @@ namespace SalesController {
 		static List<Product^>^ QueryProductsByNameOrDescription(String^ nameDesc);
 		static List<Product^>^ QueryProductsByNameOrCareer(String^ nameCaree);  
 		static List<Product^>^ QueryProductsByStockLimit(int stock);
-		static List<Product^>^ GetTopProducts() {
-			List<Product^>^ myProductList = Controller::QueryAllProducts();
-			for (int i = 0; i < myProductList->Count; i++) // Look for!
-				for (int j = i; j < myProductList->Count; j++)
-					if (myProductList[j]->Searches > myProductList[i]->Searches) {
-						Product^ temp = myProductList[i];
-						myProductList[i] = myProductList[j];
-						myProductList[j] = temp;
-					}
-			return myProductList;
-		}
+		static List<Product^>^ GetTopProducts();
 		static List<Product^>^ GetListProductOrderBySearches(List<Product^>^ ListProductByTime);//usualmente el argumento sera toda la lista de products
 		static List<Product^>^ GetListProductOrderBySells(List<Sale^>^ ListProductByTime);
 
