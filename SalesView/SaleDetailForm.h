@@ -476,11 +476,28 @@ namespace SalesView {
 			txtAddress->Text = "" + mySale->Address;
 			cbPaidMode->Text = "" + mySale->PaidMode;
 			
+			// ShoppingCart
+			mySale->Total = 0;
+			dgvSaleDetail->Rows->Clear();
+			for (int j = 0; j < mySale->SaleDetails->Count; j++) {
+				dgvSaleDetail->Rows->Add(gcnew array<String^>{
+					"" + mySale->SaleDetails[j]->Id,
+						"" + mySale->SaleDetails[j]->Product->Name,
+						"" + mySale->SaleDetails[j]->UnitPrice,
+						"" + mySale->SaleDetails[j]->Quantity,
+						"" + mySale->SaleDetails[j]->SubTotal
+				});
+				mySale->Total += mySale->SaleDetails[j]->SubTotal;
+				txtSubTotal->Text = "" + mySale->Total * (0.82);
+				txtIGV->Text = "" + mySale->Total * (0.18);
+				txtTotal->Text = "" + mySale->Total;
+				Controller::UpdateSale(mySale);
+			}
 			
 
 			//	Reference empty
 		}
-		void ShowShoppingCart() {
+		/*void ShowShoppingCart() {
 			// Dgv SaleDetails
 			List<Sale^>^ mysaleList = Controller::QueryAllSales();		// Make List
 			dgvSaleDetail->Rows->Clear();							    // Clear Dgv
@@ -505,7 +522,7 @@ namespace SalesView {
 					}
 				}
 					
-		}
+		}*/
 	private: System::Void btnPaid_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Verification
 		if (txtUserName->Text->Trim() == "") { MessageBox::Show("El nombre del cliente no puede estar vacío"); return; }
@@ -539,7 +556,7 @@ namespace SalesView {
 	}
 	private: System::Void SaleDetailForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowData();
-		ShowShoppingCart();
+		//ShowShoppingCart();
 	}
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 		Sale^ thisSale = Controller::QuerySaleById(saleId);
@@ -547,7 +564,7 @@ namespace SalesView {
 		else {
 			ProductSearchForm^ mySearch = gcnew ProductSearchForm(this);
 			mySearch->ShowDialog();
-			ShowData(); ShowShoppingCart();
+			ShowData(); //ShowShoppingCart();
 		}
 	}
 private: System::Void SaleDetailForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
@@ -557,7 +574,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 			int selectedRowIndex = dgvSaleDetail->SelectedCells[0]->RowIndex;
 			int saleDetailId = Convert::ToInt32(dgvSaleDetail->Rows[selectedRowIndex]->Cells[0]->Value->ToString());
 			Controller::DeleteSaleDetail(saleId, saleDetailId);
-			ShowData(); ShowShoppingCart();
+			ShowData(); //ShowShoppingCart();
 		}
 		else
 			MessageBox::Show("No se puede eliminar una fila vacía.");
@@ -565,7 +582,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	else
 		MessageBox::Show("Para eliminar debe seleccionar solo un producto.");
 	ShowData();
-	ShowShoppingCart();
+	//ShowShoppingCart();
 }
 private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	if (dgvSaleDetail->Columns[e->ColumnIndex]->Name == "Cantidad") {
@@ -586,7 +603,7 @@ private: System::Void dgvSaleDetail_CellValueChanged(System::Object^ sender, Sys
 			Controller::UpdateSaleDetail(currentSale->SaleDetails[e->RowIndex], currentSale->Id);
 		}
 		ShowData();
-		ShowShoppingCart();
+		//ShowShoppingCart();
 	}
 }
 private: System::Void txtUserName_TextChanged(System::Object^ sender, System::EventArgs^ e) {

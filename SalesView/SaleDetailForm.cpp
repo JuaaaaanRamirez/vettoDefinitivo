@@ -10,5 +10,5 @@ System::Void SalesView::SaleDetailForm::SaleDetailForm_FormClosing(System::Objec
 System::Void SalesView::SaleDetailForm::btnLookForCustomer_Click(System::Object^ sender, System::EventArgs^ e)
 {
     CustomerSearchForm^ mySearch = gcnew CustomerSearchForm(); mySearch->ShowDialog();
-    ShowData(); ShowShoppingCart();
+    ShowData(); //ShowShoppingCart();
 }
