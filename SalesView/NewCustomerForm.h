@@ -470,6 +470,8 @@ namespace SalesView {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Margin = System::Windows::Forms::Padding(4);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"NewCustomerForm";
 			this->Text = L"Datos del consumidor";
 			this->Load += gcnew System::EventHandler(this, &NewCustomerForm::NewCustomerForm_Load);

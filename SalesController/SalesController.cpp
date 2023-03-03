@@ -7,14 +7,14 @@ using namespace SalesPersistance;
 // For Product
 int SalesController::Controller::AddProduct(Product^ product)
 {
-    //ver que no se repita el id d eproduct ingresante
+   /* //ver que no se repita el id d eproduct ingresante
     for (int i = 0; i < productList->Count; i++) {
         if (product->Id == productList[i]->Id) return -1;
     }
     productList->Add(product);
     //Persistance::PersistBinary("products.bin", productList);
-    Persistance::AddProduct(product);
-    return Int32(product->Id);
+    Persistance::AddProduct(product);*/
+    return Persistance::AddProduct(product);;
 }
 Product^ SalesController::Controller::QueryProductById(int productId)
 {
@@ -34,26 +34,11 @@ List<Product^>^ SalesController::Controller::QueryAllProducts()
 }
 int SalesController::Controller::UpdateProduct(Product^ product)
 {
-    for (int i = 0; i < productList->Count; i++)
-        if (productList[i]->Id == product->Id) {
-            productList[i] = product;
-            //Persistance::PersistBinary("products.bin", productList);
-            Persistance::UpdateProduct(product);
-            return product->Id;
-        }
-
-    return -1;
+    return Persistance::UpdateProduct(product);
 }
 int SalesController::Controller::DeleteProduct(int productId)
 {
-    for (int i = 0; i < productList->Count; i++)
-        if (productList[i]->Id == productId) {
-            productList->RemoveAt(i);
-            //Persistance::PersistBinary("products.bin", productList);
-            Persistance::DeleteProduct(productId);
-            return productId;
-        }
-    return 0;
+    return Persistance::DeleteProduct(productId);;
 }
 List<Product^>^ SalesController::Controller::QueryProductsByNameOrDescription(String^ nameDesc)
 {
@@ -91,8 +76,7 @@ List<Product^>^ SalesController::Controller::QueryProductsByStockLimit(int stock
 }
 List<Product^>^ SalesController::Controller::GetTopProducts()
 {
-    /*
-            List<Product^>^ myProductList = Controller::QueryAllProducts();
+            /*List<Product^>^ myProductList = Controller::QueryAllProducts();
             for (int i = 0; i < myProductList->Count; i++) // Look for!
                 for (int j = i; j < myProductList->Count; j++)
                     if (myProductList[j]->Searches > myProductList[i]->Searches) {

@@ -135,67 +135,65 @@ namespace SalesView {
 			this->lbTitle->AutoSize = true;
 			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbTitle->Location = System::Drawing::Point(4, 8);
+			this->lbTitle->Location = System::Drawing::Point(5, 10);
+			this->lbTitle->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbTitle->Name = L"lbTitle";
-			this->lbTitle->Size = System::Drawing::Size(146, 20);
+			this->lbTitle->Size = System::Drawing::Size(176, 25);
 			this->lbTitle->TabIndex = 4;
 			this->lbTitle->Text = L"Datos del Pedido";
 			this->lbTitle->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// txtTotal
 			// 
-			this->txtTotal->Location = System::Drawing::Point(634, 362);
-			this->txtTotal->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtTotal->Location = System::Drawing::Point(845, 446);
+			this->txtTotal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtTotal->Name = L"txtTotal";
 			this->txtTotal->ReadOnly = true;
-			this->txtTotal->Size = System::Drawing::Size(76, 20);
+			this->txtTotal->Size = System::Drawing::Size(100, 22);
 			this->txtTotal->TabIndex = 26;
 			// 
 			// txtIGV
 			// 
-			this->txtIGV->Location = System::Drawing::Point(634, 337);
-			this->txtIGV->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtIGV->Location = System::Drawing::Point(845, 415);
+			this->txtIGV->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtIGV->Name = L"txtIGV";
 			this->txtIGV->ReadOnly = true;
-			this->txtIGV->Size = System::Drawing::Size(76, 20);
+			this->txtIGV->Size = System::Drawing::Size(100, 22);
 			this->txtIGV->TabIndex = 25;
 			// 
 			// txtSubTotal
 			// 
-			this->txtSubTotal->Location = System::Drawing::Point(634, 313);
-			this->txtSubTotal->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtSubTotal->Location = System::Drawing::Point(845, 385);
+			this->txtSubTotal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtSubTotal->Name = L"txtSubTotal";
 			this->txtSubTotal->ReadOnly = true;
-			this->txtSubTotal->Size = System::Drawing::Size(76, 20);
+			this->txtSubTotal->Size = System::Drawing::Size(100, 22);
 			this->txtSubTotal->TabIndex = 24;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(562, 313);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(749, 385);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(77, 13);
+			this->label4->Size = System::Drawing::Size(92, 16);
 			this->label4->TabIndex = 23;
 			this->label4->Text = L"SubTotal (S/.):";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(562, 362);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(749, 446);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(58, 13);
+			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 22;
 			this->label6->Text = L"Total (S/.):";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(562, 337);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(749, 415);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(63, 13);
+			this->label5->Size = System::Drawing::Size(75, 16);
 			this->label5->TabIndex = 21;
 			this->label5->Text = L"I.G.V (18%).";
 			// 
@@ -207,13 +205,13 @@ namespace SalesView {
 				this->Id, this->Nombre,
 					this->Precio, this->Cantidad, this->SubTotal
 			});
-			this->dgvSaleDetail->Location = System::Drawing::Point(8, 179);
-			this->dgvSaleDetail->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgvSaleDetail->Location = System::Drawing::Point(11, 220);
+			this->dgvSaleDetail->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvSaleDetail->Name = L"dgvSaleDetail";
 			this->dgvSaleDetail->ReadOnly = true;
 			this->dgvSaleDetail->RowHeadersWidth = 51;
 			this->dgvSaleDetail->RowTemplate->Height = 24;
-			this->dgvSaleDetail->Size = System::Drawing::Size(704, 122);
+			this->dgvSaleDetail->Size = System::Drawing::Size(939, 150);
 			this->dgvSaleDetail->TabIndex = 19;
 			// 
 			// Id
@@ -259,10 +257,10 @@ namespace SalesView {
 			// btnCancel
 			// 
 			this->btnCancel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			this->btnCancel->Location = System::Drawing::Point(240, 349);
-			this->btnCancel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnCancel->Location = System::Drawing::Point(320, 430);
+			this->btnCancel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCancel->Name = L"btnCancel";
-			this->btnCancel->Size = System::Drawing::Size(150, 28);
+			this->btnCancel->Size = System::Drawing::Size(200, 34);
 			this->btnCancel->TabIndex = 27;
 			this->btnCancel->Text = L"Cancelar Pedido";
 			this->btnCancel->UseVisualStyleBackColor = true;
@@ -271,10 +269,10 @@ namespace SalesView {
 			// btnClaim
 			// 
 			this->btnClaim->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			this->btnClaim->Location = System::Drawing::Point(112, 349);
-			this->btnClaim->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnClaim->Location = System::Drawing::Point(149, 430);
+			this->btnClaim->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnClaim->Name = L"btnClaim";
-			this->btnClaim->Size = System::Drawing::Size(112, 28);
+			this->btnClaim->Size = System::Drawing::Size(149, 34);
 			this->btnClaim->TabIndex = 28;
 			this->btnClaim->Text = L"Reclamar";
 			this->btnClaim->UseVisualStyleBackColor = true;
@@ -283,140 +281,132 @@ namespace SalesView {
 			// lbPaidMode
 			// 
 			this->lbPaidMode->AutoSize = true;
-			this->lbPaidMode->Location = System::Drawing::Point(8, 141);
-			this->lbPaidMode->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbPaidMode->Location = System::Drawing::Point(11, 174);
 			this->lbPaidMode->Name = L"lbPaidMode";
-			this->lbPaidMode->Size = System::Drawing::Size(88, 13);
+			this->lbPaidMode->Size = System::Drawing::Size(110, 16);
 			this->lbPaidMode->TabIndex = 39;
 			this->lbPaidMode->Text = L"Método de pago:";
 			// 
 			// lbSaleID
 			// 
 			this->lbSaleID->AutoSize = true;
-			this->lbSaleID->Location = System::Drawing::Point(8, 44);
-			this->lbSaleID->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbSaleID->Location = System::Drawing::Point(11, 54);
 			this->lbSaleID->Name = L"lbSaleID";
-			this->lbSaleID->Size = System::Drawing::Size(66, 13);
+			this->lbSaleID->Size = System::Drawing::Size(78, 16);
 			this->lbSaleID->TabIndex = 38;
 			this->lbSaleID->Text = L"ID de venta:";
 			// 
 			// txtSaleId
 			// 
 			this->txtSaleId->BackColor = System::Drawing::SystemColors::Control;
-			this->txtSaleId->Location = System::Drawing::Point(75, 44);
-			this->txtSaleId->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtSaleId->Location = System::Drawing::Point(100, 54);
+			this->txtSaleId->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtSaleId->Name = L"txtSaleId";
 			this->txtSaleId->ReadOnly = true;
-			this->txtSaleId->Size = System::Drawing::Size(264, 20);
+			this->txtSaleId->Size = System::Drawing::Size(351, 22);
 			this->txtSaleId->TabIndex = 37;
 			// 
 			// txtDate
 			// 
 			this->txtDate->BackColor = System::Drawing::SystemColors::Control;
-			this->txtDate->Location = System::Drawing::Point(75, 68);
-			this->txtDate->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtDate->Location = System::Drawing::Point(100, 84);
+			this->txtDate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtDate->Name = L"txtDate";
 			this->txtDate->ReadOnly = true;
-			this->txtDate->Size = System::Drawing::Size(264, 20);
+			this->txtDate->Size = System::Drawing::Size(351, 22);
 			this->txtDate->TabIndex = 36;
 			// 
 			// lbReference
 			// 
 			this->lbReference->AutoSize = true;
-			this->lbReference->Location = System::Drawing::Point(352, 68);
-			this->lbReference->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbReference->Location = System::Drawing::Point(469, 84);
 			this->lbReference->Name = L"lbReference";
-			this->lbReference->Size = System::Drawing::Size(62, 13);
+			this->lbReference->Size = System::Drawing::Size(76, 16);
 			this->lbReference->TabIndex = 35;
 			this->lbReference->Text = L"Referencia:";
 			// 
 			// lbSalePerson
 			// 
 			this->lbSalePerson->AutoSize = true;
-			this->lbSalePerson->Location = System::Drawing::Point(8, 117);
-			this->lbSalePerson->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbSalePerson->Location = System::Drawing::Point(11, 144);
 			this->lbSalePerson->Name = L"lbSalePerson";
-			this->lbSalePerson->Size = System::Drawing::Size(56, 13);
+			this->lbSalePerson->Size = System::Drawing::Size(70, 16);
 			this->lbSalePerson->TabIndex = 34;
 			this->lbSalePerson->Text = L"Vendedor:";
 			// 
 			// lbUser
 			// 
 			this->lbUser->AutoSize = true;
-			this->lbUser->Location = System::Drawing::Point(8, 93);
-			this->lbUser->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbUser->Location = System::Drawing::Point(11, 114);
 			this->lbUser->Name = L"lbUser";
-			this->lbUser->Size = System::Drawing::Size(42, 13);
+			this->lbUser->Size = System::Drawing::Size(51, 16);
 			this->lbUser->TabIndex = 33;
 			this->lbUser->Text = L"Cliente:";
 			// 
 			// txtReference
 			// 
 			this->txtReference->BackColor = System::Drawing::SystemColors::Control;
-			this->txtReference->Location = System::Drawing::Point(428, 68);
-			this->txtReference->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtReference->Location = System::Drawing::Point(571, 84);
+			this->txtReference->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtReference->Name = L"txtReference";
 			this->txtReference->ReadOnly = true;
-			this->txtReference->Size = System::Drawing::Size(264, 20);
+			this->txtReference->Size = System::Drawing::Size(351, 22);
 			this->txtReference->TabIndex = 32;
 			// 
 			// txtSalePerson
 			// 
 			this->txtSalePerson->BackColor = System::Drawing::SystemColors::Control;
-			this->txtSalePerson->Location = System::Drawing::Point(75, 117);
-			this->txtSalePerson->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtSalePerson->Location = System::Drawing::Point(100, 144);
+			this->txtSalePerson->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtSalePerson->Name = L"txtSalePerson";
 			this->txtSalePerson->ReadOnly = true;
-			this->txtSalePerson->Size = System::Drawing::Size(264, 20);
+			this->txtSalePerson->Size = System::Drawing::Size(351, 22);
 			this->txtSalePerson->TabIndex = 31;
 			// 
 			// txtUserName
 			// 
 			this->txtUserName->BackColor = System::Drawing::SystemColors::Control;
-			this->txtUserName->Location = System::Drawing::Point(75, 93);
-			this->txtUserName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtUserName->Location = System::Drawing::Point(100, 114);
+			this->txtUserName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtUserName->Name = L"txtUserName";
 			this->txtUserName->ReadOnly = true;
-			this->txtUserName->Size = System::Drawing::Size(264, 20);
+			this->txtUserName->Size = System::Drawing::Size(351, 22);
 			this->txtUserName->TabIndex = 30;
 			// 
 			// lbDate
 			// 
 			this->lbDate->AutoSize = true;
-			this->lbDate->Location = System::Drawing::Point(8, 68);
-			this->lbDate->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbDate->Location = System::Drawing::Point(11, 84);
 			this->lbDate->Name = L"lbDate";
-			this->lbDate->Size = System::Drawing::Size(68, 13);
+			this->lbDate->Size = System::Drawing::Size(82, 16);
 			this->lbDate->TabIndex = 29;
 			this->lbDate->Text = L"Fecha/Hora:";
 			// 
 			// lbAddress
 			// 
 			this->lbAddress->AutoSize = true;
-			this->lbAddress->Location = System::Drawing::Point(352, 44);
-			this->lbAddress->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbAddress->Location = System::Drawing::Point(469, 54);
 			this->lbAddress->Name = L"lbAddress";
-			this->lbAddress->Size = System::Drawing::Size(55, 13);
+			this->lbAddress->Size = System::Drawing::Size(67, 16);
 			this->lbAddress->TabIndex = 42;
 			this->lbAddress->Text = L"Dirección:";
 			// 
 			// txtAddress
 			// 
 			this->txtAddress->BackColor = System::Drawing::SystemColors::Control;
-			this->txtAddress->Location = System::Drawing::Point(428, 44);
-			this->txtAddress->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAddress->Location = System::Drawing::Point(571, 54);
+			this->txtAddress->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtAddress->Name = L"txtAddress";
 			this->txtAddress->ReadOnly = true;
-			this->txtAddress->Size = System::Drawing::Size(264, 20);
+			this->txtAddress->Size = System::Drawing::Size(351, 22);
 			this->txtAddress->TabIndex = 41;
 			// 
 			// lbStatus
 			// 
 			this->lbStatus->AutoSize = true;
-			this->lbStatus->Location = System::Drawing::Point(352, 93);
-			this->lbStatus->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbStatus->Location = System::Drawing::Point(469, 114);
 			this->lbStatus->Name = L"lbStatus";
-			this->lbStatus->Size = System::Drawing::Size(43, 13);
+			this->lbStatus->Size = System::Drawing::Size(53, 16);
 			this->lbStatus->TabIndex = 44;
 			this->lbStatus->Text = L"Estado:";
 			// 
@@ -425,30 +415,30 @@ namespace SalesView {
 			this->txtStatus->BackColor = System::Drawing::SystemColors::Control;
 			this->txtStatus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtStatus->Location = System::Drawing::Point(428, 93);
-			this->txtStatus->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtStatus->Location = System::Drawing::Point(571, 114);
+			this->txtStatus->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->ReadOnly = true;
-			this->txtStatus->Size = System::Drawing::Size(264, 19);
+			this->txtStatus->Size = System::Drawing::Size(351, 22);
 			this->txtStatus->TabIndex = 43;
 			// 
 			// txtPaidMode
 			// 
 			this->txtPaidMode->BackColor = System::Drawing::SystemColors::Control;
-			this->txtPaidMode->Location = System::Drawing::Point(94, 141);
-			this->txtPaidMode->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPaidMode->Location = System::Drawing::Point(125, 174);
+			this->txtPaidMode->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPaidMode->Name = L"txtPaidMode";
 			this->txtPaidMode->ReadOnly = true;
-			this->txtPaidMode->Size = System::Drawing::Size(244, 20);
+			this->txtPaidMode->Size = System::Drawing::Size(324, 22);
 			this->txtPaidMode->TabIndex = 46;
 			// 
 			// ProductStatusForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
-			this->ClientSize = System::Drawing::Size(736, 409);
+			this->ClientSize = System::Drawing::Size(981, 503);
 			this->Controls->Add(this->txtPaidMode);
 			this->Controls->Add(this->lbStatus);
 			this->Controls->Add(this->txtStatus);
@@ -475,7 +465,9 @@ namespace SalesView {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dgvSaleDetail);
 			this->Controls->Add(this->lbTitle);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"ProductStatusForm";
 			this->Text = L"Boleta del venta";
 			this->Load += gcnew System::EventHandler(this, &ProductStatusForm::ProductStatusForm_Load);

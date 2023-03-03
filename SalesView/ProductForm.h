@@ -176,40 +176,36 @@ namespace SalesView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(15, 16);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(20, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(43, 13);
+			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(15, 41);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(20, 50);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(47, 13);
+			this->label2->Size = System::Drawing::Size(59, 16);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Nombre:";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(15, 65);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(20, 80);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(66, 13);
+			this->label3->Size = System::Drawing::Size(82, 16);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Descripción:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(15, 130);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(20, 160);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(103, 13);
+			this->label4->Size = System::Drawing::Size(128, 16);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Precio minorista (s/.)";
 			this->label4->Click += gcnew System::EventHandler(this, &ProductForm::label4_Click);
@@ -217,60 +213,59 @@ namespace SalesView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(15, 179);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(20, 220);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(38, 13);
+			this->label5->Size = System::Drawing::Size(44, 16);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Stock:";
 			// 
 			// txtProductId
 			// 
-			this->txtProductId->Location = System::Drawing::Point(82, 16);
-			this->txtProductId->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtProductId->Location = System::Drawing::Point(109, 20);
+			this->txtProductId->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtProductId->Name = L"txtProductId";
-			this->txtProductId->Size = System::Drawing::Size(230, 20);
+			this->txtProductId->Size = System::Drawing::Size(305, 22);
 			this->txtProductId->TabIndex = 6;
 			// 
 			// txtName
 			// 
-			this->txtName->Location = System::Drawing::Point(82, 41);
-			this->txtName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtName->Location = System::Drawing::Point(109, 50);
+			this->txtName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtName->Name = L"txtName";
-			this->txtName->Size = System::Drawing::Size(230, 20);
+			this->txtName->Size = System::Drawing::Size(305, 22);
 			this->txtName->TabIndex = 7;
 			// 
 			// txtDescription
 			// 
-			this->txtDescription->Location = System::Drawing::Point(82, 65);
-			this->txtDescription->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtDescription->Location = System::Drawing::Point(109, 80);
+			this->txtDescription->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtDescription->Multiline = true;
 			this->txtDescription->Name = L"txtDescription";
-			this->txtDescription->Size = System::Drawing::Size(230, 48);
+			this->txtDescription->Size = System::Drawing::Size(305, 58);
 			this->txtDescription->TabIndex = 8;
 			// 
 			// txtPriceMin
 			// 
-			this->txtPriceMin->Location = System::Drawing::Point(135, 130);
-			this->txtPriceMin->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPriceMin->Location = System::Drawing::Point(180, 160);
+			this->txtPriceMin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPriceMin->Name = L"txtPriceMin";
-			this->txtPriceMin->Size = System::Drawing::Size(76, 20);
+			this->txtPriceMin->Size = System::Drawing::Size(100, 22);
 			this->txtPriceMin->TabIndex = 9;
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(135, 179);
-			this->txtStock->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtStock->Location = System::Drawing::Point(180, 220);
+			this->txtStock->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtStock->Name = L"txtStock";
-			this->txtStock->Size = System::Drawing::Size(76, 20);
+			this->txtStock->Size = System::Drawing::Size(100, 22);
 			this->txtStock->TabIndex = 11;
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->Location = System::Drawing::Point(15, 219);
-			this->btnAdd->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnAdd->Location = System::Drawing::Point(20, 270);
+			this->btnAdd->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnAdd->Name = L"btnAdd";
-			this->btnAdd->Size = System::Drawing::Size(82, 24);
+			this->btnAdd->Size = System::Drawing::Size(109, 30);
 			this->btnAdd->TabIndex = 14;
 			this->btnAdd->Text = L"Agregar";
 			this->btnAdd->UseVisualStyleBackColor = true;
@@ -278,10 +273,10 @@ namespace SalesView {
 			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->Location = System::Drawing::Point(150, 219);
-			this->btnUpdate->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnUpdate->Location = System::Drawing::Point(200, 270);
+			this->btnUpdate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnUpdate->Name = L"btnUpdate";
-			this->btnUpdate->Size = System::Drawing::Size(82, 24);
+			this->btnUpdate->Size = System::Drawing::Size(109, 30);
 			this->btnUpdate->TabIndex = 15;
 			this->btnUpdate->Text = L"Modificar";
 			this->btnUpdate->UseVisualStyleBackColor = true;
@@ -289,10 +284,10 @@ namespace SalesView {
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(300, 219);
-			this->btnDelete->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnDelete->Location = System::Drawing::Point(400, 270);
+			this->btnDelete->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnDelete->Name = L"btnDelete";
-			this->btnDelete->Size = System::Drawing::Size(82, 24);
+			this->btnDelete->Size = System::Drawing::Size(109, 30);
 			this->btnDelete->TabIndex = 16;
 			this->btnDelete->Text = L"Eliminar";
 			this->btnDelete->UseVisualStyleBackColor = true;
@@ -302,20 +297,20 @@ namespace SalesView {
 			// 
 			this->pbPhoto->BackColor = System::Drawing::Color::White;
 			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbPhoto->Location = System::Drawing::Point(450, 16);
-			this->pbPhoto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbPhoto->Location = System::Drawing::Point(600, 20);
+			this->pbPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPhoto->Name = L"pbPhoto";
-			this->pbPhoto->Size = System::Drawing::Size(188, 204);
+			this->pbPhoto->Size = System::Drawing::Size(249, 250);
 			this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbPhoto->TabIndex = 15;
 			this->pbPhoto->TabStop = false;
 			// 
 			// btnSetImage
 			// 
-			this->btnSetImage->Location = System::Drawing::Point(454, 232);
-			this->btnSetImage->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnSetImage->Location = System::Drawing::Point(605, 286);
+			this->btnSetImage->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnSetImage->Name = L"btnSetImage";
-			this->btnSetImage->Size = System::Drawing::Size(180, 24);
+			this->btnSetImage->Size = System::Drawing::Size(240, 30);
 			this->btnSetImage->TabIndex = 13;
 			this->btnSetImage->Text = L"Agregar imagen";
 			this->btnSetImage->UseVisualStyleBackColor = true;
@@ -329,13 +324,13 @@ namespace SalesView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
 			});
-			this->dgvProducts->Location = System::Drawing::Point(15, 272);
-			this->dgvProducts->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgvProducts->Location = System::Drawing::Point(20, 335);
+			this->dgvProducts->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvProducts->Name = L"dgvProducts";
 			this->dgvProducts->ReadOnly = true;
 			this->dgvProducts->RowHeadersWidth = 51;
 			this->dgvProducts->RowTemplate->Height = 24;
-			this->dgvProducts->Size = System::Drawing::Size(626, 330);
+			this->dgvProducts->Size = System::Drawing::Size(835, 406);
 			this->dgvProducts->TabIndex = 17;
 			this->dgvProducts->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductForm::dgvProducts_CellClick);
 			// 
@@ -389,28 +384,27 @@ namespace SalesView {
 			// 
 			// txtPriceMaj
 			// 
-			this->txtPriceMaj->Location = System::Drawing::Point(135, 154);
-			this->txtPriceMaj->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPriceMaj->Location = System::Drawing::Point(180, 190);
+			this->txtPriceMaj->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPriceMaj->Name = L"txtPriceMaj";
-			this->txtPriceMaj->Size = System::Drawing::Size(76, 20);
+			this->txtPriceMaj->Size = System::Drawing::Size(100, 22);
 			this->txtPriceMaj->TabIndex = 10;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(15, 154);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(20, 190);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(106, 13);
+			this->label7->Size = System::Drawing::Size(133, 16);
 			this->label7->TabIndex = 18;
 			this->label7->Text = L"Precio mayorista (s/.)";
 			// 
 			// btnCarrer
 			// 
-			this->btnCarrer->Location = System::Drawing::Point(240, 130);
-			this->btnCarrer->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnCarrer->Location = System::Drawing::Point(320, 160);
+			this->btnCarrer->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCarrer->Name = L"btnCarrer";
-			this->btnCarrer->Size = System::Drawing::Size(180, 24);
+			this->btnCarrer->Size = System::Drawing::Size(240, 30);
 			this->btnCarrer->TabIndex = 12;
 			this->btnCarrer->Text = L"Elegir carreras ";
 			this->btnCarrer->UseVisualStyleBackColor = true;
@@ -418,10 +412,10 @@ namespace SalesView {
 			// 
 			// btnClear
 			// 
-			this->btnClear->Location = System::Drawing::Point(240, 167);
-			this->btnClear->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnClear->Location = System::Drawing::Point(320, 206);
+			this->btnClear->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnClear->Name = L"btnClear";
-			this->btnClear->Size = System::Drawing::Size(180, 24);
+			this->btnClear->Size = System::Drawing::Size(240, 30);
 			this->btnClear->TabIndex = 19;
 			this->btnClear->Text = L"Limpiar";
 			this->btnClear->UseVisualStyleBackColor = true;
@@ -429,13 +423,13 @@ namespace SalesView {
 			// 
 			// ProductForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->ClientSize = System::Drawing::Size(662, 609);
+			this->ClientSize = System::Drawing::Size(883, 750);
 			this->Controls->Add(this->btnClear);
 			this->Controls->Add(this->btnCarrer);
 			this->Controls->Add(this->txtPriceMaj);
@@ -457,7 +451,9 @@ namespace SalesView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->DoubleBuffered = true;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"ProductForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Mantenimiento de productos";

@@ -218,6 +218,8 @@ namespace SalesView {
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->lbName);
 			this->Controls->Add(this->lbId);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"CustomerSearchForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Busqueda de cliente";

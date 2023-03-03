@@ -202,3 +202,20 @@ CREATE PROCEDURE usp_DeleteProduct(
 
 SELECT * FROM PRODUCT
 SELECT * FROM CARRER
+
+GO
+
+IF EXISTS ( SELECT * 
+            FROM   sysobjects 
+            WHERE  id = object_id(N'[dbo].[usp_GetTopProducts]') 
+                   and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+    DROP PROCEDURE [dbo].[usp_GetTopProducts]
+END
+GO
+CREATE PROCEDURE usp_GetTopProducts AS
+	BEGIN
+		SELECT * FROM PRODUCT WHERE status='A' ORDER BY searches desc
+	END
+
+GO

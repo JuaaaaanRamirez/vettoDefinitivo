@@ -884,6 +884,7 @@ private: System::Windows::Forms::Button^ btnClean;
 			this->Controls->Add(this->label1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"UserForm";
 			this->Text = L"Mantenimiento de usuarios";
 			this->Load += gcnew System::EventHandler(this, &UserForm::UserForm_Load);

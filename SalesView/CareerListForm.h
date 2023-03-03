@@ -358,6 +358,7 @@ namespace SalesView {
 			this->Controls->Add(this->chlbArteDisenio);
 			this->Controls->Add(this->chlbCiencias);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"CareerListForm";
 			this->Text = L"Lista de carreras";
 			this->Load += gcnew System::EventHandler(this, &CareerListForm::CareerListForm_Load);

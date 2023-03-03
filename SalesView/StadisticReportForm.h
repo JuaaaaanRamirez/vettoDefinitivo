@@ -38,7 +38,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(1000);
+					myThread->Sleep(1500);
 					Invoke(gcnew MyDelegate(this, &StadisticReportForm::RefreshReportToday));
 				}
 				catch (Exception^ ex) {
@@ -707,6 +707,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->ClientSize = System::Drawing::Size(913, 846);
 			this->Controls->Add(this->tabControl2);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"StadisticReportForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Reporte de ventas y estadisticas";

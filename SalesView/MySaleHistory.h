@@ -90,10 +90,11 @@ namespace SalesView {
 				this->IdSale,
 					this->DateSale, this->SaleSeller, this->PriceSale
 			});
-			this->dgvMyShopping->Location = System::Drawing::Point(38, 88);
+			this->dgvMyShopping->Location = System::Drawing::Point(51, 108);
+			this->dgvMyShopping->Margin = System::Windows::Forms::Padding(4);
 			this->dgvMyShopping->Name = L"dgvMyShopping";
 			this->dgvMyShopping->RowHeadersWidth = 51;
-			this->dgvMyShopping->Size = System::Drawing::Size(453, 288);
+			this->dgvMyShopping->Size = System::Drawing::Size(604, 354);
 			this->dgvMyShopping->TabIndex = 0;
 			this->dgvMyShopping->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MySaleHistory::dgvMyShopping_CellDoubleClick);
 			// 
@@ -133,9 +134,10 @@ namespace SalesView {
 			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Monospac821 BT", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbTitle->ForeColor = System::Drawing::Color::Orange;
-			this->lbTitle->Location = System::Drawing::Point(116, 19);
+			this->lbTitle->Location = System::Drawing::Point(155, 23);
+			this->lbTitle->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbTitle->Name = L"lbTitle";
-			this->lbTitle->Size = System::Drawing::Size(272, 25);
+			this->lbTitle->Size = System::Drawing::Size(334, 32);
 			this->lbTitle->TabIndex = 1;
 			this->lbTitle->Text = L"Historial de compras";
 			this->lbTitle->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -145,9 +147,10 @@ namespace SalesView {
 			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(166)), static_cast<System::Int32>(static_cast<System::Byte>(151)),
 				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(8, 10);
+			this->pictureBox1->Location = System::Drawing::Point(11, 12);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(89, 47);
+			this->pictureBox1->Size = System::Drawing::Size(119, 58);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
@@ -158,22 +161,25 @@ namespace SalesView {
 				static_cast<System::Int32>(static_cast<System::Byte>(133)));
 			this->panel1->Controls->Add(this->lbTitle);
 			this->panel1->Controls->Add(this->pictureBox1);
-			this->panel1->Location = System::Drawing::Point(2, 1);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Location = System::Drawing::Point(3, 1);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(543, 67);
+			this->panel1->Size = System::Drawing::Size(724, 82);
 			this->panel1->TabIndex = 3;
 			// 
 			// MySaleHistory
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(212)),
 				static_cast<System::Int32>(static_cast<System::Byte>(197)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(541, 432);
+			this->ClientSize = System::Drawing::Size(721, 532);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvMyShopping);
+			this->Margin = System::Windows::Forms::Padding(4);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"MySaleHistory";
 			this->Text = L"Mis compras";
 			this->Load += gcnew System::EventHandler(this, &MySaleHistory::MySaleHistory_Load);
