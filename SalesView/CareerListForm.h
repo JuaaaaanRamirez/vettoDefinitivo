@@ -37,6 +37,8 @@ namespace SalesView {
 				delete components;
 			}
 		}
+
+#pragma region COMPONENTS
 	private: System::Windows::Forms::CheckedListBox^ chlbCiencias;
 	private: System::Windows::Forms::CheckedListBox^ chlbArteDisenio;
 
@@ -47,21 +49,6 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ lbDrama;
 	private: System::Windows::Forms::Label^ lbComunication;
 	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^ btUp;
 	private: System::Windows::Forms::Button^ btExit;
 	private: System::Windows::Forms::CheckedListBox^ chlbHumanity;
@@ -85,6 +72,7 @@ namespace SalesView {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container^ components;
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -368,7 +356,8 @@ namespace SalesView {
 		}
 #pragma endregion
 
-		// Load
+		
+		   // Load
 	private: System::Void CareerListForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (Controller::RelationatedCareers->Count > 0) {
 			for (int j = 0; j < Controller::RelationatedCareers->Count; j++) {
@@ -427,9 +416,14 @@ namespace SalesView {
 
 		}
 	}
+
+		
+		   // Exit
 	private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+		
+		   // Up
 	private: System::Void btUp_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		Controller::RelationatedCareers->Clear();
@@ -476,5 +470,6 @@ namespace SalesView {
 		}
 		this->Close();
 	}
+
 	};
 }
