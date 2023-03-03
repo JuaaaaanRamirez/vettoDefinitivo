@@ -119,9 +119,9 @@ namespace SalesView {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ btLookFor1;
 	private: System::Windows::Forms::DataGridView^ dgvStock;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
@@ -133,6 +133,11 @@ private: System::Windows::Forms::TabControl^ tabControl2;
 private: System::Windows::Forms::TabPage^ tabPage1;
 private: System::Windows::Forms::TabPage^ tabPage4;
 private: System::Windows::Forms::TabPage^ tabPage5;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 
 
 
@@ -161,26 +166,26 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea31 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend31 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series31 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title31 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea32 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend32 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series32 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title32 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea33 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend33 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series33 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title33 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea34 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend34 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series34 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title34 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea35 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend35 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series35 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title35 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea6 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea10 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -212,13 +217,15 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->btLookFor1 = (gcnew System::Windows::Forms::Button());
 			this->dgvStock = (gcnew System::Windows::Forms::DataGridView());
-			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl2 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
+			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column11 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column12 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSells))->BeginInit();
 			this->tabControl1->SuspendLayout();
 			this->tabReportToday->SuspendLayout();
@@ -367,7 +374,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// txtStock
 			// 
-			this->txtStock->Location = System::Drawing::Point(240, 18);
+			this->txtStock->Location = System::Drawing::Point(261, 18);
 			this->txtStock->Name = L"txtStock";
 			this->txtStock->Size = System::Drawing::Size(88, 22);
 			this->txtStock->TabIndex = 14;
@@ -375,7 +382,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(340, 20);
+			this->label5->Location = System::Drawing::Point(372, 21);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(63, 16);
 			this->label5->TabIndex = 15;
@@ -383,7 +390,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// btToShow
 			// 
-			this->btToShow->Location = System::Drawing::Point(420, 15);
+			this->btToShow->Location = System::Drawing::Point(479, 15);
 			this->btToShow->Name = L"btToShow";
 			this->btToShow->Size = System::Drawing::Size(88, 25);
 			this->btToShow->TabIndex = 16;
@@ -409,32 +416,32 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabReportToday->Location = System::Drawing::Point(4, 25);
 			this->tabReportToday->Name = L"tabReportToday";
 			this->tabReportToday->Padding = System::Windows::Forms::Padding(3);
-			this->tabReportToday->Size = System::Drawing::Size(834, 735);
+			this->tabReportToday->Size = System::Drawing::Size(834, 719);
 			this->tabReportToday->TabIndex = 0;
 			this->tabReportToday->Text = L"Reporte del dia";
 			this->tabReportToday->UseVisualStyleBackColor = true;
 			// 
 			// chartReportToday
 			// 
-			chartArea31->Name = L"ChartArea1";
-			this->chartReportToday->ChartAreas->Add(chartArea31);
-			legend31->Name = L"Legend1";
-			this->chartReportToday->Legends->Add(legend31);
+			chartArea6->Name = L"ChartArea1";
+			this->chartReportToday->ChartAreas->Add(chartArea6);
+			legend6->Name = L"Legend1";
+			this->chartReportToday->Legends->Add(legend6);
 			this->chartReportToday->Location = System::Drawing::Point(6, 59);
 			this->chartReportToday->Name = L"chartReportToday";
-			series31->ChartArea = L"ChartArea1";
-			series31->Legend = L"Legend1";
-			series31->Name = L"Unidades vendidas";
-			this->chartReportToday->Series->Add(series31);
+			series6->ChartArea = L"ChartArea1";
+			series6->Legend = L"Legend1";
+			series6->Name = L"Unidades vendidas";
+			this->chartReportToday->Series->Add(series6);
 			this->chartReportToday->Size = System::Drawing::Size(802, 473);
 			this->chartReportToday->TabIndex = 0;
 			this->chartReportToday->Text = L"chart1";
-			title31->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			title6->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			title31->Name = L"Productos vendidos hoy";
-			title31->Text = L"Productos vendidos hoy";
-			title31->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
-			this->chartReportToday->Titles->Add(title31);
+			title6->Name = L"Productos vendidos hoy";
+			title6->Text = L"Productos vendidos hoy";
+			title6->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
+			this->chartReportToday->Titles->Add(title6);
 			// 
 			// tabPage2
 			// 
@@ -443,56 +450,56 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(834, 805);
+			this->tabPage2->Size = System::Drawing::Size(834, 719);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Reporte de la ultima semana";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// pieSellsLastWeek
 			// 
-			chartArea32->Name = L"ChartArea1";
-			this->pieSellsLastWeek->ChartAreas->Add(chartArea32);
-			legend32->Name = L"Legend1";
-			this->pieSellsLastWeek->Legends->Add(legend32);
+			chartArea7->Name = L"ChartArea1";
+			this->pieSellsLastWeek->ChartAreas->Add(chartArea7);
+			legend7->Name = L"Legend1";
+			this->pieSellsLastWeek->Legends->Add(legend7);
 			this->pieSellsLastWeek->Location = System::Drawing::Point(49, 412);
 			this->pieSellsLastWeek->Name = L"pieSellsLastWeek";
-			series32->ChartArea = L"ChartArea1";
-			series32->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series32->Legend = L"Legend1";
-			series32->Name = L"Numero de ventas";
-			this->pieSellsLastWeek->Series->Add(series32);
+			series7->ChartArea = L"ChartArea1";
+			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series7->Legend = L"Legend1";
+			series7->Name = L"Numero de ventas";
+			this->pieSellsLastWeek->Series->Add(series7);
 			this->pieSellsLastWeek->Size = System::Drawing::Size(738, 302);
 			this->pieSellsLastWeek->TabIndex = 1;
 			this->pieSellsLastWeek->Text = L"chart2";
-			title32->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			title7->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			title32->Name = L"Title1";
-			title32->Text = L"Numero de ventas durante la semana pasada";
-			title32->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
-			this->pieSellsLastWeek->Titles->Add(title32);
+			title7->Name = L"Title1";
+			title7->Text = L"Numero de ventas durante la semana pasada";
+			title7->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
+			this->pieSellsLastWeek->Titles->Add(title7);
 			this->pieSellsLastWeek->Click += gcnew System::EventHandler(this, &StadisticReportForm::chartSellsLastWeek_Click);
 			// 
 			// chartMoneyLastWeek
 			// 
-			chartArea33->Name = L"ChartArea1";
-			this->chartMoneyLastWeek->ChartAreas->Add(chartArea33);
-			legend33->Name = L"Legend1";
-			this->chartMoneyLastWeek->Legends->Add(legend33);
+			chartArea8->Name = L"ChartArea1";
+			this->chartMoneyLastWeek->ChartAreas->Add(chartArea8);
+			legend8->Name = L"Legend1";
+			this->chartMoneyLastWeek->Legends->Add(legend8);
 			this->chartMoneyLastWeek->Location = System::Drawing::Point(33, 33);
 			this->chartMoneyLastWeek->Name = L"chartMoneyLastWeek";
-			series33->ChartArea = L"ChartArea1";
-			series33->Legend = L"Legend1";
-			series33->Name = L"Ingresos totales";
-			this->chartMoneyLastWeek->Series->Add(series33);
+			series8->ChartArea = L"ChartArea1";
+			series8->Legend = L"Legend1";
+			series8->Name = L"Ingresos totales";
+			this->chartMoneyLastWeek->Series->Add(series8);
 			this->chartMoneyLastWeek->Size = System::Drawing::Size(771, 348);
 			this->chartMoneyLastWeek->TabIndex = 0;
 			this->chartMoneyLastWeek->Text = L"chart1";
-			title33->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			title8->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			title33->Name = L"Title1";
-			title33->Text = L"Ingresos de la semana pasada en soles";
-			title33->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
-			this->chartMoneyLastWeek->Titles->Add(title33);
+			title8->Name = L"Title1";
+			title8->Text = L"Ingresos de la semana pasada en soles";
+			title8->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
+			this->chartMoneyLastWeek->Titles->Add(title8);
 			// 
 			// tabPage3
 			// 
@@ -507,47 +514,47 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			// chartReportGoals
 			// 
-			chartArea34->Name = L"ChartArea1";
-			this->chartReportGoals->ChartAreas->Add(chartArea34);
-			legend34->Name = L"Legend1";
-			this->chartReportGoals->Legends->Add(legend34);
+			chartArea9->Name = L"ChartArea1";
+			this->chartReportGoals->ChartAreas->Add(chartArea9);
+			legend9->Name = L"Legend1";
+			this->chartReportGoals->Legends->Add(legend9);
 			this->chartReportGoals->Location = System::Drawing::Point(41, 378);
 			this->chartReportGoals->Name = L"chartReportGoals";
-			series34->ChartArea = L"ChartArea1";
-			series34->Legend = L"Legend1";
-			series34->Name = L"Monto en soles";
-			this->chartReportGoals->Series->Add(series34);
+			series9->ChartArea = L"ChartArea1";
+			series9->Legend = L"Legend1";
+			series9->Name = L"Monto en soles";
+			this->chartReportGoals->Series->Add(series9);
 			this->chartReportGoals->Size = System::Drawing::Size(758, 342);
 			this->chartReportGoals->TabIndex = 1;
 			this->chartReportGoals->Text = L"chart2";
-			title34->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			title9->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			title34->Name = L"Title1";
-			title34->Text = L"Ingresos generados por cada vendedor el mes pasado";
-			title34->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
-			this->chartReportGoals->Titles->Add(title34);
+			title9->Name = L"Title1";
+			title9->Text = L"Ingresos generados por cada vendedor el mes pasado";
+			title9->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
+			this->chartReportGoals->Titles->Add(title9);
 			// 
 			// chartReportLastMonth
 			// 
-			chartArea35->Name = L"ChartArea1";
-			this->chartReportLastMonth->ChartAreas->Add(chartArea35);
-			legend35->Name = L"Legend1";
-			this->chartReportLastMonth->Legends->Add(legend35);
+			chartArea10->Name = L"ChartArea1";
+			this->chartReportLastMonth->ChartAreas->Add(chartArea10);
+			legend10->Name = L"Legend1";
+			this->chartReportLastMonth->Legends->Add(legend10);
 			this->chartReportLastMonth->Location = System::Drawing::Point(51, 69);
 			this->chartReportLastMonth->Name = L"chartReportLastMonth";
-			series35->ChartArea = L"ChartArea1";
-			series35->Legend = L"Legend1";
-			series35->Name = L"Unidades vendidas";
-			this->chartReportLastMonth->Series->Add(series35);
+			series10->ChartArea = L"ChartArea1";
+			series10->Legend = L"Legend1";
+			series10->Name = L"Unidades vendidas";
+			this->chartReportLastMonth->Series->Add(series10);
 			this->chartReportLastMonth->Size = System::Drawing::Size(748, 293);
 			this->chartReportLastMonth->TabIndex = 0;
 			this->chartReportLastMonth->Text = L"chart1";
-			title35->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			title10->Font = (gcnew System::Drawing::Font(L"Stencil", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			title35->Name = L"Title1";
-			title35->Text = L"Productos mas vendidos el mes pasado";
-			title35->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
-			this->chartReportLastMonth->Titles->Add(title35);
+			title10->Name = L"Title1";
+			title10->Text = L"Productos mas vendidos el mes pasado";
+			title10->TextStyle = System::Windows::Forms::DataVisualization::Charting::TextStyle::Shadow;
+			this->chartReportLastMonth->Titles->Add(title10);
 			// 
 			// btLookFor2
 			// 
@@ -582,9 +589,9 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			// 
 			this->dgvStock->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dgvStock->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvStock->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dgvStock->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column7, this->Column8,
-					this->Column9
+					this->Column9, this->Column11, this->Column12
 			});
 			this->dgvStock->Location = System::Drawing::Point(30, 50);
 			this->dgvStock->Name = L"dgvStock";
@@ -592,27 +599,6 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->dgvStock->RowTemplate->Height = 24;
 			this->dgvStock->Size = System::Drawing::Size(825, 722);
 			this->dgvStock->TabIndex = 21;
-			// 
-			// Column7
-			// 
-			this->Column7->HeaderText = L"Id";
-			this->Column7->MinimumWidth = 6;
-			this->Column7->Name = L"Column7";
-			this->Column7->Width = 75;
-			// 
-			// Column8
-			// 
-			this->Column8->HeaderText = L"Producto";
-			this->Column8->MinimumWidth = 6;
-			this->Column8->Name = L"Column8";
-			this->Column8->Width = 300;
-			// 
-			// Column9
-			// 
-			this->Column9->HeaderText = L"Stock";
-			this->Column9->MinimumWidth = 6;
-			this->Column9->Name = L"Column9";
-			this->Column9->Width = 125;
 			// 
 			// tabControl2
 			// 
@@ -644,7 +630,7 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(896, 801);
+			this->tabPage1->Size = System::Drawing::Size(873, 785);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Lista de ventas";
 			// 
@@ -673,9 +659,44 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			this->tabPage5->Location = System::Drawing::Point(4, 25);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(896, 801);
+			this->tabPage5->Size = System::Drawing::Size(873, 785);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"Stock";
+			// 
+			// Column7
+			// 
+			this->Column7->HeaderText = L"Id";
+			this->Column7->MinimumWidth = 6;
+			this->Column7->Name = L"Column7";
+			this->Column7->Width = 75;
+			// 
+			// Column8
+			// 
+			this->Column8->HeaderText = L"Producto";
+			this->Column8->MinimumWidth = 6;
+			this->Column8->Name = L"Column8";
+			this->Column8->Width = 300;
+			// 
+			// Column9
+			// 
+			this->Column9->HeaderText = L"Stock";
+			this->Column9->MinimumWidth = 6;
+			this->Column9->Name = L"Column9";
+			this->Column9->Width = 125;
+			// 
+			// Column11
+			// 
+			this->Column11->HeaderText = L"Precio Min.";
+			this->Column11->MinimumWidth = 6;
+			this->Column11->Name = L"Column11";
+			this->Column11->Width = 125;
+			// 
+			// Column12
+			// 
+			this->Column12->HeaderText = L"Precio May.";
+			this->Column12->MinimumWidth = 6;
+			this->Column12->Name = L"Column12";
+			this->Column12->Width = 125;
 			// 
 			// StadisticReportForm
 			// 
@@ -1087,7 +1108,9 @@ private: System::Windows::Forms::TabPage^ tabPage5;
 			dgvStock->Rows->Add(gcnew array<String^>{
 				"" + products[i]->Id,
 					products[i]->Name,
-					"" + products[i]->Stock
+					"" + products[i]->Stock,
+					"" + products[i]->PriceMin,
+					"" + products[i]->PriceMaj
 			});
 
 		}

@@ -116,7 +116,7 @@ namespace SalesView {
 
 			myThread = gcnew Thread(gcnew ThreadStart(this, &SalesMainForm::MyRun));
 			myThread->IsBackground = true;
-			myThread->Start();
+			//myThread->Start();
 			//TODO: agregar código de constructor aquí
 			//
 		}
