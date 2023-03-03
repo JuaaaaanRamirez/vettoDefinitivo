@@ -7,7 +7,7 @@ System::Void SalesView::ProductStatusForm::ProductStatusForm_Load(System::Object
 	{
 		if (SalesMainForm::person->Profile == 'M') { btnClaim->Visible = false; btnCancel->Text = "ELIMINAR PEDIDO"; txtStatus->ReadOnly = false; }
 		ShowData();
-		ShowShoppingCart();
+		//ShowShoppingCart();
 	}
 }
 
@@ -18,7 +18,7 @@ System::Void SalesView::ProductStatusForm::btnClaim_Click(System::Object^ sender
 		newSale->Status = 'D'; Controller::UpdateSale(newSale);
 		MessageBox::Show("Nuestro equipo se pondrá en contacto con usted para atender el reclamo");
 		ShowData();
-		ShowShoppingCart();
+		//ShowShoppingCart();
 	}
 }
 
@@ -29,7 +29,7 @@ System::Void SalesView::ProductStatusForm::btnCancel_Click(System::Object^ sende
 		newSale->Status = 'G'; Controller::UpdateSale(newSale);
 		MessageBox::Show("Lamentamos los problemas que haya tenido");
 		ShowData();
-		ShowShoppingCart();
+		//ShowShoppingCart();
 	}
 	else {
 		Controller::DeleteSale(newSale->Id);

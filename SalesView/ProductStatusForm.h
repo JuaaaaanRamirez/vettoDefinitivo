@@ -503,9 +503,24 @@ namespace SalesView {
 			if (mySale->Status == 'D') txtStatus->Text = "PRESENTA RECLAMO";
 			if (mySale->Status == 'E') txtStatus->Text = "REEMBOLSADO";
 			if (mySale->Status == 'F') txtStatus->Text = "NO PROCEDE RECLAMO";
-			if (mySale->Status == 'G') { txtStatus->Text = "CANCELADO"; btnCancel->Visible = false; }
+			if (mySale->Status == 'G') { txtStatus->Text = "CANCELADO"; btnCancel->Visible = false;
+			}
+			// ShoppingCart
+			for (int j = 0; j < mySale->SaleDetails->Count; j++) {
+				dgvSaleDetail->Rows->Add(gcnew array<String^>{
+					"" + mySale->SaleDetails[j]->Id,
+						"" + mySale->SaleDetails[j]->Product->Name,
+						"" + mySale->SaleDetails[j]->UnitPrice,
+						"" + mySale->SaleDetails[j]->Quantity,
+						"" + mySale->SaleDetails[j]->SubTotal
+				});
+			}
+			txtSubTotal->Text = "" + mySale->Total * (0.82);
+			txtIGV->Text = "" + mySale->Total * (0.18);
+			txtTotal->Text = "" + mySale->Total;
+
 		}
-		void ShowShoppingCart() {
+		/*void ShowShoppingCart() {
 			// Dgv SaleDetails
 			List<Sale^>^ mysaleList = Controller::QueryAllSales();		// Make List
 			dgvSaleDetail->Rows->Clear();							    // Clear Dgv
@@ -527,7 +542,7 @@ namespace SalesView {
 					txtTotal->Text = "" + mysaleList[i]->Total;
 				}
 
-		}
+		}*/
 	private: System::Void ProductStatusForm_Load(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btnClaim_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btnCancel_Click(System::Object^ sender, System::EventArgs^ e);
