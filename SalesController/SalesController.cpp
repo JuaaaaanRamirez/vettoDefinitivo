@@ -109,7 +109,7 @@ List<Product^>^ SalesController::Controller::GetListProductOrderBySells(List<Sal
     for (int i = 0; i < ListSellsByTime->Count; i++) // Look for!
         for (int j = 0; j < ListSellsByTime[i]->SaleDetails->Count; j++) {
             for (int k = 0; k < productListAux->Count; k++) {
-                if (ListSellsByTime[i]->SaleDetails[j]->Id == productListAux[k]->Id) {
+                if (ListSellsByTime[i]->SaleDetails[j]->Product->Id == productListAux[k]->Id) {
                     productListAux[k]->SalesByTime += ListSellsByTime[i]->SaleDetails[j]->Quantity;
                     break;
                 }
@@ -486,6 +486,7 @@ int SalesController::Controller::AddSaleDetail(SaleDetail^ saleDetail, int saleI
 List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
 {
     //saleList = (List<Sale^>^)Persistance::LoadBinaryData("sales.bin");
+    
     saleList = Persistance::QueryAllSales();
     List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
 
@@ -493,6 +494,7 @@ List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
         if (DateTime::Compare(Convert::ToDateTime(saleList[i]->SaleDate).Date, DateDay.Date) == 0) ListSalesByTime->Add(saleList[i]);
     }
     return ListSalesByTime; //puede ser nulo
+    
     /*
     int dayDate, monthDate, yearDate;
     int dayList, monthList, yearList;
@@ -513,6 +515,7 @@ List<Sale^>^ SalesController::Controller::DaySalesList(DateTime DateDay)
     }
     return ListSalesByTime; //puede ser nulo
     */
+    //return Persistance::DaySalesList(DateTime DateDay)
 }
 List<Sale^>^ SalesController::Controller::LastSevenDaysSalesList()
 {

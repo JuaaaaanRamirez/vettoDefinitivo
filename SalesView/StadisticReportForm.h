@@ -1342,19 +1342,24 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 	}
 	private: System::Void btToShow_Click(System::Object^ sender, System::EventArgs^ e) {
 		List<Product^>^ products = gcnew List<Product^>();
-		products = Controller::QueryProductsByStockLimit(Convert::ToInt32(txtStock->Text));
-
-		dgvStock->Rows->Clear();
-		for (int i = 0; i < products->Count; i++) {
-			dgvStock->Rows->Add(gcnew array<String^>{
-				"" + products[i]->Id,
-					products[i]->Name,
-					"" + products[i]->Stock,
-					"" + products[i]->PriceMin,
-					"" + products[i]->PriceMaj
-			});
-
+		if (txtStock->Text == "") {
+			MessageBox::Show("Debe ingresar un numero");
+			return;
 		}
+			products = Controller::QueryProductsByStockLimit(Convert::ToInt32(txtStock->Text));
+
+			dgvStock->Rows->Clear();
+			for (int i = 0; i < products->Count; i++) {
+				dgvStock->Rows->Add(gcnew array<String^>{
+					"" + products[i]->Id,
+						products[i]->Name,
+						"" + products[i]->Stock,
+						"" + products[i]->PriceMin,
+						"" + products[i]->PriceMaj
+				});
+
+			}
+		
 	}
 	private: System::Void txtSaleId_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
