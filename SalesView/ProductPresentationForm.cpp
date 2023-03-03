@@ -20,7 +20,7 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	txtProductName->Text = "" + p->Name;
 	txtStock->Text = "" + p->Stock;
 	txtDescription->Text = "" + p->Description;
-	txtQueries->Text = "" + p->Searches;
+	txtQueries->Text = "" + Convert::ToString(Convert::ToInt32(p->Searches)+1);
 	txtSales->Text = "" + p->Sales;
 	p->Searches++;  // Plus search
 
