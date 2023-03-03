@@ -736,12 +736,246 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 
 		}
 #pragma endregion
+
+		void RefheshAllStadistics() {
+			
+			List <Sale^>^ allSales = gcnew  List<Sale^>();
+			allSales = Controller::QueryAllSales();
+
+			//TODAY
+			chartReportToday->Series["Unidades vendidas"]->Points->Clear();
+			DateTime hoy = DateTime::Now;
+			//lista del dia
+			List <Sale^>^ salesList1 = gcnew  List<Sale^>();
+			
+			for (int i = 0; i < allSales->Count; i++) {
+				if (DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate).Date, hoy.Date) == 0) salesList1->Add(allSales[i]);
+			}
+		
+			if (salesList1 != nullptr) {
+				List<Product^>^ productLis1 = gcnew  List<Product^>();
+				productLis1 = Controller::GetListProductOrderBySells(salesList1); //#####################################3POR MEJORAR
+				int quantityOthers = 0;
+				int ToShow = 8;
+				if (productLis1->Count >= ToShow) {
+					chartReportToday->Palette = ChartColorPalette::Fire;
+
+					for (int i = 0; i < productLis1->Count; i++) {
+						if (i < ToShow) {
+							chartReportToday->Series["Unidades vendidas"]->Points->Add(productLis1[i]->SalesByTime);
+							chartReportToday->Series["Unidades vendidas"]->Points[i]->AxisLabel = productLis1[i]->Name;
+							chartReportToday->Series["Unidades vendidas"]->Points[i]->Label = Convert::ToString(productLis1[i]->SalesByTime);
+						}
+						else {
+							quantityOthers += productLis1[i]->SalesByTime;
+						}
+
+					}
+					chartReportToday->Series["Unidades vendidas"]->Points->Add(quantityOthers);
+					chartReportToday->Series["Unidades vendidas"]->Points[ToShow]->AxisLabel = "Otros";
+					chartReportToday->Series["Unidades vendidas"]->Points[ToShow]->Label = Convert::ToString(quantityOthers);
+				}
+			}
+
+
+			//LAST WEEK:
+			List<Sale^>^ salesList2 = gcnew  List<Sale^>();
+
+			DateTime LastSunday = DateTime::Today;
+			DateTime LastMonday;
+			LastSunday = LastSunday.AddDays(-(int)(DateTime::Today.DayOfWeek));
+			
+			LastSunday.AddDays(1).Date;//domingo a media noche
+			LastMonday = LastSunday.AddDays(-7);//lunes pasado a media noche
+
+			List<Sale^>^ ListSalesByTime = gcnew List<Sale^>();
+
+			for (int i = 0; i < allSales->Count; i++) {
+
+				if ((DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastMonday) >= 0) && (DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastSunday) < 0)) salesList2->Add(allSales[i]);
+
+			}
+			
+			double lunes = 0, martes = 0, miercoles = 0, jueves = 0, viernes = 0, sabado = 0, domingo = 0;
+			int SellLunes = 0, SellMartes = 0, SellMiercoles = 0, SellJueves = 0, SellViernes = 0, SellSabado = 0, SellDomingo = 0;
+			for (int i = 0; i < salesList2->Count; i++) {
+				DateTime d = Convert::ToDateTime(salesList2[i]->SaleDate);
+				switch ((int)d.DayOfWeek)
+				{
+				case(1): lunes += salesList2[i]->Total;
+					SellLunes++;
+					break;
+				case(2): martes += salesList2[i]->Total;
+					SellMartes++;
+					break;
+				case(3): miercoles += salesList2[i]->Total;
+					SellMiercoles++;
+					break;
+				case(4): jueves += salesList2[i]->Total;
+					SellJueves++;
+					break;
+				case(5): viernes += salesList2[i]->Total;
+					SellViernes++;
+					break;
+				case(6): sabado += salesList2[i]->Total;
+					SellSabado++;
+					break;
+				case(0): domingo += salesList2[i]->Total;
+					SellDomingo++;
+					break;
+				default:
+					break;
+				}
+
+
+			}
+			//CHART
+			chartMoneyLastWeek->Palette = ChartColorPalette::Bright;
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(lunes);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[0]->AxisLabel = "Lunes";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[0]->Label = Convert::ToString(lunes);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(martes);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[1]->AxisLabel = "Martes";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[1]->Label = Convert::ToString(martes);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(miercoles);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[2]->AxisLabel = "Miercoles";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[2]->Label = Convert::ToString(miercoles);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(jueves);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[3]->AxisLabel = "Jueves";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[3]->Label = Convert::ToString(jueves);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(viernes);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[4]->AxisLabel = "Viernes";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[4]->Label = Convert::ToString(viernes);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(sabado);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[5]->AxisLabel = "Sabado";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[5]->Label = Convert::ToString(sabado);
+
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points->Add(domingo);
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[6]->AxisLabel = "Domingo";
+			chartMoneyLastWeek->Series["Ingresos totales"]->Points[6]->Label = Convert::ToString(domingo);
+
+			//PIE  ############################################################################
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellLunes);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[0]->LegendText = "Lunes";
+			if (SellLunes != 0) pieSellsLastWeek->Series["Numero de ventas"]->Points[0]->Label = Convert::ToString(SellLunes);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellMartes);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[1]->LegendText = "Martes";
+			if (SellMartes != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[1]->Label = Convert::ToString(SellMartes);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellMiercoles);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[2]->LegendText = "Miercoles";
+			if (SellMiercoles != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[2]->Label = Convert::ToString(SellMiercoles);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellJueves);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[3]->LegendText = "Jueves";
+			if (SellJueves != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[3]->Label = Convert::ToString(SellJueves);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellViernes);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[4]->LegendText = "Viernes";
+			if (SellViernes != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[4]->Label = Convert::ToString(SellViernes);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellSabado);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[5]->LegendText = "Sabado";
+			if (SellSabado != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[5]->Label = Convert::ToString(SellSabado);
+
+			pieSellsLastWeek->Series["Numero de ventas"]->Points->Add(SellDomingo);
+			pieSellsLastWeek->Series["Numero de ventas"]->Points[6]->LegendText = "Domingo";
+			if (SellDomingo != 0)pieSellsLastWeek->Series["Numero de ventas"]->Points[6]->Label = Convert::ToString(SellDomingo);
+
+			//LAST MONT SALES:
+			List<Sale^>^ salesList3 = gcnew  List<Sale^>();
+			
+
+			DateTime LastEndDayLastMonth = DateTime::Today.AddDays(-(DateTime::Today.Day));
+			DateTime LastFirstDayLastMonth = LastEndDayLastMonth.AddDays(-(LastEndDayLastMonth.Day - 1)).Date;//primer dia del mes pasado a media noche
+			LastEndDayLastMonth = LastEndDayLastMonth.AddDays(1).Date; //1er dia del mes actual a media noche.
+
+
+			for (int i = 0; i < allSales->Count; i++) {
+
+				if ((DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastFirstDayLastMonth) >= 0) && (DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastEndDayLastMonth) < 0)) salesList3->Add(allSales[i]);
+
+			}
+			
+			List<Product^>^ productLis1 = gcnew  List<Product^>();
+			productLis1 = Controller::GetListProductOrderBySells(salesList3);  //########################################################################3
+			int quantityOthers = 0;
+			int ToShow = 8;
+			if (productLis1->Count >= ToShow) {
+				chartReportLastMonth->Palette = ChartColorPalette::EarthTones;
+				for (int i = 0; i < productLis1->Count; i++) {
+					if (i < ToShow) {
+						chartReportLastMonth->Series["Unidades vendidas"]->Points->Add(productLis1[i]->SalesByTime);
+						chartReportLastMonth->Series["Unidades vendidas"]->Points[i]->AxisLabel = productLis1[i]->Name;
+						chartReportLastMonth->Series["Unidades vendidas"]->Points[i]->Label = Convert::ToString(productLis1[i]->SalesByTime);
+					}
+					else {
+						quantityOthers += productLis1[i]->SalesByTime;
+					}
+
+				}
+				chartReportLastMonth->Series["Unidades vendidas"]->Points->Add(quantityOthers);
+				chartReportLastMonth->Series["Unidades vendidas"]->Points[ToShow]->AxisLabel = "Otros";
+				chartReportLastMonth->Series["Unidades vendidas"]->Points[ToShow]->Label = Convert::ToString(quantityOthers);
+			}
+			//GOALS LAST MONTH
+			
+			/*
+			List<Sale^>^ salesList1 = gcnew  List<Sale^>();
+
+
+			DateTime LastEndDayLastMonth = DateTime::Today.AddDays(-(DateTime::Today.Day));
+			DateTime LastFirstDayLastMonth = LastEndDayLastMonth.AddDays(-(LastEndDayLastMonth.Day - 1)).Date;//primer dia del mes pasado a media noche
+			LastEndDayLastMonth = LastEndDayLastMonth.AddDays(1).Date; //1er dia del mes actual a media noche.
+
+
+			for (int i = 0; i < allSales->Count; i++) {
+
+				if ((DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastFirstDayLastMonth) >= 0) && (DateTime::Compare(Convert::ToDateTime(allSales[i]->SaleDate), LastEndDayLastMonth) < 0)) salesList1->Add(allSales[i]);
+
+			}*/
+
+			List<StoreManager^>^ ListStoreManager = gcnew List<StoreManager^>();
+			ListStoreManager = Controller::QueryAllStoreManager();
+			double monto;
+			if (salesList3 != nullptr) {
+				chartReportGoals->Palette = ChartColorPalette::Berry;
+				for (int i = 0; i < ListStoreManager->Count; i++) {
+
+					monto = 0;
+					for (int j = 0; j < salesList3->Count; j++) {
+
+						salesList3[j]->Customer = (Customer^)Controller::QueryUserById(salesList3[j]->Customer->Id);              //??????????????????
+						if (salesList3[j]->StoreManager->Id != 0) salesList3[j]->StoreManager = (StoreManager^)Controller::QueryUserById(salesList3[j]->StoreManager->Id);
+						else salesList3[j]->StoreManager->Name = "Asistente Virtual";
+
+
+						if (salesList3[j]->StoreManager->Name->Equals(ListStoreManager[i]->Name)) {
+
+							monto += salesList3[j]->Total;
+						}
+					}
+					chartReportGoals->Series["Monto en soles"]->Points->Add(monto);
+					chartReportGoals->Series["Monto en soles"]->Points[i]->AxisLabel = ListStoreManager[i]->Name;
+					chartReportGoals->Series["Monto en soles"]->Points[i]->Label = Convert::ToString(monto);
+				}
+			}
+
+		}
+
 		void RefreshReportToday() {
 			chartReportToday->Series["Unidades vendidas"]->Points->Clear();
 
 			List <Sale^>^ salesList1 = gcnew  List<Sale^>();
 
 			DateTime hoy = DateTime::Now;
+
 			salesList1 = Controller::DaySalesList(hoy);//puede ser nullptr
 			if (salesList1 != nullptr) {
 				List<Product^>^ productLis1 = gcnew  List<Product^>();
@@ -869,6 +1103,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 
 		}
 
+
 		void RefreshReportLastMonth() {
 			List<Sale^>^ salesList1 = gcnew  List<Sale^>();
 			salesList1 = Controller::LastMonthSalesList();
@@ -976,8 +1211,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 		//mySells[i]->Customer->Name,
 			//mySells[i]->StoreManager->Name,
 	private: System::Void StadisticReportForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		//ShowSells();
-		RefreshReportToday();
+		                    //ShowSells();
+		RefheshAllStadistics();
+		//RefreshReportToday();
 		//RefreshReportLastWeek();
 		//RefreshReportLastMonth();
 		//RefreshReportGoalsLastMonth();
