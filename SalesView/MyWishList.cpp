@@ -24,6 +24,8 @@ System::Void SalesView::MyWishList::MyWishList_Load(System::Object^ sender, Syst
 				"" + myWishList[j]->Id,
 					"" + myWishList[j]->Name,
 					"" + myWishList[j]->PriceMin,
+					"" + myWishList[j]->Searches,
+					"" + myWishList[j]->Sales,
 					"" + myWishList[j]->Description
 			});
 		
@@ -31,7 +33,7 @@ System::Void SalesView::MyWishList::MyWishList_Load(System::Object^ sender, Syst
 	}
 }
 
-System::Void SalesView::MyWishList::button2_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void SalesView::MyWishList::btnDelete_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	//return System::Void();
 	if (dgvWishList->SelectedCells->Count == 1) {
