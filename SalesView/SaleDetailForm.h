@@ -135,6 +135,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SaleDetailForm::typeid));
 			this->lbDate = (gcnew System::Windows::Forms::Label());
 			this->txtUserName = (gcnew System::Windows::Forms::TextBox());
 			this->txtAddress = (gcnew System::Windows::Forms::TextBox());
@@ -452,6 +453,7 @@ namespace SalesView {
 			this->Controls->Add(this->txtAddress);
 			this->Controls->Add(this->txtUserName);
 			this->Controls->Add(this->lbDate);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"SaleDetailForm";

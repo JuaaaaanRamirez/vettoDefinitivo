@@ -74,6 +74,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UploadAdForm::typeid));
 			this->btUpImage = (gcnew System::Windows::Forms::Button());
 			this->btClose = (gcnew System::Windows::Forms::Button());
 			this->btDelete = (gcnew System::Windows::Forms::Button());
@@ -192,6 +193,7 @@ namespace SalesView {
 			this->Controls->Add(this->btDelete);
 			this->Controls->Add(this->btClose);
 			this->Controls->Add(this->btUpImage);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"UploadAdForm";

@@ -484,6 +484,7 @@ namespace SalesView {
 			this->Controls->Add(this->nudAmount);
 			this->Controls->Add(this->Addbtn);
 			this->Controls->Add(this->pbxProductImagen);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"ProductPresentationForm";
