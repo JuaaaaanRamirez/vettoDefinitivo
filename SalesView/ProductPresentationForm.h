@@ -485,6 +485,7 @@ namespace SalesView {
 			this->Controls->Add(this->Addbtn);
 			this->Controls->Add(this->pbxProductImagen);
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"ProductPresentationForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Producto Selccionado";

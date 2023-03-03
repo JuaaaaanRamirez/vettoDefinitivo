@@ -63,10 +63,10 @@ namespace SalesView {
 			// 
 			this->pbWait->BackColor = System::Drawing::SystemColors::Window;
 			this->pbWait->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbWait.Image")));
-			this->pbWait->Location = System::Drawing::Point(-15, 16);
-			this->pbWait->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbWait->Location = System::Drawing::Point(-20, 20);
+			this->pbWait->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbWait->Name = L"pbWait";
-			this->pbWait->Size = System::Drawing::Size(202, 130);
+			this->pbWait->Size = System::Drawing::Size(269, 160);
 			this->pbWait->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbWait->TabIndex = 0;
 			this->pbWait->TabStop = false;
@@ -77,10 +77,9 @@ namespace SalesView {
 			this->lbCart->AutoSize = true;
 			this->lbCart->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbCart->Location = System::Drawing::Point(11, 4);
-			this->lbCart->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lbCart->Location = System::Drawing::Point(15, 5);
 			this->lbCart->Name = L"lbCart";
-			this->lbCart->Size = System::Drawing::Size(140, 36);
+			this->lbCart->Size = System::Drawing::Size(174, 44);
 			this->lbCart->TabIndex = 1;
 			this->lbCart->Text = L"¡Ingrese para seguir \r\ncomprando!";
 			this->lbCart->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -89,10 +88,10 @@ namespace SalesView {
 			// 
 			this->btnLoguin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnLoguin->Location = System::Drawing::Point(45, 138);
-			this->btnLoguin->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnLoguin->Location = System::Drawing::Point(60, 170);
+			this->btnLoguin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnLoguin->Name = L"btnLoguin";
-			this->btnLoguin->Size = System::Drawing::Size(77, 23);
+			this->btnLoguin->Size = System::Drawing::Size(103, 28);
 			this->btnLoguin->TabIndex = 3;
 			this->btnLoguin->Text = L"Ingresar";
 			this->btnLoguin->UseVisualStyleBackColor = true;
@@ -100,15 +99,16 @@ namespace SalesView {
 			// 
 			// LoginFirstForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Window;
-			this->ClientSize = System::Drawing::Size(198, 165);
+			this->ClientSize = System::Drawing::Size(264, 203);
 			this->Controls->Add(this->btnLoguin);
 			this->Controls->Add(this->lbCart);
 			this->Controls->Add(this->pbWait);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"LoginFirstForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¡Loguearse!";

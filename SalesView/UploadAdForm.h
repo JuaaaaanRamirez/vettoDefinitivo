@@ -192,6 +192,8 @@ namespace SalesView {
 			this->Controls->Add(this->btDelete);
 			this->Controls->Add(this->btClose);
 			this->Controls->Add(this->btUpImage);
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"UploadAdForm";
 			this->Text = L"Mi anuncio";
 			this->Load += gcnew System::EventHandler(this, &UploadAdForm::UploadAdForm_Load);
