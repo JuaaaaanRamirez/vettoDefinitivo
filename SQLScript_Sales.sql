@@ -245,3 +245,8 @@ CREATE PROCEDURE dbo.usp_DeleteSaleDetail(
 		DELETE FROM SALE_DETAIL WHERE (sale_id=@sale_id AND product_id=@product_id)
 	END
 GO
+
+
+UPDATE SALE
+		SET saledate='20/02/2023 10:36:20'
+		WHERE id=97
