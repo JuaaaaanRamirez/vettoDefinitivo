@@ -38,7 +38,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(1000);
+					myThread->Sleep(1500);
 					Invoke(gcnew MyDelegate(this, &StadisticReportForm::RefreshReportToday));
 				}
 				catch (Exception^ ex) {
