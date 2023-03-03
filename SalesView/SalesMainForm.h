@@ -106,8 +106,8 @@ namespace SalesView {
 			instance = this;
 			userPhoto = btnLogin;
 
-			myThread = gcnew Thread(gcnew ThreadStart(this, &SalesMainForm::MyRun));
-			myThread->IsBackground = true;
+			//myThread = gcnew Thread(gcnew ThreadStart(this, &SalesMainForm::MyRun));
+			//myThread->IsBackground = true;
 			//myThread->Start();
 
 			//TODO: agregar código de constructor aquí
@@ -117,7 +117,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(1000);
+					myThread->Sleep(3000);
 					Invoke(gcnew MyDelegate(this, &SalesMainForm::PutTopToThread));
 				}
 				catch (Exception^ ex) {
@@ -1448,7 +1448,7 @@ public:
 			   ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(Convert::ToInt32(Idlb->Text));
 			   ProductPresentation->ShowDialog();
 		   }
-	void PutTop(List<Product^>^ myTopList) {
+public: void PutTop(List<Product^>^ myTopList) {
 			   // Stream
 			   System::IO::MemoryStream^ ms;
 

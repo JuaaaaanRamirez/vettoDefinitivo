@@ -23,9 +23,9 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	txtQueries->Text = "" + Convert::ToString(Convert::ToInt32(p->Searches)+1);
 	txtSales->Text = "" + p->Sales;
 	p->Searches++;  // Plus search
-
 	Controller::UpdateProduct(p);
 
+	SalesMainForm::instance->PutTop(Controller::GetTopProducts());
 	// Put Image
 	if (p->Photo != nullptr) {
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);

@@ -19,9 +19,7 @@ System::Void SalesView::ProductListForm::dgvProductList_CellDoubleClick(System::
  	ProductPresentationForm^ ProductPresentation = gcnew ProductPresentationForm(myUserId);
 	ProductPresentation->ShowDialog();
 
-
-	//((SalesMainForm^)refForm)->PutTop(Controller::GetTopProducts());
-	//this->Close();
+	this->Close();
 }
 System::Void SalesView::ProductListForm::ProductListForm_Load(System::Object^ sender, System::EventArgs^ e)
 {

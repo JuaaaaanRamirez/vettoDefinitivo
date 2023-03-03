@@ -51,8 +51,8 @@ namespace SalesView {
 			//
 			//refForm = form1;
 			this->userId = userId;
-			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
-			myThread->IsBackground = true;
+			//myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
+			//myThread->IsBackground = true;
 			//myThread->Start();
 		}
 		delegate void MyDelegate();
@@ -490,6 +490,7 @@ namespace SalesView {
 			this->Name = L"ProductPresentationForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Producto Selccionado";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &ProductPresentationForm::ProductPresentationForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &ProductPresentationForm::ProductPresentationForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbxProductImagen))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nudAmount))->EndInit();
@@ -590,6 +591,10 @@ namespace SalesView {
 
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void ProductPresentationForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	
+	
+}
 };
 }
 
