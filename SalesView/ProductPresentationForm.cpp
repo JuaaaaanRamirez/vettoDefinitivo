@@ -31,25 +31,6 @@ void SalesView::ProductPresentationForm::ShowProduct()
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);
 		pbxProductImagen->Image = Image::FromStream(ms);
 	}
-
-	// Request WishList
-	/*
-	if (userId != 0) {
-		Person^ thisPerson = (Customer^)Controller::QueryUserById(userId);
-		if (thisPerson->Profile == 'S' || thisPerson->Profile == 'C') {
-			
-			safe_cast<Customer^>(user)->WishList
-			
-			for (int i = 0; i < ((Customer^)thisPerson)->WishList->Count; i++)
-							if (((Customer^)thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
-							
-			for (int i = 0; i < safe_cast<Customer^>(thisPerson)->WishList->Count; i++)
-				if (safe_cast<Customer^>(thisPerson)->WishList[i]->Id == p->Id) { Wishbtn->Visible = false; break; }
-
-		}
-			
-	}*/
-	
 }
 
 void SalesView::ProductPresentationForm::ShowProductToThread()

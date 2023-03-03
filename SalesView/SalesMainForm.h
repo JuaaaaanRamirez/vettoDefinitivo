@@ -125,7 +125,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(3000);
+					myThread->Sleep(5000);
 					Invoke(gcnew MyDelegate(this, &SalesMainForm::PutTopToThread));
 				}
 				catch (Exception^ ex) {
@@ -1662,6 +1662,8 @@ private: System::Void realizarUnaVentaToolStripMenuItem_Click(System::Object^ se
 }
 	   // Closinf
 private: System::Void SalesMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+
+#pragma region AD_LINKS
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	linkLabel1->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel1->Text));
@@ -1678,6 +1680,9 @@ private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Win
 	linkLabel4->LinkVisited = true;
 	System::Diagnostics::Process::Start(Convert::ToString(linkLabel4->Text));
 }
+#pragma endregion
+
+#pragma region LOOKFORTOP
 private: System::Void pbFirstProduct_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	FakeIdTop->Text = "0"; ShowMeATop();
 }
