@@ -256,6 +256,7 @@ namespace SalesView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvProductList);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"ProductListForm";

@@ -96,6 +96,7 @@ namespace SalesView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductStatusForm::typeid));
 			this->lbTitle = (gcnew System::Windows::Forms::Label());
 			this->txtTotal = (gcnew System::Windows::Forms::TextBox());
 			this->txtIGV = (gcnew System::Windows::Forms::TextBox());
@@ -465,6 +466,7 @@ namespace SalesView {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dgvSaleDetail);
 			this->Controls->Add(this->lbTitle);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;

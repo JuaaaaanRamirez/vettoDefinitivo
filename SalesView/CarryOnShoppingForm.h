@@ -121,6 +121,7 @@ namespace SalesView {
 			this->Controls->Add(this->btnCarryOn);
 			this->Controls->Add(this->pbCheck);
 			this->Controls->Add(this->lbCont);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;

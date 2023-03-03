@@ -177,6 +177,7 @@ namespace SalesView {
 			this->ClientSize = System::Drawing::Size(721, 532);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->dgvMyShopping);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;

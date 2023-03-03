@@ -218,6 +218,7 @@ namespace SalesView {
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->lbName);
 			this->Controls->Add(this->lbId);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"CustomerSearchForm";
