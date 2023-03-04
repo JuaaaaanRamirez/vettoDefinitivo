@@ -25,7 +25,7 @@ void SalesView::ProductPresentationForm::ShowProduct()
 	p->Searches++;  // Plus search
 	Controller::UpdateProduct(p);
 
-	SalesMainForm::instance->PutTop(Controller::GetTopProducts());
+	//SalesMainForm::instance->PutTop(Controller::GetTopProducts());
 	// Put Image
 	if (p->Photo != nullptr) {
 		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(p->Photo);

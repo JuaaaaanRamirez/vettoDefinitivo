@@ -30,6 +30,7 @@ namespace SalesView {
 			myThread->IsBackground = true;
 			//myThread->Start();
 			//
+			/*Nota: NO PUEDIMOS ACTIVAR EL HILO DE LA STADISTICA POR PROBLEMAS DE INTENET*/
 			//TODO: agregar código de constructor aquí
 			//
 		}
@@ -38,7 +39,7 @@ namespace SalesView {
 		void MyRun() {
 			while (true) {
 				try {
-					myThread->Sleep(1500);
+					myThread->Sleep(10000);
 					Invoke(gcnew MyDelegate(this, &StadisticReportForm::RefreshReportToday));
 				}
 				catch (Exception^ ex) {

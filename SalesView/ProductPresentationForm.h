@@ -51,9 +51,9 @@ namespace SalesView {
 			//
 			//refForm = form1;
 			this->userId = userId;
-			//myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
-			//myThread->IsBackground = true;
-			//myThread->Start();
+			myThread = gcnew Thread(gcnew ThreadStart(this, &ProductPresentationForm::MyRun));
+			myThread->IsBackground = true;
+			myThread->Start();
 		}
 		delegate void MyDelegate();
 
