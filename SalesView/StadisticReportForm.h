@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ProductStatusForm.h"
 namespace SalesView {
 
 	using namespace System;
@@ -305,6 +305,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->dgvSells->RowTemplate->Height = 24;
 			this->dgvSells->Size = System::Drawing::Size(771, 581);
 			this->dgvSells->TabIndex = 5;
+			this->dgvSells->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &StadisticReportForm::dgvSells_CellDoubleClick);
 			// 
 			// Column1
 			// 
@@ -647,8 +648,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->tabControl2->SelectedIndex = 0;
 			this->tabControl2->Size = System::Drawing::Size(881, 814);
 			this->tabControl2->TabIndex = 22;
-			//this->tabControl2->SelectedIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_SelectedIndexChanged_1);
-			//this->tabControl2->TabIndexChanged += gcnew System::EventHandler(this, &StadisticReportForm::tabControl2_TabIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -682,7 +681,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 			this->tabPage4->Size = System::Drawing::Size(873, 785);
 			this->tabPage4->TabIndex = 1;
 			this->tabPage4->Text = L"Gráficos";
-			//this->tabPage4->Click += gcnew System::EventHandler(this, &StadisticReportForm::tabPage4_Click);
 			// 
 			// tabPage5
 			// 
@@ -1395,6 +1393,12 @@ private: System::Void tabControl2_SelectedIndexChanged(System::Object^ sender, S
 		Announcerbx->Visible = false;
 	}
 	*/
+}
+private: System::Void dgvSells_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	if (dgvSells->Rows[e->RowIndex]->Cells[0]->Value->ToString()->Trim()->Equals("")) return;
+	ProductStatusForm^ myStatus = gcnew ProductStatusForm(Int32::Parse(dgvSells->Rows[e->RowIndex]->Cells[0]->Value->ToString()));
+	//int bruh = Int32::Parse(dgvMyShopping->Rows[e->RowIndex]->Cells[0]->Value->ToString());
+	myStatus->ShowDialog();
 }
 };
 }
